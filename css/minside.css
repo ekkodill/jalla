@@ -1,0 +1,65 @@
+/*----
+//Denne siden er utviklet av Erik Bjørnflaten og Mikael kolstad, siste gang endret 02.03.2014
+//Denne siden er kontrollert av Erik siste gang 03.03.2014 
+----*/
+
+#page {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:90%;
+	background-color:#FFF;
+	border-width:medium;
+	
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	border: 2px solid #99CCFF;
+	
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+#minside {
+float:middle;
+margin-left : auto;
+margin-right : auto;
+margin-top : 10px;
+margin-bottom : 10px;
+width : 50%;
+height:550px;
+background-color : #FFF;
+
+}
+
+#byttpw {
+float:middle;
+width : 30%;
+margin : auto;
+position : relative;
+border-radius : 10px;
+padding : 7px;
+border : #999 solid 1px;
+box-shadow : 0 0 8px rgba(0, 0, 0, 0.3);
+font-size : 0.8em;
+font-weight : normal;
+font-family : Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+#pwknapp {
+
+height:30px;
+width:100px;
+}
+
+#pwknapp:hover {
+background : #09C;
+color : #000;
+}
+
+		

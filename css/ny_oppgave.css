@@ -1,0 +1,58 @@
+/*----
+//Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 17.03.2014
+//Denne siden er kontrollert av Erik siste gang 03.03.2014 
+
+@charset "utf-8";
+
+/* CSS Document */
+
+
+#nyOppgave{
+	float:left;
+	width:22%;
+	height:auto;
+	margin-left:1%;
+	margin-right:2%;
+	margin-top:1%;
+	margin-bottom:1%;
+}
+
+#oppgtitt{
+	width:40%;
+	margin-top:1%;
+	margin-left:30%;
+	margin-right:30%;
+}
+
+#oppgtext{
+    width:98%;
+    height:300px; 
+margin-right:1%;
+}
+
+.hentPdf{
+	width:500px;
+}
+
+#publiser, #hentPdf{
+	width:75px;
+	height:30px;
+}
+
+#publiser{
+	float:left;
+	margin-left:1%;
+}
+
+#hentPdf{
+	float:right;
+}
+
+#oppTab{
+	float:right;
+	width:68%;
+	height:400px;
+	margin-top:1%;
+	margin-right:5%;
+
+}
