@@ -4,6 +4,16 @@ Denne siden er kontrollert av kurt siste gang 03.03.2014  !-->
 <?php
 include_once 'includes/init.php';
 
+
+
+function finnVeileder($brukerPK) {
+	$db = getDB();
+
+	$veileder = $db->query("SELECT etternavn FROM brukere WHERE brukerPK = $brukerPK")->fetch_object()->etternavn;
+	return $veileder;
+}
+
+
 function sjekkRegbrukere() {
 	$db = getDB();
 	$brukere = array();

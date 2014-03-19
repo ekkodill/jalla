@@ -5,8 +5,7 @@ Denne siden er kontrollert av kurt siste gang 02.03.2014  !-->
 	<meta charset="utf-8">
 	<title>Registrering</title>
 	<script type="text/javascript" src="js/vis_brukere.js"></script> 
-	<script type="text/javascript"  src='js/sendt.js'></script>
-	<script type="text/javascript"  src='js/minside.js'></script>
+	<script type="text/javascript"  src='js/oppgave.js'></script>
 	<link href="css/aside.css" rel="stylesheet" type="text/css">
 	<link href="css/meny.css" rel="stylesheet" type="text/css">
 	<link href="css/Design.css" 	rel="stylesheet" type="text/css">

@@ -79,7 +79,7 @@ nav {
 		font-weight:normal;
 		font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 	}
-	
+	/*
 	a:link,a:visited
 	{
 	display:block;
@@ -99,7 +99,7 @@ nav {
 	{
 	background-color:#09C;
     }
-	
+	*/
 	.bmenyhead{
 	width:150px;
 	height:60px;

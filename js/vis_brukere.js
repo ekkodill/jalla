@@ -6,20 +6,23 @@
   
 // Sjekker om e-postfeltet er fylt inn, og at brukerype er riktig
 //noe som er påkrevd for å registrere. Dersom ikke gir den feilmelding og setter fokus på dette feltet.
-function regNy(type) {
+function regNy() {
   var liste = document.getElementById("nytype");
   var btype = liste.options[liste.selectedIndex].text;
-        if (document.getElementById("ePost").value == "") {
-           alert("Du må skrive inn en epostadresse");
+  var boks = ["ePost", "fornavn", "etternavn"]
+  var i, l = boks.length;
+  var boksnavn;
+  for (i = 0; i <  l; i++) {
+    boksnavn = boks[i];
+    if(document.getElementById(boksnavn).value === "") {
+      alert(boksnavn + " må fylles ut");
+      return false;
+    } else if(btype == "Velg brukertype...") {
+            alert("Du må velge en brukertype.");
             return false;
-        } else if(btype == "Velg brukertype...") {
-             alert("Du må velge en brukertype.");
-            return false;
-          } else {
-            return true;
-          }
+      }     
+  } return true;
 }
-
  
 //Sjekker om bruker virkelig skal slettes
 function slette(fornavn, etternavn, id, denne, type) {
@@ -37,13 +40,6 @@ function slette(fornavn, etternavn, id, denne, type) {
 }
 
 
-//Sorterer tabellene når man trykker på headeren
-$(document).ready(function() { 
-        $("#myTable").tablesorter(); 
-    });
-
-
-
 //Tar bort readonly fra inputboksene når man trykker på "blyant"-ikonet for å endre brukerdata
   function onEdit(btn, type, pk) {
       var id=btn.id;
@@ -55,9 +51,9 @@ $(document).ready(function() {
         alert("Du kan ikke endre denne brukeren.")
         return false;
       }
-      if(type == 2 || type == 3) {
-        fjernType(type, "typer"+id);
-      }
+     
+      fjernType(type, "typer"+id, pk); //Fjerner alternativer fra nedtrekksmenyene om brukertyper i forhold til rettighetene brukeren har.
+      
       document.getElementById("ePost"+id).removeAttribute("Readonly");
       document.getElementById("etternavn"+id).removeAttribute("Readonly");
       document.getElementById("fornavn"+id).removeAttribute("Readonly");
@@ -79,16 +75,18 @@ function onSave(btn) {
 
 
 //Funksjon som fjerner alternativer i nedtrekksmenyer i forhold til angitt spesifikasjon
-function fjernType(type, id) {
-
+function fjernType(type, id, pk) {
+  var brukerPK = id.substr(5);
   var selectobject=document.getElementById(id);
     //Fjerner alternativene for veiledere og deltakere til å endre brukertype på deltakere
     if(type == 2 || type == 3) {
       for (var i=0; i<selectobject.length; i++) {
         if (selectobject.options[i].value == "administrator") 
-           selectobject.remove(i); 
-        if ( selectobject.options[i].value == "veileder") 
-          selectobject.remove(i); 
+           selectobject.remove(i);
+        if(pk != brukerPK) { //Sørger for at veileder kan endre på data om seg selv uten å miste veileder statusen.
+            if ( selectobject.options[i].value == "veileder") 
+                selectobject.remove(i); 
+        }
       }
     }
 

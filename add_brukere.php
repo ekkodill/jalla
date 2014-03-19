@@ -23,8 +23,7 @@
 				</tr>
 			</table>
 			<h7 class="paakrev">*Må fylles inn.</h7><br>
-		<center><input class"leggtilny" type="submit" value="Legg til ny bruker" onclick="return regNy(        
-              <?php echo $user_data['brukertype'];  ?>)"></center>
+		<center><input class"leggtilny" type="submit" value="Legg til ny bruker" onclick="return regNy()"></center>
 		</form>
     </div>
 		<br>
