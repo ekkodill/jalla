@@ -15,13 +15,12 @@ $db = getDB();
         <th class='tab2'>Brukertype</th>
         <th>
         <form method="post">
-        <select id="sorter" name='sort'>
+        <select id="sorter" name='sort' onchange='this.form.submit()'>
             <option name="epost"     value='ePost'     <?php if (isset($_POST['sort'])) { if($_POST['sort']=='ePost')    {echo "selected='selected'"; }} ?> >Epost</option>
             <option name="etternavn" value='etternavn' <?php if (isset($_POST['sort'])) { if($_POST['sort']=='etternavn') {echo "selected='selected'"; }} ?>>Etternavn</option>
             <option name="fornavn"   value='fornavn'   <?php if (isset($_POST['sort'])) { if($_POST['sort']=='fornavn')   {echo "selected='selected'"; }} ?>>Fornavn</option>
             <option name="brukertype"value='brukertype'<?php if (isset($_POST['sort'])) { if($_POST['sort']=='brukertype') {echo "selected='selected'"; }}?>>Brukertype</option>
         </select>
-            <input type='submit' name='sorter' value="Sorter" id='sorterbtn'>
         </form></th></tr></thead><tbody id='liste'>
 <?php
 

@@ -1,97 +1,76 @@
 <?php
 include 'includes/init.php';
-$db = getDB(); ?>
-<?php 
-if(isset($_POST['submit'])) {
-	$content = $_POST['content'];
-
-if(isset($_FILES['file'])) {
-
-
-$allowedExts = array("pdf");
-$temp = explode(".", $_FILES["file"]["name"]);
-$extension = end($temp);
-if ((($_FILES["file"]["type"] == "application/pdf") && in_array($extension, $allowedExts)))  {
-  if ($_FILES["file"]["error"] > 0) {
-    	echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-    }
-  	else {
-  	  echo "Upload: " . $_FILES["file"]["name"] . "<br>";
-  	  echo "Type: " . $_FILES["file"]["type"] . "<br>";
-  	  echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
-  	  echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
-  	  if (file_exists("uploads/" . $_FILES["file"]["name"])) {
-  	    echo $_FILES["file"]["name"] . " filen finnes allerede. ";
-  	    }
-  	  else {
-  	    move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/" . $_FILES["file"]["name"."1337"]);
-  	    echo "Stored in: " . "uploads/" . $_FILES["file"]["name"];
-  	  }
-  	}
- }
-	else {
-  		echo "Ugyldig filformat";
-  	}
-} else {
-	echo "Du må velge et vedlegg å laste opp";
-}
-
-if (empty($content)) {
-		$error = 'Du kan ikke lagre en tom oppgave';
-	}
-	else {
-		$error = 'Oppgaven ble lagret';
-	}
-}
-
- ?>
-
-
-
-<?php 
-
-
 $db = getDB();
 
+
+
+
 //Registrerer nye opgpaver til databasen
-if(!empty($_POST)) {
+if(!empty($_POST['publiser'])) {
 		$tittel 	= trim($_POST['tittel']);
 		$oppg 		= trim($_POST['oppg']);
-		$fil 		= trim($_POST['file']);
-		$link 		= "<a href='uploads/".$fil."'>".$fil."</a>";
 		$vansklighetsgrad = trim($_POST['vansklighetsgrad']);
 		$veileder   = $user_data['brukerPK'];
 		$erPublisert = 1;
-		
+			
 		if(!empty($tittel) && !empty($oppg))  {
-				$insert = $db->prepare("INSERT INTO oppgaver (veileder, tittelOppgave, tekstOppgave, datoEndret, erPublisert, linkVedlegg, vanskelighetsgrad) VALUES (?,?,?,now(),?,?,?)");
-				$insert->bind_param('sssisi', $veileder, $tittel, $oppg, $erPublisert, $link, $vansklighetsgrad);
+				$insert = $db->prepare("INSERT INTO oppgaver (veileder, tittelOppgave, tekstOppgave, datoEndret, erPublisert, vanskelighetsgrad) VALUES (?,?,?,now(),?,?)");
+				$insert->bind_param('sssii', $veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad);
 		
 				if($insert->execute()) {
 					header('Location: oppgave.php');
 					die();
-				} else { echo $insert->errno;}
-		} else { $errors[] = "EMPTY";} 
+				}
+		} 
 }
 
  ?>
+<script type="text/javascript">
+	
+	//code to refresh the page
+var page_y = $( document ).scrollTop();
+window.location.href = window.location.href + '?page_y=' + page_y;
 
 
+//code to handle setting page offset on load
+$(function() {
+    if ( window.location.href.indexOf( 'page_y' ) != -1 ) {
+        //gets the number from end of url
+        var match = window.location.href.split['?'][1].match( /\d+$/ );
+        var page_y = match[0];
 
+        //sets the page offset 
+        $( 'html, body' ).scrollTop( page_y );
+    }
+});
+</script>
 
 <!DOCTYPE html>
 <html lang="nb-no">
 		<?php
 		include('design/head.php');
+
+		//Sjekker valget for listetype. (Alle oppgaver, eller bare besvarte oppgaver)
+ 		if (isset($_POST['oppgaver'])) { 
+ 			if($_POST['oppgaver']=='gittoppg') {
+ 				$tekst = 'Liste over oppgaver';
+ 			}
+ 		    if($_POST['oppgaver']=='besvartoppg') {
+				$tekst = 'Liste over besvarte oppgaver';
+			}
+		}
+		if (!isset($_POST['oppgaver'])) {
+				$tekst = "Liste over oppgaver;";
+		} 
 		?>
-		<body>
-			<div id="page">
-				<?php
-				include('design/header.php');
-				?>
+	<body onload="doScroll()" onunload="window.name=document.body.scrollTop">
+		<div id="page">
+			<?php
+			include('design/header.php');
+			?>
 		    <section style="width:94%">
-					<center><legend>Lag ny oppgave</legend></center><br>
-				<form action="oppgave.php"  enctype="multipart/form-data" onsubmit="return regNyoppg()" method="post">
+				<center><legend>Lag ny oppgave</legend></center><br>
+				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
 					<input type="text" id="oppgtitt" placeholder="Skriv inn tittelen" name="tittel"><br><br>
 					<label>Vanskelighetsgrad:</label> 
 					<br>
@@ -99,62 +78,53 @@ if(!empty($_POST)) {
 					<input type="radio" value="2" name="vansklighetsgrad">Medium
 					<input type="radio" value="1" name="vansklighetsgrad">Lett
 					<textarea id="oppgtext" placeholder="Skriv inn oppgaven" name="oppg"></textarea><br>
-					<input type="submit" name="publiser" value="Publiser">
-					<label for="file"></label>
-					<input type="file" name="file" id="file"><br>
-					<input type="submit" name="submit" value="Last opp vedlegg">
-				</form>
-			<form id="oppTab">
-			<center><legend>Liste over oppgaver</legend></center><br>
-			<table>
-     <thead>
-    <tr><th class='tab2'>Veileder</th>
-        <th class='tab2'>Tittel</th>
-        <th class='tab2'>Dato endret</th>
-        <th class='tab2'>Link</th>
-        <th class='tab2'>Vanskelighetsgrad</th>
-        <th>
-        <select id="oppgaver" name='oppgaver'>
-            <option name="gittoppg"     value='gittoppg'   selected='selected'>Alle oppgaver</option>
-            <option name="besvartoppg" value='besvartoppg'>Besvarte oppgaver</option>
-        </select>
-        </th>
-    </tr>
-    </thead>
-    <?php
-    $result = $db->query("SELECT * FROM oppgaver") ;
-    while ($row = $result->fetch_assoc()) {
-    $PK = $row['oppgavePK'];
-    $vPK = $row['veileder'];
-  	$veileder = finnVeileder($vPK);
-  	if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
-    if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
-    if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
+					<input type="submit" name="publiser" value="Publiser" onclick="return regNyoppg();">
+			    </form>			
+				<?php if(!count(sjekkAntall('oppgaver'))) {
+							echo "<center><legend>Ingen registrerte oppgaver</legend></center>"; 
+					   } else { ?>
+				<br><br>
+			<center><legend><?php echo $tekst ?></legend><br>
+				<form action="oppgave.php" id="endreli" method="post">
+		    		<select name='oppgaver' onchange="this.form.submit();">
+			            <option name="gittoppg"     value='gittoppg'   <?php if (isset($_POST['oppgaver'])) { if($_POST['oppgaver']=='gittoppg')  {echo "selected='selected'"; }} ?>>Alle oppgaver</option>
+			            <option name="besvartoppg" value='besvartoppg' <?php if(isset($_POST['oppgaver']))  { if($_POST['oppgaver'] =='besvartoppg') {echo "selected='selected'"; }} ?>>Besvarte oppgaver</option>
+			        </select></center><br>
+			      </form>	
+				</center><br>
+	
 
-    echo "<form action='#' method='post' id='multiform'".$PK.">";
-    echo "<tr>";
-    echo "<td id='veileder".$PK."'      	 name='veileder'       		>"	. $veileder.		      "</td>";
-    echo "<td id='tittel".$PK."'        	 name='tittel'   	  		>"  . $row['tittelOppgave'].	  "</td>";
-    echo "<td id='datoendret".$PK."'    	 name='datoendret'     		>"	. $row['datoEndret'].		  "</td>";
-    echo "<td id='link".$PK."'    			 name='link'     	  		>"	. $row['linkVedlegg'].		  "</td>";
-    echo "<td id='vanskelighetsgrad".$PK."'  name='vanskelighetsgrad'   >"   . $vanskelighetsgrad. "</td>";
-    echo "<input type='hidden' name='brukerPK' value=$PK></td>";
-      
-        echo "<td><input type='image' src='img/edit.jpg' name='edit' id=$PK />"; //Knapp for å redigere brukerdata
-        echo "<input type='hidden'  name='lagreupdate' />";
-        echo "<input type='image' hidden src='img/save.jpg' name='update' id='s".$PK."' />"; //Knapp for å lagre endringer
+<?php 	//Inkluderer riktig liste
+		if(isset($_POST['oppgaver'])) {
+			if($_POST['oppgaver'] == 'gittoppg') {
+				include('oppgaveliste.php');
+			} elseif($_POST['oppgaver'] == 'besvartoppg') {
+				include('besvartliste.php');
+			}
+		} else { include('oppgaveliste.php'); }
+} ?>
 
-        echo "<input type='hidden' name='slett' value='$row[oppgavePK]' />"; //Knapp for å slette brukere
-        echo "<input type='image' id='d".$PK."' src='img/delete.jpg' name='formDelete' />"; 
- 		echo "</td></tr></form>";
-    
-    }
-    echo "</tbody></table></div>"; 
-?>
-        </form><tbody id='liste'></table>
+
+<script> //Søkescript for oppgavelisten, leter i første og andre kolonne (veileder og tittel).
+$( document ).ready(function() {
+	$("#search").keyup(function () {
+	    var value = this.value.toLowerCase().trim();
+	    $("table tr").each(function (index) {
+	        if (!index) return;
+	        $(this).find("td").each(function () {
+	            var id = $(this).text().toLowerCase().trim();
+	            var not_found = (id.indexOf(value) == -1);
+	            $(this).closest('tr').toggle(!not_found);
+	            return not_found;
+	        });
+	    });
+	});
+});
+</script>
 		</section>
-	    		<?php include('design/footer.php'); ?>
+	    	<?php include('design/footer.php'); ?>
        	</div>
 	</body>
 </html>
+
 

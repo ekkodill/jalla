@@ -4,6 +4,7 @@
 ----*/
 /* CSS Document */
 
+
 input[readonly]
 {
    	width:98%;
@@ -197,7 +198,8 @@ table#myTable {
     /* collapsed, because the bottom shadow on thead tr is hidden otherwise */
     border-collapse: collapse;
 }
-th {padding: .5em .5em;}
+th {padding: .5em .5em;}
+
 
 /* Shadow on the header row*/
 thead tr   { box-shadow: 0 1px 10px #000000;}

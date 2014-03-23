@@ -13,6 +13,7 @@ if(logged_in() === true) {
 	$user_data = user_data($session_user_id, 'brukerPK',  'ePost', 'etternavn', 'fornavn', 'passord', 'brukertype');
 }
 
+
 //Error samling for diverse. Brukes foreløpig til å gi beskjed om feilmeldinger for innloggingsforsøk.
 $errors = array(); 
 ?>

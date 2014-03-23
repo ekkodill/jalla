@@ -6,19 +6,38 @@ include_once 'includes/init.php';
 
 
 
-function finnVeileder($brukerPK) {
+
+//Henter oppgavetittel fra databasen
+function hentOppgt($oPK) {
 	$db = getDB();
 
-	$veileder = $db->query("SELECT etternavn FROM brukere WHERE brukerPK = $brukerPK")->fetch_object()->etternavn;
-	return $veileder;
+	$oppgave = $db->query("SELECT tittelOppgave FROM oppgaver WHERE oppgavePK = $oPK")->fetch_object()->tittelOppgave;
+	return $oppgave;
+}
+
+//Henter ønsket brukers etternavn fra databasen
+function finnBruker($brukerPK) {
+	$db = getDB();
+
+	$bruker = $db->query("SELECT etternavn FROM brukere WHERE brukerPK = $brukerPK")->fetch_object()->etternavn;
+	return $bruker;
+}
+
+//Henter oppgaveteksten fra databasen
+function hentOppgave($oppgPK) {
+	$db = getDB();
+
+	$oppgave = $db->query("SELECT tekstOppgave FROM oppgaver WHERE oppgavePK = $oppgPK")->fetch_object()->tekstOppgave;
+	return $oppgave;
 }
 
 
-function sjekkRegbrukere() {
+//Sjekker at det finnes i databasen
+function sjekkAntall($type) {
 	$db = getDB();
 	$brukere = array();
 	//skriver ut oppdatert liste med brukere og frigjør resultatet
-if($resultat = $db->query("SELECT * FROM brukere")) {
+if($resultat = $db->query("SELECT * FROM $type")) {
 	if($resultat->num_rows) {
 		while($row = $resultat->fetch_object()) {
 			$brukere[] = $row;
@@ -28,7 +47,7 @@ if($resultat = $db->query("SELECT * FROM brukere")) {
 } return $brukere;
 }
 
-
+//Henter data fra databasen
 function getQuery($type, $sorter) {
 	  $db = getDB();
 	  $type = sanitize($type);

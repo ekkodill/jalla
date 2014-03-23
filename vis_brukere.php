@@ -20,8 +20,8 @@ include_once 'includes/init.php';
 		       	if($user_data['brukertype'] != 3) {
 					 	include('add_brukere.php');
 					}		      
-					if(!count(sjekkRegbrukere())) {
-						echo 'Ingen registrerte brukere'; 
+					if(!count(sjekkAntall('brukere'))) {
+						echo "<center><legend>Ingen registrerte brukere</legend></center>"; 
 						} else { ?>
 					<center><legend>Liste over brukere</legend></center><br>
 						<?php include 'form.php'; }?>
