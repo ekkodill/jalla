@@ -65,43 +65,43 @@
 }
 /*---- taster med flere tegn ----*/	
 	.on {
-         font: 10px Verdana, Sans-Serif;
-         display: inline-block;
-         margin: 1px;
-         margin-left: -20px;
-         vertical-align: top;
+        font: 10px Verdana, Sans-Serif;
+        display: inline-block;
+        margin: 1px;
+        margin-left: -20px;
+        vertical-align: top;
 
 	 }
 		
 	.on2 {
-         font: 20px Verdana, Sans-Serif;
-         display: inline-block;
-         margin-left: -12px;
-         vertical-align: bottom;
-         padding-bottom:6px;
-		 margin-top:-30px;
+        font: 20px Verdana, Sans-Serif;
+        display: inline-block;
+        margin-left: -12px;
+        vertical-align: bottom;
+        padding-bottom:6px;
+		margin-top:-30px;
     }
 
 /*----Spesialtegnene på tastaturet----*/
 #keyboard .left-shift {
-		clear: left;
-		width: 70px;
-		margin-top: -40px; 
+	clear: left;
+	width: 70px;
+	margin-top: -40px; 
 }
 			
 #keyboard .tab {
-			clear:left;
-			width: 55px;
+	clear:left;
+	width: 55px;
 }
 			
 #keyboard .delete {
-			width: 75px;
+	width: 75px;
     }
 			
-           #keyboard .capslock {
+        #keyboard .capslock {
 			width: 70px;
 			clear: left;
-    }
+    		}
 	
 	.cltekst{
 		color:#000;
@@ -125,103 +125,104 @@
 		}
 		
 		#keyboard .capsen {
-		height:0px;
-		width:0px;
-		margin-left:650px;
-		position:relative;
-		border:none;
-		background:none;
-		list-style:none;
-		}
+			height:0px;
+			width:0px;
+			margin-left:650px;
+			position:relative;
+			border:none;
+			background:none;
+			list-style:none;
+			}
 		
 			
 			#keyboard .return  {
-			width:45px;
-			height: 88px;
-			margin-top: -48px; 
-			margin-right: -10px;
-			border-right:1px solid #999;
-			border-top:1px solid #999;
-			border-bottom:1px solid #999;
-			border-left:1px solid #999;
-    }
+				width:45px;
+				height: 88px;
+				margin-top: -48px; 
+				margin-right: -10px;
+				border-right:1px solid #999;
+				border-top:1px solid #999;
+				border-bottom:1px solid #999;
+				border-left:1px solid #999;
+    			}
 			
 			#keyboard .left-shift {
-			width: 55px;
-			margin-top: 0px;
-			}
+				width: 55px;
+				margin-top: 0px;
+				}
 			
 			#keyboard .right-shift {
-			width: 108px;
-			margin-top: 0px; 
-			}
+				width: 108px;
+				margin-top: 0px; 
+				}
 
             #keyboard .ctrll {
-			width: 70px;
-			clear: left;
-			}			
-			#keyboard .ctrlr {
-			width: 70px;
-			margin-left:100px;
-			}	
-	#keyboard .altgr {
-			width: 50px;
-			}
+				width: 70px;
+				clear: left;
+				}	
 
-            #keyboard .lalt {
+			#keyboard .ctrlr {
+				width: 70px;
+				margin-left:100px;
+				}	
+	#keyboard .altgr {
+		width: 50px;
+		}
+
+        #keyboard .lalt {
 			width: 55px;
 			margin-left:60px;
 			}
 
 			
-			.uppercase {
+		.uppercase {
 		    text-transform: uppercase;
 		    }
 	
-		    #keyboard .space {
+		#keyboard .space {
 		    width: 260px;
 		    }
 
 
 /*---- laget for å få utseende på enter ----*/
 			#keyboard .xreturn {
-    		width: 25px;
-            left:20px;
-			border:0;
-			margin-left:1px;
-			margin-top:-0.5px;
-			border-left:1px solid #999;
-			border-top:1px solid #999;
-			border-bottom:1px solid #999;
-            }
+	    		width: 25px;
+	            left:20px;
+				border:0;
+				margin-left:1px;
+				margin-top:-0.5px;
+				border-left:1px solid #999;
+				border-top:1px solid #999;
+				border-bottom:1px solid #999;
+	            }
 				
 
             #keyboard .white {
-            text-align:top;
-			width:35px;
-            z-index: 1; 
-            position:relative;
-            right:25px;
-            height:27px;
-            top:0px;
-			-webkit-border-radius:0;
-            -moz-border-radius:o;
-            border-radius:0;
-            padding:7px;
-            border:none;;
-            -webkit-box-shadow: none;
-            -moz-box-shadow:none;
-            box-shadow:none;
-			}
+	            text-align:top;
+				width:35px;
+	            z-index: 1; 
+	            position:relative;
+	            right:25px;
+	            height:27px;
+	            top:0px;
+				-webkit-border-radius:0;
+	            -moz-border-radius:o;
+	            border-radius:0;
+	            padding:7px;
+	            border:none;;
+	            -webkit-box-shadow: none;
+	            -moz-box-shadow:none;
+	            box-shadow:none;
+				}
 
 			#keyboard .under{
-            padding-right:-5px;
-            }
+	            padding-right:-5px;
+	            }
 			
 /*---- lastitem er for noen av tastene i enden av rekken ----*/		
 		    .lastitem {
-		    margin-right: 0;
-		    }
+			    margin-right: 0;
+			    }
 			
 /*---- Bare testing i første omgang ----*/
 			.showrediger{
