@@ -1,0 +1,76 @@
+/*
+Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 02.03.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
+*/
+
+/*----Header-----*/
+header {
+	height:130px;
+	width: auto;
+	margin-top: -32px;
+	background:#99CCFF;
+}
+
+h1.header {
+	font-size: 3em; 
+	line-height: .6;
+	padding-top: 20px;
+	padding-left: 20px;
+	text-align:left;
+	font-weight:normal;
+	
+}
+/*----Meny----*/
+nav { 
+	margin-top:20px; 
+	background-color:#99CCFF;
+}
+
+	nav ul {
+		list-style-type:none;
+		margin:0;
+		padding:0;
+		overflow:hidden;
+	}
+	
+	nav li {
+		float:left;
+	}
+	
+		
+	
+	nav a:link, nav a:visited{
+		display:block;
+		width:auto;
+		color:#FFFFFF;
+		background-color:#99CCFF;
+		text-align:center;
+		padding:7px;
+
+		text-decoration:none;
+		
+		
+		font-size:1.5em;	
+		font-weight:normal;
+		font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	}
+
+	nav a:hover, nav a:active{
+		background-color:#09C;
+	}
+
+	.knappHoyre{
+		float:right;
+	}
+
+/*----Logget inn som----*/
+.loggetInnSom{
+	float:right;
+	width: auto;
+	padding-top: 30px;
+
+	color:#FFFFFF;
+	font-size:1.5em;	
+	font-weight:normal;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
