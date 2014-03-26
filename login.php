@@ -34,7 +34,9 @@ if (empty($brukernavn) === true || empty($passord) === true) {
 
 <!doctype html>
 <html>
-    <?php include 'design/head.php'; ?>
+    <?php 
+    $pgName = 'Innlogging';
+    include 'design/head.php'; ?>
   	<body>
 		  <div id="page">
 		  <?php include 'design/header.php'; ?>

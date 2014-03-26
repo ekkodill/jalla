@@ -1,7 +1,8 @@
-<!--Denne siden er utviklet av Kurt A. Aamodt og Erik Bjørnflaten, siste gang endret 22.03.2014
-Denne siden er kontrollert av Mikael Kolstad siste gang 22.03.2014  !-->
-
 <?php 
+//Denne siden er utviklet av Kurt A. Aamodt og Erik Bjørnflaten, siste gang endret 22.03.2014
+//Denne siden er kontrollert av Mikael Kolstad siste gang 22.03.2014 !
+
+
 include 'includes/init.php';
   
 $db = getDB();

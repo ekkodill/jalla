@@ -8,6 +8,7 @@ include_once 'includes/init.php';
 <!DOCTYPE html>
 <html lang="nb-no">
 		<?php
+		$pgName = 'Vis brukere';
 		include('design/head.php');
 		?>
 		<body onload="fjernType(<?php echo $user_data['brukertype']; ?>, 'nytype');" >

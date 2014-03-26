@@ -1,4 +1,7 @@
 <?php
+// Denne siden er utviklet av Erik Bjørnflaten., siste gang endret 26.03.2014
+// Denne siden er kontrollert av Kurt A. Aamodt, iste gang endret 03.03.2014
+
 $allowedExts = array("pdf");
 $temp = explode(".", $_FILES["file"]["name"]);
 $extension = end($temp);

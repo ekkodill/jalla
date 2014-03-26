@@ -1,7 +1,8 @@
-/*----
-//Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 02.03.2014
-//Denne siden er kontrollert av Erik siste gang 03.03.2014 
-----*/
+/*
+Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 02.03.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
+*/
+
 /* CSS Document */
 
 
@@ -51,7 +52,7 @@ table {
 	}
 
 td, th, table {
-	border:1px solid;
+border:1px solid;
 	margin-left:25px;
 	margin-right:25px;
 }
@@ -105,23 +106,24 @@ h2 {font-size:20px;}
 	}
 
 .tabheader{
-	margin-left:10%;
-	height:auto;
-	clear:right;
-	width:80%;
-	margin-bottom:15px;
-	background-color:#fff;
-	border: 1px solid #999;
-	border: inset 1px solid #333;
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		margin-left:10%;
+		height:auto;
+		clear:right;
+		width:80%;
+		margin-bottom:15px;
+		background-color:#fff;
+		border: 1px solid #999;
+		border: inset 1px solid #333;
+		-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	}
 	
 .knapp, .lknapp{
-	width:55px;
-	margin-left:2px;
-	margin-right:2px;
+		width:55px;
+		;
+		margin-left:2px;
+		margin-right:2px;
 	border: inset 1px solid #333;
 	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
@@ -136,16 +138,16 @@ h2 {font-size:20px;}
 		}
 	
 	button{
-		padding:0px 2px;
-		}
+	padding:0px 2px;
+	}
 	
 	.leggtilbruker {
-		clear:left;
-		margin-top:5px;
-		margin-left:10%;
-		height:190px;
-		width:80%;
-		}
+	clear:left;
+	margin-top:5px;
+	margin-left:10%;
+	height:190px;
+	width:80%;
+	}
 	
 #leggtilny{
 		margin-top:30px;
@@ -169,13 +171,13 @@ input[type=submit] {
 	}
 	
     #loggav {
-		margin-left:15px;
-		margin-right:15px;
-		width:80%;
-		-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		}
+	margin-left:15px;
+	margin-right:15px;
+	width:80%;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	}
 	
 	.redsle{
 		border:none;
@@ -186,11 +188,11 @@ input[type=submit] {
 		}
 	
 	tbody#liste:before {
-	    line-height:1em;
-	    content:"-";
-	    color:white; /* to hide text */
-	    display:block;
-	}
+    line-height:1em;
+    content:"-";
+    color:white; /* to hide text */
+    display:block;
+}
 
 
 table#myTable {

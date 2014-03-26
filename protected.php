@@ -2,11 +2,14 @@
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 03.03.2014  !-->
 
 <?php 
-//Brukes til å forhindre brukere som ikke er innlogget i å få adgang til sider som skal være utilgjengelige.
+//Brukes til å forhindre brukere som ikke er innlogget i å få adgang til sider som skal være utilgjengelige.
+
 include_once 'includes/init.php'; ?>
 <!doctype html>
 <html>
-    <?php include 'design/head.php'; ?>
+    <?php 
+	$pgName = 'Forbudt område';
+    include 'design/head.php'; ?>
 <body>
 <div id="page">
   <?php include 'design/header.php'; ?>

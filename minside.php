@@ -32,7 +32,9 @@ if($user_data['passord'] != $gammeltpw) {
 
 <!doctype html>
 <html>
-    <?php include 'design/head.php'; ?>
+    <?php 
+    $pgName = 'Minside';
+    include 'design/head.php'; ?>
     <body>
         <div id="page">
           <?php include 'design/header.php'; ?>

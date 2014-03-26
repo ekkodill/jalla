@@ -6,7 +6,9 @@ include_once 'includes/init.php';
 ?>
 <!doctype html>
 <html>
-<?php include_once 'design/head.php'; ?>
+<?php 
+$pgName = 'Touch-tastatur';
+include_once 'design/head.php'; ?>
 <script type="text/javascript"  src='js/tastatur.js'></script>
 <body>
     <div id="page">

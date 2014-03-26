@@ -8,7 +8,7 @@ include_once 'includes/init.php';
 //Registrerer ny respons til databasen
 if(!empty($_POST['lagre'])) {
 		$innleveringerPK 	= trim($_POST['oppgPK']);
-		$respons 	= trim($_POST['respons']);
+		$respons 	= sanitize(trim($_POST['respons']));
 		$veileder   = $user_data['brukerPK'];
 				
 		if(!empty($innleveringerPK) && !empty($respons))  {
@@ -31,6 +31,7 @@ if(!empty($_POST['lagre'])) {
 		        <th class='tab2'>Innleveringsdato</th>
 		        <th class='tab2'>Tid brukt</th>
 		        <th class='tab2'>Antall feil</th>
+		        <th><input type="text" id="search" placeholder="  Søk"></input></th>
 		    </tr>
 	    </thead>
     <tbody>
@@ -51,10 +52,11 @@ if(!empty($_POST['lagre'])) {
     echo "<td id='datoLevert".$PK."'    	 name='datoLevert'  	>"	. $row['datoLevert'] .	 "</td>";
     echo "<td id='tidBrukt".$PK."'    	 	 name='tidBrukt'    	>"	. $row['tidBrukt'] .	 "</td>";
  	echo "<td id='antallFeil".$PK."'    	 name='antallFeil'    	>"	. $row['antallFeil'] .	 "</td>";
-    
     echo "<input type='hidden' name='oppgPK' value=$PK />";
 
-   	echo "<td><a href='#openModal".$PK."'><img src='img/respons.png'></a>"; //Viser besvarelsen i en dialogboks med inputfelt for responen
+
+    //Viser besvarelsen i en dialogboks med inputfelt for responen
+   	echo "<td><a href='#openModal".$PK."'><img src='img/respons.png'></a>"; 
    	echo "<div id='openModal".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
@@ -62,16 +64,12 @@ if(!empty($_POST['lagre'])) {
 				$sanitized
 			<br>
 			<br>
-				<textarea id='responstext' placeholder='Skriv respons' name='respons'></textarea><span>*</span>
+				<textarea id='responstext' placeholder='Skriv respons' name='respons'>*</textarea>
 			<br>
 				<input type='button' value='Lagre' name='save' onclick='errorRespons($PK)'/>
 				<input id='responsid".$PK."' type='submit' hidden name='lagre'>
 			</div>
 		</div>";
-    
-	echo "</td></tr></form>";
-	
-     
-    } 
-    echo  "<tbody></table></div>";
+    echo "</td></tr></form>";
+	} echo  "<tbody></table></div>";
 ?>

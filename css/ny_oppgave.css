@@ -1,14 +1,15 @@
-/*----
-//Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 17.03.2014
-//Denne siden er kontrollert av Erik siste gang 03.03.2014 
+/*
+Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 17.03.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
+*/
 
-@charset "utf-8";
 
 /* CSS Document */
 
 /*CSS styling for dialogboksen som viser oppgaver på oppgave.php*/
 	.modalDialog {
-		position: fixed;
+		position:fixed;
+		overflow:scroll;
 		font-family: Arial, Helvetica, sans-serif;
 		top: 0;
 		right: 0;
@@ -84,7 +85,7 @@
 #oppgtext{
     width:98%;
     height:300px; 
-	margin-right:1%;
+margin-right:1%;
 }
 
 .hentPdf{

@@ -1,14 +1,15 @@
 <?php
+//Denne siden er utviklet av Kurt A. Aamodt og Erik Bjørnflaten, siste gang endret 22.03.2014
+//Denne siden er kontrollert av Mikael Kolstad siste gang 22.03.2014  !-->
+
 include 'includes/init.php';
 $db = getDB();
 
 
-
-
 //Registrerer nye opgpaver til databasen
 if(!empty($_POST['publiser'])) {
-		$tittel 	= trim($_POST['tittel']);
-		$oppg 		= trim($_POST['oppg']);
+		$tittel 	= sanitize(trim($_POST['tittel']));
+		$oppg 		= sanitize(trim($_POST['oppg']));
 		$vansklighetsgrad = trim($_POST['vansklighetsgrad']);
 		$veileder   = $user_data['brukerPK'];
 		$erPublisert = 1;
@@ -25,29 +26,12 @@ if(!empty($_POST['publiser'])) {
 }
 
  ?>
-<script type="text/javascript">
-	
-	//code to refresh the page
-var page_y = $( document ).scrollTop();
-window.location.href = window.location.href + '?page_y=' + page_y;
 
-
-//code to handle setting page offset on load
-$(function() {
-    if ( window.location.href.indexOf( 'page_y' ) != -1 ) {
-        //gets the number from end of url
-        var match = window.location.href.split['?'][1].match( /\d+$/ );
-        var page_y = match[0];
-
-        //sets the page offset 
-        $( 'html, body' ).scrollTop( page_y );
-    }
-});
-</script>
 
 <!DOCTYPE html>
 <html lang="nb-no">
 		<?php
+		$pgName = 'Oppgaver';
 		include('design/head.php');
 
 		//Sjekker valget for listetype. (Alle oppgaver, eller bare besvarte oppgaver)
@@ -60,10 +44,13 @@ $(function() {
 			}
 		}
 		if (!isset($_POST['oppgaver'])) {
-				$tekst = "Liste over oppgaver;";
+				$tekst = "Liste over oppgaver";
 		} 
 		?>
-	<body onload="doScroll()" onunload="window.name=document.body.scrollTop">
+
+
+
+	<body onunload="unloadP('oppgave')" onload="loadP('oppgave')"> 
 		<div id="page">
 			<?php
 			include('design/header.php');
@@ -94,7 +81,7 @@ $(function() {
 				</center><br>
 	
 
-<?php 	//Inkluderer riktig liste
+<?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen
 		if(isset($_POST['oppgaver'])) {
 			if($_POST['oppgaver'] == 'gittoppg') {
 				include('oppgaveliste.php');
@@ -103,24 +90,6 @@ $(function() {
 			}
 		} else { include('oppgaveliste.php'); }
 } ?>
-
-
-<script> //Søkescript for oppgavelisten, leter i første og andre kolonne (veileder og tittel).
-$( document ).ready(function() {
-	$("#search").keyup(function () {
-	    var value = this.value.toLowerCase().trim();
-	    $("table tr").each(function (index) {
-	        if (!index) return;
-	        $(this).find("td").each(function () {
-	            var id = $(this).text().toLowerCase().trim();
-	            var not_found = (id.indexOf(value) == -1);
-	            $(this).closest('tr').toggle(!not_found);
-	            return not_found;
-	        });
-	    });
-	});
-});
-</script>
 		</section>
 	    	<?php include('design/footer.php'); ?>
        	</div>

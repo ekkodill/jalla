@@ -6,7 +6,9 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 
 <!doctype html>
 <html>
-<?php include 'design/head.php'; ?>
+<?php 
+$pgName = 'Nytt passord';
+include 'design/head.php'; ?>
 	<body onLoad="loadPage()">
 		<div id="page">
 <?php include 'design/header2.php' ?>   
