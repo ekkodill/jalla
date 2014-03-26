@@ -25,41 +25,39 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 }
 
 #minside {
-float:middle;
-margin-left : auto;
-margin-right : auto;
-margin-top : 10px;
-margin-bottom : 10px;
-width : 50%;
-height:550px;
-background-color : #FFF;
-
+	float:middle;
+	margin-left : auto;
+	margin-right : auto;
+	margin-top : 10px;
+	margin-bottom : 10px;
+	width : 50%;
+	height:550px;
+	background-color : #FFF;
 }
 
 #byttpw {
-float:middle;
-width : 30%;
-margin : auto;
-position : relative;
-border-radius : 10px;
-padding : 7px;
-border : #999 solid 1px;
-box-shadow : 0 0 8px rgba(0, 0, 0, 0.3);
-font-size : 0.8em;
-font-weight : normal;
-font-family : Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	float:middle;
+	width : 30%;
+	margin : auto;
+	position : relative;
+	border-radius : 10px;
+	padding : 7px;
+	border : #999 solid 1px;
+	box-shadow : 0 0 8px rgba(0, 0, 0, 0.3);
+	font-size : 0.8em;
+	font-weight : normal;
+	font-family : Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
 #pwknapp {
-
-height:30px;
-width:100px;
+	height:30px;
+	width:100px;
 }
 
 #pwknapp:hover {
-background : #09C;
-color : #000;
+	background : #09C;
+	color : #000;
 }
 
 		

@@ -43,74 +43,64 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 
 /*---- skifter farge ved mouseover ----*/
-#keyboard li {
-	float: left;
-	margin: 0 5px 5px 0;
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
-	background: #fff;
-		
-	/*Runde kanter og skygge*/
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	border-radius: 7px;
-	padding:0.5px;
-	border: 1px solid #999;
-	border: inset 1px solid #333;
-	-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);¨
-}
+	#keyboard li {
+		float: left;
+		margin: 0 5px 5px 0;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		background: #fff;
+			
+		/*Runde kanter og skygge*/
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 7px;
+		border-radius: 7px;
+		padding:0.5px;
+		border: 1px solid #999;
+		border: inset 1px solid #333;
+		-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+		box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);¨
+	}
 /*---- taster med flere tegn ----*/	
-	.on {
-         font: 10px Verdana, Sans-Serif;
-         display: inline-block;
-         margin: 1px;
-         margin-left: -20px;
-         vertical-align: top;
-
-	 }
+.on {
+    font: 10px Verdana, Sans-Serif;
+    display: inline-block;
+    margin: 1px;
+    margin-left: -20px;
+    vertical-align: top;
+}
 		
-	.on2 {
-         font: 20px Verdana, Sans-Serif;
-         display: inline-block;
-         margin-left: -12px;
-         vertical-align: bottom;
-         padding-bottom:6px;
-		 margin-top:-30px;
-    }
+.on2 {
+    font: 20px Verdana, Sans-Serif;
+    display: inline-block;
+    margin-left: -12px;
+    vertical-align: bottom;
+    padding-bottom:6px;
+	margin-top:-30px;
+}
 
 /*----Spesialtegnene på tastaturet----*/
-#keyboard .left-shift {
+	#keyboard .left-shift {
 		clear: left;
 		width: 70px;
 		margin-top: -40px; 
-}
-			
-#keyboard .tab {
-			clear:left;
-			width: 55px;
-}
-			
-#keyboard .delete {
-			width: 75px;
-    }
-			
-           #keyboard .capslock {
-			width: 70px;
-			clear: left;
-    }
-	
-	.cltekst{
-		color:#000;
-		text-align:right;
-		font-size:14px;
-		margin-top:-30px;
-		margin-right:110px;
-		margin-bottom:-20px;
-		}
+	}
+				
+	#keyboard .tab {
+		clear:left;
+		width: 55px;
+	}
+				
+	#keyboard .delete {
+		width: 75px;
+	}
+				
+	#keyboard .capslock {
+		width: 70px;
+		clear: left;
+	}
 	
 	#container .caps {
 		height:0px;
@@ -121,10 +111,9 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 		border:none;
 		background:none;
 		list-style:none;
-
-		}
+	}
 		
-		#keyboard .capsen {
+	#keyboard .capsen {
 		height:0px;
 		width:0px;
 		margin-left:650px;
@@ -132,105 +121,112 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 		border:none;
 		background:none;
 		list-style:none;
-		}
+	}
 		
+	#keyboard .return  {
+		width:45px;
+		height: 88px;
+		margin-top: -48px; 
+		margin-right: -10px;
+		border-right:1px solid #999;
+		border-top:1px solid #999;
+		border-bottom:1px solid #999;
+		border-left:1px solid #999;
+	}
 			
-			#keyboard .return  {
-			width:45px;
-			height: 88px;
-			margin-top: -48px; 
-			margin-right: -10px;
-			border-right:1px solid #999;
-			border-top:1px solid #999;
-			border-bottom:1px solid #999;
-			border-left:1px solid #999;
-    }
+	#keyboard .left-shift {
+		width: 55px;
+		margin-top: 0px;
+	}
 			
-			#keyboard .left-shift {
-			width: 55px;
-			margin-top: 0px;
-			}
-			
-			#keyboard .right-shift {
-			width: 108px;
-			margin-top: 0px; 
-			}
+	#keyboard .right-shift {
+		width: 108px;
+		margin-top: 0px; 
+	}
 
-            #keyboard .ctrll {
-			width: 70px;
-			clear: left;
-			}			
-			#keyboard .ctrlr {
-			width: 70px;
-			margin-left:100px;
-			}	
+    #keyboard .ctrll {
+		width: 70px;
+		clear: left;
+	}
+
+	#keyboard .ctrlr {
+		width: 70px;
+		margin-left:100px;
+	}
+
 	#keyboard .altgr {
-			width: 50px;
-			}
+		width: 50px;
+	}
+           
+    #keyboard .lalt {
+		width: 55px;
+		margin-left:60px;
+	}
 
-            #keyboard .lalt {
-			width: 55px;
-			margin-left:60px;
-			}
-
+	#keyboard .space {
+		width: 260px;
+	}
 			
-			.uppercase {
-		    text-transform: uppercase;
-		    }
-	
-		    #keyboard .space {
-		    width: 260px;
-		    }
+.uppercase {
+	text-transform: uppercase;
+}
 
+.cltekst{
+	color:#000;
+	text-align:right;
+	font-size:14px;
+	margin-top:-30px;
+	margin-right:110px;
+	margin-bottom:-20px;
+}
 
 /*---- laget for å få utseende på enter ----*/
-			#keyboard .xreturn {
-    		width: 25px;
-            left:20px;
-			border:0;
-			margin-left:1px;
-			margin-top:-0.5px;
-			border-left:1px solid #999;
-			border-top:1px solid #999;
-			border-bottom:1px solid #999;
-            }
-				
+	#keyboard .xreturn {
+    	width: 25px;
+        left:20px;
+		border:0;
+		margin-left:1px;
+		margin-top:-0.5px;
+		border-left:1px solid #999;
+		border-top:1px solid #999;
+		border-bottom:1px solid #999;
+    }			
 
-            #keyboard .white {
-            text-align:top;
-			width:35px;
-            z-index: 1; 
-            position:relative;
-            right:25px;
-            height:27px;
-            top:0px;
-			-webkit-border-radius:0;
-            -moz-border-radius:o;
-            border-radius:0;
-            padding:7px;
-            border:none;;
-            -webkit-box-shadow: none;
-            -moz-box-shadow:none;
-            box-shadow:none;
-			}
+    #keyboard .white {
+        text-align:top;
+		width:35px;
+        z-index: 1; 
+        position:relative;
+        right:25px;
+        height:27px;
+        top:0px;
+		-webkit-border-radius:0;
+        -moz-border-radius:o;
+        border-radius:0;
+        padding:7px;
+        border:none;;
+        -webkit-box-shadow: none;
+        -moz-box-shadow:none;
+        box-shadow:none;
+	}
 
-			#keyboard .under{
-            padding-right:-5px;
-            }
+	#keyboard .under{
+        padding-right:-5px;
+    }
 			
 /*---- lastitem er for noen av tastene i enden av rekken ----*/		
-		    .lastitem {
-		    margin-right: 0;
-		    }
+.lastitem {
+	margin-right: 0;
+}
 			
 /*---- Bare testing i første omgang ----*/
-			.showrediger{
-				 display:"";
-				}
+.showrediger{
+	display:"";
+}
 				
-				.showlagre{
-					display:none;
-					}
+.showlagre{
+display:none;
+}
 			
 			
 			

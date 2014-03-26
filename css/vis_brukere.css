@@ -14,10 +14,10 @@ input[readonly]
     color:black;
 }
 
-
 body {
 	background-color:#EBEBEB;
 }
+
 #sorterbtn {
 	height:30px;
 	width:104px;
@@ -26,7 +26,6 @@ body {
 	background-color:black;
 	color:white;
 }
-
 
 #page {
 	margin-left:auto;
@@ -44,6 +43,7 @@ body {
 	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
+
 table {
 	border-collapse:
 	collapse;
@@ -52,7 +52,7 @@ table {
 	}
 
 td, th, table {
-border:1px solid;
+	border:1px solid;
 	margin-left:25px;
 	margin-right:25px;
 }
@@ -72,11 +72,16 @@ border:1px solid;
 
 	
 .paakrev{
-		margin-left:25px;
+	margin-left:25px;
 }
 
-h1 {font-size:24px;}
-h2 {font-size:20px;}
+h1 {
+	font-size:24px;
+}
+
+h2 {
+	font-size:20px;
+}
 
 .tarea {
 	width:98%;
@@ -97,113 +102,111 @@ h2 {font-size:20px;}
 	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	}
+}
 		
 .tablesorter {
 	width:100%;
 	background-color:#fff;
 	margin-left:0;
-	}
+}
 
 .tabheader{
-		margin-left:10%;
-		height:auto;
-		clear:right;
-		width:80%;
-		margin-bottom:15px;
-		background-color:#fff;
-		border: 1px solid #999;
-		border: inset 1px solid #333;
-		-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	}
-	
-.knapp, .lknapp{
-		width:55px;
-		;
-		margin-left:2px;
-		margin-right:2px;
+	margin-left:10%;
+	height:auto;
+	clear:right;
+	width:80%;
+	margin-bottom:15px;
+	background-color:#fff;
+	border: 1px solid #999;
 	border: inset 1px solid #333;
 	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		}
+}
+	
+.knapp, .lknapp{
+	width:55px;
+	margin-left:2px;
+	margin-right:2px;
+	border: inset 1px solid #333;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
 		
-	.lknapp{
-		display:none;
-		margin-left:2px;
-		margin-right:2px;
-		float:left;
-		}
+.lknapp{
+	display:none;
+	margin-left:2px;
+	margin-right:2px;
+	float:left;
+}
 	
-	button{
+button{
 	padding:0px 2px;
-	}
+}
 	
-	.leggtilbruker {
+.leggtilbruker {
 	clear:left;
 	margin-top:5px;
 	margin-left:10%;
 	height:190px;
 	width:80%;
-	}
+}
 	
 #leggtilny{
-		margin-top:30px;
-		margin-bottom:5px;
-		height:300px;
-		width:100px;
-		float:both;
-	}
+	margin-top:30px;
+	margin-bottom:5px;
+	height:300px;
+	width:100px;
+	float:both;
+}
 	
 	
 input[type=submit] {
-		margin-top:5px;
-		margin-bottom:5px;
-		height:50px;
-		width:110px;
-		float:both;
-		margin-left:25px;
-		-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	}
+	margin-top:5px;
+	margin-bottom:5px;
+	height:50px;
+	width:110px;
+	float:both;
+	margin-left:25px;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
 	
-    #loggav {
+#loggav {
 	margin-left:15px;
 	margin-right:15px;
 	width:80%;
 	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	}
+}
 	
-	.redsle{
-		border:none;
-		height:30px;
-		text-align:center;
-		
-	
-		}
+.redsle{
+	border:none;
+	height:30px;
+	text-align:center;
+}
 	
 	tbody#liste:before {
-    line-height:1em;
-    content:"-";
-    color:white; /* to hide text */
-    display:block;
-}
-
+	    line-height:1em;
+	    content:"-";
+	    color:white; /* to hide text */
+	    display:block;
+	}
 
 table#myTable {
     /* collapsed, because the bottom shadow on thead tr is hidden otherwise */
     border-collapse: collapse;
 }
-th {padding: .5em .5em;}
+
+th {
+	padding: .5em .5em;
+}
 
 
 /* Shadow on the header row*/
-thead tr   { box-shadow: 0 1px 10px #000000;}
-
-
-
+thead tr {
+	box-shadow: 0 1px 10px #000000;
+}
