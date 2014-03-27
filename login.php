@@ -1,4 +1,4 @@
-<!--Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 03.03.2014
+<!--Denne siden er utviklet av Kurt A. Aamodt og Dag-Roger Eriksen, siste gang endret 27.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt? siste gang 03.03.2014  !-->
 
 <?php
@@ -38,20 +38,20 @@ if (empty($brukernavn) === true || empty($passord) === true) {
     $pgName = 'Innlogging';
     include 'design/head.php'; ?>
   	<body>
-		  <div id="page">
-		  <?php include 'design/header.php'; ?>
-		    <section style="width:94%">
+		<div id="page">
+		    <?php include 'design/header.php'; ?>
+		    	<section>
 		      		<div class="midtfelt">
-					<?php
-						if (empty($errors) === false) {
-						?><h2>Vi prøvde og logge deg inn men...</h2><?php
-						echo output_errors($errors);
-						}?>
+						<?php
+							if (empty($errors) === false) {
+							?><h2>Vi prøvde og logge deg inn men...</h2><?php
+							echo output_errors($errors);
+							}?>
 					</div>
-					<div class="aside">
-		  			<?php include ('includes/loginbox.php');?>
-				</div>
-			</section>
+						
+		  				<?php include ('includes/loginbox.php');?>
+					
+				</section>
 			<?php include('design/footer.php'); ?>
 		</div>
 	</body>

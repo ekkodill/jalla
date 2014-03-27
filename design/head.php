@@ -1,4 +1,4 @@
-<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 02.03.2014
+<!--Denne siden er utviklet av Kurt A. Amodt og Dag-Roger Eriksen., siste gang endret 27.03.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 
 <head>
@@ -14,4 +14,6 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 	<link href='css/keyboard.css'	rel='stylesheet' type='text/css' />
 	<link href="css/Minside.css" 	rel="stylesheet" type="text/css">  
 	<link href="css/ny_oppgave.css" 	rel="stylesheet" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
  </head>

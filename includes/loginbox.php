@@ -9,7 +9,7 @@ $style = 'none'; //Setter display stylen for glem passord boksen til skjult når
 if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 	if (user_exists($_POST['nyttpw']) === false) {
 		$style = 'block';
-		$errors[] = 'Vi kan ikke finne denne e-postadressen: '. $_POST['nyttpw'];
+		$errors[] = 'Fant ikke følgene e-postadresse: '. $_POST['nyttpw'];
 	} 
 	else {
 		$_SESSION['recover'] = $_POST['nyttpw'];
@@ -29,9 +29,9 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 		<fieldset>
 			<h2>Innlogging</h2>
 			<span>Brukernavn:</span><br>
-			<input type="text" id="brukernavn" tabindex="1" name="brukernavn" placeholder="Brukernavn" title="Fyll ut brukernavn" autofocus autocomplete="off"><br>
+			<input type="text" id="brukernavn" tabindex="1" name="brukernavn" title="Fyll ut brukernavn" autofocus autocomplete="off"><br>
 			<span>Passord:</span><br>
-			<input type="password" id="passord" tabindex="2" name="passord" placeholder="Passord" title="Fyll ut passord" autocomplete="off"><br>
+			<input type="password" id="passord" tabindex="2" name="passord" title="Fyll ut passord" autocomplete="off"><br>
 			<input type="submit" id="loinknappen" tabindex="3" value="Logg inn" title="Logg inn" >
 			<input type="button" id="glpwknapp" tabindex="4"  value="Glemt passord" title="Glemt passord" onclick="show()">
 		</fieldset>
@@ -41,13 +41,13 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 		<fieldset>
 			<h2>Glemt passord</h2>
 			<span>E-post:</span><br>
-			<input type="text" id="e-post" name="nyttpw" tabindex="5" placeholder="E-post" title="Fyll ut e-post adresse" autocomplete="off"><br>
+			<input type="text" id="e-post" name="nyttpw" tabindex="5" title="Fyll ut e-post adresse" autocomplete="off"><br>
 			<input type="submit" id="sendnytt"  tabindex="6" value="Send passord" title="Send nytt passord">
 			<br>
-			<p><?php
+			<?php
 				if (empty($errors) === false) {
-				?><h2><?php echo output_errors($errors);?></h2>
-				<?php } ?></p>
+				?><?php echo output_errors($errors);?>
+			<?php } ?>
 		</fieldset>
 	</form>        
 </div>  

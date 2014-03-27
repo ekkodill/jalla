@@ -2,7 +2,7 @@
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 
  <footer>
-    <h4>Touch - Utviklingsoppgave 2014</h4>
+    <h3>Touch - Utviklingsoppgave 2014</h3>
     <h5>laget av</h5>
     <h4>Gruppe 3</h4>
 

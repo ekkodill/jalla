@@ -5,21 +5,23 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 /*----Header-----*/
 header {
-	height:130px;
+	height:140px;
 	width: auto;
-	margin-top: -32px;
+	margin-top: -38px;
 	background:#99CCFF;
 }
 
 h1.header {
-	font-size: 3em; 
+	font-size: 3.5em; 
 	line-height: .6;
-	padding-top: 20px;
+	padding-top: 25px;
 	padding-left: 20px;
 	text-align:left;
 	font-weight:normal;
 	color: #000000;
+	font-family: 'Roboto', sans-serif;
 }
+
 
 
 /*----Logget inn som----*/
@@ -29,10 +31,9 @@ h1.header {
 	margin-top:10px;
 	margin-right: 5px;
 
-	color:#FFFFFF;
+	color:#000000;
 	font-size:1.5em;	
 	font-weight:normal;
-	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 }
 
 /*----Meny----*/
@@ -58,7 +59,7 @@ nav {
 		padding:7px;
 		background-color:#99CCFF;
 
-		color:#FFFFFF;
+		color:#000000;
 		text-align:center;
 		text-decoration:none;
 		font-size:1.5em;	
