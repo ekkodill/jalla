@@ -1,15 +1,16 @@
 /*
-Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 02.03.2014
+Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 27.03.2014
 Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
 */
-/*----Sideboks----*/
-				
+
+/*----Sideboks----*/				
 .aside {
-	width:45%;	
+	width:20%;	
 	float:right;
     padding-left: 2%;
 	padding-bottom: 20px ;
 	background-color:#FFF;	
+	
 }
 	
 /*----Innlogging----*/
@@ -18,35 +19,16 @@ form {
 	height:100% auto;
 	margin:auto;
 	position:relative;
-		
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
 	padding:7px;
-	border: 1px solid #999;
 		
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		
+	
 			
 	font-weight:normal;
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-	
-.innlknapper{
-	background:#99CCFF;
-	color:#000;
-	font-weight:normal;
 	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-	font-size:1.2em;
-		
-	-webkit-border-radius: 15px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	border: 1p solid #999;
+}
 
-	margin-top:10px;
+fieldset {
+	border:0;
 }
 
 form h2 {
@@ -59,88 +41,25 @@ form span {
 	margin-top:10px;	
 }
 
-fieldset {
-	border:0;
-}
-
-#logginn, #sendnytt, #glemtpass {
-	width:150px;
+#loinknappen, #glpwknapp, #sendnytt {
+	width:80px;
 	height:35px;
 	background:#99CCFF;
     color:#000;
-	font-weight:normal;
-	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-	font-size:1.2em;
-}
-	
-	
-
-.sendnytt {
-	width:170px;
+    font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    margin-left: 0px;
 }
 
-#loinknapp:hover, #glpwknapp:hover,  #sendnytt:hover, innlknapper:hover {
+#glpwknapp {
+	width:110px;
+}
+
+#sendnytt {
+	width:110px;
+}
+
+#loinknappen:hover, #glpwknapp:hover,  #sendnytt:hover {
 	background:#09C;
 	color:#000;
 }
-
-#brukernavn {
-	width:60%;
-}
-
-#passord {
-	width:60%;	
-}
-
-	
-/*----Brukermeny knapper----*/
-.bmenyhead{
-	width:250px;
-	height:60px;
-	margin-top:10px;
-	margin-right:-150px;
-	clear:right;
-}
-
-#bmenyknapp{
-	width:100px;
-	height:30px;
-	margin-right:5px;
-	border: 1px solid #fff;
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-}
-
-		
-#loinknappen{
-	clear:left;
-	margin-top:8px;
-	margin-right:15px;
-	width:100px;
-	height:30px;
-	border: 1px solid #fff;
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-}
-		
-#glpwknapp{
-	margin-top:8px;
-	width:100px;
-	height:30px;
-	border: 1px solid #fff;
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-} 
-			
-.glemtknapp{
-	margin-top:8px;
-	width:100px;
-	height:30px;
-	border: 1px solid #fff;
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-} 

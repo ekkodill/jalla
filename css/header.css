@@ -18,8 +18,23 @@ h1.header {
 	padding-left: 20px;
 	text-align:left;
 	font-weight:normal;
-	
+	color: #000000;
 }
+
+
+/*----Logget inn som----*/
+.loggetInnSom{
+	float:right;
+	width: auto;
+	margin-top:10px;
+	margin-right: 5px;
+
+	color:#FFFFFF;
+	font-size:1.5em;	
+	font-weight:normal;
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+
 /*----Meny----*/
 nav { 
 	margin-top:20px; 
@@ -35,21 +50,17 @@ nav {
 	
 	nav li {
 		float:left;
-	}
-	
-		
+	}	
 	
 	nav a:link, nav a:visited{
 		display:block;
 		width:auto;
-		color:#FFFFFF;
-		background-color:#99CCFF;
-		text-align:center;
 		padding:7px;
+		background-color:#99CCFF;
 
+		color:#FFFFFF;
+		text-align:center;
 		text-decoration:none;
-		
-		
 		font-size:1.5em;	
 		font-weight:normal;
 		font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
@@ -62,15 +73,3 @@ nav {
 	.knappHoyre{
 		float:right;
 	}
-
-/*----Logget inn som----*/
-.loggetInnSom{
-	float:right;
-	width: auto;
-	padding-top: 30px;
-
-	color:#FFFFFF;
-	font-size:1.5em;	
-	font-weight:normal;
-	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
-}
