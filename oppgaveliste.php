@@ -35,7 +35,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 23.03.2014  !-->
     echo "<td id='vanskelighetsgrad".$PK."'  name='vanskelighetsgrad'   >"   . $vanskelighetsgrad. 										 "</td>";
    	echo "<input type='hidden' name='oppgPK' value=$PK />";
 
-   	echo "<td><a href='#openModal".$PK."'><img src='img/open.png'></a>"; //Viser oppgaven
+   	echo "<td><a href='#openModal".$PK."'><img src='img/open.png' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
    	echo "<div id='openModal".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
@@ -47,7 +47,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 23.03.2014  !-->
 			</div>
 		</div>";
   if($user_data['brukertype'] !=3) {
-  echo "<input type='image'  src='img/pdf.jpg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
+  echo "<input type='image'  src='img/pdf.jpg' alt='Last opp vedlegg' title='Last opp vedlegg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
 	echo "<input id='file-input".$PK."' type='file' name='file' onchange='lagre($PK)' hidden/>"; //Filvalgsmeny
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
 }

@@ -13,6 +13,7 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
+	font-family: 'Roboto Slab', serif;
 }
 
 p {
@@ -40,11 +41,10 @@ a:link, a:visited{
 	color:#000;
 	text-decoration:none;	
 	font-weight:normal;
-	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
 }
 
 a:hover, a:active{
-		color:#C0C0C0;
+		color:#09C;
 	}
 
 #page {

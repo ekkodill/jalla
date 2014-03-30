@@ -55,23 +55,22 @@ if(!empty($_POST['publiser'])) {
 			<?php
 			include('design/header.php');
 			?>
-		    <section style="width:94%">
-				<center><legend>Lag ny oppgave</legend></center><br>
+		    <section>
+				<center><legend><h4>Lag ny oppgave</h4></legend></center>
 				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
 					<input type="text" id="oppgtitt" placeholder="Skriv inn tittelen" name="tittel"><br><br>
-					<label>Vanskelighetsgrad:</label> 
-					<br>
+					<h5><label>Vanskelighetsgrad:</label> 
 					<input type="radio" value="3" name="vansklighetsgrad">Vanskelig
 					<input type="radio" value="2" name="vansklighetsgrad">Medium
-					<input type="radio" value="1" name="vansklighetsgrad">Lett
+					<input type="radio" value="1" name="vansklighetsgrad">Lett</h5>
 					<textarea id="oppgtext" placeholder="Skriv inn oppgaven" name="oppg"></textarea><br>
-					<input type="submit" name="publiser" value="Publiser" onclick="return regNyoppg();">
+					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();">
 			    </form>			
 				<?php if(!count(sjekkAntall('oppgaver'))) {
 							echo "<center><legend>Ingen registrerte oppgaver</legend></center>"; 
 					   } else { ?>
 				<br><br>
-			<center><legend><?php echo $tekst ?></legend><br>
+			<center><legend><h4><?php echo $tekst ?></h4></legend><br>
 				<form action="oppgave.php" id="endreli" method="post">
 		    		<select name='oppgaver' onchange="this.form.submit();">
 			            <option name="gittoppg"     value='gittoppg'   <?php if (isset($_POST['oppgaver'])) { if($_POST['oppgaver']=='gittoppg')  {echo "selected='selected'"; }} ?>>Alle oppgaver</option>

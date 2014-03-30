@@ -56,16 +56,16 @@ if(!empty($_POST['lagre'])) {
 
 
     //Viser besvarelsen i en dialogboks med inputfelt for responen
-   	echo "<td><a href='#openModal".$PK."'><img src='img/respons.png'></a>"; 
+   	echo "<td><a href='#openModal".$PK."'><img src='img/respons.png' alt='Vis besvarelsen' title='Vis besvarelsen'></a>"; 
    	echo "<div id='openModal".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
-			<h2>$oppgavetittel</h2>
+				<h2>$oppgavetittel</h2>
 				$sanitized
-			<br>
-			<br>
+				<br>
+				<br>
 				<textarea id='responstext' placeholder='Skriv respons' name='respons'>*</textarea>
-			<br>
+				<br>
 				<input type='button' value='Lagre' name='save' onclick='errorRespons($PK)'/>
 				<input id='responsid".$PK."' type='submit' hidden name='lagre'>
 			</div>

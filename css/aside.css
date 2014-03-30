@@ -51,7 +51,6 @@ form span {
 	width: auto;
 	height: auto;
 	font-size: 0.9em;
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /*----Knappene----*/
@@ -60,7 +59,6 @@ form span {
 	height:35px;
 	background:#99CCFF;
     color:#000;
-    font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
     font-size: 1em;
     margin-left: 0px;
     margin-top: 10px;

@@ -16,7 +16,7 @@ include_once 'includes/init.php';
 				<?php
 				include('design/header.php');
 				?>
-		        <section style="width:94%">
+		        <section>
 		       	<?php
 		       	if($user_data['brukertype'] != 3) {
 					 	include('add_brukere.php');
@@ -24,7 +24,7 @@ include_once 'includes/init.php';
 					if(!count(sjekkAntall('brukere'))) {
 						echo "<center><legend>Ingen registrerte brukere</legend></center>"; 
 						} else { ?>
-					<center><legend>Liste over brukere</legend></center><br>
+					<center><legend><h4>Liste over brukere</h4></legend></center>
 						<?php include 'form.php'; }?>
 				</section>
 	    		<?php include('design/footer.php'); ?>
