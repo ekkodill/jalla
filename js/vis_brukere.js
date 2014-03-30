@@ -1,5 +1,5 @@
-// Denne siden er utviklet av Erik Bjørnflaten og Kurt A. Aamodt, sist gang endret 12.03.2014
-// Denne siden er kontrollert av Kurt A. Aamodt,siste gang  12.03.2014
+// Denne siden er utviklet av Erik Bjørnflaten og Kurt A. Aamodt, sist gang endret 30.03.2014
+// Denne siden er kontrollert av Kurt A. Aamodt,siste gang  30.03.2014
 
   
 
@@ -41,7 +41,7 @@ function slette(fornavn, etternavn, id, denne, type) {
 
 
 //Tar bort readonly fra inputboksene når man trykker på "blyant"-ikonet for å endre brukerdata
-  function onEdit(btn, type, pk) {
+  function onEdit(btn, type, pk, brukertype) {
       var id=btn.id;
       var liste = document.getElementById("typer"+id);
       var btype = liste.options[liste.selectedIndex].text;
@@ -52,7 +52,7 @@ function slette(fornavn, etternavn, id, denne, type) {
         return false;
       }
      
-      fjernType(type, "typer"+id, pk); //Fjerner alternativer fra nedtrekksmenyene om brukertyper i forhold til rettighetene brukeren har.
+      fjernType(type, "typer"+id, pk, brukertype); //Fjerner alternativer fra nedtrekksmenyene om brukertyper i forhold til rettighetene brukeren har.
       
       document.getElementById("ePost"+id).removeAttribute("Readonly");
       document.getElementById("etternavn"+id).removeAttribute("Readonly");
@@ -75,7 +75,7 @@ function onSave(btn) {
 
 
 //Funksjon som fjerner alternativer i nedtrekksmenyer i forhold til angitt spesifikasjon
-function fjernType(type, id, pk) {
+function fjernType(type, id, pk, brukertype) {
   var brukerPK = id.substr(5);
   var selectobject=document.getElementById(id);
     //Fjerner alternativene for veiledere og deltakere til å endre brukertype på deltakere
@@ -83,7 +83,7 @@ function fjernType(type, id, pk) {
       for (var i=0; i<selectobject.length; i++) {
         if (selectobject.options[i].value == "administrator") 
            selectobject.remove(i);
-        if(pk != brukerPK) { //Sørger for at veileder kan endre på data om seg selv uten å miste veileder statusen.
+        if(pk != brukerPK && type == 2 || type == 3) { //Sørger for at veileder kan endre på data om seg selv uten å miste veileder statusen.
             if ( selectobject.options[i].value == "veileder") 
                 selectobject.remove(i); 
         }
@@ -91,7 +91,7 @@ function fjernType(type, id, pk) {
     }
 
     //Fjerner muligheten for administrator til å endre brukertype på andre administratorer
-    if(type == 1 && id != 'nytype') {
+    if(type == 1 && brukertype == 1) {
       for (var i=0; i<selectobject.length; i++) {
         if (selectobject.options[i].value == "veileder") 
           selectobject.remove(i); 

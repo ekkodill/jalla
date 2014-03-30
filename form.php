@@ -65,7 +65,7 @@ $db = getDB();
     </select></td>"; //Nedtrekksmeny for valg av brukertype
 
     if($user_data['brukertype'] == 3 && $user_data['brukerPK'] == $PK || $user_data['brukertype'] != 3) {
-        echo "<td><input type='image' src='img/edit.jpg' name='edit' id=$PK onclick='return onEdit(this, $user_data[brukertype], $user_data[brukerPK])'; />"; //Knapp for å redigere brukerdata
+        echo "<td><input type='image' src='img/edit.jpg' name='edit' id=$PK onclick='return onEdit(this, $user_data[brukertype], $user_data[brukerPK], $row[brukertype])'; />"; //Knapp for å redigere brukerdata
         echo "<input type='hidden'  name='lagreupdate' />";
         echo "<input type='image' hidden src='img/save.jpg' name='update' id='s".$PK."' onclick=this.form.action='update.php'; 'return onSave(this)'; />"; //Knapp for å lagre endringer
     } if($user_data['brukertype'] != 3) {

@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Dag-Roger Eriksen., siste gang endret 27.03.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.03.2014  !-->
 
 <?php include_once 'includes/init.php'; ?>
 

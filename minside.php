@@ -1,5 +1,5 @@
-<!--Denne siden er utviklet av Mikael og Erik., siste gang endret 03.03.2014
-Denne siden er kontrollert av Kurt A. Amodt siste gang 03.03.2014 !-->
+<!--Denne siden er utviklet av Mikael og Erik., siste gang endret 30.03.2014
+Denne siden er kontrollert av Kurt A. Amodt siste gang 30.03.2014 !-->
 <?php include_once 'includes/init.php';
 $db = getDB();
 
@@ -35,7 +35,7 @@ if($user_data['passord'] != $gammeltpw) {
     <?php 
     $pgName = 'Minside';
     include 'design/head.php'; ?>
-    <body>
+    <body onunload="unloadP('oppgave')" onload="loadP('oppgave')">
         <div id="page">
           <?php include 'design/header.php'; ?>
           <main>
@@ -56,6 +56,9 @@ if($user_data['passord'] != $gammeltpw) {
                 </form>
             </div>
          </main>
+         <aside>
+             <?php include('oppgaveliste.php') ?>
+         </aside>
      <?php include('design/footer.php'); ?>    
     </body>
 </html>

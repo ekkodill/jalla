@@ -1,5 +1,5 @@
-<!--Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 03.03.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
+<!--Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 30.03.2014
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.03.2014  !-->
 <?php 
 include_once 'includes/init.php';
 
@@ -11,7 +11,7 @@ include_once 'includes/init.php';
 		$pgName = 'Vis brukere';
 		include('design/head.php');
 		?>
-		<body onload="fjernType(<?php echo $user_data['brukertype']; ?>, 'nytype');" >
+		<body onload="fjernType(<?php echo $user_data['brukertype']; ?>, 'nytype');">
 			<div id="page">
 				<?php
 				include('design/header.php');

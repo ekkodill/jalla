@@ -1,6 +1,5 @@
-<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 22.03.2014
+<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 23.03.2014  !-->
-
 <div class=bliste><table>
 	     <thead>
 		    <tr>
@@ -47,10 +46,11 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 23.03.2014  !-->
         <p>Vedlegg: <a href='vedlegg/".$row['linkVedlegg']."'>".$row['linkVedlegg']."</a> </p>
 			</div>
 		</div>";
-    echo "<input type='image'  src='img/pdf.jpg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
+  if($user_data['brukertype'] !=3) {
+  echo "<input type='image'  src='img/pdf.jpg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
 	echo "<input id='file-input".$PK."' type='file' name='file' onchange='lagre($PK)' hidden/>"; //Filvalgsmeny
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
-
+}
 	echo "</td></tr></form>";
  } 
     echo  "<tbody></table></div>";

@@ -5,8 +5,6 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 include_once 'includes/init.php';
 
 
-
-
 //Henter oppgavetittel fra databasen
 function hentOppgt($oPK) {
 	$db = getDB();
@@ -64,9 +62,13 @@ function getQuery($type, $sorter) {
 //Funksjon som forhindrer innloggede brukere i å gå til login siden.
 function logged_in_redirect() {
 	if (logged_in() === true) {
-		header('Location: index.php');
+		header('Location: default.php');
 		exit();
 	}
+}
+
+function redirect() {
+	header('Location: default.php');
 }
 
 
