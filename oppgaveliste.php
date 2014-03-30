@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 23.03.2014  !-->
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 <div class=bliste><table>
 	     <thead>
 		    <tr>
@@ -20,12 +20,12 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 23.03.2014  !-->
     $oppgtekst = hentOppgave($PK);
   	$veileder = finnBruker($vPK);
   	$sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
-
+    $vanskelighetsgrad = "ikke valgt";
 
   	if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
-
+    
     echo "<form action='upload.php' method='POST' id='upload".$PK."' enctype='multipart/form-data' >";
     echo "<tr>";
     echo "<td id='veileder".$PK."'      	 name='veileder'     >"	. $veileder.		      									 "</td>";

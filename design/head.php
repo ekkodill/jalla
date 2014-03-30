@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Kurt A. Amodt og Dag-Roger Eriksen., siste gang endret 27.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
 <head>
 	<meta charset="utf-8">

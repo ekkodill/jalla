@@ -1,6 +1,7 @@
-<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 22.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 23.03.2014  !-->
 <?php 
+//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014
+
 include_once 'includes/init.php';
     $db = getDB(); 
 
@@ -39,7 +40,7 @@ if(!empty($_POST['lagre'])) {
 
     $result = $db->query("SELECT * FROM innleveringer") ;
     while ($row = $result->fetch_assoc()) {
-    $PK = $row['innleveringerPK'];
+    $PK = $row['innleveringPK'];
     $besvarelse = $row['tekstInnlevering'];
   	$sanitized = nl2br(htmlspecialchars($besvarelse, ENT_QUOTES));
   	$bruker = finnBruker($row['bruker']); //må kanskje endre navn på funksjonen
