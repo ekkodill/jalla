@@ -3,9 +3,6 @@
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
 
-include_once 'includes/init.php';
-
-
 //Henter oppgavetittel fra databasen
 function hentOppgt($oPK) {
 	$db = getDB();
@@ -155,7 +152,7 @@ function brukerID_fra_brukernavn($brukernavn) {
 	$brukernavn = sanitize($brukernavn);
 	$query = "SELECT brukerPK FROM brukere WHERE ePost = '$brukernavn';";
 	$result = $db->query($query);
-	$brukerID = mysqli_fetch_array($result, MYSQL_ASSOC);
+	$brukerID = $result->fetch_assoc();
 	return $brukerID['brukerPK'];
 }
 
@@ -168,7 +165,7 @@ function login($brukernavn, $passord) {
 	$brukerID = brukerID_fra_brukernavn($brukernavn);
 	$query = "SELECT passord FROM brukere WHERE ePost = '$brukernavn';";
 	$result = $db->query($query);
-	$userData = mysqli_fetch_array($result, MYSQL_ASSOC);
+	$userData = $result->fetch_assoc();
 	
 	$hash = hash('sha1', 'IT2'.$passord);
 	if($hash != $userData['passord']) //Feil passord, redirecter til default.php.
@@ -176,7 +173,7 @@ function login($brukernavn, $passord) {
     	return false;
     }
 
-    else { //Dersom riktig blir brukerID returnert og man blir redirecta til index.php
+    else { //Dersom riktig blir brukerID returnert for å brukes til session variabelen, og man blir redirecta til index.php
     	return $brukerID;
     }
 }

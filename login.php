@@ -12,11 +12,8 @@ if(empty($_POST) === false) {
 if (empty($brukernavn) === true || empty($passord) === true) {
 		$errors[] = 'Du må skrive inn brukernavn og passord.';
 	} else if (user_exists($brukernavn) === false) {
-		$errors[] = 'Vi kan ikke finne dette brukernavnet.'.$brukernavn;
+		$errors[] = "Feil brukernavn eller passord";
 	} else {
-		if (strlen($passord) > 32) {
-			$errors[] = 'Passordet kan ikke være lengre enn 32 tegn';
-		}
 		$login = login($brukernavn, $passord);
 		if ($login === false) {
 			$errors[] = "Feil brukernavn eller passord";
