@@ -1,4 +1,3 @@
-
 // Denne siden er utviklet av Erik Bjørnflaten, sist gang endret 11.04.2014
 // Denne siden er kontrollert av Kurt A. Aamodt,siste gang  30.03.2014
 
