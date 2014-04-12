@@ -1,7 +1,6 @@
 <!--Denne siden er utviklet av Dag-Roger Eriksen og Kurt A. Amodt, siste gang endret 27.03.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
-<?php include_once 'includes/init.php';
-$db = getDB();
+<?php 
 $style = 'none'; //Setter display stylen for glemt passord boksen til skjult når siden laster
 
 //Sjekker at eposten finnes i systemet og sender brukeren videre til en informasjonsside om det stemmer.
