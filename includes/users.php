@@ -1,7 +1,65 @@
 <?php
-//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 26.03.2014
+//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 12.04.2014
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
+
+
+//Funksjon for glemt passord, oppretter et nytt og sender det på mail
+function glemtPW($epost) {
+		$gen_pw = generate_password(); //Generer passord med 8 karakterer
+		$passord = passord($gen_pw); //Salter og krypterer passordet
+		$mailcheck = spamcheck($epost); //Sjekker at eposten er en gyldig adresse
+		endrePW($passord, $epost); //Endrer passordet i databasen
+		sendMail($epost, $gen_pw); //Sender det nye passordet på mail
+		redirect("sendt.php");
+}
+
+function endrePW($passord, $epost){
+	$db = getDB();
+	$stmt = $db->prepare("UPDATE brukere SET passord=? WHERE ePost=? LIMIT 1");
+            $stmt->bind_param('ss', $passord, $epost);
+             $stmt->execute();
+}
+
+//Legger nye brukere inn i databasen
+function addUser($ePost, $etternavn, $fornavn, $passord, $brukertype) {
+	$db = getDB();
+	$insert = $db->prepare("INSERT INTO brukere (ePost, etternavn, fornavn, passord, brukertype) VALUES (?,?,?,?,?)");
+	$insert->bind_param('ssssi', $ePost, $etternavn, $fornavn, $passord, $brukertype);
+	if($insert->execute()) {
+		return true;
+	} else { 
+		return false;
+	}
+}
+
+
+//Sender epost til brukere med nytt passord
+function sendMail($epost, $passord) {
+		   $til = $epost;
+		   $from = "tocuhdill@gmail.com";
+		   $subject = "Bruker opprettet";
+		   $message = "Velkommen til touchdill!\nHer er innloggingsinformasjonen din. \nBrukernavn: ".$epost." \nPassord: ".$passord." 
+		   \nDette er et tilfeldig generert passord, men det oppfordres til at du bytter dette.";
+		   //PHP-regel sier at en linje i beskjeden ikke skal overstige 70 karakterer, så den må "wrappes".
+		   $message = wordwrap($message, 70);
+		   //Sender mail
+		   mail($til,$subject,$message,"From: $from\n");
+}
+
+
+
+//Saniterer og validerer epostadressen
+function spamcheck($field) {
+  //Saniterer eposten så det ikke er noen ulovlige karakterer i den
+  $field=filter_var($field, FILTER_SANITIZE_EMAIL); 
+  //Sjekker at adressen er en gyldig epostadresse
+  if(filter_var($field, FILTER_VALIDATE_EMAIL)) { 
+  	return TRUE;
+  } else {
+    return FALSE;
+  }
+}
 
 //Henter oppgavetittel fra databasen
 function hentOppgt($oPK) {
@@ -65,8 +123,8 @@ function logged_in_redirect() {
 	}
 }
 
-function redirect() {
-	header('Location: default.php');
+function redirect($location) {
+	header("Location: $location");
 }
 
 
@@ -167,7 +225,7 @@ function login($brukernavn, $passord) {
 	$result = $db->query($query);
 	$userData = $result->fetch_assoc();
 	
-	$hash = hash('sha1', 'IT2'.$passord);
+	$hash = passord($passord);
 	if($hash != $userData['passord']) //Feil passord, redirecter til default.php.
     {
     	return false;
@@ -180,10 +238,17 @@ function login($brukernavn, $passord) {
 
 
 
-//Autogenerer passord til alle nyoppretta brukere. ***Bare for testingskyld.***
+//Krypterer passord og returner det
 function passord($pw) {
 	$hash = hash('sha1', 'IT2'.$pw);
 	return $hash;
+}
+
+//Autogenerer et nytt passord som default er på 8 karakterer
+function generate_password($length = 8) {
+$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
+$password = substr( str_shuffle( $chars ), 0, $length );
+return $password;
 }
 
 ?>

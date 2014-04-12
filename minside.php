@@ -12,21 +12,14 @@ if (isset($_POST['password']) === true && isset($_POST['oldpassword']) === true 
 if($user_data['passord'] != $gammeltpw) {
     $errors[] = 'Gammelt passord stemmer ikke';
 } else if($_POST['password'] === $_POST['passwordcheck']) {
-            $brukerPK = $user_data['brukerPK'];
-            $stmt = $db->prepare("UPDATE brukere SET passord=? WHERE brukerPK=? LIMIT 1");
-            $stmt->bind_param('si', $nyttpassord, $brukerPK);
-            try {
-                    $stmt->execute();
-                    $errors[] = 'Passordet ble endret';
-                }
-                catch (exception $e) {
-                    throw new exception("Det oppstod en feil", 0, $e);
-                }
+            $epost = $user_data['ePost'];
+            endrePW($nyttpassord, $epost);
+            $errors[] = 'Passordet ble endret';
             }   else { 
                   $errors[] = 'De nye passordene er ikke like'; 
                 }
         } else { $errors[] = 'Alle feltene må fylles inn'; }
-} else { $errors[] = 'Fyll inn informasjon for å bytte passord'; }
+} 
 ?>
 
 

@@ -1,10 +1,10 @@
 <!--Denne siden er utviklet av Dag-Roger Eriksen og Kurt A. Amodt, siste gang endret 27.03.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
-<?php include_once 'includes/init.php'; 
-$style = 'none'; //Setter display stylen for glem passord boksen til skjult når siden laster
+<?php include_once 'includes/init.php';
+$db = getDB();
+$style = 'none'; //Setter display stylen for glemt passord boksen til skjult når siden laster
 
 //Sjekker at eposten finnes i systemet og sender brukeren videre til en informasjonsside om det stemmer.
-
 if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 	if (user_exists($_POST['nyttpw']) === false) {
 		$style = 'block';
@@ -12,7 +12,8 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 	} 
 	else {
 		$_SESSION['recover'] = $_POST['nyttpw'];
-		header('location: sendt.php');
+		$epost = sanitize($_POST['nyttpw']);
+		glemtPW($epost);
 	}
 } 
 
@@ -33,6 +34,7 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 			<input type="password" id="passord" tabindex="2" name="passord" title="Fyll ut passord" autocomplete="off"><br>
 			<input type="submit" id="loinknappen" tabindex="3" value="Logg inn" title="Logg inn" >
 			<input type="button" id="glpwknapp" tabindex="4"  value="Glemt passord" title="Glemt passord" onclick="show()">
+			<span><a href="registrer.php">Registrer bruker</a></span>
 		</fieldset>
 	</form>
 	<?php?>	
