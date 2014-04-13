@@ -2,7 +2,28 @@
 //Denne siden er utviklet av Kurt A. Amodt., siste gang endret 12.04.2014
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
+//Henter fullstendig oppgaveliste for admin\veiledere og kun ubesvarte oppgaver for deltakere
+function oppgListe($type, $bPK) {
+	$db = getDB();
+	if($type == 1 || $type == 2) {
+		$result = $db->query("SELECT * FROM oppgaver");	
+	} else {
+		$result = ubesvarteOppg($bPK);
+			}
+	return $result;
+}
 
+//Henter kun ubesvarte oppgaver for spesifisert deltaker
+function ubesvarteOppg($bPK) {
+	$db = getDB();
+	$result = $db->query("
+SELECT oppgaver.*
+FROM oppgaver
+LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK)
+WHERE innleveringer.oppgave IS NULL");
+
+	return $result;
+}
 
 //Funksjon for glemt passord, oppretter et nytt og sender det på mail
 function glemtPW($epost) {

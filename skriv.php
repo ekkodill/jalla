@@ -2,12 +2,21 @@
 Denne siden er kontrollert av kurt siste gang 03.03.2014  !-->
 <?php
 include_once 'includes/init.php';
-
 ?>
 <!doctype html>
 <html>
 <?php 
 $pgName = 'Touch-tastatur';
+if(!empty($_POST)) {
+if(isset($_POST)) {
+    $tittel = $_POST['tittel'];
+    $tekst = $_POST['oppgtxt'];
+} 
+}else { 
+    $tittel ="";
+    $tekst = "";}
+
+
 include_once 'design/head.php'; ?>
 <script type="text/javascript"  src='js/tastatur.js'></script>
 <body>
@@ -16,16 +25,25 @@ include_once 'design/head.php'; ?>
            <section style="width:94%"> 
 
            <div class="bfleft">
-           <div class="valgmuligheter">Valgmuligheter</div>
-           <div class="uboliste"></div>
-           
-           </div>
-           <textarea class="opgtekst" resize: none;>dd</textarea>
+               <div class="valgmuligheter">
+                Valgmuligheter
 
-<div class="bfright">
-    <div class="oppgavetittel">Tittel på oppgaven</div>
-<div class="fasit">fasit</div>
-</div>
+               </div>
+                <div class="uboliste">
+                  <center><legend><h4>Ubesvarte oppgaver</h4></legend></center>
+            <?php include'oppgaveliste.php'; ?>  
+                </div>
+           </div>
+           <textarea class="opgtekst" resize: none;></textarea>
+
+    <div class="bfright">
+            <div class="oppgavetittel">
+                <?php echo $tittel; ?>
+            </div>
+            <div class="fasit">
+                <?php echo $tekst;  ?>
+            </div>
+    </div>
             <div id="container">
                 <ul id="keyboard">
                     <li class="capsen lastitem"><br><img src="img/capsoff.png" width="12.5" height="12.5" alt="capslock er av"></li>
@@ -45,7 +63,7 @@ include_once 'design/head.php'; ?>
                     <li class="tegn"id="187"><span class="off">?</span><span class="on">+</span></li>
                     <li class="tegn"id="219"><span class="off">\</span><span class="on">`</span></li>
                     <li class="delete lastitem"id="8">&larr;</li>
-                    <li class="tab"id="9">&LeftArrowRightArrow;</li>
+                    <li class="tab"id="tabb">&LeftArrowRightArrow;</li>
                     <li class="tegn" id="81">Q</li>
                     <li class="tegn"id="87">W</li>
                     <li class="tegn"id="69">E</li>

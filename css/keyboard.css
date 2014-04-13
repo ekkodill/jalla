@@ -290,6 +290,7 @@ margin-left:1%;
 
 }
 .fasit{
+    overflow:scroll;
     margin-top:3%;
     border:1px solid #000;
     height:100%;

@@ -13,7 +13,22 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	    </thead>
     <tbody>
     <?php
-    $result = $db->query("SELECT * FROM oppgaver") ;
+    $type = $user_data['brukertype'];
+    $bPK = $user_data['brukerPK'];
+    switch($type) {
+      case 1:
+      $result = oppgListe(1,$bPK);
+      break;
+      case 2:
+      $result = oppgListe(2,$bPK); 
+      break;
+      case 3:
+      $result = oppgListe(3,$bPK);
+      break;
+      default:
+      $result = oppgListe(3,$bPK); 
+    }
+    
     while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
     $vPK = $row['veileder'];
@@ -50,6 +65,10 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
   echo "<input type='image'  src='img/pdf.jpg' alt='Last opp vedlegg' title='Last opp vedlegg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
 	echo "<input id='file-input".$PK."' type='file' name='file' onchange='lagre($PK)' hidden/>"; //Filvalgsmeny
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
+} elseif($user_data['brukertype'] == 3) {
+  echo "<input type='hidden' name='tittel' value='".$row['tittelOppgave']."'/>";
+  echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
+  echo "<input type='image' src='img/edit.jpg' name='besvarelse' id='s".$PK."' onclick=this.form.action='skriv.php'; />";
 }
 	echo "</td></tr></form>";
  } 

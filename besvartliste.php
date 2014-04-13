@@ -43,7 +43,7 @@ if(!empty($_POST['lagre'])) {
     $PK = $row['innleveringPK'];
     $besvarelse = $row['tekstInnlevering'];
   	$sanitized = nl2br(htmlspecialchars($besvarelse, ENT_QUOTES));
-  	$bruker = finnBruker($row['bruker']); //må kanskje endre navn på funksjonen
+  	$bruker = finnBruker($row['bruker']); //Henter etternavn til brukeren
   	$oppgavetittel = hentOppgt($row['oppgave']);
   	
     echo "<form action='besvartliste.php' method='POST'>";

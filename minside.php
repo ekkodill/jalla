@@ -49,9 +49,6 @@ if($user_data['passord'] != $gammeltpw) {
                 </form>
             </div>
          </main>
-         <aside>
-             <?php include('oppgaveliste.php') ?>
-         </aside>
      <?php include('design/footer.php'); ?>    
     </body>
 </html>
