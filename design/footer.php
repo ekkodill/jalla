@@ -4,8 +4,6 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
  <footer>
 
-
- <img class="logoforslag"src="img/logo_forslag.png" height="180" width="180">
     <h3>Touch - Utviklingsoppgave 2014</h3>
     <h5>laget av</h5>
     <h4>Gruppe 3</h4>
