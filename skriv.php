@@ -20,17 +20,20 @@ include_once 'design/head.php'; ?>
            <div class="uboliste"></div>
            
            </div>
-           <textarea class="opgtekst" resize: none;>dd</textarea>
+           
 
 <div class="bfright">
     <div class="oppgavetittel">Tittel på oppgaven</div>
 <div class="fasit">fasit</div>
 </div>
+<div class="opgtextramme"><div class="tvbein">A</div><textarea class="opgtekst" resize: none;>dd</textarea></div>
             <div id="container">
+
                 <ul id="keyboard">
                     <li class="capsen lastitem"><br><img src="img/capsoff.png" width="12.5" height="12.5" alt="capslock er av"></li>
                     <li hidden class="caps"id="capslock"><img src="img/capson.png" width="12.5" height="12.5" alt="capslock er på"></li>
                     <br><br>
+                    <img class="keylogo"src="img/logo_forslag.png" height="40" width="40">
                     <li class="tegn"id="220"><span class="off">|</span><span class="on">§</span></li>
                     <li class="tegn"id="49"><span class="off">1</span><span class="on">!</span></li>
                     <li class="tegn"id="50"><span class="off">2</span><span class="on">"</span></li>
@@ -94,7 +97,6 @@ include_once 'design/head.php'; ?>
                     <li class="ctrlr"id="rctrl">ctrl</li>
                 </ul>
             </div>
-
             </section>
   <?php include_once('design/footer.php'); ?>
     </div>
