@@ -1,4 +1,4 @@
-<!--Denne siden er utviklet av Erik Bjørnflaten., siste gang endret 27.02.2014
+<!--Denne siden er utviklet av Erik Bjørnflaten., siste gang endret 13.04.2014
 Denne siden er kontrollert av kurt siste gang 03.03.2014  !-->
 <?php
 include_once 'includes/init.php';
@@ -14,10 +14,22 @@ include_once 'design/head.php'; ?>
     <div id="page">
   <?php include_once 'design/header.php'; ?>
            <section style="width:94%"> 
-            <div id="container" style="width:800px">
-                <ul id="keyboard"><br><div class="cltekst" id="cltekst">capslock</div><br>
-                    <li class="capsen lastitem"><img src="img/capsoff.png" width="25" height="25" alt="capslock er av"></li>
-                    <li hidden class="caps"id="capslock"><img src="img/capson.png" width="25" height="25" alt="capslock er på"></li>
+
+           <div class="bfleft">
+           <div class="valgmuligheter">Valgmuligheter</div>
+           <div class="uboliste"></div>
+           
+           </div>
+           <textarea class="opgtekst" resize: none;>dd</textarea>
+
+<div class="bfright">
+    <div class="oppgavetittel">Tittel på oppgaven</div>
+<div class="fasit">fasit</div>
+</div>
+            <div id="container">
+                <ul id="keyboard">
+                    <li class="capsen lastitem"><br><img src="img/capsoff.png" width="12.5" height="12.5" alt="capslock er av"></li>
+                    <li hidden class="caps"id="capslock"><img src="img/capson.png" width="12.5" height="12.5" alt="capslock er på"></li>
                     <br><br>
                     <li class="tegn"id="220"><span class="off">|</span><span class="on">§</span></li>
                     <li class="tegn"id="49"><span class="off">1</span><span class="on">!</span></li>
@@ -61,7 +73,7 @@ include_once 'design/head.php'; ?>
                     <li class="tegn"id="192">Ø</li>
                     <li class="tegn"id="222">Æ</li>
                      <li class="tegn"id="191"><span class="off">'</span><span class="on">*</span></li>
-                    <li class="return lastitem" id="enter">  </li>
+                    <li class="return" id="enter">  </li>
                     <li class="left-shift"	id="lshift">&uarr;</li>
                     <li class="tegn"id="60"><span class="off"><</span><span class="on">></span></li>
                     <li class="tegn"id="90">Z</li>
@@ -81,7 +93,9 @@ include_once 'design/head.php'; ?>
                     <li class="altgr"id="gralt">alt gr</li>
                     <li class="ctrlr"id="rctrl">ctrl</li>
                 </ul>
-            </div></section>
+            </div>
+
+            </section>
   <?php include_once('design/footer.php'); ?>
     </div>
 </body>
