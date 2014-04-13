@@ -1,232 +1,301 @@
+
 /*
-Denne siden er utviklet av Erik Bjørnflaten siste gang endret 02.03.2014
-Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
+Denne siden er utviklet av Erik Bjørnflaten siste gang endret 13.04.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 */
 
 #container {
-    width: 100% auto;
-    
-    height: auto;
-    background: #CCC;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:2%;
-	margin-bottom:0;
+float:left;
+    width: 37%;
+    height: 25%;
+    background: #F2F2F2;
+margin-left:20.5%;
+margin-top:-15%;
+margin-bottom:0;
 
-	/*Runde kanter og skygge*/
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	padding:7px;
-	border: 1px solid #999;
-	border: inset 1px solid #333;
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);¨
-	
-	font-size:0.8em;	
+/*Runde kanter og skygge*/
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+padding:7px;
+border: 1px solid #999;
+border: inset 1px solid #333;
+-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);¨
+
+    font-size:0.8em;	
     font-weight:normal;
 }
 
 #keyboard {
-    margin: 0;
-    padding: 3% 5%;
+    margin-top:1%;
+    margin-left:-5%;
     list-style: none;
-    width:100% ;
-    height:300px;
-	margin-top:2%;
-    margin-left:auto;
-    margin-right:auto;
+    float:left;
+    width:100%;
+    height:2%;
 }
 
 
+#keyboard li {
+float: left;
+margin: 0 3px 3px 0;
+width: 30px;
+height: 30px;
+line-height: 30px;
+text-align: center;
+background: #fff;
 
-/*---- skifter farge ved mouseover ----*/
-	#keyboard li {
-		float: left;
-		margin: 0 5px 5px 0;
-		width: 40px;
-		height: 40px;
-		line-height: 40px;
-		text-align: center;
-		background: #fff;
-			
-		/*Runde kanter og skygge*/
-		-webkit-border-radius: 7px;
-		-moz-border-radius: 7px;
-		border-radius: 7px;
-		padding:0.5px;
-		border: 1px solid #999;
-		border: inset 1px solid #333;
-		-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-		-moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-		box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);¨
-	}
+
+/*Runde kanter og skygge*/
+-webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+border-radius: 7px;
+padding:0.5px;
+border: 1px solid #999;
+border: inset 1px solid #333;
+-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+}
 /*---- taster med flere tegn ----*/	
 .on {
-    font: 10px Verdana, Sans-Serif;
+    font: 8px Verdana, Sans-Serif;
     display: inline-block;
-    margin: 1px;
-    margin-left: -20px;
+    margin-left: -15px;
     vertical-align: top;
 }
-		
+
 .on2 {
-    font: 20px Verdana, Sans-Serif;
+    font: 10px Verdana, Sans-Serif;
     display: inline-block;
-    margin-left: -12px;
+    margin-left: -6px;
     vertical-align: bottom;
-    padding-bottom:6px;
-	margin-top:-30px;
+    padding-bottom:9px;
+margin-top:6px;
 }
 
+#keyboard .tegn, .left-shift, .tab, .delete, .capslock, .caps, .capsen, .return, .left-shift, .right-shift, .ctrll, .ctrlr, .altgr, .lalt, .space {
+    font-size:50%;
+}
 /*----Spesialtegnene på tastaturet----*/
-	#keyboard .left-shift {
-		clear: left;
-		width: 70px;
-		margin-top: -40px; 
-	}
-				
-	#keyboard .tab {
-		clear:left;
-		width: 55px;
-	}
-				
-	#keyboard .delete {
-		width: 75px;
-	}
-				
-	#keyboard .capslock {
-		width: 70px;
-		clear: left;
-	}
-	
-	#container .caps {
-		height:0px;
-		width:0px;
-		float:right;
-		margin-left:650px;
-		position:absolute;
-		border:none;
-		background:none;
-		list-style:none;
-	}
-		
-	#keyboard .capsen {
-		height:0px;
-		width:0px;
-		margin-left:650px;
-		position:relative;
-		border:none;
-		background:none;
-		list-style:none;
-	}
-		
-	#keyboard .return  {
-		width:45px;
-		height: 88px;
-		margin-top: -48px; 
-		margin-right: -10px;
-		border-right:1px solid #999;
-		border-top:1px solid #999;
-		border-bottom:1px solid #999;
-		border-left:1px solid #999;
-	}
-			
-	#keyboard .left-shift {
-		width: 55px;
-		margin-top: 0px;
-	}
-			
-	#keyboard .right-shift {
-		width: 108px;
-		margin-top: 0px; 
-	}
+#keyboard .left-shift {
+clear: left;
+width: 45px;
+margin-top: -20px;
+}
+
+#keyboard .tab {
+clear:left;
+width: 42px;
+font-size:20px;
+}
+
+#keyboard .delete {
+width: 62px;
+font-size:17px;
+}
+
+#keyboard .capslock {
+width: 50px;
+font-size:0.6em;
+clear: left;
+}
+
+#container .caps {
+height:0px;
+width:0px;
+float:left;
+margin-left:500px;
+margin-top:18px;
+position:absolute;
+border:none;
+background:none;
+list-style:none;
+}
+
+#keyboard .capsen {
+height:0px;
+width:0px;
+margin-left:500px;
+margin-top:-14px;
+position:relative;
+border:none;
+background:none;
+list-style:none;
+}
+
+#keyboard .return {
+    font-size:20px;
+width:41px;
+height:69px;
+margin-top: -37px;
+margin-right: 8px;
+border-right:1px solid #999;
+border-top:1px solid #999;
+border-bottom:1px solid #999;
+border-left:1px solid #999;
+}
+
+#keyboard .left-shift {
+width: 42px;
+font-size:16px;
+margin-top: 0px;
+}
+
+#keyboard .right-shift {
+width: 85px;
+font-size:16px;
+margin-top: 0px;
+}
 
     #keyboard .ctrll {
-		width: 70px;
-		clear: left;
-	}
-
-	#keyboard .ctrlr {
-		width: 70px;
-		margin-left:100px;
-	}
-
-	#keyboard .altgr {
-		width: 50px;
-	}
-           
-    #keyboard .lalt {
-		width: 55px;
-		margin-left:60px;
-	}
-
-	#keyboard .space {
-		width: 260px;
-	}
-			
-.uppercase {
-	text-transform: uppercase;
+width: 42px;
+font-size:0.6em;
+clear: left;
 }
 
+#keyboard .ctrlr {
+width: 50px;
+font-size:0.6em;
+margin-left:80px;
+}
+
+#keyboard .altgr {
+width: 35px;
+font-size:0.6em;
+}
+           
+    #keyboard .lalt {
+width: 35px;
+margin-left:45px;
+font-size:0.6em;
+}
+
+#keyboard .space {
+width: 218px;
+}
+
+.uppercase {
+text-transform: uppercase;
+}
+
+/*KAN IGRUNN TAS BORT !!!*/
 .cltekst{
-	color:#000;
-	text-align:right;
-	font-size:14px;
-	margin-top:-30px;
-	margin-right:110px;
-	margin-bottom:-20px;
+color:#000;
+text-align:right;
+font-size:7px;
+margin-right:75px;
 }
 
 /*---- laget for å få utseende på enter ----*/
-	#keyboard .xreturn {
-    	width: 25px;
-        left:20px;
-		border:0;
-		margin-left:1px;
-		margin-top:-0.5px;
-		border-left:1px solid #999;
-		border-top:1px solid #999;
-		border-bottom:1px solid #999;
-    }			
+#keyboard .xreturn {
+     width: 14px;
+        left:10px;
+border:0;
+margin-left:1px;
+margin-top:-1px;
+
+
+    }	
 
     #keyboard .white {
         text-align:top;
-		width:35px;
-        z-index: 1; 
+width:20px;
+margin-top:-1px;
+        z-index: 1;
         position:relative;
-        right:25px;
-        height:27px;
+        right:14px;
+        height:16px;
         top:0px;
-		-webkit-border-radius:0;
+-webkit-border-radius:0;
         -moz-border-radius:o;
         border-radius:0;
-        padding:7px;
-        border:none;;
+        padding:2.5px;
+        padding-bottom:10px;
+        border-top:1px solid #999;
+        border-right:none;
+        border-left:none;
+        border-bottom:none;
         -webkit-box-shadow: none;
         -moz-box-shadow:none;
         box-shadow:none;
-	}
+}
 
-	#keyboard .under{
+#keyboard .under{
         padding-right:-5px;
     }
-			
-/*---- lastitem er for noen av tastene i enden av rekken ----*/		
+
+/*---- lastitem er for noen av tastene i enden av rekken ----*/	
 .lastitem {
-	margin-right: 0;
+margin-right: 0;
 }
-			
+
+
 /*---- Bare testing i første omgang ----*/
 .showrediger{
-	display:"";
+display:"";
 }
-				
+
 .showlagre{
 display:none;
 }
-			
-			
-			
-		
+
+/* ----    Innholdet på brukerforsiden    ---- */
+
+.bfleft{
+    width:20%;
+    height:56.5%;
+    margin-left:-2%;
+    margin-top:2%;
+    float:left;
+
+}
+
+.bfright{
+    width:39%;
+    height:60%;
+    float:left;
+    margin-left:1%;
+
+}
+
+.opgtekst{
+    width:41%;
+    height:30%;
+margin-left:1%;
+    margin-top:2.4%;
+    float:left;
+    resize: none;
+    background-color:#FEFDFB;
+}
+.valgmuligheter{
+    border:1px solid #000;
+    height:20%;
+    width:100%;
+    margin-top:2%;
+    margin-bottom:6%;
+    float:left;
+}
+.uboliste{
+    border:1px solid #000;
+    float:left;
+    width:100%;
+    height:80%;
+}
+.oppgavetittel{
+    height:3%;
+    border-bottom:1px solid#000;
+
+}
+.fasit{
+    margin-top:3%;
+    border:1px solid #000;
+    height:100%;
+    padding-left:-5%;
+}
+.off{
+    margin-top:80px;
+}
+
