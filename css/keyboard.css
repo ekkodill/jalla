@@ -6,33 +6,32 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 #container {
 float:left;
-    width: 37%;
-    height: 25%;
+    width: 35%;
+    height: 27%;
     background: #F2F2F2;
-margin-left:20.5%;
-margin-top:-15%;
-margin-bottom:0;
+margin-left:23%;
+margin-top:-12%;
 
 /*Runde kanter og skygge*/
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-padding:7px;
+-webkit-border-radius: 15%;
+-moz-border-radius: 15%;
+border-radius: 15%;
+padding:0.4%;
 border: 1px solid #999;
 border: inset 1px solid #333;
 -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);¨
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 
     font-size:0.8em;	
     font-weight:normal;
 }
 
 #keyboard {
-    margin-top:1%;
-    margin-left:-5%;
+    float:both;
+    margin-left:-2%;
+    margin-top:2%;
     list-style: none;
-    float:left;
     width:100%;
     height:2%;
 }
@@ -40,75 +39,77 @@ box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);¨
 
 #keyboard li {
 float: left;
-margin: 0 3px 3px 0;
-width: 30px;
-height: 30px;
-line-height: 30px;
+margin: 0 0.5% 0.5% 0;
+width: 5%;
+height: 600%;
+line-height: 300%;
 text-align: center;
 background: #fff;
 
 
 /*Runde kanter og skygge*/
--webkit-border-radius: 7px;
--moz-border-radius: 7px;
-border-radius: 7px;
-padding:0.5px;
+-webkit-border-radius: 10%;
+-moz-border-radius: 10%;
+border-radius: 10%;
+padding:0.1%;
 border: 1px solid #999;
 border: inset 1px solid #333;
--webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
--moz-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+-webkit-box-shadow: 0% 0% 0.3% rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0% 0% 0.3% rgba(0, 0, 0, 0.3);
+box-shadow: 0% 0% 0.3% rgba(0, 0, 0, 0.3);
 }
 /*---- taster med flere tegn ----*/	
 .on {
-    font: 8px Verdana, Sans-Serif;
+    font: 80% Verdana, Sans-Serif;
     display: inline-block;
-    margin-left: -15px;
+    margin-left: -80%;
     vertical-align: top;
 }
 
 .on2 {
-    font: 10px Verdana, Sans-Serif;
+    font: 10% Verdana, Sans-Serif;
     display: inline-block;
-    margin-left: -6px;
+    margin-left: -20%;
     vertical-align: bottom;
-    padding-bottom:9px;
-margin-top:6px;
+    padding-bottom:-5%;
+margin-top:1%;
 }
 
 #keyboard .tegn, .left-shift, .tab, .delete, .capslock, .caps, .capsen, .return, .left-shift, .right-shift, .ctrll, .ctrlr, .altgr, .lalt, .space {
-    font-size:50%;
+    font-size:70%;
 }
 /*----Spesialtegnene på tastaturet----*/
 #keyboard .left-shift {
 clear: left;
-width: 45px;
-margin-top: -20px;
+width: 100%;
+margin-top: 100%;
 }
 
 #keyboard .tab {
 clear:left;
-width: 42px;
-font-size:20px;
+line-height: 100%;
+width: 8%;
+font-size:100%;
 }
 
 #keyboard .delete {
-width: 62px;
-font-size:17px;
+width: 12%;
+line-height: 100%;
+font-size:100%;
 }
 
 #keyboard .capslock {
-width: 50px;
-font-size:0.6em;
+width: 10%;
+font-size:80%;
 clear: left;
 }
 
 #container .caps {
-height:0px;
-width:0px;
-float:left;
-margin-left:500px;
-margin-top:18px;
+height:0%;
+width:0%;
+float:right;
+margin-left:25.93%;
+margin-top:0.8%;
 position:absolute;
 border:none;
 background:none;
@@ -116,10 +117,11 @@ list-style:none;
 }
 
 #keyboard .capsen {
-height:0px;
-width:0px;
-margin-left:500px;
-margin-top:-14px;
+height:0%;
+width:0%;
+line-height: 100%;
+margin-left:87.8%;
+margin-top:1.5%;
 position:relative;
 border:none;
 background:none;
@@ -127,11 +129,11 @@ list-style:none;
 }
 
 #keyboard .return {
-    font-size:20px;
-width:41px;
-height:69px;
-margin-top: -37px;
-margin-right: 8px;
+ font-size:5%;
+width:7%;
+height:1310%;
+margin-top: -6.7%;
+margin-right: 2%;
 border-right:1px solid #999;
 border-top:1px solid #999;
 border-bottom:1px solid #999;
@@ -139,42 +141,44 @@ border-left:1px solid #999;
 }
 
 #keyboard .left-shift {
-width: 42px;
-font-size:16px;
-margin-top: 0px;
+width: 9.3%;
+font-size:100%;
+line-height: 180%;
+margin-top: 0%;
 }
 
 #keyboard .right-shift {
-width: 85px;
-font-size:16px;
-margin-top: 0px;
+width:13.6%;
+font-size:100%;
+line-height: 180%;
+margin-top: 0%;
 }
 
     #keyboard .ctrll {
-width: 42px;
-font-size:0.6em;
+width: 9%;
+font-size:80%;
 clear: left;
 }
 
 #keyboard .ctrlr {
-width: 50px;
-font-size:0.6em;
-margin-left:80px;
+width: 10%;
+font-size:80%;
+margin-left:5.9%;
 }
 
 #keyboard .altgr {
-width: 35px;
-font-size:0.6em;
+width: 7%;
+font-size:80%;
 }
            
     #keyboard .lalt {
-width: 35px;
-margin-left:45px;
-font-size:0.6em;
+width: 7%;
+margin-left:8%;
+font-size:80%;
 }
 
 #keyboard .space {
-width: 218px;
+width: 39.5%;
 }
 
 .uppercase {
@@ -185,36 +189,37 @@ text-transform: uppercase;
 .cltekst{
 color:#000;
 text-align:right;
-font-size:7px;
-margin-right:75px;
+font-size:1%;
+margin-right:8%;
 }
 
 /*---- laget for å få utseende på enter ----*/
 #keyboard .xreturn {
-     width: 14px;
-        left:10px;
-border:0;
-margin-left:1px;
-margin-top:-1px;
+     width: 3%;
+        left:1.5%;
+        height:600%;
+border-top:1px solid #999;
+border-bottom:1px solid #999;
+border-left:1px solid #999;
+margin-left:0.1%;
+margin-top:0.1%;
+
 
 
     }	
 
     #keyboard .white {
         text-align:top;
-width:20px;
-margin-top:-1px;
+width:5%;
+margin-top:0.1%;
         z-index: 1;
         position:relative;
-        right:14px;
-        height:16px;
-        top:0px;
+        right:3%;
+        height:600%;
+        top:0%;
 -webkit-border-radius:0;
-        -moz-border-radius:o;
+        -moz-border-radius:0;
         border-radius:0;
-        padding:2.5px;
-        padding-bottom:10px;
-        border-top:1px solid #999;
         border-right:none;
         border-left:none;
         border-bottom:none;
@@ -224,12 +229,12 @@ margin-top:-1px;
 }
 
 #keyboard .under{
-        padding-right:-5px;
+        padding-right:5%;
     }
 
 /*---- lastitem er for noen av tastene i enden av rekken ----*/	
 .lastitem {
-margin-right: 0;
+margin-right: 0%;
 }
 
 
@@ -254,21 +259,25 @@ display:none;
 }
 
 .bfright{
-    width:39%;
+    width:36%;
     height:60%;
-    float:left;
+    float:right;
     margin-left:1%;
 
 }
 
 .opgtekst{
-    width:41%;
-    height:30%;
-margin-left:1%;
-    margin-top:2.4%;
-    float:left;
+    margin-top:-25%;
+    width:35.2%;
+    height:31%;
+    margin-left:1%;
+    margin-right:auto;
+margin-bottom:2%;
+    position:absolute;
     resize: none;
-    background-color:#FEFDFB;
+    background-color:#FAFAFA;
+
+
 }
 .valgmuligheter{
     border:1px solid #000;
@@ -286,7 +295,7 @@ margin-left:1%;
 }
 .oppgavetittel{
     height:3%;
-    border-bottom:1px solid#000;
+    border-bottom:1px solid #000;
 
 }
 .fasit{
@@ -295,7 +304,27 @@ margin-left:1%;
     height:100%;
     padding-left:-5%;
 }
-.off{
-    margin-top:80px;
-}
 
+
+.keylogo{
+
+    margin-bottom:none;
+    float:left;
+    margin-left:1%;
+    margin-top:-8%;
+}
+.opgtextramme{
+    width:44%;
+    height:34%;
+    float:right;
+   background-color:#999;
+   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
+-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
+}
+.tvbein{
+    margin-top:-5%;
+    font-size:2500%;
+    text-align:center;
+    color:#999;
+}
