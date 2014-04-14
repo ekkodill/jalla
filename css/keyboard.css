@@ -6,11 +6,12 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 #container {
 float:left;
-    width: 35%;
-    height: 27%;
+    width: 37%;
+    height: 23%;
+
     background: #F2F2F2;
-margin-left:23%;
-margin-top:-12%;
+margin-left:22%;
+margin-top:-14%;
 
 /*Runde kanter og skygge*/
 -webkit-border-radius: 15%;
@@ -19,9 +20,9 @@ border-radius: 15%;
 padding:0.4%;
 border: 1px solid #999;
 border: inset 1px solid #333;
--webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
--moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 
     font-size:0.8em;	
     font-weight:normal;
@@ -29,7 +30,7 @@ box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 
 #keyboard {
     float:both;
-    margin-left:-2%;
+    margin-left:-5%;
     margin-top:2%;
     list-style: none;
     width:100%;
@@ -39,7 +40,7 @@ box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 
 #keyboard li {
 float: left;
-margin: 0 0.5% 0.5% 0;
+margin: 0 1% 1% 0;
 width: 5%;
 height: 600%;
 line-height: 300%;
@@ -54,9 +55,9 @@ border-radius: 10%;
 padding:0.1%;
 border: 1px solid #999;
 border: inset 1px solid #333;
--webkit-box-shadow: 0% 0% 0.3% rgba(0, 0, 0, 0.3);
--moz-box-shadow: 0% 0% 0.3% rgba(0, 0, 0, 0.3);
-box-shadow: 0% 0% 0.3% rgba(0, 0, 0, 0.3);
+-webkit-box-shadow: 0 0 0 1px rgba(0, ,0 0, 1);
+-moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
+box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
 }
 /*---- taster med flere tegn ----*/	
 .on {
@@ -100,7 +101,7 @@ font-size:100%;
 
 #keyboard .capslock {
 width: 10%;
-font-size:80%;
+font-size:65%;
 clear: left;
 }
 
@@ -108,8 +109,8 @@ clear: left;
 height:0%;
 width:0%;
 float:right;
-margin-left:25.93%;
-margin-top:0.8%;
+margin-left:27.43%;
+margin-top:-0.15%;
 position:absolute;
 border:none;
 background:none;
@@ -119,9 +120,9 @@ list-style:none;
 #keyboard .capsen {
 height:0%;
 width:0%;
+margin-top:-1.5%;
 line-height: 100%;
 margin-left:87.8%;
-margin-top:1.5%;
 position:relative;
 border:none;
 background:none;
@@ -131,8 +132,8 @@ list-style:none;
 #keyboard .return {
  font-size:5%;
 width:7%;
-height:1310%;
-margin-top: -6.7%;
+height:1420%;
+margin-top: -6.1%;
 margin-right: 2%;
 border-right:1px solid #999;
 border-top:1px solid #999;
@@ -156,29 +157,30 @@ margin-top: 0%;
 
     #keyboard .ctrll {
 width: 9%;
-font-size:80%;
+font-size:65%;
 clear: left;
 }
 
 #keyboard .ctrlr {
 width: 10%;
-font-size:80%;
+font-size:65%;
 margin-left:5.9%;
 }
 
 #keyboard .altgr {
 width: 7%;
-font-size:80%;
+font-size:65%;
 }
            
     #keyboard .lalt {
 width: 7%;
 margin-left:8%;
-font-size:80%;
+font-size:65%;
 }
 
 #keyboard .space {
 width: 39.5%;
+border-radius:5%;
 }
 
 .uppercase {
@@ -247,7 +249,7 @@ display:"";
 display:none;
 }
 
-/* ----    Innholdet på brukerforsiden    ---- */
+/* ---- Innholdet på brukerforsiden ---- */
 
 .bfleft{
     width:20%;
@@ -266,23 +268,13 @@ display:none;
 
 }
 
-.opgtekst{
-    margin-top:-25%;
-    width:35.2%;
-    height:31%;
-    margin-left:1%;
-    margin-right:auto;
-margin-bottom:2%;
-    position:absolute;
-    resize: none;
-    background-color:#FAFAFA;
-
-
-}
-.valgmuligheter{
-    border:1px solid #000;
-    height:20%;
-    width:100%;
+#opgtekst {
+    width: 96%;
+    height: 92%;
+    margin-left:2%;
+    margin-top:2%;
+    border: 1px solid #999;
+    padding: 5px ;
     margin-top:2%;
     margin-bottom:6%;
     float:left;
@@ -292,6 +284,13 @@ margin-bottom:2%;
     float:left;
     width:100%;
     height:80%;
+   
+
+}
+.valgmuligheter{
+    border:1px solid #000;
+    height:20%;
+    width:100%;
 }
 .oppgavetittel{
     height:3%;
@@ -305,26 +304,25 @@ margin-bottom:2%;
     padding-left:-5%;
 }
 
-
-.keylogo{
+/*.keylogo{
 
     margin-bottom:none;
     float:left;
     margin-left:1%;
     margin-top:-8%;
-}
+}*/
 .opgtextramme{
-    width:44%;
-    height:34%;
+    margin-top:1%;
+    margin-right:2%;
+    width:40%;
+    height:32%;
     float:right;
-   background-color:#999;
+    border:1px solid #fff;
+    background-color:ccc;
+
    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
 -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
 box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
 }
-.tvbein{
-    margin-top:-5%;
-    font-size:2500%;
-    text-align:center;
-    color:#999;
-}
+
+
