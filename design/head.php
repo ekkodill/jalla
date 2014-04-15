@@ -7,6 +7,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="js/vis_brukere.js"></script> 
 	<script type="text/javascript"  src='js/oppgave.js'></script>
+	<script type="text/javascript"  src='js/stoppeklokke.js'></script>
 	<link href="css/Design.css" 	rel="stylesheet" type="text/css">
 	<link href="css/aside.css" rel="stylesheet" type="text/css">
 	<link href="css/header.css" rel="stylesheet" type="text/css">

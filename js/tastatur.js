@@ -1,6 +1,19 @@
 ﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.02.2014
 // Denne siden er kontrollert av Kurt A. Aamodt, siste gang 19.02.2014
 
+//Skjuler eller viser tastaturet når man klikker på knappen.
+function toggle_div(id) {
+var divelement = document.getElementById(id);
+    if(divelement.style.display == 'none') {
+        divelement.style.display = 'block';
+    }
+    else {
+        divelement.style.display = 'none';
+    }
+}
+
+
+
 //Variabel for capslock on\off. 0 = off
 var capslock = "0";
 
@@ -15,7 +28,7 @@ function capsOff() {
 
 //Funksjon som setter fargene når knappen blir trykket
 document.onkeydown = function(event) {
-    var key_code = event.keyCode;
+    var key_code =  (event.keyCode ? event.keyCode : event.which);
     var element = document.getElementById(key_code);
 
 
@@ -68,7 +81,7 @@ switch (key_code) {
             if (event.location == 1) {
                     document.getElementById("lctrl").style.backgroundColor = "#99CCFF";
             }
-            else { 
+            else if(event.location == 2) { 
                      document.getElementById("rctrl").style.backgroundColor = "#99CCFF";
             }
             break;
@@ -103,6 +116,7 @@ var element = document.getElementById(event.keyCode);
     
      //Endrer tilbake for "spesial-tastene"
     switch(event.keyCode) {
+
         case 172:
                     document.getElementById("220").style.backgroundColor = "white";
         break;
@@ -129,9 +143,54 @@ var element = document.getElementById(event.keyCode);
         break;
         case 20: return;
         break;
-        default: element.style.backgroundColor = "white"; //Endrer fargen tilbake til standard
-
-                
+        default: 
+        element.style.backgroundColor = "white"; //Endrer fargen tilbake til standard
     }
 }
+
+
+
+/*
+document.onkeypress = function(evt) {
+    //alert("Which: "+evt.which+", key: "+key);
+    // Funksjonen må gjøre noen korreksjoner for æøå
+      switch (key) {
+      case 0:
+        // Keydown for Firefox gir which=0, tester derfor på which i keypress 
+        // Både store og små bokstaver skal returnere samme verdi 
+        switch (evt.which) {
+        case 230:
+        case 198:
+          document.getElementById("198").style.backgroundColor = "#99CCFF";
+
+          break;
+        case 248:
+        case 216:
+          document.getElementById("216").style.backgroundColor = "#99CCFF";
+
+          break;
+        case 229:
+        case 197:
+          document.getElementById("197").style.backgroundColor = "#99CCFF";
+
+          break;
+        }
+        break;
+      case 192:
+        // Andre nettlesere enn Firefox returnerer feil verdi, må derfor justere
+        document.getElementById("216").style.backgroundColor = "#99CCFF";
+
+        break;
+      case 221:
+        document.getElementById("197").style.backgroundColor = "#99CCFF";
+
+        break;
+      case 222:
+        document.getElementById("198").style.backgroundColor = "#99CCFF";
+
+        break;
+      }
+      }
+*/
+    
 

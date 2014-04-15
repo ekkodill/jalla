@@ -65,7 +65,7 @@ if(!empty($_POST['lagre'])) {
 				$sanitized
 				<br>
 				<br>
-				<textarea id='responstext' placeholder='Skriv respons' name='respons'>*</textarea>
+				<textarea id='responstext' placeholder='Skriv respons' name='respons'></textarea>
 				<br>
 				<input type='button' value='Lagre' name='save' onclick='errorRespons($PK)'/>
 				<input id='responsid".$PK."' type='submit' hidden name='lagre'>
