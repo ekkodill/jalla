@@ -23,12 +23,12 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullor'])) {
                 $insert->bind_param('iissii', $bruker, $oppgavenr, $oppg, $mySqlTime, $antFeil, $ferdig);
         
                 if($insert->execute()) {
-                   similar_text($_SESSION['inntxt'], $_SESSION['oppgtxt'], $percent);
+                   similar_text($_SESSION['oppgtxt'], $_SESSION['inntxt'], $percent);
                     $_SESSION['percent'] = $percent;
                    
                     header('Location: skriv.php');
                     die();
-                } else { print_r($insert);}
+                }
     }
     
 
