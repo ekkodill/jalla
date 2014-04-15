@@ -65,11 +65,12 @@ include_once 'design/head.php'; ?>
                         <input name="lagreoppg" type="submit" onclick="transfer();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden" value=""/>
             </div>
-            <div class="uboliste">
+       </form>
+       <div class="uboliste">
                 <legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend>
                 <?php include_once 'ubesvartliste.php'; ?> 
             </div>
-       </form></div>
+       </div>
            
    <div class="bfright">
                 <div class="oppgavetittel"><?php echo $otittel; ?></div>
