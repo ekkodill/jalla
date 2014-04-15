@@ -21,7 +21,7 @@ if (!empty($_POST)) {
         $otekst = $_POST['oppgtxt'];
         $oppgPK = $_POST['oppgPK'];
     }
-} echo "alt tomt" ;
+}
 
 ?>
 <!doctype html>
@@ -65,19 +65,20 @@ include_once 'design/head.php'; ?>
                         <input name="lagreoppg" type="submit" onclick="transfer();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden" value=""/>
             </div>
-        </div>
-            <div class="bfright">
+            <div class="uboliste">
+                <legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend>
+                <?php include_once 'ubesvartliste.php'; ?> 
+            </div>
+       </form></div>
+           
+   <div class="bfright">
                 <div class="oppgavetittel"><?php echo $otittel; ?></div>
                 <div class="fasit"><?php echo $otekst;  ?></div>
             </div>
+            
                 <div class="opgtextramme"><textarea id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
-    </form>
-            <div class="uboliste">
-                <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
-                <?php include_once 'ubesvartliste.php'; ?> 
-            </div>
-<div id="container">
 
+<div id="container">
 <ul id="keyboard">
 <li class="capsen lastitem"><br><img src="img/capsoff.png" width="12.5" height="12.5" alt="capslock er av"></li>
 <li hidden class="caps"id="capslock"><img src="img/capson.png" width="12.5" height="12.5" alt="capslock er på"></li>
@@ -145,8 +146,9 @@ include_once 'design/head.php'; ?>
 <li class="ctrlr"id="rctrl">ctrl</li>
 </ul>
 </div>
+ 
 </section>
 <?php include_once('design/footer.php'); ?>
-</div>
+
 </body>
 </html>
