@@ -335,4 +335,18 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
 
 }
 
+.fborder{
+border-top:none;
+border-right:none;
+border-left:none;
+}
+.ubesform {
+margin-left:1%;
+border-top:none;
+border-right:none;
+border-left:none;
+padding-top:0.5%;
+
+}
+
 
