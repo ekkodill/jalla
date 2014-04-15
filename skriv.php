@@ -20,8 +20,12 @@ if (!empty($_POST)) {
         $otittel = $_POST['tittel'];
         $otekst = $_POST['oppgtxt'];
         $oppgPK = $_POST['oppgPK'];
+        $bruker     = $user_data['brukerPK'];
+        $antFeil    = 0;
+        $ferdig     = 0;
+        $tidBrukt = $_POST['tid'];
     }
-} echo "alt tomt" ;
+}
 
 ?>
 <!doctype html>
@@ -63,14 +67,18 @@ include_once 'design/head.php'; ?>
                         <input name="fullfor" type="submit" onclick="" value="Innlever"/> for endelig innlevering
                     <br>
                         <input name="lagreoppg" type="submit" onclick="transfer();" value="Lagre"/> for å fortsette senere
-                        <input name="tid" id="stid" type="hidden" value=""/>
+                        <input name="tid" id="stid" type="hidden" value="<?php $tidBrukt ?>"/>
+                        <input name="ferdig" id="sferdig" type="hidden" value="<?php $ferdig ?>"/>
+                        <input name="antfeil" id="santfeil" type="hidden" value="<?php $antFeil ?>"/>
+                        <input name="oppgPK" id="soppgPK" type="hidden" value="<?php $oppgPK ?>"/>
+                        <input name="brukerPK" id="sbrukerPK" type="hidden" value="<?php $brukerPK ?>"/>
             </div>
         </div>
             <div class="bfright">
                 <div class="oppgavetittel"><?php echo $otittel; ?></div>
                 <div class="fasit"><?php echo $otekst;  ?></div>
             </div>
-                <div class="opgtextramme"><textarea id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
+                <div class="opgtextramme"><textarea name="inntext" id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
     </form>
             <div class="uboliste">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
@@ -96,7 +104,7 @@ include_once 'design/head.php'; ?>
 <li class="tegn"id="187"><span class="off">?</span><span class="on">+</span></li>
 <li class="tegn"id="219"><span class="off">\</span><span class="on">`</span></li>
 <li class="delete lastitem"id="8">&larr;</li>
-<li class="tab"id="9">&LeftArrowRightArrow;</li>
+<li class="tab"id="tabb">&LeftArrowRightArrow;</li>
 <li class="tegn" id="81">Q</li>
 <li class="tegn"id="87">W</li>
 <li class="tegn"id="69">E</li>
