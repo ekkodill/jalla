@@ -3,6 +3,26 @@ Denne siden er kontrollert av kurt siste gang 03.03.2014 !-->
 <?php
 include_once 'includes/init.php';
 
+$pgName = 'Touch-tastatur';
+$otittel ="";
+$otekst = "";
+$oppgPK = "";
+$tid = 0;
+//Sjekker om det kommer fra deltakernsstartside med oppgavetekst og tittel
+
+
+
+if (!empty($_POST)) {
+   if(isset($_POST['lagreoppg'])) {
+    $tid = $_POST['tid'];
+}
+    if(!empty($_POST['tittel']) && !empty($_POST['oppgtxt']) && !empty($_POST['oppgPK'])) {
+        $otittel = $_POST['tittel'];
+        $otekst = $_POST['oppgtxt'];
+        $oppgPK = $_POST['oppgPK'];
+    }
+} echo "alt tomt" ;
+
 ?>
 <!doctype html>
 <html>
@@ -18,30 +38,44 @@ include_once 'includes/init.php';
 $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
-<body>
-<div id="page">
-<?php include_once 'design/header.php'; ?>
-<section style="width:94%">
 
-<div class="bfleft">
-<div class="valgmuligheter">Valgmuligheter</div>
-</div>
-
-
-<div class="bfright">
-<div class="oppgavetittel">Tittel på oppgaven</div>
-<div class="fasit">fasit</div>
-</div>
-
-<div class="opgtextramme"><textarea id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
-
-<div class="uboliste">
-                    <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></center></legend>
-                   <?php include_once 'besvartliste.php'; ?>
-
+<body onload="show();">
+    <div id="page">
+  <?php include_once 'design/header.php'; ?>
+    <section style="width:94%"> 
+    
+        <div class="bfleft">
+            <div class="valgmuligheter">             
+                    <input type="button" value="start" onclick="start();">
+                    <input type="button" value="stop" onclick="stop();">
+                    <input type="button" value="reset" onclick="reset()">
+                    <p>
+                    <?php 
+                        echo "tid brukt: ".$tid;
+                     ?>
+                     </p>
+                    <form action="skriv.php" method="POST">
+                      <h5>Tid brukt</h5>
+                      <div><span name="tid" id="time"></span></div>
+                    <br>
+                        <input type="button" onclick="toggle_div('container');" value="Klikk her"/> for å skjule \ vise tastaturet
+                    <br>
+                        <input name="fullfor" type="submit" onclick="" value="Innlever"/> for endelig innlevering
+                    <br>
+                        <input name="lagreoppg" type="submit" onclick="transfer();" value="Lagre"/> for å fortsette senere
+                        <input name="tid" id="stid" type="hidden" value=""/>
             </div>
-
-
+        </div>
+            <div class="bfright">
+                <div class="oppgavetittel"><?php echo $otittel; ?></div>
+                <div class="fasit"><?php echo $otekst;  ?></div>
+            </div>
+                <div class="opgtextramme"><textarea id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
+    </form>
+            <div class="uboliste">
+                <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
+                <?php include_once 'ubesvartliste.php'; ?> 
+            </div>
 <div id="container">
 
 <ul id="keyboard">

@@ -280,26 +280,20 @@ display:none;
     float:left;
 }
 .uboliste{
+    overflow: scroll;
     border:1px solid #000;
-<<<<<<< HEAD
-    width:20%;
-    height:50%;
-    margin-top:10%;
-    margin-left:-2%;
-=======
     width:16.9%;
-    height:50%;
+    height:30%;
     position:absolute;
-    margin-top:8%;
+    margin-top:17%;
     margin-left:-1.7%;
 
->>>>>>> 7375ab46db5cbcd0b904f70a2b0e3495759744fa
    
 
 }
 .valgmuligheter{
     border:1px solid #000;
-    height:20%;
+    height:50%;
     width:100%;
 }
 .oppgavetittel{
