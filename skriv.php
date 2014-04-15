@@ -25,15 +25,19 @@ include_once 'design/head.php'; ?>
 
 <div class="bfleft">
 <div class="valgmuligheter">Valgmuligheter</div>
-<div class="uboliste"></div>
 </div>
+
 
 <div class="bfright">
 <div class="oppgavetittel">Tittel på oppgaven</div>
 <div class="fasit">fasit</div>
 </div>
-<div class="opgtextramme"><textarea id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '" /></textarea>
-</div>
+
+<div class="opgtextramme"><textarea id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
+
+<div class="uboliste"></div>
+
+
 <div id="container">
 
 <ul id="keyboard">
