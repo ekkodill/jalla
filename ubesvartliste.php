@@ -13,7 +13,7 @@ while ($row = $result->fetch_assoc()) {
 	$oppgtekst = hentOppgave($PK);
 	$sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
 
-    echo "<form class='fborder' action='' method='POST'>";
+    echo "<form class='ubesform' action='' method='POST'>";
     echo "<tr>";
     echo "<td id='oppg".$PK."'  name='tittel'>
     <a href='vedlegg/".$vedlegg."'>". $row['tittelOppgave']." | ". $row['veileder']." | ". $row['vanskelighetsgrad']."</a>
