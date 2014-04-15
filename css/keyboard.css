@@ -6,12 +6,12 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 #container {
 float:left;
-    width: 37%;
-    height: 23%;
+    width: 39%;
+    height: 25%;
+    margin-top:2%;
+    margin-left:3.5%;
 
     background: #F2F2F2;
-margin-left:22%;
-margin-top:-14%;
 
 /*Runde kanter og skygge*/
 -webkit-border-radius: 15%;
@@ -29,7 +29,7 @@ box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 }
 
 #keyboard {
-    float:both;
+    float:left;
     margin-left:-5%;
     margin-top:2%;
     list-style: none;
@@ -253,18 +253,19 @@ display:none;
 
 .bfleft{
     width:20%;
-    height:56.5%;
-    margin-left:-2%;
+    height:67%;
     margin-top:2%;
+    margin-right:1%;
     float:left;
+
 
 }
 
 .bfright{
-    width:36%;
-    height:60%;
     float:right;
-    margin-left:1%;
+    width:30%;
+    height:65%;
+    margin-left:3%;
 
 }
 
@@ -273,28 +274,24 @@ display:none;
     height: 92%;
     margin-left:2%;
     margin-top:2%;
-    border: 1px solid #999;
     padding: 5px ;
     margin-top:2%;
     margin-bottom:6%;
-    float:left;
 }
 .uboliste{
-    overflow: scroll;
-    border:1px solid #000;
-    width:16.9%;
-    height:30%;
-    position:absolute;
-    margin-top:17%;
-    margin-left:-1.7%;
+    overflow: auto;
+    width:98%;
+    height:60%;
+    margin-top:5%;
 
    
 
 }
 .valgmuligheter{
-    border:1px solid #000;
+    margin-top:1%;
     height:50%;
-    width:100%;
+    width:90%;
+
 }
 .oppgavetittel{
     height:3%;
@@ -316,11 +313,11 @@ display:none;
     margin-top:-8%;
 }*/
 .opgtextramme{
-    margin-top:1%;
-    margin-right:2%;
-    width:40%;
-    height:32%;
-    float:right;
+    margin-top:2%;
+    margin-left:2%;
+    width:43%;
+    height:35%;
+    float:left;
     border:1px solid #fff;
     background-color:#ccc;
 
@@ -330,22 +327,24 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
 }
 
 
-.ubotitt{
- margin-top:-5%;
-
-}
 
 .fborder{
-border-top:none;
-border-right:none;
-border-left:none;
+width:100%;
+height:40%;
+border:none;
+}
+
+.ubesform {
+    width:90%;
+
+
 }
 .ubesform {
-margin-left:1%;
-border-top:none;
-border-right:none;
-border-left:none;
-padding-top:0.5%;
+    width:90%;
+    height:10%;
+    float:left;
+    margin-left:0.01%;
+   
 
 }
 
