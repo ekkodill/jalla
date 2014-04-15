@@ -6,12 +6,12 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 #container {
 float:left;
-    width: 37%;
-    height: 23%;
+    width: 39%;
+    height: 25%;
 
     background: #F2F2F2;
 margin-left:22%;
-margin-top:-14%;
+margin-top:-12%;
 
 /*Runde kanter og skygge*/
 -webkit-border-radius: 15%;
@@ -24,7 +24,7 @@ border: inset 1px solid #333;
 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 
-    font-size:0.8em;	
+    font-size:0.8em; 
     font-weight:normal;
 }
 
@@ -59,7 +59,7 @@ border: inset 1px solid #333;
 -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
 box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
 }
-/*---- taster med flere tegn ----*/	
+/*---- taster med flere tegn ----*/ 
 .on {
     font: 80% Verdana, Sans-Serif;
     display: inline-block;
@@ -208,7 +208,7 @@ margin-top:0.1%;
 
 
 
-    }	
+    }   
 
     #keyboard .white {
         text-align:top;
@@ -234,7 +234,7 @@ margin-top:0.1%;
         padding-right:5%;
     }
 
-/*---- lastitem er for noen av tastene i enden av rekken ----*/	
+/*---- lastitem er for noen av tastene i enden av rekken ----*/ 
 .lastitem {
 margin-right: 0%;
 }
@@ -293,7 +293,7 @@ display:none;
 }
 .valgmuligheter{
     border:1px solid #000;
-    height:50%;
+    height:60%;
     width:100%;
 }
 .oppgavetittel{
@@ -302,6 +302,7 @@ display:none;
 
 }
 .fasit{
+    overflow: scroll;
     margin-top:3%;
     border:1px solid #000;
     height:100%;

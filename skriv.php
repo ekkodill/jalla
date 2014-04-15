@@ -4,28 +4,37 @@ Denne siden er kontrollert av kurt siste gang 03.03.2014 !-->
 include_once 'includes/init.php';
 
 $pgName = 'Touch-tastatur';
-$otittel ="";
-$otekst = "";
-$oppgPK = "";
-$tid = 0;
+
 //Sjekker om det kommer fra deltakernsstartside med oppgavetekst og tittel
-
-
-
 if (!empty($_POST)) {
-   if(isset($_POST['lagreoppg'])) {
+ if(isset($_POST['lagreoppg'])) {
+    $otittel = "";
+    $otekst = "";
     $tid = $_POST['tid'];
+    //$_SESSION['inntxt'] = $_POST['inntext'];
 }
     if(!empty($_POST['tittel']) && !empty($_POST['oppgtxt']) && !empty($_POST['oppgPK'])) {
-        $otittel = $_POST['tittel'];
-        $otekst = $_POST['oppgtxt'];
-        $oppgPK = $_POST['oppgPK'];
-        $bruker     = $user_data['brukerPK'];
-        $antFeil    = 0;
-        $ferdig     = 0;
-        $tidBrukt = $_POST['tid'];
+    $otittel = $_POST['tittel'];
+    $otekst = $_POST['oppgtxt'];
+    $_SESSION['otittel'] = $otittel;
+    $_SESSION['oppgtxt'] = $otekst;
+    $_SESSION['oppgPK'] = $_POST['oppgPK'];  
+
+    $_SESSION['tid'] = 0;
+    $_SESSION['antfeil'] = 0;
+    $_SESSION['percent'] = 0;
+
     }
+} else {
+$otittel = "";
+$otekst = "";
+$tid = 0;
+$antfeil = 0;
+$percent = 0;
+
 }
+
+  
 
 ?>
 <!doctype html>
@@ -55,10 +64,11 @@ include_once 'design/head.php'; ?>
                     <input type="button" value="reset" onclick="reset()">
                     <p>
                     <?php 
-                        echo "tid brukt: ".$tid;
+                        echo "tid brukt: ".$_SESSION['tid'];
+                        echo "<br>Antall feil: ".$_SESSION['antfeil']. "<br> Prosent rett: ".$_SESSION['percent'];
                      ?>
                      </p>
-                    <form action="skriv.php" method="POST">
+                    <form action="add_besvarelse.php" method="POST">
                       <h5>Tid brukt</h5>
                       <div><span name="tid" id="time"></span></div>
                     <br>
@@ -67,11 +77,7 @@ include_once 'design/head.php'; ?>
                         <input name="fullfor" type="submit" onclick="" value="Innlever"/> for endelig innlevering
                     <br>
                         <input name="lagreoppg" type="submit" onclick="transfer();" value="Lagre"/> for å fortsette senere
-                        <input name="tid" id="stid" type="hidden" value="<?php $tidBrukt ?>"/>
-                        <input name="ferdig" id="sferdig" type="hidden" value="<?php $ferdig ?>"/>
-                        <input name="antfeil" id="santfeil" type="hidden" value="<?php $antFeil ?>"/>
-                        <input name="oppgPK" id="soppgPK" type="hidden" value="<?php $oppgPK ?>"/>
-                        <input name="brukerPK" id="sbrukerPK" type="hidden" value="<?php $brukerPK ?>"/>
+                        <input name="tid" id="stid" type="hidden" value="<?php $tid ?>"/>
             </div>
         </div>
             <div class="bfright">
