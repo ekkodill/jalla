@@ -35,7 +35,11 @@ include_once 'design/head.php'; ?>
 
 <div class="opgtextramme"><textarea id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
 
-<div class="uboliste"></div>
+<div class="uboliste">
+                    <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></center></legend>
+                   <?php include_once 'besvartliste.php'; ?>
+
+            </div>
 
 
 <div id="container">
