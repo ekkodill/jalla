@@ -7,18 +7,25 @@ $result = ubesvarteOppg($bPK);
 while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
     $tittel = $row['tittelOppgave'];
-    $veileder = $row['veileder'];
+    $vPK = $row['veileder'];
+    $veileder = finnBruker($vPK);
     $vedlegg = $row['linkVedlegg'];
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
 	$oppgtekst = hentOppgave($PK);
 	$sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
+    if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
+    if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
+    if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
 
     echo "<form class='ubesform' action='' method='POST'>";
     echo "<tr>";
-    echo "<td id='oppg".$PK."'  name='tittel'>
-    <a href='vedlegg/".$vedlegg."'>". $row['tittelOppgave']." | ". $row['veileder']." | ". $row['vanskelighetsgrad']."</a>
-    </td>";
-   	
+    echo "<td id='oppg".$PK."'  name='tittel'>";
+    if(!empty($vedlegg)) {
+      echo "<a href='vedlegg/".$vedlegg."'>". $row['tittelOppgave']." laget av ".$veileder." | ".$vanskelighetsgrad."</a>";
+    } else {
+      echo $row['tittelOppgave']." laget av ".$veileder ." | ".$vanskelighetsgrad;
+    }
+    echo "</td>";
    	echo "<td><a href='#openModal".$PK."'><img src='img/open.png' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
    	   	echo "<div id='openModal".$PK."' class='modalDialog'>
 			<div>

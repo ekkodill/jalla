@@ -14,6 +14,7 @@ var divelement = document.getElementById(id);
 
 
 
+
 //Variabel for capslock on\off. 0 = off
 var capslock = "0";
 

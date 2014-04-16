@@ -17,12 +17,6 @@ if(isset($_SESSION['tid']) && isset($_SESSION['antfeil']) && isset($_SESSION['pe
 
 //Sjekker om det kommer fra deltakernsstartside med oppgavetekst og tittel
 if (!empty($_POST)) {
- //if(isset($_POST['lagreoppg'])) {
-    //$otittel = "";
-    //$otekst = "";
-    //$tid = $_POST['tid'];
-    //$_SESSION['inntxt'] = $_POST['inntext'];
-//}
     if(!empty($_POST['tittel']) && !empty($_POST['oppgtxt']) && !empty($_POST['oppgPK'])) {
     $otittel = $_POST['tittel'];
     $otekst = $_POST['oppgtxt'];
@@ -36,15 +30,10 @@ if (!empty($_POST)) {
     $otid = 0;
     $ofeil = 0;
     $oprosent = 0;
-
     }
 } else {
 $otittel = "";
 $otekst = "";
-//$otid = 0;
-//$ofeil = 0;
-//$oprosent = 0;
-
 }
 
   
@@ -53,18 +42,15 @@ $otekst = "";
 <!doctype html>
 <html>
 <style type="text/css">
- <!-- 
-  #opgtekst {
- background: url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg);
- background-position: center;
-  }
- -->
+#opgtekst {
+    background: url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg);
+    background-position: center;
+}
  </style>
 <?php
 $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
-
 <body onload="show();">
     <div id="page">
   <?php include_once 'design/header.php'; ?>
@@ -72,24 +58,23 @@ include_once 'design/head.php'; ?>
     
         <div class="bfleft">
             <div class="valgmuligheter">             
-                    <input type="button" value="start" onclick="start();">
                     <input type="button" value="stop" onclick="stop();">
                     <input type="button" value="reset" onclick="reset()">
                     <p>
                     <?php 
                         echo "tid brukt: ".$otid;
-                        echo "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent;
+                        echo "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%";
                      ?>
                      </p>
                     <form action="add_besvarelse.php" method="POST">
                       <h5>Tid brukt</h5>
                       <div><span name="tid" id="time"></span></div>
-                    <br>
+                    
                         <input type="button" onclick="toggle_div('container');" value="Klikk her"/> for å skjule \ vise tastaturet
                     <br>
-                        <input name="fullfor" type="submit" onclick="" value="Innlever"/> for endelig innlevering
+                        <input name="fullfor" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
                     <br>
-                        <input name="lagreoppg" type="submit" onclick="transfer();" value="Lagre"/> for å fortsette senere
+                        <input name="lagreoppg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden"/>
             </div>
         </div>
@@ -97,7 +82,7 @@ include_once 'design/head.php'; ?>
                 <div class="oppgavetittel"><?php echo $otittel; ?></div>
                 <div class="fasit"><?php echo $otekst;  ?></div>
             </div>
-                <div class="opgtextramme"><textarea name="inntext" id="opgtekst" onfocus="this.style.background='#f2f2f2'" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg) '"></textarea></div>
+                <div class="opgtextramme"><textarea name="inntext" id="opgtekst" onfocus="this.style.background='#f2f2f2'; start();" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg); '"></textarea></div>
     </form>
             <div class="uboliste">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
