@@ -6,8 +6,6 @@ include_once 'includes/init.php';
 $pgName = 'Touch-tastatur';
 
 
-
-
 if(isset($_SESSION['tid']) && isset($_SESSION['antfeil']) && isset($_SESSION['percent'])) {
     $otid = $_SESSION['tid'];
     $ofeil = $_SESSION['antfeil'];
@@ -25,11 +23,11 @@ if (!empty($_POST)) {
     $otekst = $_POST['oppgtxt'];
     $_SESSION['otittel'] = $otittel;
     $_SESSION['oppgtxt'] = $otekst;
-    $_SESSION['oppgPK'] = $_POST['oppgPK'];  
-
+    $_SESSION['oppgPK'] = $_POST['oppgPK'];
+    $_SESSION['innlPK'] = $_POST['innPK'];
 
     $lagrettext = $_POST['lagrettext'];
-    $_SESSION['testtxt'] = $lagrettext;
+    //$_SESSION['testtxt'] = $lagrettext;
     $_SESSION['tid'] = 0;
     $_SESSION['antfeil'] = 0;
     $_SESSION['percent'] = 0;
@@ -43,26 +41,25 @@ $otekst = "";
 $lagrettext = "";
 }
 
+
  if (isset($_POST['oppgliste'])) { 
     if($_POST['oppgliste']=='ubesvoppg') {
-        $_SESSION['test'] ='ubesvoppg';
-        echo $_SESSION['test'];
+        $test = 'ubesvoppg';
+       $_SESSION['test'] ='ubesvoppg';
+    
 $otittel = "";
 $otekst = "";
 $lagrettext = "";
 }
  if($_POST['oppgliste'] =='pbegoppg') {
         $_SESSION['test'] ='pbegoppg';
-        echo $_SESSION['test'];
+     
 $otittel = "";
 $otekst = "";
 $lagrettext = "";
 }
-} else {
-    $_SESSION['test'] = "";
-}
+} 
 
-  
 
 ?>
 <!doctype html>
@@ -116,12 +113,26 @@ include_once 'design/head.php'; ?>
             <div class="uboliste">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
                 <form action="skriv.php" id="velgli" method="post">
-            <select name='oppgliste' onchange="this.form.submit();">
-            <option name="ubesvoppg"     value='ubesvoppg'   <?php if (isset($_POST['oppgliste'])) { if($_POST['oppgliste']=='ubesvoppg')  {echo "selected='selected'"; }} ?>>Ubesvarte oppgaver</option>
-                    <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['oppgliste']))  { if($_POST['oppgliste']=='pbegoppg') {echo "selected='selected'"; }} ?>>Påbegynte oppgaver</option>
+            <select id='sel' name='oppgliste' onchange="this.form.submit();">
+            <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_SESSION['test'])) { if($_SESSION['test'] == 'ubesvoppg') {echo "selected";}}?> >Ubesvarte oppgaver</option>
+                <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['test'])) { if($_SESSION['test'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
             </select></center><br>
             </form> 
-                <?php include_once 'ubesvartliste.php'; ?> 
+
+
+                <?php 
+
+        $bPK = $user_data['brukerPK'];
+
+    if($_SESSION['test'] == 'ubesvoppg') {
+      $result = ubesvarteOppg($bPK, 3);
+    } elseif( $_SESSION['test'] =='pbegoppg') {
+      $result = ubesvarteOppg($bPK, 0);
+    } else {
+        $result = ubesvarteOppg($bPK, 3);
+    }
+
+                include_once 'ubesvartliste.php'; ?> 
             </div>
 <div id="container">
 
@@ -195,5 +206,7 @@ include_once 'design/head.php'; ?>
 </section>
 <?php include_once('design/footer.php'); ?>
 </div>
+
 </body>
+
 </html>

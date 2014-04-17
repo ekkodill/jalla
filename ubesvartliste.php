@@ -2,27 +2,9 @@
   <tbody>
 <?php 
 
-$bPK = $user_data['brukerPK'];
-/*
-    if(isset($_POST['oppgliste'])) {
-      if($_POST['oppgliste'] == 'ubesvoppg') {
-       $result = ubesvarteOppg($bPK, 1);
-      } elseif($_POST['oppgliste'] == 'pbegoppg') {
-        $result = ubesvarteOppg($bPK, 0);
-      }
-    } else { $result = ubesvarteOppg($bPK, 1); }
-*/
-
-    if($_SESSION['test'] == 'ubesvoppg') {
-      $result = ubesvarteOppg($bPK, 1);
-    } elseif( $_SESSION['test'] =='pbegoppg') {
-      $result = ubesvarteOppg($bPK, 0);
-    } else {
-      $result = ubesvarteOppg($bPK, 1);
-    }
-    
 while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
+    $innlPK = "";
     $tittel = $row['tittelOppgave'];
     $vPK = $row['veileder'];
     $veileder = finnBruker($vPK);
@@ -30,12 +12,14 @@ while ($row = $result->fetch_assoc()) {
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
   $oppgtekst = hentOppgave($PK);
   $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
+  if($_SESSION['test'] =='pbegoppg') {
+  $_SESSION['gammelTid'] = $row['tidBrukt'];
+  $_SESSION['innlPK'] = $row['innleveringPK'];
   $lagrettext = $row['tekstInnlevering'];
-
+}
     if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
-
 
     echo "<form class='ubesform' action='skriv.php' method='POST'>";
     echo "<tr>";
@@ -63,6 +47,7 @@ while ($row = $result->fetch_assoc()) {
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
     echo "<input type='hidden' name='lagrettext' value='".$lagrettext."'/>";
+    echo "<input type='hidden' name='innPK' value='".$innlPK."'/>";
   echo "</td></tr></form>";
  }
 

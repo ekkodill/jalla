@@ -12,26 +12,39 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
         $tid        =  substr($_POST['tid'],0,-4); //fjerner millisekunder
         $tidBrukt   = date_create_from_format('H:i:s', $tid); //gjør det om til en datetime format objekt
         $mySqlTime  = date('H:i:s', $tidBrukt->getTimestamp()); //gjør datetime objektet om til mysql time format
-        $_SESSION['antfeil'] = (strlen($_SESSION['oppgtxt']) - similar_text($_SESSION['inntxt'], $_SESSION['oppgtxt']));
-        $antFeil    = $_SESSION['antfeil'];
+        $_SESSION['antfeil']  = (strlen($_SESSION['oppgtxt']) - similar_text($_SESSION['inntxt'], $_SESSION['oppgtxt']));
+        $antfeil    = $_SESSION['antfeil'];
         $ferdig     = 0; 
         $_SESSION['tid'] = $tid;
-        if(!empty($_POST['fullfor'])) { 
+        similar_text($_SESSION['oppgtxt'], $_SESSION['inntxt'], $percent);
+        $_SESSION['percent'] = round($percent);
+        if(!empty($_POST['fullfor'])) {
+            $innPK      = $_SESSION['innlPK'];
+            $gammelTid = $_SESSION['gammelTid'];
+            $secs = strtotime($gammelTid)-strtotime("00:00:00"); //Gjør om til sekunder
+            $result = date("H:i:s",strtotime($mySqlTime)+$secs); //Legger på sekundene til den nye tiden
+            $_SESSION['tid'] = $result;
             $ferdig = 1;
-        }
+
+                $query = "
+                UPDATE innleveringer 
+                    SET bruker = $bruker, oppgave = $oppgavenr, tekstInnlevering ='".$oppg."', datoLevert=now(), tidBrukt ='".$result."', antallFeil = $antfeil, ferdig = $ferdig 
+                    WHERE innleveringPK = $innPK LIMIT 1";
+
+        if($db->query($query)) {
+            redirect("skriv.php");
+            }
+        } else {
           
                 $insert = $db->prepare("INSERT INTO innleveringer (bruker, oppgave, tekstInnlevering, datoLevert, tidBrukt, antallFeil, ferdig) VALUES (?,?,?,now(),?,?,?)");
-                $insert->bind_param('iissii', $bruker, $oppgavenr, $oppg, $mySqlTime, $antFeil, $ferdig);
+                $insert->bind_param('iissii', $bruker, $oppgavenr, $oppg, $mySqlTime, $antfeil, $ferdig);
         
-                if($insert->execute()) {
-                   similar_text($_SESSION['oppgtxt'], $_SESSION['inntxt'], $percent);
-                    $_SESSION['percent'] = round($percent);
-                   
+                if($insert->execute()) {                  
                     header('Location: skriv.php');
                     die();
-                }
-    } else { redirect("skriv.php"); }
-}
+                }  else { redirect("skriv.php"); }
+        }
     
-
+} 
+}  
  ?>

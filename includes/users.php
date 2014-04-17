@@ -33,7 +33,7 @@ function ubesvarteOppg($bPK, $ferdig) {
 	} elseif ($ferdig == 1) {
 		//Liste med innleveringer til angitt bruker som er ferdig
 		$query = "
-		SELECT innleveringer.*, oppgaver.* FROM innleveringer
+		SELECT innleveringer.*, oppgaver.* FROM oppgaver
         JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = $ferdig";
 	} else {
 		//Liste med oppgaver til angitt bruker som er ubesvarte
