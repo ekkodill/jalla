@@ -1,5 +1,5 @@
 <table class="ubesform">
-	<tbody>
+  <tbody>
 <?php 
 
 $bPK = $user_data['brukerPK'];
@@ -28,13 +28,14 @@ while ($row = $result->fetch_assoc()) {
     $veileder = finnBruker($vPK);
     $vedlegg = $row['linkVedlegg'];
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
-	$oppgtekst = hentOppgave($PK);
-	$sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
+  $oppgtekst = hentOppgave($PK);
+  $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
   $lagrettext = $row['tekstInnlevering'];
 
     if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
+
 
     echo "<form class='ubesform' action='skriv.php' method='POST'>";
     echo "<tr>";
@@ -45,26 +46,26 @@ while ($row = $result->fetch_assoc()) {
       echo $row['tittelOppgave']." laget av ".$veileder ." | ".$vanskelighetsgrad;
     }
     echo "</td>";
-   	echo "<td><a href='#openModal".$PK."'><img src='img/open.png' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
-   	   	echo "<div id='openModal".$PK."' class='modalDialog'>
-			<div>
-				<a href='#close' title='Close' class='close'>X</a>
-				<h2>".$tittel."</h2>
-				$sanitized
-        		<br>
-        		<br>
-        		<p>Vedlegg: <a href='vedlegg/".$vedlegg."'>".$vedlegg."</a></p>
-			</div>
-		</div>";
-   	
-   	echo "<input type='image' src='img/edit.jpg' id='s".$PK."' />";
+    echo "<td><a href='#openModal".$PK."'><img src='img/open.png' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
+        echo "<div id='openModal".$PK."' class='modalDialog'>
+      <div>
+        <a href='#close' title='Close' class='close'>X</a>
+        <h2>".$tittel."</h2>
+        $sanitized
+            <br>
+            <br>
+            <p>Vedlegg: <a href='vedlegg/".$vedlegg."'>".$vedlegg."</a></p>
+      </div>
+    </div>";
+    
+    echo "<input type='image' src='img/edit.jpg' id='s".$PK."' />";
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
     echo "<input type='hidden' name='lagrettext' value='".$lagrettext."'/>";
-	echo "</td></tr></form>";
+  echo "</td></tr></form>";
  }
 
  ?>
-	<tbody>
+  <tbody>
 </table>
