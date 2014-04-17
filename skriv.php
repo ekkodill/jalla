@@ -5,6 +5,9 @@ include_once 'includes/init.php';
 
 $pgName = 'Touch-tastatur';
 
+
+
+
 if(isset($_SESSION['tid']) && isset($_SESSION['antfeil']) && isset($_SESSION['percent'])) {
     $otid = $_SESSION['tid'];
     $ofeil = $_SESSION['antfeil'];
@@ -24,6 +27,9 @@ if (!empty($_POST)) {
     $_SESSION['oppgtxt'] = $otekst;
     $_SESSION['oppgPK'] = $_POST['oppgPK'];  
 
+
+    $lagrettext = $_POST['lagrettext'];
+    $_SESSION['testtxt'] = $lagrettext;
     $_SESSION['tid'] = 0;
     $_SESSION['antfeil'] = 0;
     $_SESSION['percent'] = 0;
@@ -34,6 +40,26 @@ if (!empty($_POST)) {
 } else {
 $otittel = "";
 $otekst = "";
+$lagrettext = "";
+}
+
+ if (isset($_POST['oppgliste'])) { 
+    if($_POST['oppgliste']=='ubesvoppg') {
+        $_SESSION['test'] ='ubesvoppg';
+        echo $_SESSION['test'];
+$otittel = "";
+$otekst = "";
+$lagrettext = "";
+}
+ if($_POST['oppgliste'] =='pbegoppg') {
+        $_SESSION['test'] ='pbegoppg';
+        echo $_SESSION['test'];
+$otittel = "";
+$otekst = "";
+$lagrettext = "";
+}
+} else {
+    $_SESSION['test'] = "";
 }
 
   
@@ -42,10 +68,10 @@ $otekst = "";
 <!doctype html>
 <html>
 <style type="text/css">
-#opgtekst {
+/*#opgtekst {
     background: url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg);
     background-position: center;
-}
+}*/
  </style>
 <?php
 $pgName = 'Touch-tastatur';
@@ -80,12 +106,21 @@ include_once 'design/head.php'; ?>
         </div>
             <div class="bfright">
                 <div class="oppgavetittel"><?php echo $otittel; ?></div>
-                <div class="fasit"><?php echo $otekst;  ?></div>
+                <div class="fasit"><?php echo $otekst; ?></div>
             </div>
-                <div class="opgtextramme"><textarea name="inntext" id="opgtekst" onfocus="this.style.background='#f2f2f2'; start();" onblur="this.style.background='url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg); '"></textarea></div>
-    </form>
+                <div class="opgtextramme">
+
+             <textarea name='inntext' id='opgtekst' onfocus='start();'><?php echo $lagrettext  ?></textarea>
+
+            </form></div>
             <div class="uboliste">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
+                <form action="skriv.php" id="velgli" method="post">
+            <select name='oppgliste' onchange="this.form.submit();">
+            <option name="ubesvoppg"     value='ubesvoppg'   <?php if (isset($_POST['oppgliste'])) { if($_POST['oppgliste']=='ubesvoppg')  {echo "selected='selected'"; }} ?>>Ubesvarte oppgaver</option>
+                    <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['oppgliste']))  { if($_POST['oppgliste']=='pbegoppg') {echo "selected='selected'"; }} ?>>Påbegynte oppgaver</option>
+            </select></center><br>
+            </form> 
                 <?php include_once 'ubesvartliste.php'; ?> 
             </div>
 <div id="container">

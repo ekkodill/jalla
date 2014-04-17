@@ -13,22 +13,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	    </thead>
     <tbody>
     <?php
-    $type = $user_data['brukertype'];
-    $bPK = $user_data['brukerPK'];
-    switch($type) {
-      case 1:
-      $result = oppgListe(1,$bPK);
-      break;
-      case 2:
-      $result = oppgListe(2,$bPK); 
-      break;
-      case 3:
-      $result = oppgListe(3,$bPK);
-      break;
-      default:
-      $result = oppgListe(3,$bPK); 
-    }
-    
+    $result = oppgListe("liste"); //Henter liste fra databasen gruppert på vanskelighetsgrad og sortert på dato
     while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
     $vPK = $row['veileder'];

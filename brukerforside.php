@@ -14,14 +14,11 @@ $db = getDB();
 	<?php include 'design/header.php'; ?>
 		<section>
 		<!-- Brukerforside main venstre !-->
-		
 			<div id="bfvenstre">
 			<center><legend><h4>Ubesvarte oppgaver</h4></legend></center>
-			<?php include'oppgaveliste.php'; ?>
+			<?php include'ubesvartliste.php'; ?>
 			</div>
-
 		<!-- Brukerforside main hoyre !-->
-		
 			<div id="bfhoyre">
 			<center><legend><h4>Besvarte oppgaver</h4></legend></center>
 			<?php include'besvart.php'; ?>
@@ -29,5 +26,6 @@ $db = getDB();
 		</section>
 	<?php include('design/footer.php'); ?>
 	</div>
+
 </body>
 </html>

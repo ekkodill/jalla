@@ -279,6 +279,9 @@ display:none;
     margin-bottom:6%;
     float:left;
 }
+#opgtekst:focus {
+    background: green;
+}
 .uboliste{
     overflow: scroll;
     border:1px solid #000;

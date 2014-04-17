@@ -38,7 +38,7 @@ if(!empty($_POST['lagre'])) {
     <tbody>
     <?php
 
-    $result = $db->query("SELECT * FROM innleveringer") ;
+    $result = oppgListe("besvart"); //Henter liste med besvarelser uten responser
     while ($row = $result->fetch_assoc()) {
     $PK = $row['innleveringPK'];
     $besvarelse = $row['tekstInnlevering'];
