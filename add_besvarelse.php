@@ -3,7 +3,8 @@ include_once 'includes/init.php';
 $db = getDB();
 
 
-if(!empty($_POST['lagreoppg']) || !empty($_POST['fullor'])) {
+if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
+    if(!empty($_POST['inntext']) && !empty($_POST['tid']) && !empty($_SESSION['oppgPK'])) {
         $bruker     = $user_data['brukerPK'];
         $oppgavenr  = $_SESSION['oppgPK'];
         $oppg       = $_POST['inntext'];
@@ -15,7 +16,7 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullor'])) {
         $antFeil    = $_SESSION['antfeil'];
         $ferdig     = 0; 
         $_SESSION['tid'] = $tid;
-        if(!empty($_POST['fullor'])) { 
+        if(!empty($_POST['fullfor'])) { 
             $ferdig = 1;
         }
           
@@ -24,12 +25,13 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullor'])) {
         
                 if($insert->execute()) {
                    similar_text($_SESSION['oppgtxt'], $_SESSION['inntxt'], $percent);
-                    $_SESSION['percent'] = $percent;
+                    $_SESSION['percent'] = round($percent);
                    
                     header('Location: skriv.php');
                     die();
                 }
-    }
+    } else { redirect("skriv.php"); }
+}
     
 
  ?>

@@ -3,25 +3,47 @@
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
 //Henter fullstendig oppgaveliste for admin\veiledere og kun ubesvarte oppgaver for deltakere
-function oppgListe($type, $bPK) {
+function oppgListe($liste) {
 	$db = getDB();
-	if($type == 1 || $type == 2) {
-		$result = $db->query("SELECT * FROM oppgaver");	
-	} else {
-		$result = ubesvarteOppg($bPK);
-			}
+	if($liste == "besvart") {
+		//Liste med besvarelser uten respons
+		$query = "
+		SELECT oppgaver.*, innleveringer.* 
+		FROM oppgaver
+		JOIN innleveringer ON (oppgaver.oppgavePK = innleveringer.oppgave)
+		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NULL;";
+	} elseif($liste == "liste") {
+		//Liste med oppgaver gruppert på vanskelighetsgrad sortert på dato
+		$query = "
+		SELECT * FROM (select * from oppgaver ORDER BY datoEndret desc) as sortbydato
+		order by vanskelighetsgrad";
+	}
+	$result = $db->query($query);
 	return $result;
 }
 
 //Henter kun ubesvarte oppgaver for spesifisert deltaker
-function ubesvarteOppg($bPK) {
+function ubesvarteOppg($bPK, $ferdig) {
 	$db = getDB();
-	$result = $db->query("
-SELECT oppgaver.*
-FROM oppgaver
-LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK)
-WHERE innleveringer.oppgave IS NULL");
-
+	if($ferdig == 0) {
+		//Liste med innleveringer til angitt bruker som ikke er ferdig
+		$query = "
+		SELECT innleveringer.*, oppgaver.* FROM innleveringer
+        JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = $ferdig";
+	} elseif ($ferdig == 1) {
+		//Liste med innleveringer til angitt bruker som er ferdig
+		$query = "
+		SELECT innleveringer.*, oppgaver.* FROM innleveringer
+        JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = $ferdig";
+	} else {
+		//Liste med oppgaver til angitt bruker som er ubesvarte
+		$query = "
+		SELECT oppgaver.*
+		FROM oppgaver
+		LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK)
+		WHERE innleveringer.oppgave IS NULL";
+	}
+	$result = $db->query($query);
 	return $result;
 }
 
