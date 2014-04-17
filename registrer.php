@@ -53,22 +53,26 @@ if(!empty($_POST)) {
 				include('design/header.php');
 				?>
 		        <section>
-		       	<center><legend><h4>Registrering</h4></legend></center>
-					<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-						Fornavn: <input type="text" name="fornavn" /><br />
-						Etternavn: <input type="text" name="etternavn" /><br />
-						E-post: <input type="text" name="ePost" /><br />
+		        
+		       	<legend class="regtitbredde"><center><h4>Registrering</h4></center>
+					<form class="registrering" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"><br />
+					Fornavn*<br /> <input class="fornavn" type="text" name="fornavn" /><br />
+						Etternavn*<br /> <input class="etternavn" type="text" name="etternavn" /><br />
+						E-post*<br /> <input class="epostad" type="text" name="ePost" /><br />
 						<input type="hidden" name="btype" value="deltaker">
-
+                         <p>*Må fylles ut</p>
 						<input type="submit" value="Registrer" name="register">
-					</form>
-				<span>
+						<span class="feilmelding">
 					<?php
 							if (empty($errors) === false) {
 							echo output_errors($errors);
 							}
 					?>
 				</span>
+					</form>
+
+					</legend>
+				
 				</section>
 	    		<?php include('design/footer.php'); ?>
        		</div>
