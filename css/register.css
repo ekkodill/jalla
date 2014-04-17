@@ -1,0 +1,64 @@
+/*
+Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 17.04.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 18.04.2014 
+*/
+
+
+/*---- Registreringsformen ----*/
+.registrering{
+
+	width:100%;
+	height:50%;
+	margin:auto;
+	position:relative;
+	padding:7px;
+	/*----Runde hjørner----*/
+	border: 1px solid #999;	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	outline: 0;
+
+}
+
+/*---- Justeringa avtittelen "Registrering" ----*/
+.regtitbredde{
+	width:18%;
+	height:60%;
+margin-left:auto;
+margin-right:auto;
+
+}
+
+/*---- Registreringsfeltene ----*/
+.fornavn, .etternavn, .epostad{
+width: auto;
+	height: auto;
+	font-size: 0.9em;
+}
+
+
+/*---- Registreringsknappen ----*/
+.registrer{
+	width:80px;
+	height:35px;
+	background:#99CCFF;
+    color:#000;
+    font-size: 1em;
+    margin-left: 0px;
+    margin-top: 10px;
+
+    /*----Runde hjørner----*/
+    border: 1px solid #999;	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	outline: 0;
+}
+
+.feilmelding{
+	width:80%;
+    margin-top:1%;
+
+
+}
