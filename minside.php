@@ -31,16 +31,26 @@ if($user_data['passord'] != $gammeltpw) {
     <body onunload="unloadP('oppgave')" onload="loadP('oppgave')">
         <div id="page">
           <?php include 'design/header.php'; ?>
-          <main>
+          <section>
+          <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"67%" width="85%"alt="bilde"></div>
+          <div class="profinfo">
+Fornavn: Erik<input type='image' id="bfred" src='img/edit.jpg' alt='Rediger fornavn'><br />
+Etternavn: Bjørnflaten<input type='image' id="bfred" src='img/edit.jpg' alt='Rediger etternavn'><br />
+E-post: valpeforum@gmail.com<input type='image' id="bfred" src='img/edit.jpg' alt='Rediger e-post'><br />
+</div>
+          </div>
+          <div class="ikkeferi"><h3>Du har <?php if(logged_in() === true) { echo "".ubesvarteOppg($user_data['brukerPK'])->num_rows.""; } ?> 
+        <a href="default.php"> uferdig oppgave(r)</h3><br /><?php include_once 'ubesvartliste.php'; ?></div>
+
             <div id="minside">
                 <form id="byttpw" name="reg" method="post" action="minside.php">
                  <h2>Bytt passord</h2>
                     Gammelt passord: 
-                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"><br>
+                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"><br /><br />
                     Nytt passord: 
-                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"><br>
+                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"><br /><br />
                     Bekreft nytt passord: 
-                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"><br>
+                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"><br /><br />
                     <input type="Submit" id="pwknapp" name="nypw" value="Bekreft">
                     <br><?php 
                     if (empty($errors) === false) {
@@ -48,7 +58,7 @@ if($user_data['passord'] != $gammeltpw) {
                     } ?>
                 </form>
             </div>
-         </main>
+         </section>
      <?php include('design/footer.php'); ?>    
     </body>
 </html>
