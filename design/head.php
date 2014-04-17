@@ -15,6 +15,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	<link href='css/keyboard.css'	rel='stylesheet' type='text/css' />
 	<link href="css/Minside.css" 	rel="stylesheet" type="text/css">  
 	<link href="css/ny_oppgave.css" 	rel="stylesheet" type="text/css">
+	<link href="css/register.css" 	rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
  </head>
