@@ -5,6 +5,8 @@
 while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
     $innlPK = "";
+    $gammelTid="";
+    $lagrettext="";
     $tittel = $row['tittelOppgave'];
     $vPK = $row['veileder'];
     $veileder = finnBruker($vPK);
@@ -12,11 +14,13 @@ while ($row = $result->fetch_assoc()) {
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
   $oppgtekst = hentOppgave($PK);
   $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
-  if($_SESSION['test'] =='pbegoppg') {
-  $_SESSION['gammelTid'] = $row['tidBrukt'];
-  $_SESSION['innlPK'] = $row['innleveringPK'];
+ 
+  if(!empty($_POST) && $_SESSION['drpdwnlist'] =='pbegoppg') {
+  $gammelTid = $row['tidBrukt'];
+  $innlPK = $row['innleveringPK'];
   $lagrettext = $row['tekstInnlevering'];
-}
+} else { $_SESSION['drpdwnlist'] = 'ubesvoppg'; }
+
     if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
@@ -48,6 +52,8 @@ while ($row = $result->fetch_assoc()) {
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
     echo "<input type='hidden' name='lagrettext' value='".$lagrettext."'/>";
     echo "<input type='hidden' name='innPK' value='".$innlPK."'/>";
+    echo "<input type='hidden' name='gammelTid' value='".$gammelTid."'/>";
+
   echo "</td></tr></form>";
  }
 

@@ -40,9 +40,24 @@ function slette(fornavn, etternavn, id, denne, type) {
 }
 
 
+
 //Tar bort readonly fra inputboksene når man trykker på "blyant"-ikonet for å endre brukerdata
   function onEdit(btn, type, pk, brukertype) {
       var id=btn.id;
+     
+
+      //Går gjennom alle input knappene med classen "edituser" for å skjule \ vise knappen kun for en rad om gangen
+      var a = document.querySelectorAll('.edituser');
+            for(var i = 0; i<a.length; i++) {
+                if(a[i].id != "s"+id) {
+                  a[i].style.display="none";   
+              }
+              else{  
+                a[i].style.display="inline-block";
+              }
+            }
+
+
       var liste = document.getElementById("typer"+id);
       var btype = liste.options[liste.selectedIndex].text;
       
@@ -54,11 +69,23 @@ function slette(fornavn, etternavn, id, denne, type) {
      
       fjernType(type, "typer"+id, pk, brukertype); //Fjerner alternativer fra nedtrekksmenyene om brukertyper i forhold til rettighetene brukeren har.
       
-      document.getElementById("ePost"+id).removeAttribute("Readonly");
-      document.getElementById("etternavn"+id).removeAttribute("Readonly");
-      document.getElementById("fornavn"+id).removeAttribute("Readonly");
-      document.getElementById("typer"+id).removeAttribute("disabled");
-      document.getElementById("s"+id).removeAttribute("hidden");
+    //Går gjennom alle elementene på formene med navn lol og setter readonly og disabled til true slik at bare en rad er aktiv om gangen
+      var f = document.querySelectorAll('.tarea');
+            for(var i=0,fLen=f.length;i<fLen;i++){
+            if(f[i].id != "ePost"+id && f[i].id != "etternavn"+id && f[i].id != "fornavn"+id && f[i].id != "typer"+id ) {          
+                f[i].readOnly = true;
+                f[i].disabled = true;
+              } else {
+                f[i].readOnly = false;
+                f[i].disabled = false;
+              }
+              }
+
+      //document.getElementById("ePost"+id).removeAttribute("Readonly");
+      //document.getElementById("etternavn"+id).removeAttribute("Readonly");
+      //document.getElementById("fornavn"+id).removeAttribute("Readonly");
+      //document.getElementById("typer"+id).removeAttribute("disabled");
+      document.getElementById("ePost"+id).focus();
       return false;
   }
    

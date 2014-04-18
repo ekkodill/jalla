@@ -25,6 +25,8 @@ if (!empty($_POST)) {
     $_SESSION['oppgtxt'] = $otekst;
     $_SESSION['oppgPK'] = $_POST['oppgPK'];
     $_SESSION['innlPK'] = $_POST['innPK'];
+    $_SESSION['gammelTid'] = $_POST['gammelTid'];
+
 
     $lagrettext = $_POST['lagrettext'];
     //$_SESSION['testtxt'] = $lagrettext;
@@ -44,15 +46,14 @@ $lagrettext = "";
 
  if (isset($_POST['oppgliste'])) { 
     if($_POST['oppgliste']=='ubesvoppg') {
-        $test = 'ubesvoppg';
-       $_SESSION['test'] ='ubesvoppg';
+       $_SESSION['drpdwnlist'] ='ubesvoppg';
     
 $otittel = "";
 $otekst = "";
 $lagrettext = "";
 }
  if($_POST['oppgliste'] =='pbegoppg') {
-        $_SESSION['test'] ='pbegoppg';
+        $_SESSION['drpdwnlist'] ='pbegoppg';
      
 $otittel = "";
 $otekst = "";
@@ -74,15 +75,34 @@ $lagrettext = "";
 $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
-<body onload="show();">
+<body onunload="unloadP('skriv');" onload="loadP('skriv');">
     <div id="page">
   <?php include_once 'design/header.php'; ?>
     <section style="width:94%"> 
-    
+    <script type="text/javascript">
+
+        function loadinit() {
+        show();
+        loadStyle(); 
+
+               var editor = document.querySelector("#opgtekst");
+if (window.localStorage["TextEditorData"]) {
+    editor.value = window.localStorage["TextEditorData"];
+}    
+editor.addEventListener("keyup", function() {
+    window.localStorage["TextEditorData"] = editor.value;
+});
+}
+window.onload = loadinit;
+
+
+
+
+    </script>
         <div class="bfleft">
             <div class="valgmuligheter">             
                     <input type="button" value="stop" onclick="stop();">
-                    <input type="button" value="reset" onclick="reset()">
+                    <input type="button" value="reset" onclick="reset();">
                     <p>
                     <?php 
                         echo "tid brukt: ".$otid;
@@ -93,7 +113,7 @@ include_once 'design/head.php'; ?>
                       <h5>Tid brukt</h5>
                       <div><span name="tid" id="time"></span></div>
                     
-                        <input type="button" onclick="toggle_div('container');" value="Klikk her"/> for å skjule \ vise tastaturet
+                        <input type="button" onclick="setStyle('container');" value="Trykk"/>for å skjule\vise tastaturet
                     <br>
                         <input name="fullfor" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
                     <br>
@@ -114,8 +134,8 @@ include_once 'design/head.php'; ?>
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
                 <form action="skriv.php" id="velgli" method="post">
             <select id='sel' name='oppgliste' onchange="this.form.submit();">
-            <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_SESSION['test'])) { if($_SESSION['test'] == 'ubesvoppg') {echo "selected";}}?> >Ubesvarte oppgaver</option>
-                <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['test'])) { if($_SESSION['test'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
+            <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}}?> >Ubesvarte oppgaver</option>
+                <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
             </select></center><br>
             </form> 
 
@@ -123,12 +143,13 @@ include_once 'design/head.php'; ?>
                 <?php 
 
         $bPK = $user_data['brukerPK'];
-
-    if($_SESSION['test'] == 'ubesvoppg') {
+if(!empty($_SESSION['drpdwnlist'])) {
+    if($_SESSION['drpdwnlist'] == 'ubesvoppg') {
       $result = ubesvarteOppg($bPK, 3);
-    } elseif( $_SESSION['test'] =='pbegoppg') {
+    } elseif( $_SESSION['drpdwnlist'] =='pbegoppg') {
       $result = ubesvarteOppg($bPK, 0);
-    } else {
+    } 
+}else {
         $result = ubesvarteOppg($bPK, 3);
     }
 

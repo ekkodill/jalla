@@ -45,6 +45,6 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
                 }  else { redirect("skriv.php"); }
         }
     
-} 
+}  else { redirect("skriv.php"); }
 }  
  ?>

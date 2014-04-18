@@ -1,17 +1,28 @@
 ﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.02.2014
 // Denne siden er kontrollert av Kurt A. Aamodt, siste gang 19.02.2014
 
-//Skjuler eller viser tastaturet når man klikker på knappen.
-function toggle_div(id) {
-var divelement = document.getElementById(id);
-    if(divelement.style.display == 'none') {
-        divelement.style.display = 'block';
-    }
-    else {
-        divelement.style.display = 'none';
-    }
+
+       
+
+
+function setStyle(id) {
+    var keyboard = document.getElementById(id).style.display;
+        if(keyboard == 'none') {
+            localStorage.kstyle = 'block';
+        } else {
+            localStorage.kstyle = 'none';
+        }
+   document.getElementById(id).style.display = localStorage.kstyle;
 }
 
+function loadStyle() {
+   var stored = localStorage.kstyle;
+   if(stored) {
+    document.getElementById('container').style.display=stored;
+   } else {
+    document.getElementById('container').style.display='block';
+   }
+}
 
 //Variabel for capslock on\off. 0 = off
 var capslock = "0";
@@ -97,7 +108,7 @@ switch (key_code) {
                 event.preventDefault();
             }
             break;
-            default: element.style.background= "#99CCFF"; //Endrer fargen på de andre knappene
+            default: document.getElementById(key_code).style.background= "#99CCFF"; //Endrer fargen på de andre knappene
 
             //Stopper kombinasjoner med alt å taster og ctrl + T
             if(event.altKey && key_code == key_code || event.ctrlKey && key_code == 84) {
@@ -143,7 +154,7 @@ var element = document.getElementById(event.keyCode);
         case 20: return;
         break;
         default: 
-        element.style.backgroundColor = "white"; //Endrer fargen tilbake til standard
+        document.getElementById(event.keyCode).style.backgroundColor = "white"; //Endrer fargen tilbake til standard
     }
 }
 
@@ -191,5 +202,4 @@ document.onkeypress = function(evt) {
       }
       }
 */
-    
 

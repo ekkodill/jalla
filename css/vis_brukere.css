@@ -6,13 +6,7 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 30.03.2014
 /* CSS Document */
 
 
-input[readonly]
-{
-   	width:98%;
-    margin:2px;
-    background:#CCC;
-    color:black;
-}
+
 
 #sorterbtn {
 	height:30px;

@@ -48,7 +48,7 @@ $db = getDB();
                         break;
         }
     } else {
-        $sorter = "brukerPK ASC";
+        $sorter = "ePost ASC";
     }
     $result = getQuery($user_data['brukertype'], $sorter);
 
@@ -57,11 +57,11 @@ $db = getDB();
     while ($row = $result->fetch_assoc()) {
     $PK = $row['brukerPK'];
 
-    echo "<form action='' method='post' id='multiform'".$PK.">";
+    echo "<form name='lol' action='' method='post' id='multiform'".$PK.">";
     echo "<tr>";
-    echo "<td>" . "<input readonly='readonly' type='text' id='ePost".$PK."'      name='ePost'      value=" . $row['ePost']."></td>";
-    echo "<td>" . "<input readonly='readonly' type='text' id='etternavn".$PK."'  name='etternavn'  value=" . $row['etternavn']."></td>";
-    echo "<td>" . "<input readonly='readonly' type='text' id='fornavn".$PK."'    name='fornavn'    value=" . $row['fornavn']."></td>";
+    echo "<td>" . "<input class='tarea' readonly='readonly' type='text' id='ePost".$PK."'      name='ePost'      value=" . $row['ePost']."></td>";
+    echo "<td>" . "<input class='tarea' readonly='readonly' type='text' id='etternavn".$PK."'  name='etternavn'  value=" . $row['etternavn']."></td>";
+    echo "<td>" . "<input class='tarea' readonly='readonly' type='text' id='fornavn".$PK."'    name='fornavn'    value=" . $row['fornavn']."></td>";
     echo "<input type='hidden' name='brukerPK' value=$PK></td>";
     echo "<td>
     <select class='tarea' name='btype' id='typer".$PK."' disabled>
@@ -71,9 +71,9 @@ $db = getDB();
     </select></td>"; //Nedtrekksmeny for valg av brukertype
 
     if($user_data['brukertype'] == 3 && $user_data['brukerPK'] == $PK || $user_data['brukertype'] != 3) {
-        echo "<td><input type='image' src='img/edit.jpg' alt='Rediger bruker' title='Rediger bruker' name='edit' id=$PK onclick='return onEdit(this, $user_data[brukertype], $user_data[brukerPK], $row[brukertype])'; />"; //Knapp for å redigere brukerdata
+        echo "<td><input type='image' src='img/edit.jpg' alt='Rediger bruker' title='Rediger bruker' name='edit' id=$PK onclick='return onEdit(this, $user_data[brukertype], $user_data[brukerPK], $row[brukertype]);' />"; //Knapp for å redigere brukerdata
         echo "<input type='hidden'  name='lagreupdate' />";
-        echo "<input type='image' hidden src='img/save.jpg' alt='Lagre bruker' title='Lagre bruker' name='update' id='s".$PK."' onclick=this.form.action='update.php'; 'return onSave(this)'; />"; //Knapp for å lagre endringer
+        echo "<input type='image' hidden src='img/save.jpg' alt='Lagre bruker' class='edituser' title='Lagre bruker' name='update' id='s".$PK."' onclick=this.form.action='update.php'; 'return onSave(this)'; />"; //Knapp for å lagre endringer
     } if($user_data['brukertype'] != 3) {
         echo "<input type='hidden' name='slett' value='$row[brukerPK]' />"; //Knapp for å slette brukere
         echo "<input type='image' id='d".$PK."' src='img/delete.jpg' alt='Slett bruker' title='Slett bruker' name='formDelete' onclick='return slette(\"$row[fornavn]\", \"$row[etternavn]\", $PK, this, $user_data[brukertype])';   />"; 

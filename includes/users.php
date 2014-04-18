@@ -50,7 +50,7 @@ function ubesvarteOppg($bPK, $ferdig) {
 //Funksjon for glemt passord, oppretter et nytt og sender det på mail
 function glemtPW($epost) {
 		$gen_pw = generate_password(); //Generer passord med 8 karakterer
-		$passord = passord($gen_pw); //Salter og krypterer passordet
+		$passord = passord($gen_pw); //Salter og hasher passordet
 		$mailcheck = spamcheck($epost); //Sjekker at eposten er en gyldig adresse
 		endrePW($passord, $epost); //Endrer passordet i databasen
 		sendMail($epost, $gen_pw); //Sender det nye passordet på mail
@@ -281,7 +281,7 @@ function login($brukernavn, $passord) {
 
 
 
-//Krypterer passord og returner det
+//Hasher passord og returner det
 function passord($pw) {
 	$hash = hash('sha1', 'IT2'.$pw);
 	return $hash;

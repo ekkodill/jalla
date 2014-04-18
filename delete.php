@@ -8,9 +8,12 @@ $db = getDB(); //Tilkobling til databasen.
  	$id = sanitize($_POST['slett']);
     $result = $db->query("DELETE FROM brukere WHERE brukerPK = '$id' LIMIT 1");      
    if($result) {
+   		$_SESSION['delerr'] = "Brukeren ble slettet!";
   		header('Location: vis_brukere.php');  
    } else {
-   		echo "<script type='text/javascript'>alert('Det oppstod en feil med ID: ".$id."'); location.href='vis_brukere.php';</script>";   
+ 		$_SESSION['delerr'] = "Det oppstod en feil ved sletting av denne brukeren";
+   		redirect('vis_brukere.php');
+   		//echo "<script type='text/javascript'>alert('Det oppstod en feil med ID: ".$id."'); location.href='vis_brukere.php';</script>";   
  	}	
 
  } 

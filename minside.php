@@ -31,26 +31,77 @@ if($user_data['passord'] != $gammeltpw) {
     <body onunload="unloadP('oppgave')" onload="loadP('oppgave')">
         <div id="page">
           <?php include 'design/header.php'; ?>
+                        <script type="text/javascript">
+
+                        function jaaa() {
+                          var a = document.querySelectorAll('.bfred');
+                          for(var i = 0; i<a.length; i++) {
+                            a[i].style.display="none";  
+                          }
+                          
+                        }
+
+              function removeRO(id,save){
+               // alert(save);
+              var f = document.forms['lol'];
+              for(var i=0,fLen=f.length;i<fLen;i++){
+              f.elements[i].readOnly = true;//As @oldergod noted, the "O" must be upper case
+              }
+               
+              var a = document.querySelectorAll('.bfred');
+
+                          for(var i = 0; i<a.length; i++) {
+                           if(a[i].id != save) {
+                            a[i].style.display="none";
+                          
+                          } else {
+                            a[i].style.display="inline-block";
+                          }
+                          }
+
+
+
+
+              document.getElementById(id).removeAttribute("readonly");
+              
+              document.getElementById(id).focus();
+
+              // document.getElementById(id).style.background="red";
+                   return false;
+
+}
+          </script>
+ 
           <section>
           <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"67%" width="85%"alt="bilde"></div>
           <div class="profinfo">
-Fornavn: Erik<input type='image' id="bfred" src='img/edit.jpg' alt='Rediger fornavn'><br />
-Etternavn: Bjørnflaten<input type='image' id="bfred" src='img/edit.jpg' alt='Rediger etternavn'><br />
-E-post: valpeforum@gmail.com<input type='image' id="bfred" src='img/edit.jpg' alt='Rediger e-post'><br />
-</div>
+          <form name="lol" action="" method="POST">
+          <label>Fornavn:</label>
+          <input type="text" readonly class="minsinput" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/>
+          <input type='image' name="save" class="bfred" id="lfnavn" hidden src='img/save.jpg' />
+          <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('fornavn', 'lfnavn');"/><br />
+          <label>Etternavn:</label>
+          <input type="text" readonly class="minsinput" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/>
+          <input type='image' name="save" class="bfred" id="lenavn" hidden src='img/save.jpg'/>
+          <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('etternavn', 'lenavn')"/><br />
+          <label>E-post:</label>
+          <input type="text" readonly class="minsinput" id="epost" value="<?php echo $user_data['ePost'] ?>"/>
+          <input type='image' class="bfred" id="lepost" hidden="true" src='img/save.jpg'/>
+          <input type='image' src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('epost', 'lepost')"/><br />
+          </form>
           </div>
-          <div class="ikkeferi"><h3>Du har <?php if(logged_in() === true) { echo "".ubesvarteOppg($user_data['brukerPK'])->num_rows.""; } ?> 
-        <a href="default.php"> uferdig oppgave(r)</h3><br /><?php include_once 'ubesvartliste.php'; ?></div>
+          </div>
+          <div class="ikkeferi"><h3>Du har uferdig oppgave(r)</h3><br /></div>
 
             <div id="minside">
                 <form id="byttpw" name="reg" method="post" action="minside.php">
                  <h2>Bytt passord</h2>
                     Gammelt passord: 
-                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"><br /><br />
+                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"/><br /><br />
                     Nytt passord: 
-                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"><br /><br />
+                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"/><br /><br />
                     Bekreft nytt passord: 
-                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"><br /><br />
+                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"/><br /><br />
                     <input type="Submit" id="pwknapp" name="nypw" value="Bekreft">
                     <br><?php 
                     if (empty($errors) === false) {
@@ -60,6 +111,7 @@ E-post: valpeforum@gmail.com<input type='image' id="bfred" src='img/edit.jpg' al
             </div>
          </section>
      <?php include('design/footer.php'); ?>    
+
     </body>
 </html>
 
