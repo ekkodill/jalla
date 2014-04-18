@@ -6,12 +6,11 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 #container {
 float:left;
-    width: 39%;
-    height: 25%;
-
+    width: 41%;
+    height: 32%;
     background: #F2F2F2;
-margin-left:21%;
-margin-top:-12%;
+margin-left:23%;
+margin-top:-3%;
 
 /*Runde kanter og skygge*/
 -webkit-border-radius: 15%;
@@ -94,7 +93,7 @@ font-size:100%;
 }
 
 #keyboard .delete {
-width: 12%;
+width: 11.5%;
 line-height: 100%;
 font-size:100%;
 }
@@ -131,7 +130,7 @@ list-style:none;
 
 #keyboard .return {
  font-size:5%;
-width:7%;
+width:6.5%;
 height:1420%;
 margin-top: -6.1%;
 margin-right: 2%;
@@ -162,9 +161,9 @@ clear: left;
 }
 
 #keyboard .ctrlr {
-width: 10%;
+width: 9.6%;
 font-size:65%;
-margin-left:5.9%;
+margin-left:10%;
 }
 
 #keyboard .altgr {
@@ -262,7 +261,7 @@ display:none;
 
 .bfright{
     margin-top:1%;
-    width:36%;
+    width:30%;
     height:60% auto;
     float:right;
     margin-left:1%;
@@ -311,19 +310,12 @@ display:none;
     padding-left:-5%;
 }
 
-/*.keylogo{
-
-    margin-bottom:none;
-    float:left;
-    margin-left:1%;
-    margin-top:-8%;
-}*/
 .opgtextramme{
     margin-top:2%;
-    margin-right:2%;
-    width:40%;
-    height:32%;
-    float:right;
+    margin-left:4%;
+    width:44%;
+    height:45%;
+    float:left;
     border:1px solid #fff;
     background-color:#ccc;
 
