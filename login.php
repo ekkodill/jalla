@@ -34,10 +34,17 @@ if (empty($brukernavn) === true || empty($passord) === true) {
     <?php 
     $pgName = 'Innlogging';
     include 'design/head.php'; ?>
+
   	<body>
+  	<?php include 'design/header.php'; ?>
+  	
+  	<?php include('design/footer.php'); ?>
 		<div id="page">
-		    <?php include 'design/header.php'; ?>
+		    
 		    	<section>
+
+		  				
+				
 		      		<div class="midtfelt">
 						<?php
 							if (empty($errors) === false) {
@@ -46,10 +53,8 @@ if (empty($brukernavn) === true || empty($passord) === true) {
 							}?>
 					</div>
 						
-		  				<?php include ('includes/loginbox.php');?>
-					
 				</section>
-			<?php include('design/footer.php'); ?>
+			
 		</div>
 	</body>
 </html>

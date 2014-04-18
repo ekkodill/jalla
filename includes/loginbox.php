@@ -23,7 +23,7 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
     }
 </script>
 
-<div class="aside">
+<div class="innloggboksfixed">
 	<form method="post" action="login.php" id="loginform" >
 		<fieldset>
 			<h2>Innlogging</h2>

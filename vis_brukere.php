@@ -11,11 +11,13 @@ include_once 'includes/init.php';
 		$pgName = 'Vis brukere';
 		include('design/head.php');
 		?>
+		<?php include('design/footer.php'); ?>
 		<body onload="fjernType(<?php echo $user_data['brukertype']; ?>, 'nytype');">
-			<div id="page">
-				<?php
+			<?php
 				include('design/header.php');
 				?>
+			<div id="page">
+				
 		        <section>
 		       	<?php
 		       	if($user_data['brukertype'] != 3) {
@@ -27,7 +29,7 @@ include_once 'includes/init.php';
 					<center><legend><h4>Liste over brukere</h4></legend></center>
 						<?php include 'form.php'; }?>
 				</section>
-	    		<?php include('design/footer.php'); ?>
+	    		
        		</div>
 		</body>
 </html>

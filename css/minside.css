@@ -3,23 +3,7 @@ Denne siden er utviklet av Erik Bjørnflaten og Mikael kolstad, siste gang endre
 Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
 */
 
-#page {
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:10px;
-	margin-bottom:10px;
-	width:90%;
-	background-color:#FFF;
-	border-width:medium;
-	
-	
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	
-	border: 2px solid #99CCFF;
-	
-}
+
 
 #minside {
 	float:left;

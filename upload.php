@@ -55,8 +55,9 @@ $errors[] = "Du må velge et vedlegg å laste opp";
 <html>
     <?php include 'design/head.php'; ?>
     <body>
+    <?php include 'design/header.php'; ?>
           <div id="page">
-          <?php include 'design/header.php'; ?>
+          
             <section style="width:94%">
                     <div class="midtfelt">
                     <?php

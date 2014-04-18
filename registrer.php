@@ -48,10 +48,11 @@ if(!empty($_POST)) {
 		include('design/head.php');
 		?>
 		<body>
-			<div id="page">
-				<?php
+		<?php
 				include('design/header.php');
 				?>
+			<div id="page">
+				
 		        <section>
 		        
 		       	<legend class="regtitbredde"><center><h4>Registrering</h4></center>

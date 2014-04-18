@@ -25,12 +25,14 @@ if($user_data['passord'] != $gammeltpw) {
 
 <!doctype html>
 <html>
+<?php include('design/footer.php'); ?>
     <?php 
     $pgName = 'Minside';
     include 'design/head.php'; ?>
     <body onunload="unloadP('oppgave')" onload="loadP('oppgave')">
+        <?php include 'design/header.php'; ?>
         <div id="page">
-          <?php include 'design/header.php'; ?>
+          
           <section>
           <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"67%" width="85%"alt="bilde"></div>
           <div class="profinfo">
@@ -58,8 +60,10 @@ E-post: valpeforum@gmail.com<input type='image' id="bfred" src='img/edit.jpg' al
                     } ?>
                 </form>
             </div>
-         </section>
-     <?php include('design/footer.php'); ?>    
+            
+  </section>
+     
     </body>
+
 </html>
 

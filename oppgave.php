@@ -51,10 +51,11 @@ if(!empty($_POST['publiser'])) {
 
 
 	<body onunload="unloadP('oppgave')" onload="loadP('oppgave')"> 
-		<div id="page">
-			<?php
+		<?php
 			include('design/header.php');
 			?>
+		<div id="page">
+			
 		    <section>
 				<center><legend><h4>Lag ny oppgave</h4></legend></center>
 				<form action="oppgave.php" id="nyoppgfrm"  method="post" >

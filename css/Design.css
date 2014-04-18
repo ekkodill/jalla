@@ -2,16 +2,16 @@
 Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 27.03.2014
 Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
 */
-header, section, footer, aside, nav, article, figure{ 
+section, footer, aside, article, figure{ 
 	display: block;
 }
 
 
 
 body {
-	background-color:#CCCCCC;
-	margin: 0;
-	padding: 0;
+	background-color:#EEEEEE;
+	margin: 0px;
+	padding: 0px;
 	text-align: left;
 	font-family: 'Roboto Slab', serif;
 }
@@ -47,34 +47,48 @@ a:hover, a:active{
 		color:#09C;
 	}
 
-#page {
-	margin-left:auto;
+	#page {
+	margin-left:13.5%;
 	margin-right:auto;
-	width:95%;
-	background-color:#FFF;
+	width:79%;
+	background-color:#fff;
 
-	border-width:medium;
-	border: 2px solid #99CCFF;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
 	
-	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+.innloggboksfixed{
+		width:7.6%;
+	height:auto;
+	position:fixed;
+	z-index:100;
+	padding:1% 2% 1% 1%;
+	margin-left:1.6%;
+	margin-top:-3%; 
+	background-color:#5B5B5B;
+	color:#fff;
+	border-radius:5%;
+	border: 3px solid #000;
 }
 
 		
 /*----Hovedboks----*/
 section {
-	width:94%;
-	height:auto;
-	float:left;
+	width:100%;
+	height:100%;
+	margin-top:6%;
+	margin-left:auto;
+	margin-right:auto;
 	padding-top: 1% ;
 	padding-left: 3%;
 	padding-right: 3%;
 	padding-bottom:3%;
-	background-color:#fff;	
+	background-color:#fff;
+	border-left: 2px solid #000;
+	border-right:2px solid #000;
+	
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		
 	
 }
 
@@ -88,14 +102,12 @@ section p {
 
 .midtfelt {
 	width:69%;
-	height:auto;
-	float:left;
-	
+	height:auto;	
 	padding-left: 2%;
 	padding-right: 2%;
 	padding-bottom:3%;
 	background-color:#fff;
-	border-right: 1px solid; 
+
 }
 
 .bilde{
@@ -110,12 +122,27 @@ section p {
 
 /*----Footer----*/
 footer {
-	background-color:#99CCFF;
-	width: auto;
-	height: auto;
-	clear:both;
-	padding-top:1px;
-	padding-bottom: 5px;
+	color:#fff;
+	position:fixed;
+	width: 100%;
+	height: 80px;
+	bottom:0px;
+    left:0px;
+    right:0px;
+    margin-bottom:0px;
+background-color:#5B5B5B;
+}
+
+.fotinfo{
+	margin-top:1%;
+	float:left;
+	margin-left:8%;
+	
+}
+.fotinfom{
+	float:left;
+	margin-left:8%;
+	
 }
 
 	footer h3 {
@@ -139,18 +166,3 @@ footer {
 		font-size:1em;
 	}
 
-#gruppe{
-	width:auto;
-	border-collapse:collapse;
-	border:0px;
-	border-top: 1px dotted;
-	margin-top: -10px;
-	margin-bottom: 10px;
-	margin-left: auto;
-	margin-right: auto;
-}
-	#gruppe td {
-		font-size:1em;
-		border:0px;
-		padding:3px 10px 2px 10px;
-	}

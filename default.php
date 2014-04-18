@@ -5,12 +5,16 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 
 <!doctype html>
 <html>
-    <?php
+<body>
+<?php
     $pgName = 'Hovedside';
     include 'design/head.php'; ?>
-  <body>
+<?php include 'design/header.php';  ?>
     <div id="page">
-      <?php include 'design/header.php';  ?>      
+  
+
+    
+            
         <section>
           <div class="midtfelt">
             <h2>Velkommen til Touch</h2> 
@@ -24,10 +28,11 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 
           </div> 
 
-          <?php   if(logged_in() === false) {include 'includes/loginbox.php';} ?>
+
 
         </section>
-      <?php include('design/footer.php'); ?>
+      
     </div>
+    <?php include('design/footer.php'); ?>
   </body>
 </html>

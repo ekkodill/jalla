@@ -75,9 +75,10 @@ $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
 <body onload="show();">
-    <div id="page">
+
   <?php include_once 'design/header.php'; ?>
-    <section style="width:94%"> 
+    <div id="page">
+    <section> 
     
         <div class="bfleft">
             <div class="valgmuligheter">             
