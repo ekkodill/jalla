@@ -7,9 +7,9 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 header {
      border-bottom:5px solid #000;
 	position: fixed;
-	margin:-27px auto;
+	margin-top: -1.5%;
 	padding: 0px auto;
-    height: 16%;
+    height: 12%;
     width: 100%;
     z-index: 10000;
     background-color:#5B5B5B;
@@ -27,7 +27,7 @@ h1.header {
 
 .sitetitle{
 	color:#fff;
-	margin-top:1%;
+	padding-top:1%;
 	margin-left:35%;
 }
 
@@ -50,7 +50,7 @@ nav {
 	position:fixed;
 	z-index:100;
 	padding:1% 2% 1% 1%;
-	margin-left:1.6%;
+	margin-left:1.2%;
 	margin-top:-3%; 
 	background-color:#5B5B5B;
 	color:#fff;
