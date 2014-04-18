@@ -76,10 +76,8 @@ $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
 <body onunload="unloadP('skriv');" onload="loadP('skriv');">
-    <div id="page">
   <?php include_once 'design/header.php'; ?>
-    <section style="width:94%"> 
-    <script type="text/javascript">
+      <script type="text/javascript">
 
         function loadinit() {
         show();
@@ -94,11 +92,9 @@ editor.addEventListener("keyup", function() {
 });
 }
 window.onload = loadinit;
-
-
-
-
     </script>
+    <div id="page">
+    <section> 
         <div class="bfleft">
             <div class="valgmuligheter">             
                     <input type="button" value="stop" onclick="stop();">
@@ -126,9 +122,7 @@ window.onload = loadinit;
                 <div class="fasit"><?php echo $otekst; ?></div>
             </div>
                 <div class="opgtextramme">
-
              <textarea name='inntext' id='opgtekst' onfocus='start();'><?php echo $lagrettext  ?></textarea>
-
             </form></div>
             <div class="uboliste">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
@@ -138,7 +132,6 @@ window.onload = loadinit;
                 <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
             </select></center><br>
             </form> 
-
 
                 <?php 
 
@@ -227,7 +220,5 @@ if(!empty($_SESSION['drpdwnlist'])) {
 </section>
 <?php include_once('design/footer.php'); ?>
 </div>
-
 </body>
-
 </html>

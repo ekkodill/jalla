@@ -3,11 +3,12 @@ Denne siden er utviklet av Erik Bjørnflaten og Mikael kolstad, siste gang endre
 Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
 */
 
+
 .minsinput {
 	background-color:#FFFFFF;
 	border:solid 1px black;
 }
-
+/*
 #page {
 	margin-left:auto;
 	margin-right:auto;
@@ -25,6 +26,7 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 	border: 2px solid #99CCFF;
 	
 }
+*/
 
 #minside {
 	float:left;

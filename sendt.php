@@ -10,8 +10,9 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.03.2014  !-->
 $pgName = 'Nytt passord';
 include 'design/head.php'; ?>
 <body onLoad="loadPage()">
+<?php include 'design/header.php' ?> 
 	<div id="page">
-		<?php include 'design/header.php' ?>   
+		  
 			<section>
 	        	<div class="midtfeltpw"> 
 					<h2>Nytt passord</h2> 

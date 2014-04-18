@@ -25,15 +25,13 @@ if($user_data['passord'] != $gammeltpw) {
 
 <!doctype html>
 <html>
-    <?php 
+<?php include('design/footer.php'); 
     $pgName = 'Minside';
     include 'design/head.php'; ?>
     <body onunload="unloadP('oppgave')" onload="loadP('oppgave')">
-        <div id="page">
-          <?php include 'design/header.php'; ?>
-                        <script type="text/javascript">
-
-                        function jaaa() {
+        <?php include 'design/header.php'; ?>
+      <script type="text/javascript">
+                   function jaaa() {
                           var a = document.querySelectorAll('.bfred');
                           for(var i = 0; i<a.length; i++) {
                             a[i].style.display="none";  
@@ -59,10 +57,7 @@ if($user_data['passord'] != $gammeltpw) {
                           }
                           }
 
-
-
-
-              document.getElementById(id).removeAttribute("readonly");
+             document.getElementById(id).removeAttribute("readonly");
               
               document.getElementById(id).focus();
 
@@ -71,7 +66,7 @@ if($user_data['passord'] != $gammeltpw) {
 
 }
           </script>
- 
+        <div id="page">
           <section>
           <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"67%" width="85%"alt="bilde"></div>
           <div class="profinfo">
@@ -108,10 +103,8 @@ if($user_data['passord'] != $gammeltpw) {
                         echo output_errors($errors);
                     } ?>
                 </form>
-            </div>
-         </section>
-     <?php include('design/footer.php'); ?>    
-
+            </div> 
+  </section>
     </body>
 </html>
 

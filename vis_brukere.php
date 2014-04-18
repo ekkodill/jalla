@@ -11,18 +11,15 @@ $db = getDB(); //Tilkobling til databasen.
 		<?php
 		$pgName = 'Vis brukere';
 		include('design/head.php');
-		?>
-		<body onload='fjernType(<?php echo $user_data['brukertype']; ?>, "nytype");loadP("visbrukere");' onunload='unloadP("visbrukere")'>
+		include('design/footer.php'); ?>
+			<body onload='fjernType(<?php echo $user_data['brukertype']; ?>, "nytype");loadP("visbrukere");' onunload='unloadP("visbrukere")'>
+			<?php include('design/header.php');	?>
 			<div id="page">
-				<?php
-				include('design/header.php');
-				?>
-		        <section>
+			   <section>
 		       	<?php
 		       	if($user_data['brukertype'] != 3) {
 					 	include('add_brukere.php');
-					}
-	      
+					}	      
 					if(!count(sjekkAntall('brukere'))) {
 						echo "<center><legend>Ingen registrerte brukere</legend></center>"; 
 						} else { 
@@ -33,8 +30,7 @@ $db = getDB(); //Tilkobling til databasen.
 							?>
 					<center><legend><h4>Liste over brukere</h4></legend></center>
 						<?php include 'form.php'; }?>
-				</section>
-	    		<?php include('design/footer.php'); ?>
+				</section>	
        		</div>
 		</body>
 </html>

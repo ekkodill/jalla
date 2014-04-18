@@ -10,8 +10,11 @@ $db = getDB();
     $pgName = 'Startside for deltakere';
     include 'design/head.php'; ?>
 <body>
+<?php include 'design/header.php'; ?>
+<?php include 'design/header.php'; ?>
 	<div id="page">
-	<?php include 'design/header.php'; ?>
+
+	
 		<section>
 		<!-- Brukerforside main venstre !-->
 			<div id="bfvenstre">
@@ -24,8 +27,9 @@ $db = getDB();
 			<?php include'besvart.php'; ?>
 			</div>
 		</section>
-	<?php include('design/footer.php'); ?>
+	
 	</div>
 
 </body>
+
 </html>

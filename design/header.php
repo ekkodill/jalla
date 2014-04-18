@@ -2,8 +2,9 @@
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
 <header>
-		<?php if(logged_in() === true) { echo "<h3 class='loggetInnSom'><a href='minside.php'>".$user_data['fornavn'] ." ". $user_data['etternavn']."</a><a href='brukerforside.php'>(".ubesvarteOppg($user_data['brukerPK'],3)->num_rows.")</a></h3>"; } ?> 
-        <a href="default.php"><h1 class="header">Touch - Utviklingsoppgave 2014</h1></a>
+<div class="sitetitle"><img src="img/logotm.png"></div>
+        <a href="default.php"></a>
+        <?php   if(logged_in() === false) {include 'includes/loginbox.php';} ?>
         <?php   if(logged_in() === true) {include 'design/nav.php';} ?>  
 </header>
 

@@ -11,8 +11,9 @@ include_once 'includes/init.php'; ?>
 	$pgName = 'Forbudt område';
     include 'design/head.php'; ?>
 <body>
+<?php include 'design/header.php'; ?>
 <div id="page">
-  <?php include 'design/header.php'; ?>
+  
   <h1>Beklager, du må være innlogget for å se denne siden.</h1> 
     <p>Send epost for forespørsel om registrering eller logg inn.</p>
 <?php include('design/footer.php'); ?>
