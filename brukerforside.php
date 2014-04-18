@@ -11,7 +11,7 @@ $db = getDB();
     include 'design/head.php'; ?>
 <body>
 <?php include 'design/header.php'; ?>
-<?php include 'design/header.php'; ?>
+
 	<div id="page">
 
 	
@@ -29,7 +29,7 @@ $db = getDB();
 		</section>
 	
 	</div>
-
+<?php include 'design/footer.php'; ?>
 </body>
 
 </html>
