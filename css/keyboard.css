@@ -6,10 +6,10 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 #container {
 float:left;
-    width: 40%;
-    height: 25%;
-    background: #F2F2F2;
-margin-left:23%;
+    width: 38%;
+    height: 24.5%;
+    background: #5B5B5B;
+margin-left:28%;
 margin-top:-10%;
 
 /*Runde kanter og skygge*/
@@ -17,7 +17,7 @@ margin-top:-10%;
 -moz-border-radius: 15%;
 border-radius: 15%;
 padding:0.4%;
-border: 1px solid #999;
+border: 1px solid #000;
 border: inset 1px solid #333;
 -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
@@ -29,7 +29,7 @@ box-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
 
 #keyboard {
     float:both;
-    margin-left:-5%;
+    margin-left:-6%;
     margin-top:2%;
     list-style: none;
     width:100%;
@@ -249,6 +249,21 @@ display:none;
 
 /* ---- Innholdet på brukerforsiden ---- */
 
+.visskjul, .lagropg, .innleverop, .stopkn, .resetkn{
+     color:#fff;
+    background-color:#5B5B5B;
+    height:5%;
+    margin-top:2%;
+    margin-right:1%;
+    width:25%;
+    border:1px solid #000;
+/*----Runde hjørner----*/
+   
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    border-radius: 5%;
+}
+
 .bfleft{
     width:20%;
     height:auto;
@@ -260,7 +275,7 @@ display:none;
 
 .bfright{
     margin-top:3%;
-    width:30%;
+    width:25%;
     height:60% auto;
     float:right;
     margin-left:1%;
@@ -272,7 +287,7 @@ display:none;
     height: 92%;
     margin-left:2%;
     margin-top:2%;
-    border: 1px solid #999;
+    border: 1px solid #000;
     padding: 5px ;
     margin-top:2%;
     margin-bottom:6%;
@@ -311,12 +326,12 @@ display:none;
 
 .opgtextramme{
     margin-top:4%;
-    margin-left:4%;
+    margin-left:8%;
     width:44%;
     height:35%;
     float:left;
-    border:1px solid #fff;
-    background-color:#ccc;
+    border:1px solid #000;
+    background-color:#5B5B5B;
 
    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);
 -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 4);

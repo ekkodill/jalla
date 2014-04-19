@@ -92,7 +92,7 @@ if(!empty($_POST)) {
 							echo "<center><legend>Ingen registrerte oppgaver</legend></center>"; 
 					   } else { ?>
 				<br><br>
-			<center><legend><h4><?php echo $tekst ?></h4></legend><br>
+			<center><legend><h4  id="endrelitit"><?php echo $tekst ?></h4></legend><br>
 				<form action="oppgave.php" id="endreli" method="post">
 		    		<select name='oppgaver' onchange="this.form.submit();">
 			            <option name="gittoppg"     value='gittoppg'   <?php if (isset($_POST['oppgaver'])) { if($_POST['oppgaver']=='gittoppg')  {echo "selected='selected'"; }} ?>>Alle oppgaver</option>
@@ -100,6 +100,7 @@ if(!empty($_POST)) {
 			        </select></center><br>
 			      </form>	
 				</center><br>
+
 <?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen
 		if(isset($_POST['oppgaver'])) {
 			if($_POST['oppgaver'] == 'gittoppg') {

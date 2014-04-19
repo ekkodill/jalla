@@ -68,19 +68,19 @@ if($user_data['passord'] != $gammeltpw) {
           </script>
         <div id="page">
           <section>
-          <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"67%" width="85%"alt="bilde"></div>
+          <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"30%" width="70%"alt="bilde"></div>
           <div class="profinfo">
           <form name="lol" action="" method="POST">
           <label>Fornavn:</label>
-          <input type="text" readonly class="minsinput" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/>
+          <input type="text" readonly class="minsinputfor" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/>
           <input type='image' name="save" class="bfred" id="lfnavn" hidden src='img/save.jpg' />
           <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('fornavn', 'lfnavn');"/><br />
           <label>Etternavn:</label>
-          <input type="text" readonly class="minsinput" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/>
+          <input type="text" readonly class="minsinputett" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/>
           <input type='image' name="save" class="bfred" id="lenavn" hidden src='img/save.jpg'/>
           <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('etternavn', 'lenavn')"/><br />
           <label>E-post:</label>
-          <input type="text" readonly class="minsinput" id="epost" value="<?php echo $user_data['ePost'] ?>"/>
+          <input type="text" readonly class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/>
           <input type='image' class="bfred" id="lepost" hidden="true" src='img/save.jpg'/>
           <input type='image' src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('epost', 'lepost')"/><br />
           </form>

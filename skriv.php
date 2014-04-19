@@ -86,8 +86,8 @@ window.onload = loadinit;
     <section> 
         <div class="bfleft">
             <div class="valgmuligheter">             
-                    <input type="button" value="stop" onclick="stop();">
-                    <input type="button" value="reset" onclick="reset();">
+                    <input type="button" class="stopkn" value="stop" onclick="stop();">
+                    <input type="button" class="resetkn" value="reset" onclick="reset();">
                     <p>
                     <?php 
                         echo "tid brukt: ".$otid;
@@ -98,11 +98,11 @@ window.onload = loadinit;
                       <h5>Tid brukt</h5>
                       <div><span name="tid" id="time"></span></div>
                     
-                        <input type="button" onclick="setStyle('container');" value="Trykk"/>for å skjule\vise tastaturet
+                        <input type="button" class="visskjul" onclick="setStyle('container');" value="Trykk"/> for å skjule\vise tastaturet
                     <br>
-                        <input name="fullfor" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
+                        <input name="fullfor" class="innleverop" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
                     <br>
-                        <input name="lagreoppg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
+                        <input name="lagreoppg"class="lagropg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden"/>
             </div>
         </div>
@@ -117,7 +117,7 @@ window.onload = loadinit;
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
                 <form action="skriv.php" id="velgli" method="post">
             <select id='sel' name='oppgliste' onchange="this.form.submit();">
-            <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}}?> >Ubesvarte oppgaver</option>
+            <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
                 <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
             </select></center><br>
             </form> 

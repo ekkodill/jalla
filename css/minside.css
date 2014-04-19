@@ -4,9 +4,30 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 */
 
 
-.minsinput {
+.minsinputfor {
 	background-color:#FFFFFF;
-	border:solid 1px black;
+	margin-left:4%;
+	padding-left:1%;
+	border:thin 1px black;
+}
+
+.minsinputett {
+	background-color:#FFFFFF;
+	margin-left:0.5%;
+	padding-left:1%;
+	margin-right:0.5%;
+	width:auto;
+	border:thin 1px black;
+}
+
+.minsinputepo {
+	background-color:#FFFFFF;
+	margin-left:8.5%;
+	width:100%;
+	margin-right:0.5%;
+	width:auto;
+	padding-left:1%;
+	border:thin 1px black;
 }
 /*
 #page {
@@ -27,11 +48,19 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 	
 }
 */
+.visoppgave{
+margin-left:1%;
+}
+
+.velgopg{
+margin-left:1%;
+}
 
 #minside {
 	float:left;
-	margin-top:1%;
-	width : 30%;
+	margin-top:3%;
+	margin-left:1%;
+	width : 25%;
 	height:40%;
 	background-color : #FFF;
 	
@@ -51,6 +80,13 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 #pwknapp {
 	height:30px;
 	width:100px;
+	color:#fff;
+	background-color:#5B5B5B;
+	border:1px solid #000;
+	-webkit-border-radius: 5%;
+	-moz-border-radius: 5%;
+	border-radius: 5%;
+	outline: 0;
 }
 
 #pwknapp:hover {
@@ -65,63 +101,44 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 	text-align:center;
 	border:1px solid #000;
 	border-radius:5px;
-	box-shadow : 0 0 8px rgba(0, 0, 0, 0.3);
-	height:65.2%;
-	width:85%;
+	height:61%;
+	width:80%;
 }
 
 .profinfo{
-	width:85%;
-	margin-left:1%;
+	width:90%;
+	
 	margin-top:15%;
 }
 
 .ikkeferi{
-	overflow: scroll;
+	overflow: auto;
 	float:left;
+	margin-top:2%;
 	height:56%;
-	margin-left:5%;
+	width:34%;
+	margin-left:2%;
 	padding-right:5%;
-	border-right:1px solid #000;
+
 }
 .bfred{
-float:right;
+
 
 }
 
 .msvenstre{
 	float:left;
-	margin-top:1%;
+	margin-top:3%;
 	margin-left:5%;
-	border-right:1px solid #000;
-	padding-bottom:5%;
-	height:45%;
+	height:35%;
 	width:25%;
 }
 
 
 /*--- Brukerforside ----*/		
 #bfvenstre{
-	width:65%;
-	margin-left:-4%;
+	width:75%;
 	float:left;
-	border: 1px solid#000;
+	border: 1px solid #000;
 }
 
-#bfhoyre{
-	width:30%;
-    margin-right:3%;
-    float:right;
-    height:250px;
-    
-}
-
-.tabbes{
-
-}
-.logoforslag{
-;
-
-	float:left;
-
-}

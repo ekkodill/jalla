@@ -72,7 +72,7 @@ $(document).ready(function(){
 								$_SESSION['delerr'] = "";
 							}
 							?>
-					<center><legend><h4>Liste over brukere</h4></legend></center>
+					
 						<?php include 'form.php'; }?>
 				</section>	
        		</div>

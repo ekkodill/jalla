@@ -45,7 +45,7 @@ while ($row = $result->fetch_assoc()) {
       echo $row['tittelOppgave']." laget av ".$veileder ." | ".$vanskelighetsgrad;
     }
     echo "</td>";
-    echo "<td><a href='#openModal".$PK."'><img src='img/open.png' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
+    echo "<td><a href='#openModal".$PK."'><img src='img/open.png' class='visoppgave' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
         echo "<div id='openModal".$PK."' class='modalDialog'>
       <div>
         <a href='#close' title='Close' class='close'>X</a>
@@ -57,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
       </div>
     </div>";
     
-    echo "<input type='image' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
+    echo "<input type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
