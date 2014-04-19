@@ -1,11 +1,11 @@
-<!--Denne siden er utviklet av Erik Bjørnflaten., siste gang endret 13.04.2014
-Denne siden er kontrollert av kurt siste gang 03.03.2014 !-->
+<!--Denne siden er utviklet av Kurt A. Aamodt (PHP og JS) og Erik Bjørnflaten (HTML)., siste gang endret 19.04.2014
+Denne siden er kontrollert av Mikael kolstad siste gang 28.04.2014 !-->
 <?php
 include_once 'includes/init.php';
 
 $pgName = 'Touch-tastatur';
 
-
+//Setter verdiene fra session variablene til lokale variabler som vises på siden
 if(isset($_SESSION['tid']) && isset($_SESSION['antfeil']) && isset($_SESSION['percent'])) {
     $otid = $_SESSION['tid'];
     $ofeil = $_SESSION['antfeil'];
@@ -26,10 +26,7 @@ if (!empty($_POST)) {
     $_SESSION['oppgPK'] = $_POST['oppgPK'];
     $_SESSION['innlPK'] = $_POST['innPK'];
     $_SESSION['gammelTid'] = $_POST['gammelTid'];
-
-
     $lagrettext = $_POST['lagrettext'];
-    //$_SESSION['testtxt'] = $lagrettext;
     $_SESSION['tid'] = 0;
     $_SESSION['antfeil'] = 0;
     $_SESSION['percent'] = 0;
@@ -75,22 +72,14 @@ $lagrettext = "";
 $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
-<body onunload="unloadP('skriv');" onload="loadP('skriv');">
+<body onunload="unloadP('skriv');">
   <?php include_once 'design/header.php'; ?>
       <script type="text/javascript">
-
         function loadinit() {
         show();
         loadStyle(); 
-
-               var editor = document.querySelector("#opgtekst");
-if (window.localStorage["TextEditorData"]) {
-    editor.value = window.localStorage["TextEditorData"];
-}    
-editor.addEventListener("keyup", function() {
-    window.localStorage["TextEditorData"] = editor.value;
-});
-}
+        onload=loadP('skriv');
+    }
 window.onload = loadinit;
     </script>
     <div id="page">
@@ -132,21 +121,11 @@ window.onload = loadinit;
                 <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
             </select></center><br>
             </form> 
-
-                <?php 
-
-        $bPK = $user_data['brukerPK'];
-if(!empty($_SESSION['drpdwnlist'])) {
-    if($_SESSION['drpdwnlist'] == 'ubesvoppg') {
-      $result = ubesvarteOppg($bPK, 3);
-    } elseif( $_SESSION['drpdwnlist'] =='pbegoppg') {
-      $result = ubesvarteOppg($bPK, 0);
-    } 
-}else {
-        $result = ubesvarteOppg($bPK, 3);
-    }
-
-                include_once 'ubesvartliste.php'; ?> 
+            <table class="ubesform">
+            <tbody>
+                <?php include_once 'ubesvartliste.php'; ?> 
+            <tbody>
+        </table>
             </div>
 <div id="container">
 

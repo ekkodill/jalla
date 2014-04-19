@@ -87,7 +87,11 @@ function sendMail($epost, $passord) {
 		   //PHP-regel sier at en linje i beskjeden ikke skal overstige 70 karakterer, så den må "wrappes".
 		   $message = wordwrap($message, 70);
 		   //Sender mail
-		   mail($til,$subject,$message,"From: $from\n");
+		  if(mail($til,$subject,$message,"From: $from\n")) {
+    		return true;
+    	} else {
+    	return false;
+    	}
 }
 
 

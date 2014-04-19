@@ -2,8 +2,6 @@
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 
 <?php
-include_once 'includes/init.php';
-
 
 if(!empty($_POST)) {
 	//Sjekker at det er data i alle feltene 
@@ -31,8 +29,13 @@ if(!empty($_POST)) {
 				$errors[]  = "Eposten er ikke gyldig"; 		
 			} else if(!empty($fornavn) && !empty($etternavn) && !empty($ePost) && !empty($brukertype)) {
 				if (addUser($ePost, $etternavn, $fornavn, $passord, $brukertype)) {
-					sendMail($ePost, $gen_pw);
 					$errors[] = "Brukeren ble opprettet";
+					if(sendMail($ePost, $gen_pw)) {
+						$errors[] = "Epost ble sendt til brukeren";
+					} else { $errors[] = "Det oppstod en feil ved utsending av epost, sjekk mailserveren"; }
+				?>
+				<script>$('#nybruker').submit(function());</script>
+				<?php
 				} else { $errors[]  = "Det oppstod en feil og brukeren kunne ikke opprettes"; }
 			} else { $errors[]  = "Alle boksene må fylles ut"; }
 		} else { $errors[]  = "Eposten er registrert fra før"; }
@@ -40,7 +43,6 @@ if(!empty($_POST)) {
 }
 
 ?>
-
 
 	<center><legend><h4>Legg til bruker</h4></legend></center>
 	<div class="leggtilbruker">

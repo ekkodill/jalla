@@ -1,6 +1,17 @@
-<table class="ubesform">
-  <tbody>
 <?php 
+//Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.04.2014
+//Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
+
+$bPK = $user_data['brukerPK'];
+if(!empty($_SESSION['drpdwnlist'])) {
+    if($_SESSION['drpdwnlist'] == 'ubesvoppg') {
+      $result = ubesvarteOppg($bPK, 3);
+    } elseif( $_SESSION['drpdwnlist'] =='pbegoppg') {
+      $result = ubesvarteOppg($bPK, 0);
+    } 
+}else {
+        $result = ubesvarteOppg($bPK, 3);
+    }
 
 while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
@@ -46,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
       </div>
     </div>";
     
-    echo "<input type='image' src='img/edit.jpg' id='s".$PK."' />";
+    echo "<input type='image' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
@@ -58,5 +69,4 @@ while ($row = $result->fetch_assoc()) {
  }
 
  ?>
-  <tbody>
-</table>
+

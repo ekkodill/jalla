@@ -1,5 +1,5 @@
-<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
+<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 19.04.2014
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 <div class=bliste><table>
 	     <thead>
 		    <tr>
@@ -21,7 +21,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
   	$veileder = finnBruker($vPK);
   	$sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
     $vanskelighetsgrad = "ikke valgt";
-
+    $publisert = $row['erPublisert'];
   	if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
@@ -50,10 +50,13 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
   echo "<input type='image'  src='img/pdf.jpg' alt='Last opp vedlegg' title='Last opp vedlegg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
 	echo "<input id='file-input".$PK."' type='file' name='file' onchange='lagre($PK)' hidden/>"; //Filvalgsmeny
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
+  if($publisert == 0) {
+     echo "<input type='image' src='img/publish.png' name='publish' id='p".$PK."' title='Publiser oppgave' alt='Publiser oppgave'/>";
+  }
 } elseif($user_data['brukertype'] == 3) {
   echo "<input type='hidden' name='tittel' value='".$row['tittelOppgave']."'/>";
   echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
-  echo "<input type='image' src='img/edit.jpg' name='besvarelse' id='s".$PK."' onclick=this.form.action='skriv.php'; />";
+  echo "<input type='image' src='img/edit.jpg' name='besvarelse' id='b".$PK."' onclick=this.form.action='skriv.php'; />";
 }
 	echo "</td></tr></form>";
  } 

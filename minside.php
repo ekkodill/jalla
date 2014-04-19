@@ -86,8 +86,12 @@ if($user_data['passord'] != $gammeltpw) {
           </form>
           </div>
           </div>
-          <div class="ikkeferi"><h3>Du har uferdig oppgave(r)</h3><br /></div>
-
+          <div class="ikkeferi"><h3>Du har uferdig oppgave(r)</h3><br />
+              <?php 
+                include_once("ubesvartliste.php");
+               ?>
+          </div>
+              
             <div id="minside">
                 <form id="byttpw" name="reg" method="post" action="minside.php">
                  <h2>Bytt passord</h2>
