@@ -90,7 +90,7 @@ window.onload = loadinit;
                     <input type="button" class="resetkn" value="reset" onclick="reset();">
                     <p>
                     <?php 
-                        echo "tid brukt: ".$otid;
+                        echo "Tid brukt: ".$otid;
                         echo "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%";
                      ?>
                      </p>
@@ -113,7 +113,7 @@ window.onload = loadinit;
                 <div class="opgtextramme">
              <textarea name='inntext' id='opgtekst' onfocus='start();'><?php echo $lagrettext  ?></textarea>
             </form></div>
-            <div class="uboliste">
+            <div class="uboliste2">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
                 <form action="skriv.php" id="velgli" method="post">
             <select id='sel' name='oppgliste' onchange="this.form.submit();">
