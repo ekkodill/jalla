@@ -20,13 +20,14 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
     $vPK = $row['veileder'];
-    $oppgtekst = hentOppgave($PK);
   	$veileder = finnBruker($vPK);
-  	$sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
+    $oppgtekst = hentOppgave($PK);
+    $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
     $vanskelighetsgrad = "ikke valgt";
     $publisert = $row['erPublisert'];
     $vedlegg = htmlspecialchars($row['linkVedlegg']);
     $tittel = htmlspecialchars($row['tittelOppgave']);
+
   	if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
@@ -36,7 +37,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     echo "<td id='veileder".$PK."'      	 name='veileder'     >"	. $veileder.		      									 "</td>";
     echo "<td id='tittel".$PK."'        	 name='tittel'   		>"  . $tittel.									 "</td>";
     echo "<td id='datoendret".$PK."'    	 name='datoendret'  >"	. $row['datoEndret'].										 "</td>";
-    echo "<td id='link".$PK."'    			 name='link'     	  	>   <a href='vedlegg/".$vedlegg."'>".$row['linkVedlegg']."</a></td>";
+    echo "<td id='link".$PK."'    			 name='link'     	  	>   <a href='vedlegg/".$vedlegg."'>".$vedlegg."</a></td>";
     echo "<td id='vanskelighetsgrad".$PK."'  name='vanskelighetsgrad'   >"   . $vanskelighetsgrad. 										 "</td>";
    	echo "<input type='hidden' name='oppgPK' value=$PK />";
 
@@ -57,8 +58,23 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
   if($publisert == 0) {
     //Publiseringsknapp
-    echo "<input type='image' src='img/publish.png' name='poblish'  title='Publiser oppgave' alt='Publiser oppgave' onclick='publiser($PK); return false;' />";
+  //  echo "<input type='image' src='img/publish.png' name='poblish'  title='Publiser oppgave' alt='Publiser oppgave' onclick='publiser($PK); return false;' />";
     echo "<input type='submit' hidden  name='publish' id='p".$PK."' value=".$PK."  onclick=this.form.action='oppgave.php'; />";
+    //Viser besvarelsen i en dialogboks med inputfelt for responen
+    echo "<a href='#editModal".$PK."'><img src='img/publish.png' title='Publiser oppgave' alt='Publiser oppgave'></a>"; 
+    echo "<div id='editModal".$PK."' class='modalDialog'>
+      <div>
+        <a href='#close' title='Close' class='close'>X</a>
+        <h2>$tittel</h2>
+        <br>
+        <textarea id='editoppg' name='respons'>$sanitized</textarea>
+        <br>
+        <input type='button' value='Lagre' name='editsave'/>
+        <input type='button' value='Publiser' name='editpublish'/>
+        <input type='checkbox' name='editcheck'>Send mail om denne publiseringen
+        <input id='editoppg".$PK."' type='submit' hidden name='saveedit'>
+      </div>
+    </div>";
   }
   
 } elseif($user_data['brukertype'] == 3) {

@@ -23,9 +23,9 @@ while ($row = $result->fetch_assoc()) {
     $veileder = finnBruker($vPK);
     $vedlegg = $row['linkVedlegg'];
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
-  $oppgtekst = hentOppgave($PK);
-  $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
- 
+    $oppgtekst = hentOppgave($PK);
+    $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
+
   if(!empty($_POST) && $_SESSION['drpdwnlist'] =='pbegoppg') {
   $gammelTid = $row['tidBrukt'];
   $innlPK = $row['innleveringPK'];

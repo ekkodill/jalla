@@ -62,12 +62,6 @@ $lagrettext = "";
 ?>
 <!doctype html>
 <html>
-<style type="text/css">
-/*#opgtekst {
-    background: url(http://blog.lantrax.com/Portals/143289/images/stopwatch-resized-600.jpg);
-    background-position: center;
-}*/
- </style>
 <?php
 $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
@@ -111,7 +105,7 @@ window.onload = skrivinit;
                 <div class="fasit"><?php echo $otekst; ?></div>
             </div>
                 <div class="opgtextramme">
-             <textarea name='inntext' id='opgtekst' onfocus='start();'><?php echo $lagrettext  ?></textarea>
+             <textarea name='inntext' id='opgtekst' onfocus='start();' onblur='stop();'><?php echo $lagrettext  ?></textarea>
             </form></div>
             <div class="uboliste2">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
@@ -122,6 +116,7 @@ window.onload = skrivinit;
             </select></center><br>
             </form>
             <table class="ubesform">
+            <input type="text" id="search" placeholder="  Søk"></input>
             <tbody>
                 <?php include_once 'ubesvartliste.php'; ?> 
             <tbody>

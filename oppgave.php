@@ -13,10 +13,13 @@ if(!empty($_POST['publish'])) {
         $stmt = $db->prepare("UPDATE oppgaver SET erPublisert=? WHERE oppgavePK=? LIMIT 1");
         $stmt->bind_param('ii', $publisert, $pubPK);
         $stmt->execute();
-        header('Location: oppgave.php');
+        header('Location: oppgave.php?publisert');
 }
 
 //Registrerer nye opgpaver til databasen
+if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
+		$errors[] = "Du kan ikke sende mail om publisering når du skal lagre";
+	} else {
 if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 
 	if(empty($_POST['tittel'])) {
@@ -26,24 +29,29 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 	 	if(empty($_POST['oppg'])) {
 	 		$errors[] = "Du må skrive inn oppgavetekst";
 	 	} else {
-	 		$oppg 		= sanitize(trim($_POST['oppg']));
+	 		$oppg 		= trim($_POST['oppg']);
 		 	if (empty($_POST['vansklighetsgrad'])) {
 		 		$errors[] = "Du må velge vansklighetsgrad";
 		 	} else { $vansklighetsgrad = trim($_POST['vansklighetsgrad']); }
 		}
 	}
-	$veileder   = $user_data['brukerPK'];
-	$erPublisert = 1;
+		$veileder   = $user_data['brukerPK'];
+		$erPublisert = 1;
+		$melding = "publisert";
 		if(isset($_POST['lagre'])) {
 				$erPublisert = 0;
+				$melding = "lagret";
 		}
 					if(addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad)) {
-						$_SESSION['nyoppgsuccess'] = "Ny oppgave ble registrert";
-					Header('Location: oppgave.php');
+						if(isset($_POST['mailpub'])) {
+							publishMail($tittel); //Sender mail til alle deltakere
+						}
+						
+					Header('Location: oppgave.php?'.$melding);
 					die();
 				} else { $errors[] = "En feil oppstod: kunne ikke lagre oppgaven i databasen";} 
 		}  
-	
+	}
 
 
  ?>
@@ -82,12 +90,22 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" ></textarea><br>
 					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre" onclick="return regNyoppg();">
+					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
 			    </form>
-				<?php	
-				if(isset($_SESSION['nyoppgsuccess'])) {
-				echo $_SESSION['nyoppgsuccess'];
-				$_SESSION['nyoppgsuccess'] = "";
-			}
+				<?php
+
+				if(isset($_GET['responslagret'])) {
+					echo "Responsen ble lagret";
+				} elseif(isset($_GET['nosaveerror'])) {
+					echo "Kunne ikke lagre respons";
+				} elseif(isset($_GET['tomerror'])) {
+					echo "Kan ikke lagre tom respons";
+				}
+				if(isset($_GET['publisert']) === true) {
+					echo "<p>Oppgaven ble publisert</p>"; 
+				} elseif(isset($_GET['lagret']) === true) {
+					echo "<p>Oppgaven ble lagret</p>"; 
+				}
 				if (empty($errors) === false) {
 								echo output_errors($errors);
 							}
@@ -105,6 +123,9 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				</center><br>
 
 <?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen
+
+
+
 		if(isset($_POST['oppgaver'])) {
 			if($_POST['oppgaver'] == 'gittoppg') {
 				include('oppgaveliste.php');

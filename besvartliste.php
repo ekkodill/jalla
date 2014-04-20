@@ -2,12 +2,13 @@
 //Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014
 
-//include_once 'includes/init.php';
- //   $db = getDB(); 
+include_once 'includes/init.php';
+$db = getDB(); 
+
 
 
 //Registrerer ny respons til databasen
-if(!empty($_POST['lagre'])) {
+if(!empty($_POST['lagrerespons'])) {
 		$innleveringerPK 	= trim($_POST['oppgPK']);
 		$respons 	= sanitize(trim($_POST['respons']));
 		$veileder   = $user_data['brukerPK'];
@@ -17,11 +18,11 @@ if(!empty($_POST['lagre'])) {
 				$insert->bind_param('iis', $innleveringerPK, $veileder, $respons);
 		
 				if($insert->execute()) {
-					header('Location: oppgave.php');
+					header('Location: oppgave.php?responslagret');
 					die();
-				}
-		} 
-} 
+				} else { header('Location: oppgave.php?nosaveerror'); }
+		} else { header('Location: oppgave.php?tomerror'); } 
+}
  
     ?>
 <div class=bliste><table>
@@ -66,9 +67,9 @@ if(!empty($_POST['lagre'])) {
 				<br>
 				<br>
 				<textarea id='responstext' placeholder='Skriv respons' name='respons'></textarea>
-				<br>
-				<input type='button' value='Lagre' name='save' onclick='errorRespons($PK)'/>
-				<input id='responsid".$PK."' type='submit' hidden name='lagre'>
+				<br>";
+			//"<input type='button' value='Lagre' name='save' onclick='errorRespons($PK)'/>
+	echo	"<input id='responsid".$PK."' type='submit' name='lagrerespons'>
 			</div>
 		</div>";
     echo "</td></tr></form>";

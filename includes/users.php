@@ -104,6 +104,39 @@ function sendMail($epost, $passord) {
     	return false;
     	}
 }
+/*
+function sendMail($to, $tittel, $body) {
+	   	   $til = $to;
+		   $from = "tocuhdill@gmail.com";
+		   $subject = $tittel;
+		   $message = wordwrap($body, 70);
+		   //Sender mail
+		  if(mail($til,$subject,$message,"From: $from\n")) {
+    		return true;
+    	} else {
+    	return false;
+    	}
+}
+*/
+
+//Sender epost til brukere med nytt passord
+function publishMail($tittel) {
+	$db = getDB();
+	$query = $db->query("
+	SELECT ePost FROM brukere WHERE brukertype = 3");
+	$from = "tocuhdill@gmail.com";
+	$subject = "Ny oppgave publisert: ".$tittel;
+	$message = "Hei!\nDet er nå publisert en ny oppgave.
+		   \nDu finner den i listen over ubesvarte oppgaver på siden din eller direkte på skrivesenteret.
+		   \nLykke til!
+		   \n\nMvh Touchmetoden";
+	$message = wordwrap($message, 70);
+	while($epostRow = $query->fetch_assoc()) {
+	//Sender mail
+	mail($epostRow['ePost'],$subject,$message,"From: $from\n");
+	
+	}
+}
 
 
 
