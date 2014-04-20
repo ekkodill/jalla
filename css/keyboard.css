@@ -297,7 +297,7 @@ display:none;
     background: green;
 }
 .uboliste{
-    overflow: auto;
+      
     width:16.9%;
     height:auto;
     position:absolute;
@@ -306,11 +306,11 @@ display:none;
 }
 
 .uboliste2{
-    overflow: auto;
+  overflow:auto;
     width:20%;
     height:30%;
     position:absolute;
-    margin-top:20%;
+    margin-top:25%;
     margin-left:-1.7%;
 
 }
@@ -365,6 +365,5 @@ border-left:none;
 padding-top:0.5%;
 
 }
-
 
 

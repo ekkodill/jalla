@@ -2,8 +2,8 @@
 //Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014
 
-include_once 'includes/init.php';
-    $db = getDB(); 
+//include_once 'includes/init.php';
+ //   $db = getDB(); 
 
 
 //Registrerer ny respons til databasen

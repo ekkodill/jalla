@@ -72,17 +72,17 @@ $lagrettext = "";
 $pgName = 'Touch-tastatur';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
-<body onunload="unloadP('skriv');">
+
+<body onload="loadP('skriv');" onunload="unloadP('skriv');">
   <?php include_once 'design/header.php'; ?>
-      <script type="text/javascript">
-        function loadinit() {
-        show();
-        loadStyle(); 
-        onload=loadP('skriv');
-    }
-window.onload = loadinit;
-    </script>
     <div id="page">
+<script type="text/javascript">
+function skrivinit() {
+        show();
+        loadStyle();
+    }
+window.onload = skrivinit;
+</script>
     <section> 
         <div class="bfleft">
             <div class="valgmuligheter">             
@@ -120,7 +120,7 @@ window.onload = loadinit;
             <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
                 <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
             </select></center><br>
-            </form> 
+            </form>
             <table class="ubesform">
             <tbody>
                 <?php include_once 'ubesvartliste.php'; ?> 
@@ -199,5 +199,6 @@ window.onload = loadinit;
 </section>
 <?php include_once('design/footer.php'); ?>
 </div>
+<script type="text/javascript"></script>
 </body>
 </html>

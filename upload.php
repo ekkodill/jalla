@@ -7,6 +7,10 @@ include 'includes/init.php';
   
 $db = getDB();
 
+
+
+
+
 //Script for å laste opp vedlegg til serveren
 if(isset($_FILES['file'])) {
 $file = $_FILES["file"];

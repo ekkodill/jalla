@@ -1,10 +1,7 @@
-﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.02.2014
-// Denne siden er kontrollert av Kurt A. Aamodt, siste gang 19.02.2014
+﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 20.04.2014
+// Denne siden er kontrollert av Mikael Kolstad, siste gang 26.04.2014
 
-
-       
-
-
+//Setter stilen til tastaturet i localstorage
 function setStyle(id) {
     var keyboard = document.getElementById(id).style.display;
         if(keyboard == 'none') {
@@ -15,6 +12,7 @@ function setStyle(id) {
    document.getElementById(id).style.display = localStorage.kstyle;
 }
 
+//Laster inn stilen til tastaturet fra localstorage
 function loadStyle() {
    var stored = localStorage.kstyle;
    if(stored) {
@@ -153,8 +151,7 @@ var element = document.getElementById(event.keyCode);
         break;
         case 20: return;
         break;
-        default: 
-        document.getElementById(event.keyCode).style.backgroundColor = "white"; //Endrer fargen tilbake til standard
+        default: document.getElementById(event.keyCode).style.backgroundColor = "white"; //Endrer fargen tilbake til standard
     }
 }
 

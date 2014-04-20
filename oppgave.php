@@ -6,8 +6,18 @@ include 'includes/init.php';
 $db = getDB();
 
 
+//Publiserer oppgaver som er lagret fra før
+if(!empty($_POST['publish'])) {
+    $publisert = 1;
+    $pubPK = $_POST['oppgPK'];
+        $stmt = $db->prepare("UPDATE oppgaver SET erPublisert=? WHERE oppgavePK=? LIMIT 1");
+        $stmt->bind_param('ii', $publisert, $pubPK);
+        $stmt->execute();
+        header('Location: oppgave.php');
+}
+
 //Registrerer nye opgpaver til databasen
-if(!empty($_POST)) {
+if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 
 	if(empty($_POST['tittel'])) {
  		 $errors[] = "Du må skrive inn tittel";
@@ -27,25 +37,14 @@ if(!empty($_POST)) {
 		if(isset($_POST['lagre'])) {
 				$erPublisert = 0;
 		}
- 		
-		if(!empty($tittel) && !empty($oppg) && !empty($vansklighetsgrad))  {
-				$insert = $db->prepare("INSERT INTO oppgaver (veileder, tittelOppgave, tekstOppgave, datoEndret, erPublisert, vanskelighetsgrad) VALUES (?,?,?,now(),?,?)");
-				$insert->bind_param('sssii', $veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad);
-		
-				if($insert->execute()) {				
-					if($erPublisert == 1) {
-						$errors[] = "Oppgaven ble publisert";
-					} else {
-						$errors[] = "Oppgaven ble lagret";
-					}
-			?>
-				<script>$('#nyoppgfrm').submit(function());</script>
-			<?php 
-					header('Location: oppgave.php');
+					if(addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad)) {
+						$_SESSION['nyoppgsuccess'] = "Ny oppgave ble registrert";
+					Header('Location: oppgave.php');
 					die();
 				} else { $errors[] = "En feil oppstod: kunne ikke lagre oppgaven i databasen";} 
-		}   
-}
+		}  
+	
+
 
  ?>
 
@@ -69,9 +68,8 @@ if(!empty($_POST)) {
 		} 
 		?>
 	<body onunload="unloadP('oppgave')" onload="loadP('oppgave')"> 
-		<?php
-			include('design/header.php');
-			?>
+		<?php include('design/header.php');	?>
+
 		<div id="page">
 		    <section>
 				<center><legend><h4>Lag ny oppgave</h4></legend></center>
@@ -82,10 +80,15 @@ if(!empty($_POST)) {
 					<input class="stored" type="radio" value="2" name="vansklighetsgrad">Medium
 					<input class="stored" type="radio" value="1" name="vansklighetsgrad">Lett</h5>
 					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" ></textarea><br>
-					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" >
-					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre">
+					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();" >
+					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre" onclick="return regNyoppg();">
 			    </form>
-				<?php	if (empty($errors) === false) {
+				<?php	
+				if(isset($_SESSION['nyoppgsuccess'])) {
+				echo $_SESSION['nyoppgsuccess'];
+				$_SESSION['nyoppgsuccess'] = "";
+			}
+				if (empty($errors) === false) {
 								echo output_errors($errors);
 							}
 							if(!count(sjekkAntall('oppgaver'))) {
@@ -113,11 +116,12 @@ if(!empty($_POST)) {
 		</section>
 	    	<?php include('design/footer.php'); ?>
        	</div>
+
+
 <script type="text/javascript">
 
 
-
-//Fyller feltene med data fra localStorage om det er noe der når siden lastes
+	//Fyller feltene med data fra localStorage om det er noe der når siden lastes
 $(document).ready(function () {
     function init() {
         if (localStorage["tittel"]) {
@@ -129,6 +133,7 @@ $(document).ready(function () {
    }
 init();
 });
+
 
 //Setter riktig valg på radioknappen i forhold til hva som er i localstorage
 $('input[type=radio]').each(function() {
@@ -145,12 +150,10 @@ $('.stored').change(function () {
     localStorage[$(this).attr('name')] = $(this).val();
 });
 
-		//Resetter feltene når formen blir sendt uten problemer
+	//Resetter feltene når formen blir sendt uten problemer
 		$('#nyoppgfrm').submit(function() {
 			localStorage.clear();
 		});
-		
-	
 
 </script>
 	</body>

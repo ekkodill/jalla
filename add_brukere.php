@@ -3,12 +3,12 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 
 <?php
 
-if(!empty($_POST)) {
+if(!empty($_POST['adduser'])) {
 	//Sjekker at det er data i alle feltene 
 	if(isset($_POST['ePost'], $_POST['fornavn'], $_POST['etternavn'], $_POST['btype'])) {
-		$ePost 		= trim($_POST['ePost']);
-		$etternavn 	= trim($_POST['etternavn']);
-		$fornavn 	= trim($_POST['fornavn']);
+		$ePost 		= sanitize(trim($_POST['ePost']));
+		$etternavn 	= sanitize(trim($_POST['etternavn']));
+		$fornavn 	= sanitize(trim($_POST['fornavn']));
 		//Setter riktig tall for databasen i forhold til brukertype
 		if($_POST['btype'] == "administrator") { 
     	$brukertype = 1; 
@@ -69,7 +69,7 @@ if(!empty($_POST)) {
 				</tr>
 			</table>
 				<h7 class="paakrev">*Må fylles inn.</h7><br>
-			<center><input id="leggtilny" type="submit" value="Legg til ny bruker" onclick="return regNy()"></center>
+			<center><input name="adduser" id="leggtilny" type="submit" value="Legg til ny bruker" ></center>
 				<span>
 					<?php
 							if (empty($errors) === false) {

@@ -1,5 +1,5 @@
 <?php
-//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 12.04.2014
+//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 20.04.2014
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
 //Henter fullstendig oppgaveliste for admin\veiledere og kun ubesvarte oppgaver for deltakere
@@ -76,6 +76,17 @@ function addUser($ePost, $etternavn, $fornavn, $passord, $brukertype) {
 	}
 }
 
+//Legger til nye oppgaver i databasen
+function addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad) {
+	$db = getDB();
+	$insert = $db->prepare("INSERT INTO oppgaver (veileder, tittelOppgave, tekstOppgave, datoEndret, erPublisert, vanskelighetsgrad) VALUES (?,?,?,now(),?,?)");
+	$insert->bind_param('sssii', $veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad);
+	if($insert->execute()) {
+		return true;
+	} else { 
+		return false;
+	}
+}
 
 //Sender epost til brukere med nytt passord
 function sendMail($epost, $passord) {
