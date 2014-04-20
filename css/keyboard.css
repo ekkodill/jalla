@@ -299,14 +299,22 @@ display:none;
 .uboliste{
     overflow: auto;
     width:16.9%;
+    height:auto;
+    position:absolute;
+    margin-top:20%;
+    margin-left:-1.7%;
+}
+
+.uboliste2{
+    overflow: auto;
+    width:20%;
     height:30%;
     position:absolute;
     margin-top:20%;
     margin-left:-1.7%;
 
-   
-
 }
+
 .valgmuligheter{
     height:60%;
     width:100%;
