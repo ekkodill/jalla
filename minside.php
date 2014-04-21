@@ -131,6 +131,16 @@ if($user_data['passord'] != $gammeltpw) {
                         echo output_errors($errors);
                     } ?>
                 </form>
+               
+            </div>
+ <div class="minsidemainnede">
+              
+<div class="venstrenede"></div>
+
+<div class="midtennede"></div>
+
+<div class="hoyrenede"></div>
+
             </div>
   </section>
     </body>
