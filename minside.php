@@ -100,8 +100,10 @@ if($user_data['passord'] != $gammeltpw) {
 
            ?>
           </div>
+        
           </div>
-         <form class="fasplas" action="minside.php" method="post">
+       
+         <form class="fasplas"action="minside.php" method="post">
             <select name='minsideoppgli' onchange="this.form.submit();">
             <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
                 <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>P&aringbegynte oppgaver</option>
@@ -109,8 +111,8 @@ if($user_data['passord'] != $gammeltpw) {
                 <option name="besvmresp" value='besvmresp' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'besvmresp') {echo "selected";}}?>>Besvarelser med respons</option>
             </select></center><br>
             </form>
-  
-     
+
+
             <div id="minside">
                 <form id="byttpw" name="reg" method="post" action="minside.php">
                  <h2>Bytt passord</h2>
@@ -127,10 +129,11 @@ if($user_data['passord'] != $gammeltpw) {
                     } ?>
                 </form>
                 
-                </div>
-               <div class="ubesform2">
+ 
+            </div>
+             <div class="ubesform2">
+              <?php 
 
-                            <?php 
               $bPK = $user_data['brukerPK'];
             if(!empty($_POST['minsideoppgli'])) {
                 if($_POST['minsideoppgli'] == 'ubesvoppg') {
@@ -149,6 +152,7 @@ if($user_data['passord'] != $gammeltpw) {
                 }
                 include_once("ubesvartliste.php");
                ?>
+
           </div>
           <div class="minsidemainnede">
             <?php include_once("besvart.php"); ?>
