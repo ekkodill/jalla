@@ -57,9 +57,9 @@ margin-left:1%;
 }
 
 #minside {
-	float:left;
+	float:right;
 	margin-top:3%;
-	margin-left:1%;
+	margin-right:5%;
 	width : 25%;
 	height:40%;
 	background-color : #FFF;
@@ -114,6 +114,7 @@ margin-left:1%;
 .ikkeferi{
 	overflow: auto;
 	float:left;
+
 	margin-top:1%;
 	height:50%;
 	width:34%;
@@ -146,41 +147,29 @@ margin-left:1%;
 /*---- Nedre del av minside ----*/
 
 .minsidemainnede{
-width:100%;
-height:50%;
+width:90%;
+height:auto;
 border-top:3px dotted #000;
-float:right;
-margin-bottom:2%;
+float:left;
+padding: 0 0 2% 2%;
 margin-top:1%;
+margin-left:5%;
 }
 
-.venstrenede{
+.fasplas{
+width:20%;
+position:fixed;
+z-index:2000000;
+margin-left:27%;
+float:left;
+margin-bottom:2%;
+}
+
+.ubesform2{
+	margin-top:3%;
 	width:30%;
-	height:100%;
+	height:auto;
 	float:left;
+	overflow:auto;
 	margin-left:2%;
-	margin-top:1%;
-	margin-bottom:1%;
-	border:1px solid #000;
-}
-
-.midtennede{
-	width:30%;
-	height:100%;
-	float:left;
-	margin-left:2%;
-	margin-right:2%;
-	margin-bottom:1%;
-	margin-top:1%;
-	border:1px solid #000;
-}
-
-.hoyrenede{
-	width:30%;
-	height:100%;
-	float:left;
-	margin-right:1%;
-	margin-top:1%;
-	margin-bottom:1%;
-	border:1px solid #000;
 }
