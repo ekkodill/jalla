@@ -11,7 +11,7 @@ function oppgListe($liste) {
 		SELECT oppgaver.*, innleveringer.* 
 		FROM oppgaver
 		JOIN innleveringer ON (oppgaver.oppgavePK = innleveringer.oppgave)
-		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NULL;";
+		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NULL";
 	} elseif($liste == "liste") {
 		//Liste med oppgaver gruppert på vanskelighetsgrad sortert på dato
 		$query = "
@@ -26,17 +26,24 @@ function oppgListe($liste) {
 function ubesvarteOppg($bPK, $ferdig) {
 	$db = getDB();
 	if($ferdig == 0) {
-		//Liste med innleveringer til angitt bruker som ikke er ferdig
+		//Liste med innleveringer til angitt bruker som ikke er ferdig (påbegynnte oppgaver)
 		$query = "
 		SELECT innleveringer.*, oppgaver.* FROM innleveringer
         JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = $ferdig";
 	} elseif ($ferdig == 1) {
-		//Liste med innleveringer til angitt bruker som er ferdig
+		//Liste med innleveringer til angitt bruker som er ferdig men uten respons
 		$query = "
-		SELECT innleveringer.*, oppgaver.* FROM oppgaver
-        JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = $ferdig";
-	} else {
-		//Liste med oppgaver til angitt bruker som er ubesvarte
+		SELECT innleveringer.*, oppgaver.* FROM innleveringer
+        JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = $ferdig
+        LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NULL";
+	} elseif($ferdig == 2) {
+		//Liste med innleveringer til angitt bruker som er ferdig or har fått respons
+		$query = "
+		SELECT innleveringer.*, oppgaver.* FROM innleveringer
+        JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = 1
+		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is not NULL";
+	}else {
+		//Liste med oppgaver til angitt bruker som er ubesvarte (ubesvarte oppgaver)
 		$query = "
 		SELECT oppgaver.*
 		FROM oppgaver

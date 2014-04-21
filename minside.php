@@ -18,7 +18,7 @@ if($user_data['passord'] != $gammeltpw) {
             }   else { 
                   $errors[] = 'De nye passordene er ikke like'; 
                 }
-        } else { $errors[] = 'Alle feltene må fylles inn'; }
+        } else { $errors[] = 'Alle feltene m&aring; fylles inn'; }
 } 
 ?>
 
@@ -63,8 +63,7 @@ if($user_data['passord'] != $gammeltpw) {
 
               // document.getElementById(id).style.background="red";
                    return false;
-
-}
+      }
           </script>
         <div id="page">
           <section>
@@ -87,7 +86,32 @@ if($user_data['passord'] != $gammeltpw) {
           </div>
           </div>
           <div class="ikkeferi"><h3>Du har uferdig oppgave(r)</h3><br />
+         <form action="minside.php" method="post">
+            <select name='minsideoppgli' onchange="this.form.submit();">
+            <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
+                <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>P&aringbegynte oppgaver</option>
+                <option name="besvoppg" value='besvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'besvoppg') {echo "selected";}}?>>Besvarte oppgaver</option>
+                <option name="besvmresp" value='besvmresp' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'besvmresp') {echo "selected";}}?>>Besvarelser med respons</option>
+            </select></center><br>
+            </form>
               <?php 
+              $bPK = $user_data['brukerPK'];
+            if(!empty($_POST['minsideoppgli'])) {
+                if($_POST['minsideoppgli'] == 'ubesvoppg') {
+                  $result = ubesvarteOppg($bPK, 3);
+                } elseif( $_POST['minsideoppgli'] =='pbegoppg') {
+                  $result = ubesvarteOppg($bPK, 0);
+                } elseif($_POST['minsideoppgli'] == 'besvoppg') {
+                  $result = ubesvarteOppg($bPK, 1);
+                } elseif($_POST['minsideoppgli'] == 'besvmresp') {
+                  $result = ubesvarteOppg($bPK, 2);
+                }  else {
+                    $result = ubesvarteOppg($bPK, 3);
+                }
+            } else {
+                    $result = ubesvarteOppg($bPK, 3);
+                }
+
                 include_once("ubesvartliste.php");
                ?>
           </div>
@@ -107,7 +131,7 @@ if($user_data['passord'] != $gammeltpw) {
                         echo output_errors($errors);
                     } ?>
                 </form>
-            </div> 
+            </div>
   </section>
     </body>
 </html>

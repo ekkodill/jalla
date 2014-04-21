@@ -118,7 +118,19 @@ window.onload = skrivinit;
             <table class="ubesform">
             <input type="text" id="search" placeholder="  Søk"></input>
             <tbody>
-                <?php include_once 'ubesvartliste.php'; ?> 
+                <?php 
+                $bPK = $user_data['brukerPK'];
+                if(!empty($_SESSION['drpdwnlist'])) {
+                    if($_SESSION['drpdwnlist'] == 'ubesvoppg') {
+                      $result = ubesvarteOppg($bPK, 3);
+                    } elseif( $_SESSION['drpdwnlist'] =='pbegoppg') {
+                      $result = ubesvarteOppg($bPK, 0);
+                    } 
+                }else {
+                        $result = ubesvarteOppg($bPK, 3);
+                    }
+
+                include_once 'ubesvartliste.php'; ?> 
             <tbody>
         </table>
             </div>
