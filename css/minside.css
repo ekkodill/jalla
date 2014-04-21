@@ -114,8 +114,8 @@ margin-left:1%;
 .ikkeferi{
 	overflow: auto;
 	float:left;
-	margin-top:2%;
-	height:56%;
+	margin-top:1%;
+	height:50%;
 	width:34%;
 	margin-left:2%;
 	padding-right:5%;
@@ -142,3 +142,45 @@ margin-left:1%;
 	border: 1px solid #000;
 }
 
+
+/*---- Nedre del av minside ----*/
+
+.minsidemainnede{
+width:100%;
+height:50%;
+border-top:3px dotted #000;
+float:right;
+margin-bottom:2%;
+margin-top:1%;
+}
+
+.venstrenede{
+	width:30%;
+	height:100%;
+	float:left;
+	margin-left:2%;
+	margin-top:1%;
+	margin-bottom:1%;
+	border:1px solid #000;
+}
+
+.midtennede{
+	width:30%;
+	height:100%;
+	float:left;
+	margin-left:2%;
+	margin-right:2%;
+	margin-bottom:1%;
+	margin-top:1%;
+	border:1px solid #000;
+}
+
+.hoyrenede{
+	width:30%;
+	height:100%;
+	float:left;
+	margin-right:1%;
+	margin-top:1%;
+	margin-bottom:1%;
+	border:1px solid #000;
+}
