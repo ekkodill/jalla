@@ -86,7 +86,7 @@ border-radius: 5%;
 outline: 0;
 }
 
-#pwknapp:hover {
+#pwknapp:hover, #updt:hover {
 background : #09C;
 color : #000;
 }

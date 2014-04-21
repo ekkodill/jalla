@@ -10,7 +10,7 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
     if(!empty($_POST['inntext']) && !empty($_POST['tid']) && !empty($_SESSION['oppgPK'])) {
         $bruker     = $user_data['brukerPK'];
         $oppgavenr  = $_SESSION['oppgPK'];
-        $oppg       = sanitize(trim($_POST['inntext']));
+        $oppg       = trim($_POST['inntext']);
         $_SESSION['inntxt'] = $oppg;
         $tid        =  substr($_POST['tid'],0,-4); //fjerner millisekunder
         $tidBrukt   = date_create_from_format('H:i:s', $tid); //gjør det om til en datetime format objekt
@@ -23,7 +23,7 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
         $_SESSION['percent'] = round($percent);
 
         //Sjekker om man skal levere en tidligere påbegynnt oppgave og oppdaterer med ny info i databasen
-        if(!empty($_POST['fullfor']) && $_SESSION['drpdwnlist'] =='pbegoppg' || !empty($_POST'lagreoppg'] && $_SESSION['drpdwnlist'] == 'pbegoppg')) {
+        if(!empty($_POST['fullfor']) || !empty($_POST['lagreoppg']) && $_SESSION['drpdwnlist'] =='pbegoppg') {
             if(!empty($_POST['fullfor'])) {
                 $ferdig = 1;
             }

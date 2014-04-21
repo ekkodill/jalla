@@ -3,7 +3,7 @@ Denne siden er kontrollert av Mikael kolstad siste gang 28.04.2014 !-->
 <?php
 include_once 'includes/init.php';
 
-$pgName = 'Touch-tastatur';
+$pgName = 'Skrivesenter';
 
 //Setter verdiene fra session variablene til lokale variabler som vises på siden
 if(isset($_SESSION['tid']) && isset($_SESSION['antfeil']) && isset($_SESSION['percent'])) {

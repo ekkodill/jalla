@@ -8,7 +8,7 @@ while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
     $innlPK = "";
     $gammelTid="";
-    $lagrettext="";
+    $sanitertinntxt="";
     $tittel = $row['tittelOppgave'];
     $vPK = $row['veileder'];
     $veileder = finnBruker($vPK);
@@ -20,6 +20,7 @@ while ($row = $result->fetch_assoc()) {
   $gammelTid = $row['tidBrukt'];
   $innlPK = $row['innleveringPK'];
   $lagrettext = $row['tekstInnlevering'];
+  $sanitertinntxt = nl2br(htmlspecialchars($lagrettext, ENT_QUOTES));
 } else { $_SESSION['drpdwnlist'] = 'ubesvoppg'; }
 
     if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
@@ -56,7 +57,7 @@ while ($row = $result->fetch_assoc()) {
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
-    echo "<input type='hidden' name='lagrettext' value='".$lagrettext."'/>";
+    echo "<input type='hidden' name='lagrettext' value='".$sanitertinntxt."'/>";
     echo "<input type='hidden' name='innPK' value='".$innlPK."'/>";
     echo "<input type='hidden' name='gammelTid' value='".$gammelTid."'/>";
 
