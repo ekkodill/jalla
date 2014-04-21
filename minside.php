@@ -3,6 +3,11 @@ Denne siden er kontrollert av Kurt A. Amodt siste gang 30.03.2014 !-->
 <?php include_once 'includes/init.php';
 $db = getDB();
 
+
+
+
+
+
 //Sjekker at boksene er utfyllt og at informasjonen stemmer for så å oppdatere til det nye passordet.
 if(isset($_POST['nypw'])) {
     $gammeltpw = passord(sanitize($_POST['oldpassword']));
@@ -31,58 +36,60 @@ if($user_data['passord'] != $gammeltpw) {
     <body onunload="unloadP('oppgave')" onload="loadP('oppgave')">
         <?php include 'design/header.php'; ?>
       <script type="text/javascript">
-                   function jaaa() {
-                          var a = document.querySelectorAll('.bfred');
-                          for(var i = 0; i<a.length; i++) {
-                            a[i].style.display="none";  
-                          }
-                          
-                        }
-
-              function removeRO(id,save){
-               // alert(save);
-              var f = document.forms['lol'];
-              for(var i=0,fLen=f.length;i<fLen;i++){
-              f.elements[i].readOnly = true;//As @oldergod noted, the "O" must be upper case
-              }
-               
+          /*  function jaaa() {
               var a = document.querySelectorAll('.bfred');
-
-                          for(var i = 0; i<a.length; i++) {
-                           if(a[i].id != save) {
-                            a[i].style.display="none";
-                          
-                          } else {
-                            a[i].style.display="inline-block";
-                          }
-                          }
-
-             document.getElementById(id).removeAttribute("readonly");
-              
-              document.getElementById(id).focus();
-
-              // document.getElementById(id).style.background="red";
-                   return false;
-      }
+                  for(var i = 0; i<a.length; i++) {
+                      a[i].style.display="none";  
+                  }
+              }*/
+              function removeRO(id,save){
+                var f = document.forms['profil'];
+                for(var i=0,fLen=f.length;i<fLen;i++){
+                f.elements[i].readOnly = true;
+                }
+                var a = document.querySelectorAll('.bfred');
+                for(var i = 0; i<a.length; i++) {
+                  if(a[i].id != save) {
+                    a[i].style.display="none";
+                  } else {
+                      a[i].style.display="inline-block";
+                    }
+                }
+                 document.getElementById(id).removeAttribute("readonly");          
+                 document.getElementById(id).focus();
+                 return false;
+              }
           </script>
         <div id="page">
           <section>
           <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"30%" width="70%"alt="bilde"></div>
           <div class="profinfo">
-          <form name="lol" action="" method="POST">
+          <form name="profil" action="minside.php" method="POST">
           <label>Fornavn:</label>
-          <input type="text" readonly class="minsinputfor" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/>
-          <input type='image' name="save" class="bfred" id="lfnavn" hidden src='img/save.jpg' />
+          <input type="text" name="upfnavn" readonly class="minsinputfor" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/>
+          <input type='image' name="savelfnavn" class="bfred" id="lfnavn" hidden src='img/save.jpg' />
           <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('fornavn', 'lfnavn');"/><br />
           <label>Etternavn:</label>
-          <input type="text" readonly class="minsinputett" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/>
-          <input type='image' name="save" class="bfred" id="lenavn" hidden src='img/save.jpg'/>
+          <input type="text" name="upenavn" readonly class="minsinputett" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/>
+          <input type='image' name="savelenavn" class="bfred" id="lenavn" hidden src='img/save.jpg'/>
           <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('etternavn', 'lenavn')"/><br />
           <label>E-post:</label>
-          <input type="text" readonly class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/>
-          <input type='image' class="bfred" id="lepost" hidden="true" src='img/save.jpg'/>
+          <input type="text" name="upepost" readonly class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/>
+          <input type='image' name="savelepost" class="bfred" id="lepost" hidden="true" src='img/save.jpg'/>
           <input type='image' src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('epost', 'lepost')"/><br />
           </form>
+            <?php 
+            if(isset($_GET['oppdatert'])) {
+              echo "Oppdatert";
+            } elseif(isset($_GET['error'])) {
+              echo "Det oppstod en feil ved lagring";
+            } elseif(isset($_GET['tomerr'])) {
+              echo "Det oppstod en feil, et eller flere felt er tomme";
+            }
+
+
+
+           ?>
           </div>
           </div>
           <div class="ikkeferi"><h3>Du har uferdig oppgave(r)</h3><br />

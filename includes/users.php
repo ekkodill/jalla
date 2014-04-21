@@ -71,6 +71,15 @@ function endrePW($passord, $epost){
              $stmt->execute();
 }
 
+function endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost){
+	$db = getDB();
+	$stmt = $db->prepare("UPDATE brukere SET ePost=?, etternavn=?, fornavn=?  WHERE brukerPK=? LIMIT 1");
+            $stmt->bind_param('sss', $enavn, $epost, $fnavn );
+             if($stmt->execute()) {
+             	return true;
+             } else { return false; }
+}
+
 //Legger nye brukere inn i databasen
 function addUser($ePost, $etternavn, $fornavn, $passord, $brukertype) {
 	$db = getDB();
