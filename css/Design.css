@@ -2,13 +2,15 @@
 Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 27.03.2014
 Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
 */
-section, footer, aside, article, figure{ 
+header, section, footer, aside, article, figure{ 
 	display: block;
 }
 
 
 
 body {
+	width:100%;
+	height:100%;
 	background-color:#EEEEEE;
 	margin: 0px;
 	padding: 0px;
@@ -81,7 +83,7 @@ section {
 	padding-top: 1% ;
 	padding-left: 3%;
 	padding-right: 3%;
-	padding-bottom:15%;
+	padding-bottom:5%;
 	background-color:#fff;
 	border-left: 2px solid #000;
 	border-right:2px solid #000;
