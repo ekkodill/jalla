@@ -13,7 +13,7 @@ if (!empty($_POST)) {
     $respons = $_POST['respons'];
 }
 }
-
+echo date('Y-m-d h:i:s');
  ?>
 <div>
 <table border="1" width="400">

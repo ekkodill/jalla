@@ -32,15 +32,12 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
             $secs = strtotime($gammelTid)-strtotime("00:00:00"); //Gjør om til sekunder
             $result = date("H:i:s",strtotime($mySqlTime)+$secs); //Legger på sekundene til den nye tiden
             $_SESSION['tid'] = $result;
-            
-            $query = "
-                UPDATE innleveringer 
-                    SET bruker = $bruker, oppgave = $oppgavenr, tekstInnlevering ='".$oppg."', datoLevert=now(), tidBrukt ='".$result."', antallFeil = $antfeil, ferdig = $ferdig 
-                    WHERE innleveringPK = $innPK LIMIT 1";
-
-        if($db->query($query)) {
-            redirect("skriv.php");
-            } else { echo $query;}
+            $now = date('Y-m-d h:i:s');
+            $stmt = $db->prepare("UPDATE innleveringer SET tekstInnlevering=?, datoLevert=?, tidBrukt=?, antallFeil=?, ferdig=? WHERE innleveringPK=? LIMIT 1");
+            $stmt->bind_param('sssiii', $oppg,$result, $now, $antfeil, $ferdig, $innPK );
+             if($stmt->execute()) {
+                header('Location: skriv.php');
+             } else { header('Location: skriv.php?lagreerror');}
         } else {
             //Lagrer innleveringer i databasen
                 if(!empty($_POST['fullfor'])) {
