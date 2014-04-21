@@ -37,9 +37,9 @@ function ubesvarteOppg($bPK, $ferdig) {
         JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = $ferdig
         LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NULL";
 	} elseif($ferdig == 2) {
-		//Liste med innleveringer til angitt bruker som er ferdig or har fått respons
+		//Liste med innleveringer til angitt bruker som er ferdig og har fått respons
 		$query = "
-		SELECT innleveringer.*, oppgaver.* FROM innleveringer
+		SELECT innleveringer.*, oppgaver.*, respons.* FROM innleveringer
         JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = 1
 		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is not NULL";
 	}else {
@@ -73,8 +73,8 @@ function endrePW($passord, $epost){
 
 function endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost){
 	$db = getDB();
-	$stmt = $db->prepare("UPDATE brukere SET ePost=?, etternavn=?, fornavn=?  WHERE brukerPK=? LIMIT 1");
-            $stmt->bind_param('sss', $enavn, $epost, $fnavn );
+      $stmt = $db->prepare("UPDATE brukere SET ePost=?, etternavn=?, fornavn=?  WHERE brukerPK=? LIMIT 1");
+            $stmt->bind_param('sssi', $epost,$enavn, $fnavn, $brukerPK );
              if($stmt->execute()) {
              	return true;
              } else { return false; }

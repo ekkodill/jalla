@@ -4,6 +4,20 @@ Denne siden er kontrollert av Kurt A. Amodt siste gang 30.03.2014 !-->
 $db = getDB();
 
 
+if(!empty($_POST['updateinfo'])) {
+
+  if(isset($_POST['upfnavn'],$_POST['upenavn'], $_POST['upepost'])) {
+  $brukerPK = $user_data['brukerPK'];
+  $fnavn = sanitize(trim($_POST['upfnavn']));
+  $enavn = sanitize(trim($_POST['upenavn']));
+  $epost = sanitize(trim($_POST['upepost']));
+    if(!empty($fnavn) && !empty($enavn) && !empty($epost)) {      
+        if(endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost)) {
+              header('Location: minside.php?oppdatert');
+        } else { header('Location: minside.php?error'); }
+    } else { header('Location: minside.php?tomerror'); }
+  }
+}
 
 
 
@@ -59,32 +73,27 @@ if($user_data['passord'] != $gammeltpw) {
                  document.getElementById(id).focus();
                  return false;
               }
+              function updateClick() {
+                document.getElementById('updt').click();
+              }
           </script>
         <div id="page">
           <section>
           <div class="msvenstre"><div class="bpbilde"><img src="img/mann.jpg" height:"30%" width="70%"alt="bilde"></div>
           <div class="profinfo">
           <form name="profil" action="minside.php" method="POST">
-          <label>Fornavn:</label>
-          <input type="text" name="upfnavn" readonly class="minsinputfor" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/>
-          <input type='image' name="savelfnavn" class="bfred" id="lfnavn" hidden src='img/save.jpg' />
-          <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('fornavn', 'lfnavn');"/><br />
-          <label>Etternavn:</label>
-          <input type="text" name="upenavn" readonly class="minsinputett" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/>
-          <input type='image' name="savelenavn" class="bfred" id="lenavn" hidden src='img/save.jpg'/>
-          <input type='image'  src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('etternavn', 'lenavn')"/><br />
-          <label>E-post:</label>
-          <input type="text" name="upepost" readonly class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/>
-          <input type='image' name="savelepost" class="bfred" id="lepost" hidden="true" src='img/save.jpg'/>
-          <input type='image' src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('epost', 'lepost')"/><br />
+          <label>Fornavn:</label><input type="text" name="upfnavn" class="minsinputfor" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/><br>
+          <label>Etternavn:</label><input type="text" name="upenavn" class="minsinputett" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/><br>
+          <label>E-post:</label><input type="text" name="upepost" class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/><br>
+          <input type='submit' id="updt" name="updateinfo" value="Oppdater"/><br />
           </form>
             <?php 
             if(isset($_GET['oppdatert'])) {
               echo "Oppdatert";
             } elseif(isset($_GET['error'])) {
               echo "Det oppstod en feil ved lagring";
-            } elseif(isset($_GET['tomerr'])) {
-              echo "Det oppstod en feil, et eller flere felt er tomme";
+            } elseif(isset($_GET['tomerror'])) {
+              echo "Det oppstod en feil, et eller flere felt kan ikke være tomme";
             }
 
 
@@ -92,8 +101,7 @@ if($user_data['passord'] != $gammeltpw) {
            ?>
           </div>
           </div>
-          <div class="ikkeferi"><h3>Du har uferdig oppgave(r)</h3><br />
-         <form action="minside.php" method="post">
+         <form class="fasplas" action="minside.php" method="post">
             <select name='minsideoppgli' onchange="this.form.submit();">
             <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
                 <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>P&aringbegynte oppgaver</option>
@@ -101,7 +109,28 @@ if($user_data['passord'] != $gammeltpw) {
                 <option name="besvmresp" value='besvmresp' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'besvmresp') {echo "selected";}}?>>Besvarelser med respons</option>
             </select></center><br>
             </form>
-              <?php 
+  
+     
+            <div id="minside">
+                <form id="byttpw" name="reg" method="post" action="minside.php">
+                 <h2>Bytt passord</h2>
+                    Gammelt passord: 
+                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"/><br /><br />
+                    Nytt passord: 
+                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"/><br /><br />
+                    Bekreft nytt passord: 
+                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"/><br /><br />
+                    <input type="Submit" id="pwknapp" name="nypw" value="Bekreft">
+                    <br><?php 
+                    if (empty($errors) === false) {
+                        echo output_errors($errors);
+                    } ?>
+                </form>
+                
+                </div>
+               <div class="ubesform2">
+
+                            <?php 
               $bPK = $user_data['brukerPK'];
             if(!empty($_POST['minsideoppgli'])) {
                 if($_POST['minsideoppgli'] == 'ubesvoppg') {
@@ -118,38 +147,13 @@ if($user_data['passord'] != $gammeltpw) {
             } else {
                     $result = ubesvarteOppg($bPK, 3);
                 }
-
                 include_once("ubesvartliste.php");
                ?>
           </div>
-              
-            <div id="minside">
-                <form id="byttpw" name="reg" method="post" action="minside.php">
-                 <h2>Bytt passord</h2>
-                    Gammelt passord: 
-                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"/><br /><br />
-                    Nytt passord: 
-                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"/><br /><br />
-                    Bekreft nytt passord: 
-                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"/><br /><br />
-                    <input type="Submit" id="pwknapp" name="nypw" value="Bekreft">
-                    <br><?php 
-                    if (empty($errors) === false) {
-                        echo output_errors($errors);
-                    } ?>
-                </form>
-               
-            </div>
- <div class="minsidemainnede">
-              
-<div class="venstrenede"></div>
-
-<div class="midtennede"></div>
-
-<div class="hoyrenede"></div>
-
-            </div>
-  </section>
+          <div class="minsidemainnede">
+            <?php include_once("besvart.php"); ?>
+          </div>
+       </section>
     </body>
 </html>
 

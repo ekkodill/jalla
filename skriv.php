@@ -63,7 +63,7 @@ $lagrettext = "";
 <!doctype html>
 <html>
 <?php
-$pgName = 'Touch-tastatur';
+$pgName = 'Skrivesenter';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
 

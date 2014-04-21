@@ -26,7 +26,7 @@ while ($row = $result->fetch_assoc()) {
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
 
-    echo "<form class='ubesform' action='print.php' method='POST'>";
+    echo "<form class='ubesform' action='skriv.php' method='POST'>";
     echo "<tr>";
     echo "<td id='oppg".$PK."'  name='tittel'>";
     if(!empty($vedlegg)) {
@@ -51,7 +51,7 @@ while ($row = $result->fetch_assoc()) {
     }
     if(!empty($row['ferdig'])) {
       echo "<input type='image' class='print' src='img/respons.png' id='print".$PK."' title='Print' onclick=this.form.action='print.php';/>";
-      //echo "<a href='print.php'><img src='img/respons.png' alt='Print' title='Print'>";
+    //echo "<a href='print.php'><img src='img/respons.png' alt='Print' title='Print'>";
   }
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";

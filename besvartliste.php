@@ -68,7 +68,6 @@ if(!empty($_POST['lagrerespons'])) {
 				<br>
 				<textarea id='responstext' placeholder='Skriv respons' name='respons'></textarea>
 				<br>";
-			//"<input type='button' value='Lagre' name='save' onclick='errorRespons($PK)'/>
 	echo	"<input id='responsid".$PK."' type='submit' name='lagrerespons'>
 			</div>
 		</div>";

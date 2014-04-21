@@ -1,26 +1,28 @@
 /*
 Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 27.03.2014
-Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 */
-section, footer, aside, article, figure{ 
-	display: block;
+header, section, footer, aside, article, figure{
+display: block;
 }
 
 
 
 body {
-	background-color:#EEEEEE;
-	margin: 0px;
-	padding: 0px;
-	text-align: left;
-	font-family: 'Roboto Slab', serif;
+width:100%;
+height:100%;
+background-color:#EEEEEE;
+margin: 0px;
+padding: 0px;
+text-align: left;
+font-family: 'Roboto Slab', serif;
 }
 
 p {
-	font-family: 'Roboto Slab', serif;
-	font-size: 100%;
-	font-weight:normal;
-	line-height: 1.429;
+font-family: 'Roboto Slab', serif;
+font-size: 100%;
+font-weight:normal;
+line-height: 1.429;
 }
 
 /* Headings */
@@ -31,96 +33,96 @@ h5 {font-size: 1.143em}	/* 16px */
 h6 {font-size: 1em}	/* 14px */
  
 h2, h3, h4, h5, h6 {
-	font-weight: 400;
-	line-height: 1.1;
-	margin-bottom: .8em;
-	font-family: 'Roboto', sans-serif;
+font-weight: 400;
+line-height: 1.1;
+margin-bottom: .8em;
+font-family: 'Roboto', sans-serif;
 }
 
 a:link, a:visited{
-	color:#000;
-	text-decoration:none;	
-	font-weight:normal;
+color:#000;
+text-decoration:none;	
+font-weight:normal;
 }
 
 a:hover, a:active{
-		color:#09C;
-	}
+color:#09C;
+}
 
-	#page {
-	margin-left:13.5%;
-	margin-right:auto;
-	width:79%;
-	background-color:#fff;
+#page {
+margin-left:13.5%;
+margin-right:auto;
+width:79%;
+background-color:#fff;
 
-	
+
 }
 .innloggboksfixed{
-		width:9%;
-	height:auto;
-	position:fixed;
-	z-index:100;
-	padding:1% 2% 1% 1%;
-	margin-left:0.6%;
-	margin-top:-4%; 
-	background-color:#5B5B5B;
-	color:#fff;
-	border-radius:5%;
-	border: 3px solid #000;
+width:9%;
+height:auto;
+position:fixed;
+z-index:100;
+padding:1% 2% 1% 1%;
+margin-left:0.6%;
+margin-top:-4%;
+background-color:#5B5B5B;
+color:#fff;
+border-radius:5%;
+border: 3px solid #000;
 }
 
-		
+
 /*----Hovedboks----*/
 section {
-	width:100%;
-	height:100%;
-	margin-top:5%;
-	margin-bottom:5%;
-	margin-left:auto;
-	margin-right:auto;
-	padding-top: 1% ;
-	padding-left: 3%;
-	padding-right: 3%;
-	padding-bottom:15%;
-	background-color:#fff;
-	border-left: 2px solid #000;
-	border-right:2px solid #000;
-	
-	
+width:100%;
+height:100%;
+margin-top:5%;
+margin-bottom:5%;
+margin-left:auto;
+margin-right:auto;
+padding-top: 1% ;
+padding-left: 3%;
+padding-right: 3%;
+padding-bottom:5%;
+background-color:#fff;
+border-left: 2px solid #000;
+border-right:2px solid #000;
+
+
 }
 
 section h2 {
-	font-size:2.2em;
+font-size:2.2em;
 }
 
 section p {
-	font-size:0.9em;	
+font-size:0.9em;	
 }
 
 .midtfelt {
-	width:69%;
-	height:auto;	
-	padding-left: 2%;
-	padding-right: 2%;
-	padding-bottom:3%;
-	background-color:#fff;
+width:69%;
+height:auto;	
+padding-left: 2%;
+padding-right: 2%;
+padding-bottom:3%;
+background-color:#fff;
 
 }
 
 .bilde{
-	border: 1px solid #fff;
-	float: right;
-	margin-left: 10px;
+border: 1px solid #fff;
+float: right;
+margin-left: 10px;
 
 }
 
 /*----Footer----*/
 footer {
-	color:#fff;
-	position:fixed;
-	width: 100%;
-	height: 80px;
-	bottom:0px;
+color:#fff;
+position:fixed;
+width: 100%;
+height: 80px;
+bottom:0px;
     left:0px;
     right:0px;
     margin-bottom:0px;
@@ -128,35 +130,34 @@ background-color:#5B5B5B;
 }
 
 .fotinfo{
-	margin-top:1%;
-	float:left;
-	margin-left:8%;
-	
+margin-top:1%;
+float:left;
+margin-left:8%;
+
 }
 .fotinfom{
-	float:left;
-	margin-left:8%;
-	
+float:left;
+margin-left:8%;
+
 }
 
-	footer h3 {
-		text-align:center;
-		margin-top: 15px;
-	}
+footer h3 {
+text-align:center;
+margin-top: 15px;
+}
 
-	footer h4 {
-		text-align:center;
-	}
+footer h4 {
+text-align:center;
+}
 
-	footer h5 {
-		margin-top: -10px;
-		margin-bottom: -20px;
-		text-align:center;
-		font-size: 0.9em;
-	}
+footer h5 {
+margin-top: -10px;
+margin-bottom: -20px;
+text-align:center;
+font-size: 0.9em;
+}
 
-	footer a {
-		text-align:center;
-		font-size:1em;
-	}
-
+footer a {
+text-align:center;
+font-size:1em;
+}

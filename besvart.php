@@ -14,20 +14,22 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	    </thead>
     <tbody>
     <?php
-    $brukerPK = $user_data['brukerPK'];
+   
     /*$result = $db->query("
         SELECT innleveringer.*, oppgaver.* FROM innleveringer
         JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $brukerPK");
 */
+/*
 $result = $db->query("
 SELECT innleveringer.*, oppgaver.*, respons.* FROM innleveringer
         JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK
         LEFT JOIN respons ON innleveringer.innleveringPK = respons.innlevering WHERE innleveringer.bruker = $brukerPK
-GROUP BY innleveringer.innleveringPK");
+GROUP BY innleveringer.innleveringPK");*/
+ 
+$bPK = $user_data['brukerPK'];
 
+$result = ubesvarteOppg($bPK, 2);
 while ($row = $result->fetch_assoc()) {
-    
-
     $PK = $row['innleveringPK'];
     $oppgavePK = $row['oppgave'];
   	$innlevertTekst = $row['tekstInnlevering'];
@@ -46,7 +48,7 @@ while ($row = $result->fetch_assoc()) {
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
  
-    echo "<form action='skriv.php' method='POST'>";
+    echo "<form action='print.php' method='POST'>";
     echo "<tr>";
     echo "<td id='tittel".$PK."'        	 name='tittel'     >"  . $row['tittelOppgave'].					"</td>";
     echo "<td id='datoLevert".$PK."'    	 name='datoLevert' >"  . $row['datoLevert'].					"</td>";
@@ -57,11 +59,15 @@ while ($row = $result->fetch_assoc()) {
    	echo "<input type='hidden' name='oppgPK' value=$oppgavePK />";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value=".$row['tekstOppgave']."/>";
+    echo "<input type='hidden' name='lagrettext' value='".$sanitized."'/>";
+    echo "<input type='hidden' name='datoLevert' value='".$datoLevert."'/>";
+    echo "<input type='hidden' name='tidBrukt' value='".$tidBrukt."'/>";
+    echo "<input type='hidden' name='antFeil' value='".$antFeil."'/>";
+    echo "<input type='hidden' name='datorespons' value='".$datorespons."'/>";
+    echo "<input type='hidden' name='respons' value='".$respons."'/>";
     
-
-
-   	echo "<td><a href='#openModal".$PK."'><img src='img/open.png' alt='Vis innleveringen' title='Vis innleveringen'></a>"; //Viser oppgaven
-   	echo "<div id='openModal".$PK."' class='modalDialog'>
+   	echo "<td><a href='#openResultat".$PK."'><img src='img/open.png' alt='Vis innleveringen' title='Vis innleveringen'></a>"; //Viser oppgaven
+   	echo "<div id='openResultat".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
                 <h4>Vanskelighetsgrad: ".$vanskelighetsgrad."
@@ -82,6 +88,8 @@ while ($row = $result->fetch_assoc()) {
         <p>Vedlegg: <a href='vedlegg/".$row['linkVedlegg']."'>".$row['linkVedlegg']."</a> </p>
 			</div>
 		</div>";
+        echo "<input type='image' class='print' src='img/respons.png' id='print".$PK."' title='Print' onclick=this.form.action='print.php';/>";
+
     if($ferdig == 'Nei') {
         echo "<input type='image' src='img/edit.jpg' alt='Fortsett oppgave' title ='Fortsett oppgave' name='besvarelse' id='s".$PK."' />";
     }

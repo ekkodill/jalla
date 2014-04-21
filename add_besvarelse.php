@@ -23,13 +23,16 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
         $_SESSION['percent'] = round($percent);
 
         //Sjekker om man skal levere en tidligere påbegynnt oppgave og oppdaterer med ny info i databasen
-        if(!empty($_POST['fullfor']) && $_SESSION['drpdwnlist'] =='pbegoppg') {
+        if(!empty($_POST['fullfor']) && $_SESSION['drpdwnlist'] =='pbegoppg' || !empty($_POST'lagreoppg'] && $_SESSION['drpdwnlist'] == 'pbegoppg')) {
+            if(!empty($_POST['fullfor'])) {
+                $ferdig = 1;
+            }
             $innPK      = $_SESSION['innlPK'];
             $gammelTid = $_SESSION['gammelTid'];
             $secs = strtotime($gammelTid)-strtotime("00:00:00"); //Gjør om til sekunder
             $result = date("H:i:s",strtotime($mySqlTime)+$secs); //Legger på sekundene til den nye tiden
             $_SESSION['tid'] = $result;
-            $ferdig = 1;
+            
             $query = "
                 UPDATE innleveringer 
                     SET bruker = $bruker, oppgave = $oppgavenr, tekstInnlevering ='".$oppg."', datoLevert=now(), tidBrukt ='".$result."', antallFeil = $antfeil, ferdig = $ferdig 
