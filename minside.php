@@ -84,9 +84,10 @@ if($user_data['passord'] != $gammeltpw) {
           <input type='image' src='img/edit.jpg' alt='Rediger fornavn' onclick="return removeRO('epost', 'lepost')"/><br />
           </form>
           </div>
+        
           </div>
-          <div class="ikkeferi"><h3>Du har uferdig oppgave(r)</h3><br />
-         <form action="minside.php" method="post">
+       
+         <form class="fasplas"action="minside.php" method="post">
             <select name='minsideoppgli' onchange="this.form.submit();">
             <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
                 <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>P&aringbegynte oppgaver</option>
@@ -94,6 +95,24 @@ if($user_data['passord'] != $gammeltpw) {
                 <option name="besvmresp" value='besvmresp' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'besvmresp') {echo "selected";}}?>>Besvarelser med respons</option>
             </select></center><br>
             </form>
+            <div id="minside">
+                <form id="byttpw" name="reg" method="post" action="minside.php">
+                 <h2>Bytt passord</h2>
+                    Gammelt passord: 
+                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"/><br /><br />
+                    Nytt passord: 
+                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"/><br /><br />
+                    Bekreft nytt passord: 
+                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"/><br /><br />
+                    <input type="Submit" id="pwknapp" name="nypw" value="Bekreft">
+                    <br><?php 
+                    if (empty($errors) === false) {
+                        echo output_errors($errors);
+                    } ?>
+                </form>
+ 
+            </div>
+             <div class="ubesform2">
               <?php 
               $bPK = $user_data['brukerPK'];
             if(!empty($_POST['minsideoppgli'])) {
@@ -114,35 +133,14 @@ if($user_data['passord'] != $gammeltpw) {
 
                 include_once("ubesvartliste.php");
                ?>
-          </div>
-              
-            <div id="minside">
-                <form id="byttpw" name="reg" method="post" action="minside.php">
-                 <h2>Bytt passord</h2>
-                    Gammelt passord: 
-                    <br><input type="password" id="gammelt" name="oldpassword" placeholder="Gammelt passord"/><br /><br />
-                    Nytt passord: 
-                    <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"/><br /><br />
-                    Bekreft nytt passord: 
-                    <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"/><br /><br />
-                    <input type="Submit" id="pwknapp" name="nypw" value="Bekreft">
-                    <br><?php 
-                    if (empty($errors) === false) {
-                        echo output_errors($errors);
-                    } ?>
-                </form>
                
-            </div>
+       </div>
  <div class="minsidemainnede">
-              
-<div class="venstrenede"></div>
-
-<div class="midtennede"></div>
-
-<div class="hoyrenede"></div>
+<?php include_once("besvartliste.php"); ?>
 
             </div>
   </section>
+
     </body>
 </html>
 
