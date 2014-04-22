@@ -8,7 +8,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 <body onunload="unloadP('skriv');" onload="loadP('skriv');">
 <?php
     $pgName = 'Hovedside';
-    include 'css/blank.css'; ?>
+    include 'design/head.php'; ?>
 <?php include 'design/header.php';  ?>
     <div id="page">
         <section>
