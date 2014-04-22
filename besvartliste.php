@@ -18,7 +18,7 @@ if(!empty($_POST['lagrerespons'])) {
 				$insert->bind_param('iis', $innleveringerPK, $veileder, $respons);
 		
 				if($insert->execute()) {
-					header('Location: oppgave.php?responslagret');
+					header('Location: oppgave.php?lagretrespons');
 					die();
 				} else { header('Location: oppgave.php?nosaveerror'); }
 		} else { header('Location: oppgave.php?tomerror'); } 

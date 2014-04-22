@@ -50,10 +50,10 @@ while ($row = $result->fetch_assoc()) {
     if(empty($row['ferdig'])) {
     echo "<input type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
     }
-    if(!empty($row['ferdig'])) {
-      echo "<input type='image' class='print' src='img/respons.png' id='print".$PK."' title='Print' onclick=this.form.action='print.php';/>";
+  //  if(!empty($row['ferdig'])) {
+   //   echo "<input type='image' class='print' src='img/respons.png' id='print".$PK."' title='Print' onclick=this.form.action='print.php';/>";
     //echo "<a href='print.php'><img src='img/respons.png' alt='Print' title='Print'>";
-  }
+//  }
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";

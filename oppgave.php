@@ -53,6 +53,11 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		}  
 	}
 
+ if(!empty($_POST['oppgaver'])) {
+         $_SESSION['oppgave_select'] = $_POST['oppgaver'];
+     } else {
+     	 $_SESSION['oppgave_select'] =  $_SESSION['oppgave_select'];
+     }
 
  ?>
 
@@ -63,16 +68,16 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		$pgName = 'Oppgaver';
 		include('design/head.php');
 		//Sjekker valget for listetype. (Alle oppgaver, eller bare besvarte oppgaver)
- 		if (isset($_POST['oppgaver'])) { 
- 			if($_POST['oppgaver']=='gittoppg') {
+ 		if (isset($_SESSION['oppgave_select'])) { 
+ 			if($_SESSION['oppgave_select']=='gittoppg') {
  				$tekst = 'Liste over oppgaver';
  			}
- 		    if($_POST['oppgaver']=='besvartoppg') {
+ 		    if($_SESSION['oppgave_select']=='besvartoppg') {
 				$tekst = 'Liste over besvarte oppgaver';
 			}
 		}
-		if (!isset($_POST['oppgaver'])) {
-				$tekst = "Liste over oppgaver";
+		if (!isset($_SESSION['oppgave_select'])) {
+				$tekst = $_SESSION['oppgave_select']; //TODO ENDRE TILBAKE
 		} 
 		?>
 	<body onunload="unloadP('oppgave')" onload="loadP('oppgave')"> 
@@ -94,7 +99,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 			    </form>
 				<?php
 
-				if(isset($_GET['responslagret'])) {
+				if(isset($_GET['lagretrespons'])) {
 					echo "Responsen ble lagret";
 				} elseif(isset($_GET['nosaveerror'])) {
 					echo "Kunne ikke lagre respons";
@@ -114,22 +119,19 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 					   } else { ?>
 				<br><br>
 			<center><legend><h4  id="endrelitit"><?php echo $tekst ?></h4></legend><br>
-				<form action="oppgave.php" id="endreli" method="post">
+				<form action="oppgave.php" id="endreli" method="POST">
 		    		<select name='oppgaver' onchange="this.form.submit();">
-			            <option name="gittoppg"     value='gittoppg'   <?php if (isset($_POST['oppgaver'])) { if($_POST['oppgaver']=='gittoppg')  {echo "selected='selected'"; }} ?>>Alle oppgaver</option>
-			            <option name="besvartoppg" value='besvartoppg' <?php if(isset($_POST['oppgaver']))  { if($_POST['oppgaver'] =='besvartoppg') {echo "selected='selected'"; }} ?>>Besvarte oppgaver</option>
+			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
+			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
 			        </select></center><br>
 			      </form>	
 				</center><br>
 
 <?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen
-
-
-
-		if(isset($_POST['oppgaver'])) {
-			if($_POST['oppgaver'] == 'gittoppg') {
+		if(isset($_SESSION['oppgave_select'])) {
+			if($_SESSION['oppgave_select'] == 'gittoppg') {
 				include('oppgaveliste.php');
-			} elseif($_POST['oppgaver'] == 'besvartoppg') {
+			} elseif($_SESSION['oppgave_select'] == 'besvartoppg') {
 				include('besvartliste.php');
 			}
 		} else { include('oppgaveliste.php'); }

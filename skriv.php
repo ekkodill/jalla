@@ -98,6 +98,17 @@ window.onload = skrivinit;
                     <br>
                         <input name="lagreoppg"class="lagropg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden"/>
+                    <br>
+                    <br>
+                        <?php if(isset($_GET['lagret'])) {
+                            echo "Lagret oppgaven";
+                            } elseif(isset($_GET['innlevert'])) {
+                                echo "Oppgaven ble levert.";
+                            } elseif(isset($_GET['error'])) {
+                                echo "Det oppstod en feil. Kunne ikke lagre.";
+                            }
+                             ?>
+                            
             </div>
         </div>
             <div class="bfright">
