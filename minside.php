@@ -87,7 +87,7 @@ if($user_data['passord'] != $gammeltpw) {
                 <form name="profil" action="minside.php" method="POST">
                   <label>Fornavn:</label><input type="text" name="upfnavn" class="minsinputfor" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/><br>
                   <label>Etternavn:</label><input type="text" name="upenavn" class="minsinputett" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/><br>
-                  <label>E-post:</label><input type="text" name="upepost" class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/><br>
+                  <label>E-post:</label><input type="text" name="upepost" class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/><br><br />
                   <input type='submit' id="updt" name="updateinfo" value="Oppdater"/><br />
                 </form>
               </div>
@@ -102,7 +102,25 @@ if($user_data['passord'] != $gammeltpw) {
               echo "Det oppstod en feil, et eller flere felt kan ikke være tomme";
             }
 
+        if(isset($_POST['updatemail'])) {
+            $touchmail = $_POST['frommail'];
+          } else {
+            $touchmail = "touchdill@gmail.com";
+         }
 
+          if($user_data['brukertype'] != 3) {
+?>
+           <form class="fasplas" action="" method="POST">
+           <br />
+           <h4>Endre adresse for utsending av mail fra applikasjonen</h4>
+            <input type="mail" id="nytt" name="frommail" value="<?php echo $touchmail; ?>"/><br/><br/>
+            <input type='submit' id="updt" name="updatemail" value="Oppdater"/>
+            <input type="mail" id="nytt" name="frommail" value="<?php echo $touchmail; ?>"/>
+            <input type='submit' id="updt" name="updatemail" value="Oppdater"/>
+          </form>
+          <?php 
+       }
+ 
           if($user_data['brukertype'] == 3) { ?>
            <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
            <form class="fasplas"action="minside.php" method="post">
@@ -112,6 +130,8 @@ if($user_data['passord'] != $gammeltpw) {
               </select></center><br>
             </form>
     <?php } ?>
+
+
              <!--Felter for å bytte passord på brukerens profil !-->
             <div id="minside">
                 <form id="byttpw" name="reg" method="post" action="minside.php">

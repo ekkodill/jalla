@@ -153,14 +153,14 @@ margin-left:5%;
 width:8%;
 height:2%;
 padding: 0.5% 3.2% 0.8% 1%;
-position:fixed;
+position:absolute;
 z-index:200000;
 margin-left:25.3%;
 margin-top:1.7%;
 float:left;
-
-
 }
+
+
 
 .ubesform2{
 	margin-top:6%;

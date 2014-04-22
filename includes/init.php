@@ -16,4 +16,7 @@ if(logged_in() === true) {
 
 //Error samling for diverse. Brukes foreløpig til å gi beskjed om feilmeldinger for innloggingsforsøk.
 $errors = array(); 
+$touchmail;
+
+
 ?>
