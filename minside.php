@@ -90,6 +90,8 @@ if($user_data['passord'] != $gammeltpw) {
                   <label>E-post:</label><input type="text" name="upepost" class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/><br>
                   <input type='submit' id="updt" name="updateinfo" value="Oppdater"/><br />
                 </form>
+              </div>
+            </div>
             <?php 
             //Utskrift for statusmeldinger når brukeren oppdaterer informasjonen sin
             if(isset($_GET['oppdatert'])) {
@@ -100,9 +102,8 @@ if($user_data['passord'] != $gammeltpw) {
               echo "Det oppstod en feil, et eller flere felt kan ikke være tomme";
             }
 
-           ?>
-        </div>
-          </div>
+
+          if($user_data['brukertype'] == 3) { ?>
            <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
            <form class="fasplas"action="minside.php" method="post">
               <select class="dropned" name='minsideoppgli' onchange="this.form.submit();">
@@ -110,6 +111,7 @@ if($user_data['passord'] != $gammeltpw) {
                   <option class="dropned"  name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
               </select></center><br>
             </form>
+    <?php } ?>
              <!--Felter for å bytte passord på brukerens profil !-->
             <div id="minside">
                 <form id="byttpw" name="reg" method="post" action="minside.php">
