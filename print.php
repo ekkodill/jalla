@@ -17,20 +17,23 @@ if (!empty($_POST)) {
 
 <!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 03.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
-<?php include 'includes/init.php'; 
-?>
+
 <!doctype html>
 <html>
-<body onunload="unloadP('skriv');" onload="loadP('skriv');">
+<?php include 'includes/init.php'; 
+    include 'design/head.php'; ?>
+<link href="css/print.css" media="print" rel="stylesheet" type="text/css">
+
+<body>
+<?php include 'design/header.php';  ?>
 <?php
     $pgName = 'Besvarelse utskrift';
-   include 'design/head.php'; ?>
-<?php include 'design/header.php';  ?>
+    ?>
     <div id="page">
         <section>
          <div>
          <br>
-<table border="1" width="400">
+<table border="1" width="100%">
 	<thead>
 		<th>Tid brukt</th>
 		<th>Antall feil</th>
@@ -44,7 +47,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 			</tr>	
 		</tbody>
 </table>
-<table border="1" width="400">
+<table border="1" width="100%">
 	<thead>
 		<th>Respons ble gitt <?php echo " ".$datorespons ?></th>
 	</thead>
@@ -54,7 +57,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 			</tr>	
 		</tbody>
 </table>
-	<table border="1" width="400">
+	<table border="1" width="100%">
 		<tr><td><h2>Innlevert oppgavetekst</h2>
 		<h3>Tittel:<?php echo " ".$otittel ?></h3>
 		<br><?php echo $innlevertTekst; ?></td>
