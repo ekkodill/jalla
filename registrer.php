@@ -3,7 +3,7 @@ Denne siden er kontrollert av Kurt A. Aamodt,siste gang  30.03.2014  !-->
 
 <?php
 include_once 'includes/init.php';
-logged_in_redirect();
+
 
 //Sjekker at ikke noen felt er tomme 
 if(!empty($_POST)) {

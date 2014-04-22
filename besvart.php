@@ -26,9 +26,7 @@ SELECT innleveringer.*, oppgaver.*, respons.* FROM innleveringer
         LEFT JOIN respons ON innleveringer.innleveringPK = respons.innlevering WHERE innleveringer.bruker = $brukerPK
 GROUP BY innleveringer.innleveringPK");*/
  
-$bPK = $user_data['brukerPK'];
 
-$result = ubesvarteOppg($bPK, 2);
 while ($row = $result->fetch_assoc()) {
     $PK = $row['innleveringPK'];
     $oppgavePK = $row['oppgave'];
@@ -37,8 +35,14 @@ while ($row = $result->fetch_assoc()) {
     $tidBrukt = $row['tidBrukt'];
     $antFeil = $row['antallFeil'];
     $ferdig = $row['ferdig'];
-    $datorespons = $row['responsDato'];
-    $respons = $row['respons'];
+    if(!empty($row['responsDato'])) {
+        $datorespons = $row['responsDato'];
+        $respons = $row['respons'];
+    } else {
+        $datorespons = "Ikke respondert";
+        $respons = "Ingen respons enda";
+    }
+    
     if($ferdig == 1) { $ferdig = 'Ja'; } else { $ferdig = 'Nei'; }
     $sanitized = nl2br(htmlspecialchars($innlevertTekst, ENT_QUOTES));
 
@@ -70,15 +74,15 @@ while ($row = $result->fetch_assoc()) {
    	echo "<div id='openResultat".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
-                <h4>Vanskelighetsgrad: ".$vanskelighetsgrad."
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Utført den: ".$datoLevert."</h4>
-                <h4>Antall feil: ".$antFeil."
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tid brukt: ".$tidBrukt."</h4>
-                <h4>Respons: ".$respons."
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp Respons dato: ".$datorespons."</h4>
+                <h4>Utført den: ".$datoLevert."</h4>
+                <h4>Vanskelighetsgrad: ".$vanskelighetsgrad."</h4> 
+                <h4>Antall feil: ".$antFeil."</h4>
+                <h4>Tid brukt: ".$tidBrukt."</h4>
+                <br>
+                <h4>Respons dato: ".$datorespons."</h4>
+                Respons: ".$respons."
+                <br>
+                <br>
                 <hr size='1' noshade>
 				<h2>".$row['tittelOppgave']."</h2>
         		$sanitized

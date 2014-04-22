@@ -2,6 +2,7 @@
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.03.2014  !-->
 <?php 
 include_once 'includes/init.php';
+protected_page();
 $db = getDB(); //Tilkobling til databasen.
 
 ?>

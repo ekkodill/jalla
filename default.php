@@ -1,6 +1,6 @@
 <!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 03.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
-<?php include 'includes/init.php'; 
+<?php include 'includes/init.php';
 ?>
 
 <!doctype html>

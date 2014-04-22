@@ -2,7 +2,9 @@
 //Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.04.2014
 //Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
 
-
+/****************************************************************************************/
+/**************Denne filen viser liste med ubesvarte/uferdige oppgaver*******************/
+/****************************************************************************************/
 
 while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];
@@ -16,12 +18,12 @@ while ($row = $result->fetch_assoc()) {
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
     $oppgtekst = hentOppgave($PK);
     $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
-  if(!empty($_POST) && $_SESSION['drpdwnlist'] =='pbegoppg') {
+  if(!empty($row['tekstInnlevering']) && $_SESSION['drpdwnlist'] =='pbegoppg') {
   $gammelTid = $row['tidBrukt'];
   $innlPK = $row['innleveringPK'];
   $lagrettext = $row['tekstInnlevering'];
   $sanitertinntxt = nl2br(htmlspecialchars($lagrettext, ENT_QUOTES));
-} else { $_SESSION['drpdwnlist'] = 'ubesvoppg'; }
+}
 
     if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
@@ -50,10 +52,6 @@ while ($row = $result->fetch_assoc()) {
     if(empty($row['ferdig'])) {
     echo "<input type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
     }
-  //  if(!empty($row['ferdig'])) {
-   //   echo "<input type='image' class='print' src='img/respons.png' id='print".$PK."' title='Print' onclick=this.form.action='print.php';/>";
-    //echo "<a href='print.php'><img src='img/respons.png' alt='Print' title='Print'>";
-//  }
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";

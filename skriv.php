@@ -2,9 +2,12 @@
 Denne siden er kontrollert av Mikael kolstad siste gang 28.04.2014 !-->
 <?php
 include_once 'includes/init.php';
-
+protected_page();
 $pgName = 'Skrivesenter';
 
+     $otittel = "";
+     $otekst = "";
+     $lagrettext = "";
 //Setter verdiene fra session variablene til lokale variabler som vises på siden
 if(isset($_SESSION['tid']) && isset($_SESSION['antfeil']) && isset($_SESSION['percent'])) {
     $otid = $_SESSION['tid'];
@@ -41,6 +44,19 @@ $lagrettext = "";
 }
 
 
+ if(!empty($_POST['oppgliste'])) {
+         $_SESSION['drpdwnlist'] = $_POST['oppgliste'];
+          //  $otittel = "";
+          //  $otekst = "";
+          //  $lagrettext = "";
+     } else {
+         $_SESSION['drpdwnlist'] =  $_SESSION['drpdwnlist'];
+        
+
+     }
+
+
+/*
  if (isset($_POST['oppgliste'])) { 
     if($_POST['oppgliste']=='ubesvoppg') {
        $_SESSION['drpdwnlist'] ='ubesvoppg';
@@ -57,7 +73,7 @@ $otekst = "";
 $lagrettext = "";
 }
 } 
-
+*/
 
 ?>
 <!doctype html>
@@ -107,6 +123,7 @@ window.onload = skrivinit;
                             } elseif(isset($_GET['error'])) {
                                 echo "Det oppstod en feil. Kunne ikke lagre.";
                             }
+                            echo $_SESSION['drpdwnlist'];
                              ?>
                             
             </div>
@@ -122,8 +139,8 @@ window.onload = skrivinit;
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
                 <form action="skriv.php" id="velgli" method="post">
             <select id='sel' name='oppgliste' onchange="this.form.submit();">
-            <option name="ubesvoppg"     value='ubesvoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
-                <option name="pbegoppg" value='pbegoppg' <?php if(isset($_SESSION['drpdwnlist'])) { if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
+            <option name="ubesvoppg"     value='ubesvoppg' <?php if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}?>>Ubesvarte oppgaver</option>
+                <option name="pbegoppg" value='pbegoppg' <?php if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}?>>Påbegynte oppgaver</option>
             </select></center><br>
             </form>
             <table class="ubesform">
