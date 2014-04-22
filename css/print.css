@@ -1,0 +1,65 @@
+/*
+Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 27.03.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
+*/
+
+header, nav, footer, aside, article, figure {
+display: none;
+}
+
+
+
+/*----Hovedboks----*/
+section {
+
+width:auto;
+height:auto;
+background-color:#fff;
+border: 2px solid #000;
+
+}
+
+section h2 {
+font-size:2.2em;
+}
+
+section p {
+font-size:0.9em;	
+}
+
+/*
+Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen siste gang endret 30.03.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 30.03.2014 
+*/
+
+/* CSS Document */
+
+
+
+
+table {
+	width:95%;
+    empty-cells:show;
+	}
+
+td, th, table {
+	font-size:0.9em;
+	border:1px solid;
+
+}
+
+	tbody#liste:before {
+	    line-height:1em;
+	    content:"-";
+	    color:white; /* to hide text */
+	    display:block;
+	}
+
+table#myTable {
+    /* collapsed, because the bottom shadow on thead tr is hidden otherwise */
+    border-collapse: collapse;
+}
+
+th {
+	padding: .5em .5em;
+}
