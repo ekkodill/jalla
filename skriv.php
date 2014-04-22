@@ -2,7 +2,7 @@
 Denne siden er kontrollert av Mikael kolstad siste gang 28.04.2014 !-->
 <?php
 include_once 'includes/init.php';
-
+protected_page();
 $pgName = 'Skrivesenter';
 
      $otittel = "";

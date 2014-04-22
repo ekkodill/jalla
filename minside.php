@@ -1,7 +1,14 @@
 <!--Denne siden er utviklet av Mikael og Erik., siste gang endret 30.03.2014
 Denne siden er kontrollert av Kurt A. Amodt siste gang 30.03.2014 !-->
 <?php include_once 'includes/init.php';
+protected_page();
 $db = getDB();
+
+if(empty($_POST['besvarform'])) {
+  $listeBeskrivelse = "Besvarte oppgaver med respons";  
+} else {
+  $listeBeskrivelse = "Besvarte oppgaver uten respons";
+}
 
 
 //Oppdaterer brukerens informasjon på minside
@@ -101,7 +108,6 @@ if($user_data['passord'] != $gammeltpw) {
               <select class="dropned" name='minsideoppgli' onchange="this.form.submit();">
                   <option class="dropned" name="ubesvoppg" value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
                   <option class="dropned"  name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
-                  <option class="dropned" name="besvoppg" value='besvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'besvoppg') {echo "selected";}}?>>Besvarte oppgaver</option>
               </select></center><br>
             </form>
              <!--Felter for å bytte passord på brukerens profil !-->
@@ -125,6 +131,7 @@ if($user_data['passord'] != $gammeltpw) {
             </div>
              <div class="ubesform2">
               <?php 
+        if($user_data['brukertype'] == 3) {
               //Setter paramterene for riktig liste som skal vises basert på valget i nedtrekksmenyen
               $bPK = $user_data['brukerPK'];
             if(!empty($_POST['minsideoppgli'])) {
@@ -132,11 +139,7 @@ if($user_data['passord'] != $gammeltpw) {
                   $result = ubesvarteOppg($bPK, 3);
                 } elseif( $_POST['minsideoppgli'] =='pbegoppg') {
                   $result = ubesvarteOppg($bPK, 0);
-                } elseif($_POST['minsideoppgli'] == 'besvoppg') {
-                  $result = ubesvarteOppg($bPK, 1);
-                }  else {
-                    $result = ubesvarteOppg($bPK, 3);
-                }
+                } 
             } else {
                     $result = ubesvarteOppg($bPK, 3);
                 }
@@ -145,8 +148,18 @@ if($user_data['passord'] != $gammeltpw) {
           </div>
            <!--Liste over besvarte oppgaver med respons, på brukerens profil !-->
           <div class="minsidemainnede">
-          <h3>Besvarte oppgaver med respons</h3>
-            <?php include_once("besvart.php"); ?>
+          <h3><?php echo $listeBeskrivelse ?></h3>
+          <form method="POST" action="">
+            <input type="checkbox" name="besvarform" onchange="this.form.submit()" <?php if(isset($_POST['besvarform'])) echo "checked='checked'"; ?>>Vis besvarelser uten respons
+          </form>
+            <?php if(isset($_POST['besvarform'])) {
+                $result = ubesvarteOppg($bPK, 1);
+              } else {
+                $result = ubesvarteOppg($bPK, 2);
+              } 
+              include_once("besvart.php"); 
+        }
+              ?>
           </div>
        </section>
     </body>

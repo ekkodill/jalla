@@ -3,10 +3,9 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 26.03.2014  !-->
 
  <nav>
  	<?php if(logged_in() === true) { echo "<div class='loggetInnSom'><a href='minside.php'>".$user_data['fornavn'] ." ". $user_data['etternavn']."</a></div>"; } ?><br /> 
-    
-        <a href="default.php">Fremsiden</a>
-        <a href="vis_brukere.php">Brukere</a>
-		<a href="skriv.php">Tastatur</a>
+        <a href="default.php">Forside</a>
+        <a href="vis_brukere.php">Medlemsliste</a>
+		<a href="skriv.php">Skrivesenter</a>
         <a href="minside.php">Min side</a>
        <?php if($user_data['brukertype'] != 3) { echo "<a href='oppgave.php'>Ny oppgave</a>"; } ?><br />
        <div class="skille"> <div class="knappHoyre"><a href="logout.php">Logg ut</a></div>

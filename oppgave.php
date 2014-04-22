@@ -3,6 +3,7 @@
 //Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
 
 include 'includes/init.php';
+protected_page();
 $db = getDB();
 
 
