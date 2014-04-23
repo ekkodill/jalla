@@ -64,6 +64,7 @@ function glemtPW($epost) {
 		redirect("sendt.php");
 }
 
+//Funksjon for å oppdatere endret passord til databasen
 function endrePW($passord, $epost){
 	$db = getDB();
 	$stmt = $db->prepare("UPDATE brukere SET passord=? WHERE ePost=? LIMIT 1");
@@ -71,6 +72,7 @@ function endrePW($passord, $epost){
              $stmt->execute();
 }
 
+//Funksjon for å endre brukerinformasjon fra "minside" til databasen
 function endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost){
 	$db = getDB();
       $stmt = $db->prepare("UPDATE brukere SET ePost=?, etternavn=?, fornavn=?  WHERE brukerPK=? LIMIT 1");
@@ -107,53 +109,64 @@ function addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad) {
 //Sender epost til brukere med nytt passord
 function sendMail($epost, $passord) {
 		   $til = $epost;
-		   $from = "tocuhdill@gmail.com";
-		   $subject = "Bruker opprettet";
-		   $message = "Velkommen til touchdill!\nHer er innloggingsinformasjonen din. \nBrukernavn: ".$epost." \nPassord: ".$passord." 
+		   $fra = "tocuhdill@gmail.com";
+		   $tittel = "Bruker opprettet";
+		   $melding = "Velkommen til touchdill!\nHer er innloggingsinformasjonen din. \nBrukernavn: ".$epost." \nPassord: ".$passord." 
 		   \nDette er et tilfeldig generert passord, men det oppfordres til at du bytter dette.";
 		   //PHP-regel sier at en linje i beskjeden ikke skal overstige 70 karakterer, så den må "wrappes".
-		   $message = wordwrap($message, 70);
+		   $melding = wordwrap($melding, 70);
 		   //Sender mail
-		  if(mail($til,$subject,$message,"From: $from\n")) {
+		  if(mail($til,$tittel,$melding,"From: $fra\n")) {
     		return true;
     	} else {
     	return false;
     	}
 }
-/*
-function sendMail($to, $tittel, $body) {
-	   	   $til = $to;
-		   $from = "tocuhdill@gmail.com";
-		   $subject = $tittel;
-		   $message = wordwrap($body, 70);
-		   //Sender mail
-		  if(mail($til,$subject,$message,"From: $from\n")) {
-    		return true;
-    	} else {
-    	return false;
-    	}
-}
-*/
 
-//Sender epost til brukere med nytt passord
+
+//Sender epost til brukere med melding om at det er publisert en ny oppgave
 function publishMail($tittel) {
 	$db = getDB();
 	$query = $db->query("
 	SELECT ePost FROM brukere WHERE brukertype = 3");
-	$from = "tocuhdill@gmail.com";
-	$subject = "Ny oppgave publisert: ".$tittel;
-	$message = "Hei!\nDet er nå publisert en ny oppgave.
+	$fra = "tocuhdill@gmail.com";
+	$tittel = "Ny oppgave publisert: ".$tittel;
+	$melding = "Hei!\nDet er nå publisert en ny oppgave.
 		   \nDu finner den i listen over ubesvarte oppgaver på siden din eller direkte på skrivesenteret.
 		   \nLykke til!
 		   \n\nMvh Touchmetoden";
-	$message = wordwrap($message, 70);
+	$melding = wordwrap($melding, 70);
 	while($epostRow = $query->fetch_assoc()) {
 	//Sender mail
-	mail($epostRow['ePost'],$subject,$message,"From: $from\n");
+	mail($epostRow['ePost'],$tittel,$melding,"From: $fra\n");
 	
 	}
 }
 
+//Sender mail kompliert fra minside av administrator\veiledere til spesifiserte brukere
+function mailUsers($tittel, $melding, $fra, $til) {
+	$db = getDB();
+echo $tittel." ".$melding." ".$fra." ".$til;
+	if($til == "Til alle") {
+		$query = "SELECT ePost FROM brukere";
+	} else {
+		if($til == "Til deltakere") {
+			$type = 3;
+		} elseif($til == "Til veiledere") {
+			$type = 2;	
+		} elseif($til == "Til administratorer") {
+			$type = 1;
+		}	
+			$query = "SELECT ePost FROM brukere WHERE brukertype = $type";
+			echo $query;
+	}
+	$result = $db->query($query);
+	$melding = wordwrap($melding, 70);
+	while($epostRow = $result->fetch_assoc()) {
+	//Sender mail
+	mail($epostRow['ePost'],$tittel,$melding,"From: $fra\n");
+	}
+}
 
 
 //Saniterer og validerer epostadressen

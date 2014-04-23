@@ -6,7 +6,7 @@ include 'includes/init.php';
 protected_page();
 $db = getDB();
 
-
+/*
 //Publiserer oppgaver som er lagret fra før
 if(!empty($_POST['publish'])) {
     $publisert = 1;
@@ -15,7 +15,16 @@ if(!empty($_POST['publish'])) {
         $stmt->bind_param('ii', $publisert, $pubPK);
         $stmt->execute();
         header('Location: oppgave.php?publisert');
+}*/
+
+if(!empty($_POST['publish'])) {
+    $pubPK = $_POST['oppgPK'];
+    $oppgtittel = $_POST['oppgTittle'];
+    $oppgtext = $_POST['oppgText'];
+    $oppgvansklighetsgrad = $_POST['vanskelighetsgrad'];
 }
+
+
 
 //Registrerer nye opgpaver til databasen
 if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
@@ -43,7 +52,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				$erPublisert = 0;
 				$melding = "lagret";
 		}
-					if(addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad)) {
+					if(addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad)) { //Lagrer oppgaven i databasen
 						if(isset($_POST['mailpub'])) {
 							publishMail($tittel); //Sender mail til alle deltakere
 						}
@@ -54,11 +63,26 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		}  
 	}
 
+
+//Setter verdien i nedtrekksmenyen til SESSION variabelen så den holder seg på riktig valg selv om man laster siden på nytt
  if(!empty($_POST['oppgaver'])) {
          $_SESSION['oppgave_select'] = $_POST['oppgaver'];
      } else {
      	 $_SESSION['oppgave_select'] =  $_SESSION['oppgave_select'];
      }
+
+     //Sjekker valget for listetype. (Alle oppgaver, eller bare besvarte oppgaver) og setter headingen deretter
+ 		if (isset($_SESSION['oppgave_select'])) { 
+ 			if($_SESSION['oppgave_select']=='gittoppg') {
+ 				$tekst = 'Liste over oppgaver';
+ 			}
+ 		    if($_SESSION['oppgave_select']=='besvartoppg') {
+				$tekst = 'Liste over besvarte oppgaver';
+			} 
+		} else { 
+				$tekst = 'Liste over oppgaver';
+		  }
+
 
  ?>
 
@@ -68,38 +92,27 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		<?php
 		$pgName = 'Oppgaver';
 		include('design/head.php');
-		//Sjekker valget for listetype. (Alle oppgaver, eller bare besvarte oppgaver)
- 		if (isset($_SESSION['oppgave_select'])) { 
- 			if($_SESSION['oppgave_select']=='gittoppg') {
- 				$tekst = 'Liste over oppgaver';
- 			}
- 		    if($_SESSION['oppgave_select']=='besvartoppg') {
-				$tekst = 'Liste over besvarte oppgaver';
-			}
-		}
-		if (!isset($_SESSION['oppgave_select'])) {
-				$tekst = $_SESSION['oppgave_select']; //TODO ENDRE TILBAKE
-		} 
+
 		?>
 	<body onunload="unloadP('oppgave')" onload="loadP('oppgave')"> 
 		<?php include('design/header.php');	?>
-
 		<div id="page">
 		    <section>
+		    <!--Elementer for å lage nye oppgaver-->
 				<center><legend><h4>Lag ny oppgave</h4></legend></center>
 				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
-					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" ><br><br>
+					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" value=<?php if(!empty($oppgtittel)) { echo $oppgtittel; }?>><br><br>
 					<h5><label>Vanskelighetsgrad:</label> 
-					<input class="stored" type="radio" value="3" name="vansklighetsgrad">Vanskelig
-					<input class="stored" type="radio" value="2" name="vansklighetsgrad">Medium
-					<input class="stored" type="radio" value="1" name="vansklighetsgrad">Lett</h5>
-					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" ></textarea><br>
+					<input class="stored" type="radio" value="3" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { echo 'checked'; }?>>Vanskelig
+					<input class="stored" type="radio" value="2" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { echo 'checked'; }?>>Medium
+					<input class="stored" type="radio" value="1" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { echo 'checked'; }?>>Lett</h5>
+					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven"><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
 					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
 			    </form>
 				<?php
-
+				//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
 				if(isset($_GET['lagretrespons'])) {
 					echo "Responsen ble lagret";
 				} elseif(isset($_GET['nosaveerror'])) {
@@ -112,6 +125,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				} elseif(isset($_GET['lagret']) === true) {
 					echo "<p>Oppgaven ble lagret</p>"; 
 				}
+				//Skriver ut errors som oppstår når man gjør feil ved oppretting av nye oppgaver
 				if (empty($errors) === false) {
 								echo output_errors($errors);
 							}
@@ -119,6 +133,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 							echo "<center><legend>Ingen registrerte oppgaver</legend></center>"; 
 					   } else { ?>
 				<br><br>
+				<!--Nedtrekksmeny for å velge lite som skal vises-->
 			<center><legend><h4  id="endrelitit"><?php echo $tekst ?></h4></legend><br>
 				<form action="oppgave.php" id="endreli" method="POST">
 		    		<select name='oppgaver' onchange="this.form.submit();">
@@ -128,7 +143,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 			      </form>	
 				</center><br>
 
-<?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen
+<?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen (ren oppgaveliste eller besvarelser)
 		if(isset($_SESSION['oppgave_select'])) {
 			if($_SESSION['oppgave_select'] == 'gittoppg') {
 				include('oppgaveliste.php');
@@ -143,8 +158,6 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 
 
 <script type="text/javascript">
-
-
 	//Fyller feltene med data fra localStorage om det er noe der når siden lastes
 $(document).ready(function () {
     function init() {

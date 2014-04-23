@@ -73,7 +73,7 @@ font-size : 0.8em;
 }
 
 
-#pwknapp, #updt {
+.buttonStyle {
 margin-top:0.5%;
 height:30px;
 width:100px;

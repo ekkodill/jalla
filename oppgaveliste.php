@@ -25,6 +25,9 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
     $vanskelighetsgrad = "ikke valgt";
     $publisert = $row['erPublisert'];
+   /* if(!empty($row['erPublisert'])) {
+      
+    }*/
     $vedlegg = htmlspecialchars($row['linkVedlegg']);
     $tittel = htmlspecialchars($row['tittelOppgave']);
 
@@ -58,10 +61,13 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
   if($publisert == 0) {
     //Publiseringsknapp
-  //  echo "<input type='image' src='img/publish.png' name='poblish'  title='Publiser oppgave' alt='Publiser oppgave' onclick='publiser($PK); return false;' />";
+    echo "<input type='image' src='img/publish.png' name='poblish'  title='Publiser oppgave' alt='Publiser oppgave' onclick='publiser($PK); return false;' />";
     echo "<input type='submit' hidden  name='publish' id='p".$PK."' value=".$PK."  onclick=this.form.action='oppgave.php'; />";
+    echo "<input type='hidden' name='oppgTittle' value=$tittel />";
+    echo "<input type='hidden' name='oppgText' value='".$sanitized."' />";
+    echo "<input type='hidden' name='vanskelighetsgrad' value='".$row['vanskelighetsgrad']."' />";
     //Viser besvarelsen i en dialogboks med inputfelt for responen
-    echo "<a href='#editModal".$PK."'><img src='img/publish.png' title='Publiser oppgave' alt='Publiser oppgave'></a>"; 
+   /* echo "<a href='#editModal".$PK."'><img src='img/publish.png' title='Publiser oppgave' alt='Publiser oppgave'></a>"; 
     echo "<div id='editModal".$PK."' class='modalDialog'>
       <div>
         <a href='#close' title='Close' class='close'>X</a>
@@ -74,12 +80,12 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
         <input type='checkbox' name='editcheck'>Send mail om denne publiseringen
         <input id='editoppg".$PK."' type='submit' hidden name='saveedit'>
       </div>
-    </div>";
+    </div>"; */
   }
   
 } elseif($user_data['brukertype'] == 3) {
-  echo "<input type='hidden' name='tittel' value='".$tittel."'/>";
-  echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
+  echo "<input type='hidden' name='tittel' value=$tittel/>";
+  echo "<input type='hidden' name='oppgtxt' value=$sanitized/>";
   echo "<input type='image' src='img/edit.jpg' name='besvarelse' id='b".$PK."' onclick=this.form.action='skriv.php'; />";
 }
 	echo "</td></tr></form>";

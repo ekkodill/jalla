@@ -4,11 +4,27 @@ Denne siden er kontrollert av Kurt A. Amodt siste gang 30.03.2014 !-->
 protected_page();
 $db = getDB();
 
+
+//Setter riktig tittel i forhold til hvilken liste brukeren viser med besvarelser
 if(empty($_POST['besvarform'])) {
   $listeBeskrivelse = "Besvarte oppgaver med respons";  
 } else {
   $listeBeskrivelse = "Besvarte oppgaver uten respons";
 }
+
+
+if(isset($_POST['sendmail'])) {
+  if(!empty($_POST['frommail']) && !empty($_POST['eposttil']) && !empty($_POST['mailarea']) && !empty($_POST['mailtittel']))
+            $tittel = $_POST['mailtittel'];
+            $fra = $_POST['frommail'];
+            $til = $_POST['eposttil'];
+            $melding = $_POST['mailarea'];
+            if(mailUsers($tittel, $melding, $fra, $til)) {
+              header("location: minside.php?mailsendt");
+            }
+         } else {
+          echo print_r($_POST);
+         }
 
 
 //Oppdaterer brukerens informasjon på minside
@@ -88,7 +104,7 @@ if($user_data['passord'] != $gammeltpw) {
                   <label>Fornavn:</label><input type="text" name="upfnavn" class="minsinputfor" id="fornavn" value="<?php echo $user_data['fornavn'] ?>"/><br>
                   <label>Etternavn:</label><input type="text" name="upenavn" class="minsinputett" id="etternavn" value="<?php echo $user_data['etternavn'] ?>"/><br>
                   <label>E-post:</label><input type="text" name="upepost" class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/><br><br />
-                  <input type='submit' id="updt" name="updateinfo" value="Oppdater"/><br />
+                  <input type='submit' class="buttonStyle" id="updt" name="updateinfo" value="Oppdater"/><br />
                 </form>
               </div>
             </div>
@@ -102,21 +118,30 @@ if($user_data['passord'] != $gammeltpw) {
               echo "Det oppstod en feil, et eller flere felt kan ikke være tomme";
             }
 
-        if(isset($_POST['updatemail'])) {
-            $touchmail = $_POST['frommail'];
-          } else {
-            $touchmail = "touchdill@gmail.com";
-         }
+  
 
           if($user_data['brukertype'] != 3) {
 ?>
            <form class="fasplas" action="" method="POST">
            <br />
-           <h4>Endre adresse for utsending av mail fra applikasjonen</h4>
-            <input type="mail" id="nytt" name="frommail" value="<?php echo $touchmail; ?>"/><br/><br/>
-            <input type='submit' id="updt" name="updatemail" value="Oppdater"/>
-            <input type="mail" id="nytt" name="frommail" value="<?php echo $touchmail; ?>"/>
-            <input type='submit' id="updt" name="updatemail" value="Oppdater"/>
+           <h4>Send epost</h4>
+           <label>Velg mottakere:</label>
+             <select name="eposttil" class="dropned" action="minside.php" method="POST">
+              <option name="tilalle">Til alle</option>
+              <option name="tildeltakere">Til deltakere</option>
+              <option name="tilveiledere">Til veiledere</option>
+              <option name="tiladmins">Til administratorer</option>
+            </select>
+            <br>
+            <br>
+            <label>Avsender:</label>
+            <input type="mail"  name="frommail" value="<?php echo $touchmail; ?>"/><br/><br/>
+            <label>Tittel:</label>
+            <input type="text"  name="mailtittel" /><br/><br/>
+            <?php //<input type='submit' class="buttonStyle"  name="updatemail" value="Oppdater"/><br/><br/> ?>
+            <label>Melding:</label>
+            <textarea name="mailarea"></textarea>
+            <input type="submit" class="buttonStyle" value="Send epost" name="sendmail"/>
           </form>
           <?php 
        }
@@ -142,7 +167,7 @@ if($user_data['passord'] != $gammeltpw) {
                     <br><input type="password" id="nytt" name="password" placeholder="8 tegn eller flere"/><br /><br />
                     Bekreft nytt passord: 
                     <br><input type="password" id="bekreft" name="passwordcheck" placeholder="Bekreft nytt passord"/><br /><br />
-                    <input type="Submit" id="pwknapp" name="nypw" value="Bekreft">
+                    <input type="Submit" class="buttonStyle" id="pwknapp" name="nypw" value="Bekreft">
                     <br>
                     <?php 
                     //Skriver ut statusmeldiner i forbindelse med passordbytte
