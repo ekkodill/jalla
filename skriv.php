@@ -50,9 +50,11 @@ $lagrettext = "";
           //  $otekst = "";
           //  $lagrettext = "";
      } else {
-         $_SESSION['drpdwnlist'] =  $_SESSION['drpdwnlist'];
-        
-
+         if(isset($_SESSION['drpdwnlist'])) {
+            $_SESSION['drpdwnlist'] =  $_SESSION['drpdwnlist'];
+        } else {
+            $_SESSION['drpdwnlist'] = 'ubesvoppg';
+        }
      }
 
 

@@ -1,3 +1,4 @@
+
 /*
 Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 17.03.2014
 Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
@@ -71,11 +72,10 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 #nyOppgave{
 	float:left;
 	width:22%;
-	height:auto;
+	height:100%;
 	margin-left:1%;
 	margin-right:2%;
 	margin-top:1%;
-	margin-bottom:1%;
 }
 
 #oppgtitt{
@@ -87,7 +87,7 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 #oppgtext{
     width:98%;
-    height:300px; 
+    height:30%; 
 	margin-right:1%;
 }
 
@@ -117,12 +117,6 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 	margin-right:5%;
 }
 
-#endreli{
-	margin-top:-2%;
-}
-#endrelitit{
-	margin-top:-4%;
-}
 
 #publiserKnapp {
 	width:80px;

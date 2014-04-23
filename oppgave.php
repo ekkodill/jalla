@@ -6,19 +6,10 @@ include 'includes/init.php';
 protected_page();
 $db = getDB();
 
-/*
-//Publiserer oppgaver som er lagret fra før
-if(!empty($_POST['publish'])) {
-    $publisert = 1;
-    $pubPK = $_POST['oppgPK'];
-        $stmt = $db->prepare("UPDATE oppgaver SET erPublisert=? WHERE oppgavePK=? LIMIT 1");
-        $stmt->bind_param('ii', $publisert, $pubPK);
-        $stmt->execute();
-        header('Location: oppgave.php?publisert');
-}*/
 
+//Setter verdier fra en valgt ikke publisert oppgave til variabler som blir bruk i behandlingen av oppgaven
 if(!empty($_POST['publish'])) {
-    $pubPK = $_POST['oppgPK'];
+    $_SESSION['oldopgPK'] = $_POST['oppgPK'];
     $oppgtittel = $_POST['oppgTittle'];
     $oppgtext = $_POST['oppgText'];
     $oppgvansklighetsgrad = $_POST['vanskelighetsgrad'];
@@ -44,7 +35,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		 		$errors[] = "Du må velge vansklighetsgrad";
 		 	} else { $vansklighetsgrad = trim($_POST['vansklighetsgrad']); }
 		}
-	}
+	}	$pubPK = $_SESSION['oldopgPK'];
 		$veileder   = $user_data['brukerPK'];
 		$erPublisert = 1;
 		$melding = "publisert";
@@ -52,6 +43,12 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				$erPublisert = 0;
 				$melding = "lagret";
 		}
+		$oppgsjekk = hentOppgave($pubPK); //Sjekker om oppgaven finnes i databasen fra før
+			if(!empty($oppgsjekk)) {
+				if(updateOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad, $pubPK)){ //Oppdaterer databasen med ny informasjon
+					header("Location: oppgave.php?".$melding);
+				}
+			} else {
 					if(addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad)) { //Lagrer oppgaven i databasen
 						if(isset($_POST['mailpub'])) {
 							publishMail($tittel); //Sender mail til alle deltakere
@@ -59,16 +56,23 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 						
 					Header('Location: oppgave.php?'.$melding);
 					die();
+				
 				} else { $errors[] = "En feil oppstod: kunne ikke lagre oppgaven i databasen";} 
 		}  
+		}
 	}
+
 
 
 //Setter verdien i nedtrekksmenyen til SESSION variabelen så den holder seg på riktig valg selv om man laster siden på nytt
  if(!empty($_POST['oppgaver'])) {
          $_SESSION['oppgave_select'] = $_POST['oppgaver'];
      } else {
+     	if(isset($_SESSION['oppgave_select'])) {
      	 $_SESSION['oppgave_select'] =  $_SESSION['oppgave_select'];
+     	} else {
+     		$_SESSION['oppgave_select'] = 'gittoppg';
+     	}
      }
 
      //Sjekker valget for listetype. (Alle oppgaver, eller bare besvarte oppgaver) og setter headingen deretter
@@ -103,14 +107,14 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
 					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" value=<?php if(!empty($oppgtittel)) { echo $oppgtittel; }?>><br><br>
 					<h5><label>Vanskelighetsgrad:</label> 
-					<input class="stored" type="radio" value="3" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { echo 'checked'; }?>>Vanskelig
-					<input class="stored" type="radio" value="2" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { echo 'checked'; }?>>Medium
-					<input class="stored" type="radio" value="1" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { echo 'checked'; }?>>Lett</h5>
+					<input class="stored" type="radio" value="3" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 3) { echo 'checked'; }}?>>Vanskelig
+					<input class="stored" type="radio" value="2" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 2) { echo 'checked'; }}?>>Medium
+					<input class="stored" type="radio" value="1" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 1) { echo 'checked'; }}?>>Lett</h5>
 					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven"><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
 					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
-			    </form>
+		    	</form>
 				<?php
 				//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
 				if(isset($_GET['lagretrespons'])) {
@@ -139,9 +143,8 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		    		<select name='oppgaver' onchange="this.form.submit();">
 			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
 			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
-			        </select></center><br>
-			      </form>	
-				</center><br>
+			        </select></center>
+
 
 <?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen (ren oppgaveliste eller besvarelser)
 		if(isset($_SESSION['oppgave_select'])) {
@@ -152,9 +155,11 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 			}
 		} else { include('oppgaveliste.php'); }
 } ?>
-		</section>
-	    	<?php include('design/footer.php'); ?>
-       	</div>
+		
+			      </form>	
+				</center>
+
+
 
 
 <script type="text/javascript">
@@ -193,7 +198,11 @@ $('.stored').change(function () {
 		});
 
 </script>
+	    	<?php include('design/footer.php'); ?>
+       	</div>
+</section>
 	</body>
+
 </html>
 
 

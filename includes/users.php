@@ -205,6 +205,16 @@ function hentOppgave($oppgPK) {
 	return $oppgave;
 }
 
+//Oppdaterer databasen med endringer som blir gjort på en oppgave som ikke har blitt publisert enda
+function updateOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad, $pubPK) {
+	$db = getDB();
+    $stmt = $db->prepare("UPDATE oppgaver SET veileder=?, tittelOppgave=?, tekstOppgave=?, datoEndret=now(), erPublisert=?, vanskelighetsgrad=? WHERE oppgavePK=? LIMIT 1");
+            $stmt->bind_param('issiii', $veileder,$tittel, $oppg, $erPublisert, $vansklighetsgrad, $pubPK);
+             if($stmt->execute()) {
+             	return true;
+             } else { return false; }
+}
+
 
 //Sjekker at det finnes i databasen
 function sjekkAntall($type) {
