@@ -1,5 +1,6 @@
-<?php 
-
+<!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 03.03.2014
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
+<?php include 'includes/init.php'; 
 
 if (!empty($_POST)) {
     if(!empty($_POST['tittel']) && !empty($_POST['oppgtxt']) && !empty($_POST['lagrettext'])) {
@@ -12,11 +13,18 @@ if (!empty($_POST)) {
     $datorespons = $_POST['datorespons'];
     $respons = $_POST['respons'];
 }
+} else {
+$otittel = "";
+$otekst = "";
+$innlevertTekst = "";
+$datoLevert = "";
+$tidBrukt = "";
+$antFeil = "";
+$datorespons = "";
+$respons = "";
 }
  ?>
 
-<!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 03.03.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 
 <!doctype html>
 <html>
