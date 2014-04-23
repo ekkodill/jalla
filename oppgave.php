@@ -88,16 +88,17 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		    <section>
 				<center><legend><h4>Lag ny oppgave</h4></legend></center>
 				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
-					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" ><br><br>
+					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" >
 					<h5><label>Vanskelighetsgrad:</label> 
 					<input class="stored" type="radio" value="3" name="vansklighetsgrad">Vanskelig
 					<input class="stored" type="radio" value="2" name="vansklighetsgrad">Medium
 					<input class="stored" type="radio" value="1" name="vansklighetsgrad">Lett</h5>
-					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" ></textarea><br>
+					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" ></textarea>
 					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
 			    </form>
+
 				<?php
 
 				if(isset($_GET['lagretrespons'])) {
@@ -118,17 +119,15 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 							if(!count(sjekkAntall('oppgaver'))) {
 							echo "<center><legend>Ingen registrerte oppgaver</legend></center>"; 
 					   } else { ?>
-				<br><br>
-			<center><legend><h4  id="endrelitit"><?php echo $tekst ?></h4></legend><br>
+			
+			<center><legend id="endrelitit"><h4  ><?php echo $tekst ?></h4></legend>
 				<form action="oppgave.php" id="endreli" method="POST">
 		    		<select name='oppgaver' onchange="this.form.submit();">
 			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
 			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
-			        </select></center><br>
-			      </form>	
-				</center><br>
+			        </select></center>
 
-<?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen
+		<?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen
 		if(isset($_SESSION['oppgave_select'])) {
 			if($_SESSION['oppgave_select'] == 'gittoppg') {
 				include('oppgaveliste.php');
@@ -137,9 +136,11 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 			}
 		} else { include('oppgaveliste.php'); }
 } ?>
-		</section>
-	    	<?php include('design/footer.php'); ?>
-       	</div>
+		
+			      </form>	
+				</center>
+
+
 
 
 <script type="text/javascript">
@@ -180,7 +181,12 @@ $('.stored').change(function () {
 		});
 
 </script>
+
+	    	<?php include('design/footer.php'); ?>
+       	</div>
+</section>
 	</body>
+
 </html>
 
 

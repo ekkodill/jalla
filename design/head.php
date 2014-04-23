@@ -19,4 +19,5 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="img/ficon.ico">
+
  </head>

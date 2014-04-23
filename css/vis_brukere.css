@@ -31,6 +31,7 @@ td, th, table {
 	border:1px solid;
 
 }
+
 		
 .tab1 {
 	width:25%;
@@ -61,11 +62,10 @@ td, th, table {
 }
 
 .bliste {
-	margin-top:5%;
-	overflow:auto;
-	height:40%;
-	float.left;
+	overflow:scroll;
+	height:30%;
 	width:100%;
+	margin-bottom:10%;
 	background-color:#fff;
 
 }

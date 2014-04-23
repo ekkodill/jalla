@@ -15,6 +15,7 @@ if(!empty($_POST['lagrerespons'])) {
 				
 		if(!empty($innleveringerPK) && !empty($respons))  {
 				$insert = $db->prepare("INSERT INTO respons (innlevering, veileder, respons, responsDato) VALUES (?,?,?,now())");
+				print_r($insert);
 				$insert->bind_param('iis', $innleveringerPK, $veileder, $respons);
 		
 				if($insert->execute()) {
