@@ -5,6 +5,8 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	<meta charset="utf-8">
 	<title><?php if(isset($pgName) && is_string($pgName)){echo $pgName;}else{echo 'Default title';} ?></title>
 	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/jquery.pretty-text-diff.js" type="text/javascript"></script>
+	<script src="js/diff_match_patch.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/vis_brukere.js"></script> 
 	<script type="text/javascript"  src='js/oppgave.js'></script>
 	<script type="text/javascript"  src='js/stoppeklokke.js'></script>

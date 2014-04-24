@@ -193,7 +193,7 @@ if($user_data['passord'] != $gammeltpw) {
                 include_once("ubesvartliste.php");
                ?>
           </div>
-           <!--Liste over besvarte oppgaver med respons, på brukerens profil !-->
+           <!--Liste over besvarte oppgaver med eller uten respons basert på valget i avkryssinga, på brukerens profil !-->
           <div class="minsidemainnede">
           <h3><?php echo $listeBeskrivelse ?></h3>
           <form method="POST" action="">

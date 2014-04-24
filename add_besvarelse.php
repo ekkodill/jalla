@@ -6,15 +6,15 @@ include_once 'includes/init.php';
 $db = getDB();
 
 
-/************************************************************************/
-/*******Denne filen legger eller oppdaterer besvarelser i databasen*****/
-/***********************************************************************/
+/**************************************************************************/
+/*******Denne filen legger til eller oppdaterer besvarelser i databasen*****/
+/***************************************************************************/
 
 if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
     if(!empty($_POST['inntext']) && !empty($_POST['tid']) && !empty($_SESSION['oppgPK'])) {
         $bruker     = $user_data['brukerPK'];
         $oppgavenr  = $_SESSION['oppgPK'];
-        $oppg       = sanitize(trim($_POST['inntext']));
+        $oppg       = trim($_POST['inntext']);
         $_SESSION['inntxt'] = $oppg;
         $tid        =  substr($_POST['tid'],0,-4); //fjerner millisekunder
         $tidBrukt   = date_create_from_format('H:i:s', $tid); //gjør det om til en datetime format objekt
@@ -56,7 +56,10 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
                 if($insert->execute()) {                  
                     header('Location: skriv.php?'.$melding);
                     die();
-                }  else { redirect("skriv.php"); }
+                }  else { 
+                    header('Location: skriv.php?error');
+                    die();
+                }
         }
     
 }  else { redirect("skriv.php"); }

@@ -1,6 +1,8 @@
 <!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 03.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 <?php include 'includes/init.php'; 
+
+
 if (!empty($_POST)) {
     if(!empty($_POST['tittel']) && !empty($_POST['oppgtxt']) && !empty($_POST['lagrettext'])) {
 	$otittel = $_POST['tittel'];
@@ -23,14 +25,33 @@ $datorespons = "";
 $respons = "";
 }
 
-
 ?>
 
-
+<!--*******************************************************************-->
+<!--**********Denne siden er for utskrift av innleverte oppgaver******-->
+<!--*******************************************************************-->
 <!doctype html>
 <html>
 <?php  include 'design/head.php'; ?>
 <link href="css/print.css" media="print" rel="stylesheet" type="text/css">
+<style type="text/css">
+	ins {
+    background-color: #c6ffc6;
+    text-decoration: none;
+}
+
+del {
+    background-color: #ffc6c6;
+}
+
+div, table, h3, input, label {
+    margin: 10px;
+}
+
+table th {
+    width: 30%;
+}
+</style>
 <body>
 <?php include 'design/header.php';  ?>
 <?php
@@ -64,18 +85,36 @@ $respons = "";
 			</tr>	
 		</tbody>
 </table>
+<div id="wrapper">
 	<table border="1" width="100%">
-		<tr><td><h2>Innlevert oppgavetekst</h2>
-		<h3>Tittel:<?php echo " ".$otittel ?></h3>
-		<br><?php echo $innlevertTekst; ?></td>
-		<td><h2>Oppgavetekst</h2>
-		<h3>Tittel:<?php echo " ".$otittel ?></h3>
-		<br><?php echo $otekst; ?></td></tr>
+	  <thead>
+            <tr>
+                <th>Original</th>
+                <th>Changed</th>
+                <th>Diff</th>
+            </tr>
+        </thead>
+		<tbody>
+            <tr>
+                <td class="original"><?php echo $otekst; ?></td>
+                <td class="changed"><?php echo $innlevertTekst; ?></td>
+                <td class="diff"></td>
+            </tr>
+        </tbody>
 	</table>
+	<input type='button' class='btn btn-primary' value='Diff'></input>
 </div>
+</div>   
 <a href="minside.php">Gå tilbake</a>
         </section>
     </div>
     <?php include('design/footer.php'); ?>
+    
+    <script type="text/javascript">
+    $("input[type=button]").click(function () {
+    $("#wrapper tr").prettyTextDiff({
+        cleanup: $("#cleanup").is(":checked")
+    });
+});</script>
   </body>
 </html>

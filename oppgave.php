@@ -35,7 +35,13 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		 		$errors[] = "Du må velge vansklighetsgrad";
 		 	} else { $vansklighetsgrad = trim($_POST['vansklighetsgrad']); }
 		}
-	}	$pubPK = $_SESSION['oldopgPK'];
+	}	
+		if(isset( $_SESSION['oldopgPK'])) {
+			$pubPK =  $_SESSION['oldopgPK'];
+			$oppgsjekk = hentOppgave($pubPK); //Sjekker om oppgaven finnes i databasen fra før
+		} else {
+			$pubPK = "";
+		}
 		$veileder   = $user_data['brukerPK'];
 		$erPublisert = 1;
 		$melding = "publisert";
@@ -43,7 +49,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				$erPublisert = 0;
 				$melding = "lagret";
 		}
-		$oppgsjekk = hentOppgave($pubPK); //Sjekker om oppgaven finnes i databasen fra før
+		
 			if(!empty($oppgsjekk)) {
 				if(updateOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad, $pubPK)){ //Oppdaterer databasen med ny informasjon
 					header("Location: oppgave.php?".$melding);
@@ -144,8 +150,6 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
 			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
 			        </select></center>
-
-
 <?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen (ren oppgaveliste eller besvarelser)
 		if(isset($_SESSION['oppgave_select'])) {
 			if($_SESSION['oppgave_select'] == 'gittoppg') {
@@ -154,10 +158,8 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				include('besvartliste.php');
 			}
 		} else { include('oppgaveliste.php'); }
-} ?>
-		
-			      </form>	
-				</center>
+} ?>		    </form>	
+			</center>
 
 
 
@@ -199,10 +201,9 @@ $('.stored').change(function () {
 
 </script>
 	    	<?php include('design/footer.php'); ?>
-       	</div>
-</section>
+       		</div>
+		</section>
 	</body>
-
 </html>
 
 

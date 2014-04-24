@@ -3,7 +3,7 @@ Denne siden er kontrollert av Kurt A. Aamodt,siste gang  30.03.2014  !-->
 
 <?php
 include_once 'includes/init.php';
-
+logged_in_redirect(); //Forhindrer innloggede brukere å gå manuelt til denne siden
 
 //Sjekker at ikke noen felt er tomme 
 if(!empty($_POST)) {
@@ -39,7 +39,9 @@ if(!empty($_POST)) {
 ?>
 
 
-
+<!--**************************************************************-->
+<!--**********Denne siden er for registrering av nye brukere******-->
+<!--**************************************************************-->
 
 <!DOCTYPE html>
 <html lang="nb-no">
@@ -48,13 +50,9 @@ if(!empty($_POST)) {
 		include('design/head.php');
 		?>
 		<body>
-		<?php
-				include('design/header.php');
-				?>
-			<div id="page">
-				
-		        <section>
-		        
+		<?php include('design/header.php');	?>
+			<div id="page">	
+		        <section>  
 		       	<legend class="regtitbredde"><center><h4>Registrering</h4></center>
 					<form class="registrering" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"><br />
 					Fornavn*<br /> <input class="fornavn" type="text" name="fornavn" /><br />
@@ -69,11 +67,9 @@ if(!empty($_POST)) {
 							echo output_errors($errors);
 							}
 					?>
-				</span>
+						</span>
 					</form>
-
 					</legend>
-				
 				</section>
 	    		<?php include('design/footer.php'); ?>
        		</div>

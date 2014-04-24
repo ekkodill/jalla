@@ -9,15 +9,15 @@ $db = getDB(); //Tilkobling til databasen.
 
 <!DOCTYPE html>
 <html lang="nb-no">
-		<?php
-		$pgName = 'Vis brukere';
-		include('design/head.php');
-		include('design/footer.php'); ?>
-			<body onload='fjernType(<?php echo $user_data['brukertype']; ?>, "nytype");loadP("visbrukere");' onunload='unloadP("visbrukere")'>
-			<?php include('design/header.php');	?>
+<?php
+	$pgName = 'Vis brukere';
+	include('design/head.php');
+	include('design/footer.php'); ?>
+	<body onload='fjernType(<?php echo $user_data['brukertype']; ?>, "nytype");loadP("visbrukere");' onunload='unloadP("visbrukere")'>
+<?php include('design/header.php');	?>
 <script type="text/javascript">
 //Fyller feltene med data fra localStorage om det er noe der når siden lastes
-	$(document).ready(function () {
+$(document).ready(function () {
 function init() {
     if (localStorage["ePost"]) {
         $('#ePost').val(localStorage["ePost"]);
@@ -48,7 +48,7 @@ $('.tarea').keyup(function () {
     localStorage[$(this).attr('id')] = $(this).val();
 });
 
-//Lagrer nedtrekksmenyen verdi til localStorage
+//Lagrer nedtrekksmenyens verdi til localStorage
 $(document).ready(function(){
     $('#nytype').change(function(){
          localStorage.setItem('btype', $(this).val());
@@ -62,6 +62,7 @@ $(document).ready(function(){
 			<div id="page">
 			   <section>
 		       	<?php
+		       	//Inkluderer elementene for admins\veiledere å legge til brukere
 		       	if($user_data['brukertype'] != 3) {
 					 	include('add_brukere.php');
 					}	      
@@ -73,8 +74,9 @@ $(document).ready(function(){
 								$_SESSION['delerr'] = "";
 							}
 							?>
-					
-						<?php include 'form.php'; }?>
+						<?php 
+						//inkluderer liste over brukere
+						include 'form.php'; }?>
 				</section>	
        		</div>
 		</body>
