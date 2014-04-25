@@ -7,6 +7,7 @@ logged_in_redirect(); //Forhindrer innloggede brukere å gå manuelt til denne s
 
 //Sjekker at ikke noen felt er tomme 
 if(!empty($_POST)) {
+	if(empty($_POST['bothoneypot'])) {
 	if(isset($_POST['ePost'], $_POST['fornavn'], $_POST['etternavn'], $_POST['btype'])) {
 		$ePost 		= trim($_POST['ePost']);
 		$etternavn 	= trim($_POST['etternavn']);
@@ -34,6 +35,7 @@ if(!empty($_POST)) {
 			} else { $errors[]  = "Alle boksene må fylles ut"; }
 		} else { $errors[]  = "Eposten er registrert fra før"; }
 	} else { $errors[]  = "Alle boksene må fylles ut"; }
+} else { $errors[] = "Det oppstod en feil, prøv på nytt"; }
 }
 
 ?>
@@ -54,11 +56,12 @@ if(!empty($_POST)) {
 			<div id="page">	
 		        <section>  
 		       	<legend class="regtitbredde"><center><h4>Registrering</h4></center>
-					<form class="registrering" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"><br />
+					<form class="registrering" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data"><br />
 					Fornavn*<br /> <input class="fornavn" type="text" name="fornavn" /><br />
 						Etternavn*<br /> <input class="etternavn" type="text" name="etternavn" /><br />
 						E-post*<br /> <input class="epostad" type="text" name="ePost" /><br />
 						<input type="hidden" name="btype" value="deltaker">
+						<input type="text" hidden  placeholder="La dette feltet være blankt" name="bothoneypot" alt="La dette feltet være blankt"/>
                          <p>*Må fylles ut</p>
 						<input type="submit" value="Registrer" name="register">
 						<span class="feilmelding">

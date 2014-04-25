@@ -102,7 +102,6 @@ table th {
             </tr>
         </tbody>
 	</table>
-	<input type='button' class='btn btn-primary' value='Diff'></input>
 </div>
 </div>   
 <a href="minside.php">Gå tilbake</a>
@@ -111,7 +110,7 @@ table th {
     <?php include('design/footer.php'); ?>
     
     <script type="text/javascript">
-    $("input[type=button]").click(function () {
+    $(document).ready(function () {
     $("#wrapper tr").prettyTextDiff({
         cleanup: $("#cleanup").is(":checked")
     });
