@@ -2,19 +2,7 @@
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 <?php include 'includes/init.php';
 
-//Sjekker om brukeren er innlogget og redirecter brukertypene til sine respektive "startsider"
-if(logged_in() == true) {
-if($user_data['brukertype'] == 1) {
-        header('Location: vis_brukere.php');
-        exit();
-    } elseif($user_data['brukertype'] == 2) {
-        header('Location: oppgave.php');
-        exit();
-    }  elseif($user_data['brukertype'] == 3) {
-        header('Location: minside.php');
-        exit();
-    }    
-}
+
 
 ?>
 

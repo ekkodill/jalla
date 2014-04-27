@@ -1,5 +1,5 @@
-﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 20.04.2014
-// Denne siden er kontrollert av Mikael Kolstad, siste gang 26.04.2014
+﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 27.04.2014
+// Denne siden er kontrollert av Mikael Kolstad, siste gang 29.04.2014
 
 //Setter stilen til tastaturet i localstorage
 function setStyle(id) {
@@ -24,7 +24,6 @@ function loadStyle() {
 
 //Variabel for capslock on\off. 0 = off
 var capslock = "0";
-
 
 
 function capsOn() {
@@ -112,10 +111,7 @@ switch (key_code) {
            default: 
             if(key_code) {
                 document.getElementById(key_code).style.background = "#99CCFF"; //Endrer fargen på de andre knappene
-            }
-
-           
-            
+            }                      
     }
      //Stopper kombinasjoner med alt å taster og ctrl + T
             if(event.altKey && key_code == key_code || event.ctrlKey && key_code == 84) {

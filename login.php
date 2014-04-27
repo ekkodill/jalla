@@ -19,8 +19,18 @@ if (empty($brukernavn) === true || empty($passord) === true) {
 			$errors[] = "Feil brukernavn eller passord";
 		} else {
 			$_SESSION['brukerPK'] = $login;
-			header('Location: default.php');
-			exit();
+			$btype = get_brukerType($login); //Får brukertype fra databasen basert på brukerPK vi nettopp fikk fra innloggingen
+			//Sjekker om brukeren er innlogget og redirecter brukertypene til sine respektive "startsider"
+			if($btype == 1) {
+        		header('Location: vis_brukere.php');
+        		exit();
+    		} elseif($btype == 2) {
+		        header('Location: oppgave.php');
+        		exit();
+    		}  elseif($btype == 3) {
+        		header('Location: minside.php');
+        		exit();
+    		}    
 		}
 	}
 }  else {
@@ -34,27 +44,19 @@ if (empty($brukernavn) === true || empty($passord) === true) {
     <?php 
     $pgName = 'Innlogging';
     include 'design/head.php'; ?>
-
   	<body>
   	<?php include 'design/header.php'; ?>
-  	
   	<?php include('design/footer.php'); ?>
-		<div id="page">
-		    
+		<div id="page">  
 		    	<section>
-
-		  				
-				
-		      		<div class="midtfelt">
+					<div class="midtfelt">
 						<?php
 							if (empty($errors) === false) {
 							?><h2>Vi prøvde og logge deg inn men...</h2><?php
 							echo output_errors($errors);
 							}?>
-					</div>
-						
+					</div>		
 				</section>
-			
 		</div>
 	</body>
 </html>

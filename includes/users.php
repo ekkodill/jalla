@@ -268,7 +268,13 @@ function protected_page() {
 }
 
 
-
+//Henter brukertype fra database basert på brukerPK
+function get_brukerType($brukerPK) {
+	$db = getDB();
+	$result = $db->query("SELECT brukertype FROM `brukere` WHERE `brukerPK` = $brukerPK");
+		$data = $result->fetch_assoc();
+		return $data['brukertype'];
+}
 
 
 //Generell funksjon som henter og splitter opp brukerdata basert på brukerID fra session variabel
@@ -279,13 +285,13 @@ function user_data($user_id) {
 	$func_num_args = func_num_args();
 	$func_get_args = func_get_args();
 
-	if ($func_num_args > 1) {
+	if ($func_num_args > 1 && empty($type)) {
 		unset($func_get_args[0]);
 		$fields = '`' . implode('`, `', $func_get_args) . '`';
 		$result = $db->query("SELECT $fields FROM `brukere` WHERE `brukerPK` = $user_id");
 		$data = $result->fetch_assoc();
 		return $data;
-	}
+	} 
 
 }
 
