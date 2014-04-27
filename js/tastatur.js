@@ -25,6 +25,8 @@ function loadStyle() {
 //Variabel for capslock on\off. 0 = off
 var capslock = "0";
 
+
+
 function capsOn() {
         document.getElementById("capslock").hidden=false;
     }
@@ -34,11 +36,13 @@ function capsOff() {
     }
 
 
+
 //Funksjon som setter fargene når knappen blir trykket
 document.onkeydown = function(event) {
-    var key_code =  (event.keyCode ? event.keyCode : event.which);
+    var key_code =  (event.which);
     var element = document.getElementById(key_code);
 
+ 
 
 //Switch som endrer fargen på "spesial-tastene" når knappen for tastaturet blir trykt ned
 switch (key_code) {
@@ -65,12 +69,14 @@ switch (key_code) {
                 capslock = "1";
                 capsOn();
                 document.getElementById("20").style.background = "#1688fa";
-                document.getElementById("capslock").style.background="white";
+                document.getElementById("20").style.background="white";
+             
             }
             else {
                 capslock = "0"
                 document.getElementById("20").style.backgroundColor = "white";
                 capsOff();
+              
             }
             break;
            
@@ -106,25 +112,31 @@ switch (key_code) {
                 event.preventDefault();
             }
             break;
-            default: document.getElementById(key_code).style.background= "#99CCFF"; //Endrer fargen på de andre knappene
+           
 
             //Stopper kombinasjoner med alt å taster og ctrl + T
             if(event.altKey && key_code == key_code || event.ctrlKey && key_code == 84) {
-            event.preventDefault();
-}
-}
-
+                event.preventDefault();
+            }
+    }
+    if(key_code) {
+        document.getElementById(key_code).style.background = "#99CCFF"; //Endrer fargen på de andre knappene
+    }
     
 }
 
 
 //Funksjon som resetter fargene når knappen blir sluppet
 document.onkeyup = function(event) {
-var element = document.getElementById(event.keyCode);
+var element = document.getElementById(event.which);
     
      //Endrer tilbake for "spesial-tastene"
-    switch(event.keyCode) {
-
+    switch(event.which) {
+        case 0: //Endrer fargen til hvit på æøå i firefox
+                document.getElementById("222").style.backgroundColor = "white";
+                document.getElementById("192").style.backgroundColor = "white";
+                document.getElementById("221").style.backgroundColor = "white";
+        break;
         case 172:
                     document.getElementById("220").style.backgroundColor = "white";
         break;
@@ -151,52 +163,27 @@ var element = document.getElementById(event.keyCode);
         break;
         case 20: return;
         break;
-        default: document.getElementById(event.keyCode).style.backgroundColor = "white"; //Endrer fargen tilbake til standard
+        
+    }
+    if(event.which) {
+        document.getElementById(event.which).style.backgroundColor = "white"; //Endrer fargen tilbake til standard
     }
 }
 
-
-
-/*
-document.onkeypress = function(evt) {
-    //alert("Which: "+evt.which+", key: "+key);
-    // Funksjonen må gjøre noen korreksjoner for æøå
-      switch (key) {
-      case 0:
-        // Keydown for Firefox gir which=0, tester derfor på which i keypress 
-        // Både store og små bokstaver skal returnere samme verdi 
+    //Keypress for å finne æ ø å i firefox som returner 0 med keydown eventen.
+    document.onkeypress = function vis_press(evt) {
         switch (evt.which) {
         case 230:
         case 198:
-          document.getElementById("198").style.backgroundColor = "#99CCFF";
-
+             document.getElementById("222").style.backgroundColor = "#99CCFF";
           break;
         case 248:
         case 216:
-          document.getElementById("216").style.backgroundColor = "#99CCFF";
-
+            document.getElementById("192").style.backgroundColor = "#99CCFF";
           break;
         case 229:
         case 197:
-          document.getElementById("197").style.backgroundColor = "#99CCFF";
-
+           document.getElementById("221").style.backgroundColor = "#99CCFF";
           break;
         }
-        break;
-      case 192:
-        // Andre nettlesere enn Firefox returnerer feil verdi, må derfor justere
-        document.getElementById("216").style.backgroundColor = "#99CCFF";
-
-        break;
-      case 221:
-        document.getElementById("197").style.backgroundColor = "#99CCFF";
-
-        break;
-      case 222:
-        document.getElementById("198").style.backgroundColor = "#99CCFF";
-
-        break;
-      }
-      }
-*/
-
+    }

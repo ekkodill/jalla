@@ -271,7 +271,7 @@ function protected_page() {
 
 
 
-//Generell funksjon som henter brukerdata basert på session
+//Generell funksjon som henter og splitter opp brukerdata basert på brukerID fra session variabel
 function user_data($user_id) {
 	$db = getDB();
 	$data = array();
