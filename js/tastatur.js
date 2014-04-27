@@ -42,7 +42,6 @@ document.onkeydown = function(event) {
     var key_code =  (event.which);
     var element = document.getElementById(key_code);
 
- 
 
 //Switch som endrer fargen på "spesial-tastene" når knappen for tastaturet blir trykt ned
 switch (key_code) {
@@ -69,14 +68,12 @@ switch (key_code) {
                 capslock = "1";
                 capsOn();
                 document.getElementById("20").style.background = "#1688fa";
-                document.getElementById("20").style.background="white";
-             
+                document.getElementById("capslock").style.background="white";
             }
             else {
                 capslock = "0"
                 document.getElementById("20").style.backgroundColor = "white";
                 capsOff();
-              
             }
             break;
            
@@ -112,16 +109,19 @@ switch (key_code) {
                 event.preventDefault();
             }
             break;
-           
+           default: 
+            if(key_code) {
+                document.getElementById(key_code).style.background = "#99CCFF"; //Endrer fargen på de andre knappene
+            }
 
-            //Stopper kombinasjoner med alt å taster og ctrl + T
+           
+            
+    }
+     //Stopper kombinasjoner med alt å taster og ctrl + T
             if(event.altKey && key_code == key_code || event.ctrlKey && key_code == 84) {
                 event.preventDefault();
             }
-    }
-    if(key_code) {
-        document.getElementById(key_code).style.background = "#99CCFF"; //Endrer fargen på de andre knappene
-    }
+    
     
 }
 
@@ -161,13 +161,14 @@ var element = document.getElementById(event.which);
                     document.getElementById("lalt").style.backgroundColor = "white";
                     document.getElementById("gralt").style.backgroundColor = "white";
         break;
-        case 20: return;
+        case 20:    return;
         break;
-        
+        default : 
+        if(event.which) {
+            document.getElementById(event.which).style.backgroundColor = "white"; //Endrer fargen tilbake til standard
+        }
     }
-    if(event.which) {
-        document.getElementById(event.which).style.backgroundColor = "white"; //Endrer fargen tilbake til standard
-    }
+    
 }
 
     //Keypress for å finne æ ø å i firefox som returner 0 med keydown eventen.
