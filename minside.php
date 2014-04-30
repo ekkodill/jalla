@@ -122,9 +122,9 @@ if($user_data['passord'] != $gammeltpw) {
 
           if($user_data['brukertype'] != 3) {
 ?>
+
            <form class="fasplas" action="" method="POST">
-           <br />
-           <h4>Send epost</h4>
+           <h3>Send epost</h3>
            <label>Velg mottakere:</label>
              <select name="eposttil" class="dropned" action="minside.php" method="POST">
               <option name="tilalle">Til alle</option>
@@ -151,7 +151,7 @@ if($user_data['passord'] != $gammeltpw) {
            <form class="fasplas"action="minside.php" method="post">
               <select class="dropned" name='minsideoppgli' onchange="this.form.submit();">
                   <option class="dropned" name="ubesvoppg" value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
-                  <option class="dropned"  name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
+                  <option class="dropned"  name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>P&aringbegynte oppgaver</option>
               </select></center><br>
             </form>
     <?php } ?>

@@ -1,10 +1,11 @@
 <!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 20.04.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
-
+<p># Antall som er utført og gitt tilbakemelding på</p>
 <div class=bliste><table>
-	     <thead>
+	     <thead position="absolute">
 		    <tr>
-		    	<th class='tab2'>Veileder</th>
+            <th>#</th>
+		    	  <th class='tab2'>Veileder</th>
 		        <th class='tab2'>Tittel</th>
 		        <th class='tab2'>Dato endret</th>
 		        <th class='tab2'>Link</th>
@@ -15,10 +16,12 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     <tbody>
     <?php
 
-
+    
     $result = oppgListe("liste"); //Henter liste fra databasen gruppert på vanskelighetsgrad og sortert på dato
     while ($row = $result->fetch_assoc()) {
+    
     $PK = $row['oppgavePK'];
+    $antallOppg = antallUtfort("mrespons", $PK); //henter antall av denne oppgaven som har responser
     $vPK = $row['veileder'];
   	$veileder = finnBruker($vPK);
     $oppgtekst = hentOppgave($PK);
@@ -34,9 +37,14 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
   	if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
     if ($row['vanskelighetsgrad'] === "2") {$vanskelighetsgrad = "Medium"; }
     if ($row['vanskelighetsgrad'] === "1") {$vanskelighetsgrad = "Lett";}
-    
+    if(!empty($antallOppg['antall'])) {
+      $antallOppgMrespons = $antallOppg['antall'];
+    } else {
+      $antallOppgMrespons = "";
+    }
     echo "<form action='' method='POST' id='upload".$PK."' enctype='multipart/form-data' >";
     echo "<tr>";
+    echo "<td>".$antallOppgMrespons."</td>";
     echo "<td id='veileder".$PK."'      	 name='veileder'     >"	. $veileder.		      									 "</td>";
     echo "<td id='tittel".$PK."'        	 name='tittel'   		>"  . $tittel.									 "</td>";
     echo "<td id='datoendret".$PK."'    	 name='datoendret'  >"	. $row['datoEndret'].										 "</td>";

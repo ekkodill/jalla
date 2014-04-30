@@ -90,13 +90,14 @@ table th {
 	  <thead>
             <tr>
                 <th>Orginal oppgave</th>
-                <th>Innlevering med markerte feil</th>
+                <th>Innlevering med feil markert</th>
             </tr>
         </thead>
 		<tbody>
             <tr>
                 <td class="original" hidden><?php echo $otekst; ?></td>
-                <td class="changed"><?php echo $innlevertTekst; ?></td>
+                <td class="changed" hidden><?php echo $innlevertTekst; ?></td>
+                <td><?php echo $otekst; ?></td>
                 <td class="diff"></td>
             </tr>
         </tbody>

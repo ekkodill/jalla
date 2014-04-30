@@ -65,6 +65,7 @@ td, th, table {
 	overflow:scroll;
 	height:30%;
 	width:100%;
+	margin-top: 7%;
 	margin-bottom:10%;
 	background-color:#fff;
 
@@ -113,7 +114,7 @@ button{
 	
 .leggtilbruker {
 	clear:left;
-	margin-top:5px;
+	margin-top:5%;
 	margin-left:10%;
 	height:190px;
 	width:80%;

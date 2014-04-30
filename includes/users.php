@@ -11,7 +11,7 @@ function oppgListe($liste) {
 		SELECT oppgaver.*, innleveringer.* 
 		FROM oppgaver
 		JOIN innleveringer ON (oppgaver.oppgavePK = innleveringer.oppgave)
-		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NULL";
+		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE innleveringer.ferdig = 1 AND respons.innlevering is NULL";
 	} elseif($liste == "liste") {
 		//Liste med oppgaver gruppert på vanskelighetsgrad sortert på dato
 		$query = "
@@ -20,6 +20,30 @@ function oppgListe($liste) {
 	}
 	$result = $db->query($query);
 	return $result;
+}
+
+function antallUtfort($type, $PK) {
+	$db = getDB();
+	/*Viser antall besvarte oppgaver med respons*/
+if($type == "mrespons") {
+$query = "
+		SELECT count(innleveringer.oppgave) as 'antall'
+		FROM oppgaver
+		JOIN innleveringer ON (oppgaver.oppgavePK = innleveringer.oppgave)
+		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering)
+		WHERE oppgavePK = $PK AND innleveringer.ferdig = 1 AND respons.innlevering is NOT NULL GROUP BY innleveringer.oppgave";
+} else {
+	/*Viser antall oppgaver uten respons gruppert på oppgave*/
+$query = "
+		SELECT innleveringer.oppgave, count(innleveringer.oppgave) as 'Antall oppgaver uten respons'
+		FROM oppgaver
+		JOIN innleveringer ON (oppgaver.oppgavePK = innleveringer.oppgave)
+		LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering)
+		WHERE innleveringer.ferdig = 1 AND respons.innlevering is NULL GROUP BY innleveringer.oppgave";
+	}
+		$result = $db->query($query);
+		$antall = $result->fetch_assoc();
+		return $antall;
 }
 
 //Henter kun ubesvarte oppgaver for spesifisert deltaker

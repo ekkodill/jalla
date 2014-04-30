@@ -66,13 +66,15 @@ $pgName = 'Skrivesenter';
 include_once 'design/head.php'; ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
 
-<body onload="loadP('skriv');" onunload="unloadP('skriv');">
+<body  onunload="unloadP('skriv');">
   <?php include_once 'design/header.php'; ?>
   <script type="text/javascript">
 
 function skrivinit() {
+
         show(); //Viser stoppeklokken på siden
         loadStyle(); //Laster stilen fra localstorage om den finnes
+        loadP('skriv');
     }
 window.onload = skrivinit;
 

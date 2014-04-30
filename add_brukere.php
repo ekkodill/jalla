@@ -44,8 +44,9 @@ if(!empty($_POST['adduser'])) {
 
 ?>
 
-	<center><legend><h4>Legg til bruker</h4></legend></center>
+	
 	<div class="leggtilbruker">
+	<center><legend><h4>Legg til bruker</h4></legend></center>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" id="nybruker">
 			<table>
 				<tr>

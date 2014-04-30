@@ -94,6 +94,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		  }
 
 
+
  ?>
 
 
@@ -149,7 +150,8 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		    		<select name='oppgaver' onchange="this.form.submit();">
 			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
 			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
-			        </select></center>
+			        </select>
+			 </center>
 <?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen (ren oppgaveliste eller besvarelser)
 		if(isset($_SESSION['oppgave_select'])) {
 			if($_SESSION['oppgave_select'] == 'gittoppg') {
