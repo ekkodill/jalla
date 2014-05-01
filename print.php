@@ -25,6 +25,7 @@ $datorespons = "";
 $respons = "";
 }
 
+
 ?>
 
 <!--*******************************************************************-->
@@ -35,13 +36,15 @@ $respons = "";
 <?php  include 'design/head.php'; ?>
 <link href="css/print.css" media="print" rel="stylesheet" type="text/css">
 <style type="text/css">
-	ins {
-    background-color: #c6ffc6;
-    text-decoration: none;
+
+ins {
+    background-color: #ffc6c6;
 }
 
 del {
-    background-color: #ffc6c6;
+	background-color: #c6ffc6;
+    text-decoration: none;
+
 }
 
 div, table, h3, input, label {
@@ -86,7 +89,7 @@ table th {
 		</tbody>
 </table>
 <div id="wrapper">
-	<table border="1" width="100%">
+	<table border="1" width="600px">
 	  <thead>
             <tr>
                 <th>Orginal oppgave</th>
@@ -99,6 +102,11 @@ table th {
                 <td class="changed" hidden><?php echo $innlevertTekst; ?></td>
                 <td><?php echo $otekst; ?></td>
                 <td class="diff"></td>
+            </tr>
+            <tr>
+            	<td>
+            	
+            	</td>
             </tr>
         </tbody>
 	</table>

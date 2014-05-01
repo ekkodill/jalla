@@ -31,6 +31,7 @@ while ($row = $result->fetch_assoc()) {
     $PK = $row['innleveringPK'];
     $oppgavePK = $row['oppgave'];
   	$innlevertTekst = $row['tekstInnlevering'];
+    $oppgaveOtekst = $row['tekstOppgave'];
     $datoLevert = $row['datoLevert'];
     $tidBrukt = $row['tidBrukt'];
     $antFeil = $row['antallFeil'];
@@ -45,7 +46,7 @@ while ($row = $result->fetch_assoc()) {
     
     if($ferdig == 1) { $ferdig = 'Ja'; } else { $ferdig = 'Nei'; }
     $sanitized = nl2br(htmlspecialchars($innlevertTekst, ENT_QUOTES));
-
+    $oppgaveTekst = nl2br(htmlspecialchars($oppgaveOtekst, ENT_QUOTES));
     $vanskelighetsgrad = "ikke valgt";
 
   	if ($row['vanskelighetsgrad'] === "3") {$vanskelighetsgrad = "Vanskelig"; }
@@ -61,8 +62,8 @@ while ($row = $result->fetch_assoc()) {
     echo "<td id='link".$PK."'    			 name='link'       ><a href='vedlegg/".$row['linkVedlegg']."'>".$row['linkVedlegg']."</a></td>";
     echo "<td id='ferdig".$PK."'             name='ferdig'      >"  . $ferdig.                    "</td>";
    	echo "<input type='hidden' name='oppgPK' value=$oppgavePK />";
-    echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
-    echo "<input type='hidden' name='oppgtxt' value=".$row['tekstOppgave']."/>";
+    echo "<input type='hidden' name='tittel' value='".$row['tittelOppgave']."'/>";
+    echo "<input type='hidden' name='oppgtxt' value='".$oppgaveTekst."'/>";
     echo "<input type='hidden' name='lagrettext' value='".$sanitized."'/>";
     echo "<input type='hidden' name='datoLevert' value='".$datoLevert."'/>";
     echo "<input type='hidden' name='tidBrukt' value='".$tidBrukt."'/>";

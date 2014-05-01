@@ -57,28 +57,23 @@ $lagrettext = "";
         }
      }
 
-
+//Cookie for scrollposisjon
+if(!empty($_COOKIE["y"])) {
+$y = $_COOKIE["y"];
+} else { $y = 0; }
 ?>
 <!doctype html>
 <html>
 <?php
 $pgName = 'Skrivesenter';
-include_once 'design/head.php'; ?>
+include_once 'design/head.php';
+?>
 <script type="text/javascript" src='js/tastatur.js'></script>
-
-<body  onunload="unloadP('skriv');">
-  <?php include_once 'design/header.php'; ?>
-  <script type="text/javascript">
-
-function skrivinit() {
-
-        show(); //Viser stoppeklokken på siden
-        loadStyle(); //Laster stilen fra localstorage om den finnes
-        loadP('skriv');
-    }
-window.onload = skrivinit;
-
-</script>
+<script type="text/javascript"  src='js/stoppeklokke.js'></script>
+<?php
+print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='window.scrollTo(0,$y); show(); loadStyle();'>";
+ include_once 'design/header.php'; 
+?>
     <div id="page">
     <section> 
         <div class="bfleft">
@@ -227,6 +222,6 @@ window.onload = skrivinit;
             </section>
         <?php include_once('design/footer.php'); ?>
         </div>
-        <script type="text/javascript"></script>
+
     </body>
 </html>
