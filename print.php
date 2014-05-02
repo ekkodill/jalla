@@ -51,9 +51,9 @@ div, table, h3, input, label {
     margin: 10px;
 }
 
-table th {
+/*table th {
     width: 30%;
-}
+}*/
 </style>
 <body>
 <?php include 'design/header.php';  ?>
@@ -62,9 +62,7 @@ table th {
     ?>
     <div id="page">
         <section>
-         <div>
-         <br>
-<table border="1" width="100%">
+<table>
 	<thead>
 		<th>Tid brukt</th>
 		<th>Antall feil</th>
@@ -78,9 +76,14 @@ table th {
 			</tr>	
 		</tbody>
 </table>
-<table border="1" width="100%">
+<?php if($respons == "Ingen respons enda") {
+	echo "Ingen respons registrert på denne innleveringen";
+} else {
+
+ ?>
+<table>
 	<thead>
-		<th>Respons ble gitt <?php echo " ".$datorespons ?></th>
+		<th>Respons dato: <?php echo " ".$datorespons ?></th>
 	</thead>
 		<tbody>
 			<tr>
@@ -88,11 +91,13 @@ table th {
 			</tr>	
 		</tbody>
 </table>
+<?php 
+}
+ ?>
 <div id="wrapper">
-	<table border="1" width="600px">
+	<table>
 	  <thead>
             <tr>
-                <th>Orginal oppgave</th>
                 <th>Innlevering med feil markert</th>
             </tr>
         </thead>
@@ -100,18 +105,11 @@ table th {
             <tr>
                 <td class="original" hidden><?php echo $otekst; ?></td>
                 <td class="changed" hidden><?php echo $innlevertTekst; ?></td>
-                <td><?php echo $otekst; ?></td>
                 <td class="diff"></td>
-            </tr>
-            <tr>
-            	<td>
-            	
-            	</td>
             </tr>
         </tbody>
 	</table>
 </div>
-</div>   
 <a href="minside.php">Gå tilbake</a>
         </section>
     </div>

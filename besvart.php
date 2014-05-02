@@ -40,7 +40,7 @@ while ($row = $result->fetch_assoc()) {
         $datorespons = $row['responsDato'];
         $respons = $row['respons'];
     } else {
-        $datorespons = "Ikke respondert";
+        $datorespons = "Ingen dato registrert";
         $respons = "Ingen respons enda";
     }
     

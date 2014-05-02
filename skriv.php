@@ -134,9 +134,7 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
                 </form>
                
                 <div style="height: 100%; overflow: auto;">
-        <table class="ubesform">
-            
-            
+        <table class="ubesform">         
             <tbody>
                 <?php 
                 $bPK = $user_data['brukerPK'];
