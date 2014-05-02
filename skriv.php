@@ -128,11 +128,15 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
                     <select id='sel' name='oppgliste' onchange="this.form.submit();">
                         <option name="ubesvoppg"     value='ubesvoppg' <?php if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}?>>Ubesvarte oppgaver</option>
                         <option name="pbegoppg" value='pbegoppg' <?php if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}?>>Påbegynte oppgaver</option>
-                    </select>
-                </center><br>
+                    </select> <input type="text" id="search" placeholder="  Søk"></input>
+
+                </center>
                 </form>
+               
+                <div style="height: 100%; overflow: auto;">
         <table class="ubesform">
-            <input type="text" id="search" placeholder="  Søk"></input>
+            
+            
             <tbody>
                 <?php 
                 $bPK = $user_data['brukerPK'];
@@ -148,7 +152,9 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
 
                 include_once 'ubesvartliste.php'; ?> 
             <tbody>
+           
         </table>
+         </div>
             </div>
         <!--Tastaturet-->
             <div id="container">

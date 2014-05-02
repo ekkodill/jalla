@@ -10,8 +10,8 @@ display: block;
 
 
 body {
+min-height: 100%;
 width:100%;
-height:100%;
 background-color:#EEEEEE;
 margin: 0px;
 padding: 0px;
@@ -51,16 +51,26 @@ a:hover, a:active{
 color:#09C;
 }
 
+/*
 #page {
-	margin-top: 5.3%;
+margin-top: 4.3%;
 margin-left:13.5%;
 margin-right:auto;
 width:79%;
 height:100%;
 background-color:#fff;
-
-
 }
+*/
+#page {
+min-height: 100%;
+margin-left:13.5%;
+margin-right:auto;
+width:79%;
+background-color:#fff;
+}
+
+
+
 .innloggboksfixed{
 width:9%;
 height:auto;

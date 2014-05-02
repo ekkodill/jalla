@@ -117,11 +117,13 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 					<input class="stored" type="radio" value="3" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 3) { echo 'checked'; }}?>>Vanskelig
 					<input class="stored" type="radio" value="2" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 2) { echo 'checked'; }}?>>Medium
 					<input class="stored" type="radio" value="1" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 1) { echo 'checked'; }}?>>Lett</h5>
-					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven"><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
+					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" style="height:20%; width:60%"><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
+					
 					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
 		    	</form>
+
 				<?php
 				//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
 				if(isset($_GET['lagretrespons'])) {
@@ -151,6 +153,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
 			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
 			        </select>
+			    </form>	
 			 </center>
 <?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen (ren oppgaveliste eller besvarelser)
 		if(isset($_SESSION['oppgave_select'])) {
@@ -160,8 +163,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 				include('besvartliste.php');
 			}
 		} else { include('oppgaveliste.php'); }
-} ?>		    </form>	
-			</center>
+} ?>		  
 
 
 
@@ -203,8 +205,8 @@ $('.stored').change(function () {
 
 </script>
 	    	<?php include('design/footer.php'); ?>
-       		</div>
 		</section>
+		</div>
 	</body>
 </html>
 

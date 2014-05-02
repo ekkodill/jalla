@@ -28,20 +28,22 @@ if(isset($_POST['sendmail'])) {
 
 
 //Oppdaterer brukerens informasjon på minside
+
 if(!empty($_POST['updateinfo'])) {
   if(isset($_POST['upfnavn'],$_POST['upenavn'], $_POST['upepost'])) {
+    if($user_data['ePost'] == $_POST['upepost'] ||  $user_data['ePost'] != $_POST['upepost'] && user_exists($_POST['upepost']) == false) {
   $brukerPK = $user_data['brukerPK'];
   $fnavn = sanitize(trim($_POST['upfnavn']));
   $enavn = sanitize(trim($_POST['upenavn']));
   $epost = sanitize(trim($_POST['upepost']));
-    if(!empty($fnavn) && !empty($enavn) && !empty($epost)) {      
-        if(endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost)) {
-              header('Location: minside.php?oppdatert');
-        } else { header('Location: minside.php?error'); }
-    } else { header('Location: minside.php?tomerror'); }
+      if(!empty($fnavn) && !empty($enavn) && !empty($epost)) {      
+          if(endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost)) {
+                header('Location: minside.php?oppdatert');
+          } else { header('Location: minside.php?error'); }
+      } else { header('Location: minside.php?tomerror'); }
+    } else { header('Location: minside.php?eposterror'); }
   }
 }
-
 
 //Sjekker at boksene er utfyllt og at informasjonen stemmer for så å oppdatere til det nye passordet.
 if(isset($_POST['nypw'])) {
@@ -106,9 +108,8 @@ if($user_data['passord'] != $gammeltpw) {
                   <label>E-post:</label><input type="text" name="upepost" class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/><br><br />
                   <input type='submit' class="buttonStyle" id="updt" name="updateinfo" value="Oppdater"/><br />
                 </form>
-              </div>
-            </div>
-            <?php 
+                <?php 
+  
             //Utskrift for statusmeldinger når brukeren oppdaterer informasjonen sin
             if(isset($_GET['oppdatert'])) {
               echo "Oppdatert";
@@ -116,14 +117,19 @@ if($user_data['passord'] != $gammeltpw) {
               echo "Det oppstod en feil ved lagring";
             } elseif(isset($_GET['tomerror'])) {
               echo "Det oppstod en feil, et eller flere felt kan ikke være tomme";
+            } elseif(isset($_GET['eposterror'])) {
+              echo "Eposten er allerede i bruk";
             }
+                 ?>
+              </div>
+            </div>
 
-  
 
-          if($user_data['brukertype'] != 3) {
+ <!--Elementer for utsending av epost til brukere av nettsiden. Aktiv på admins og veilederes "min side" !-->
+<?php 
+            if($user_data['brukertype'] != 3) {
 ?>
-
-           <form class="fasplas" action="" method="POST">
+        <form class="fasplas" action="" method="POST">
            <h3>Send epost</h3>
            <label>Velg mottakere:</label>
              <select name="eposttil" class="dropned" action="minside.php" method="POST">

@@ -29,21 +29,8 @@ width:auto;
 padding-left:1%;
 border:thin 1px black;
 }
-/*
-#page {
-margin-left:auto;
-margin-right:auto;
-margin-top:10px;
-margin-bottom:10px;
-width:90%;
-background-color:#FFF;
-border-width:medium;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-border: 2px solid #99CCFF;
-}
-*/
+
+
 .visoppgave{
 margin-left:1%;
 }
@@ -100,7 +87,7 @@ width:80%;
 .profinfo{
 width:90%;
 
-margin-top:15%;
+margin-top:10%;
 }
 
 .ikkeferi{
@@ -150,7 +137,7 @@ margin-left:5%;
 }
 
 .fasplas{
-width:auto;
+width:10%;
 height:2%;
 padding: 0.5% 3.2% 0.8% 1%;
 position:absolute;

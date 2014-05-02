@@ -1,8 +1,8 @@
 <!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 20.04.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 <p># Antall som er utført og gitt tilbakemelding på</p>
-<div class=bliste><table>
-	     <thead position="absolute">
+<div class="oppliste"><table>
+	     <thead>
 		    <tr>
             <th>#</th>
 		    	  <th class='tab2'>Veileder</th>

@@ -8,19 +8,12 @@ logged_in_redirect(); //Forhindrer innloggede brukere å gå manuelt til denne s
 //Sjekker at ikke noen felt er tomme 
 if(!empty($_POST)) {
 	if(empty($_POST['bothoneypot'])) {
-	if(isset($_POST['ePost'], $_POST['fornavn'], $_POST['etternavn'], $_POST['btype'])) {
+	if(isset($_POST['ePost'], $_POST['fornavn'], $_POST['etternavn'])) {
 		$ePost 		= trim($_POST['ePost']);
 		$etternavn 	= trim($_POST['etternavn']);
 		$fornavn 	= trim($_POST['fornavn']);
-		if($_POST['btype'] == "administrator") { 
-    	$brukertype = 1; 
-    } 
-    	else if($_POST['btype'] == "veileder" ) { 
-    	$brukertype = 2; 
-    }
-    	else if($_POST['btype'] == "deltaker") { 
-    	$brukertype = 3; 
-    }
+	   	$brukertype = 3; 
+	   	
 	    if(user_exists($ePost) == false) { 	
 			$gen_pw = generate_password(); //Generer passord med 8 karakterer
 			$passord = passord($gen_pw); //Salter og krypterer passordet
@@ -60,7 +53,6 @@ if(!empty($_POST)) {
 					Fornavn*<br /> <input class="fornavn" type="text" name="fornavn" /><br />
 						Etternavn*<br /> <input class="etternavn" type="text" name="etternavn" /><br />
 						E-post*<br /> <input class="epostad" type="text" name="ePost" /><br />
-						<input type="hidden" name="btype" value="deltaker">
 						<input type="text" hidden  placeholder="La dette feltet være blankt" name="bothoneypot" alt="La dette feltet være blankt"/>
                          <p>*Må fylles ut</p>
 						<input type="submit" value="Registrer" name="register">

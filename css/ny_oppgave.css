@@ -8,6 +8,7 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 /* CSS Document */
 
 /*CSS styling for dialogboksen som viser oppgaver på oppgave.php*/
+
 .modalDialog {
 	position:fixed;
 	overflow:auto;
@@ -41,6 +42,17 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 		background: -webkit-linear-gradient(#fff, #999);
 		background: -o-linear-gradient(#fff, #999);
 	}
+
+/*Liste på ny_oppgave med oppgaver*/
+.oppliste {
+	overflow:auto;
+	height:30%;
+	width:100%;
+	margin-top: 0%;
+	margin-bottom:10%;
+	background-color:#fff;
+
+}
 
 /*Lukk knappen på dialogboksen*/
 .close {

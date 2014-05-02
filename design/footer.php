@@ -2,8 +2,7 @@
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 
 
- <footer>
-
+<footer>
 <div class="fotinfo">
             Mikael Kolstad<br />
 			134674<br />

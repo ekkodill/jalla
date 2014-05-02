@@ -62,14 +62,15 @@ td, th, table {
 }
 
 .bliste {
-	overflow:scroll;
-	height:30%;
+	overflow:auto;
+	height:50%;
 	width:100%;
-	margin-top: 7%;
+	margin-top: 0%;
 	margin-bottom:10%;
 	background-color:#fff;
 
 }
+
 
 		
 .tablesorter {
