@@ -97,15 +97,16 @@ div, table, h3, input, label {
 <div id="wrapper">
 	<table>
 	  <thead>
-            <tr>
-                <th>Innlevering med feil markert</th>
-            </tr>
+                <th>Tittel:</th>
+                <th><?php echo $otittel; ?></th>
+
         </thead>
 		<tbody>
+			<tr><td>Original tekst</td><td><?php echo $otekst; ?></td></tr>
             <tr>
                 <td class="original" hidden><?php echo $otekst; ?></td>
                 <td class="changed" hidden><?php echo $innlevertTekst; ?></td>
-                <td class="diff"></td>
+                <td>Innlevert tekst</td><td class="diff"></td>
             </tr>
         </tbody>
 	</table>

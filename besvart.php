@@ -75,7 +75,7 @@ while ($row = $result->fetch_assoc()) {
    	echo "<div id='openResultat".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
-                <h4>Utført den: ".$datoLevert."</h4>
+                <h4>Utf&oslashrt den: ".$datoLevert."</h4>
                 <h4>Vanskelighetsgrad: ".$vanskelighetsgrad."</h4> 
                 <h4>Antall feil: ".$antFeil."</h4>
                 <h4>Tid brukt: ".$tidBrukt."</h4>

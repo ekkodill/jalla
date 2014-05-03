@@ -16,7 +16,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
     laget av gruppe 3</h3><br /></center>
 </div>
 		<div class="fotinfo">
-			Erik Bjørnflaten<br />
+			Erik Bj&oslashrnflaten<br />
 			134686<br />
 		</div>
 

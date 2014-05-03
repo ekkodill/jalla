@@ -4,6 +4,8 @@ Denne siden er kontrollert av Kurt A. Amodt siste gang 30.03.2014 !-->
 protected_page();
 $db = getDB();
 
+$bPK = $user_data['brukerPK'];
+
 
 //Setter riktig tittel i forhold til hvilken liste brukeren viser med besvarelser
 if(empty($_POST['besvarform'])) {
@@ -12,7 +14,7 @@ if(empty($_POST['besvarform'])) {
   $listeBeskrivelse = "Besvarte oppgaver uten respons";
 }
 
-
+//Sender mail fra admin\veileders minside
 if(isset($_POST['sendmail'])) {
   if(!empty($_POST['frommail']) && !empty($_POST['eposttil']) && !empty($_POST['mailarea']) && !empty($_POST['mailtittel']))
             $tittel = $_POST['mailtittel'];
@@ -21,10 +23,10 @@ if(isset($_POST['sendmail'])) {
             $melding = $_POST['mailarea'];
             if(mailUsers($tittel, $melding, $fra, $til)) {
               header("location: minside.php?mailsendt");
-            }
-         } else {
-          echo print_r($_POST);
+            } else {
+          header("location: minside.php?mailerror");
          }
+         } 
 
 
 //Oppdaterer brukerens informasjon på minside
@@ -36,6 +38,27 @@ if(!empty($_POST['updateinfo'])) {
   $fnavn = sanitize(trim($_POST['upfnavn']));
   $enavn = sanitize(trim($_POST['upenavn']));
   $epost = sanitize(trim($_POST['upepost']));
+
+
+/****************Kode for eventuelt bruk senere i forbindelse med å la veiledere se brukerendringer*******************
+  if($fnavn =!  $user_data['fornavn'] || $enavn !=  $user_data['etternavn'] || $epost !=  $user_data['ePost'] ) {
+    if($fnavn =!  $user_data['fornavn'] || $enavn !=  $user_data['etternavn']) {
+      $oldnavn = $user_data['fornavn']." bytta navn til: ". $user_data['fornavn']. " ".$user_data['etternavn'];
+    }
+    if($epost !=  $user_data['ePost']) {
+      $oldepost =  $user_data['fornavn']." bytta epost til: ". $user_data['ePost'];
+    }
+     $_SESSION['endretbinfo'] = "";
+     if(!empty($oldnavn)) {
+      $_SESSION['endretbinfo'] = $oldnavn;
+     }
+     if(!empty($oldepost)) {
+      $_SESSION['endretbinfo'] = $oldepost;
+     }
+     if(!empty($oldnavn) && !empty($oldepost)) {
+      $_SESSION['endretbinfo'] = $oldnavn." og ".$oldepost;
+     }
+  }*/
       if(!empty($fnavn) && !empty($enavn) && !empty($epost)) {      
           if(endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost)) {
                 header('Location: minside.php?oppdatert');
@@ -150,9 +173,15 @@ if($user_data['passord'] != $gammeltpw) {
             <input type="submit" class="buttonStyle" value="Send epost" name="sendmail"/>
           </form>
           <?php 
+          if(isset($_GET['mailsendt'])) {
+            echo "Eposten ble sendt";
+          } elseif(isset($_GET['mailerror'])) {
+            echo "En feil oppstod, epost ble ikke sendt";
+          }
        }
  
-          if($user_data['brukertype'] == 3) { ?>
+          if($user_data['brukertype'] == 3 && count(sjekkAntall("oppgaver 
+            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL"))) { ?>
            <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
            <form class="fasplas"action="minside.php" method="post">
               <select class="dropned" name='minsideoppgli' onchange="this.form.submit();">
@@ -185,8 +214,8 @@ if($user_data['passord'] != $gammeltpw) {
              <div class="ubesform2">
               <?php 
         if($user_data['brukertype'] == 3) {
-              //Setter paramterene for riktig liste som skal vises basert på valget i nedtrekksmenyen
-              $bPK = $user_data['brukerPK'];
+              //Setter paramterene for riktig liste som skal vises basert på valget i nedtrekksmenyen, og viser oppgavelisten
+              
             if(!empty($_POST['minsideoppgli'])) {
                 if($_POST['minsideoppgli'] == 'ubesvoppg') {
                   $result = ubesvarteOppg($bPK, 3);
@@ -196,11 +225,22 @@ if($user_data['passord'] != $gammeltpw) {
             } else {
                     $result = ubesvarteOppg($bPK, 3);
                 }
+                if(!count(sjekkAntall("oppgaver 
+            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL"))) {
+                    echo "<legend>Ingen registrerte oppgaver</legend>"; 
+              } else {
                 include_once("ubesvartliste.php");
+              }
+              
                ?>
+              
           </div>
            <!--Liste over besvarte oppgaver med eller uten respons basert på valget i avkryssinga, på brukerens profil !-->
           <div class="minsidemainnede">
+          <?php 
+              if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
+                echo "<legend>Ingen registrerte besvarelser</legend>"; 
+              } else {  ?>
           <h3><?php echo $listeBeskrivelse ?></h3>
           <form method="POST" action="">
             <input type="checkbox" name="besvarform" onchange="this.form.submit()" <?php if(isset($_POST['besvarform'])) echo "checked='checked'"; ?>>Vis besvarelser uten respons
@@ -209,9 +249,11 @@ if($user_data['passord'] != $gammeltpw) {
                 $result = ubesvarteOppg($bPK, 1);
               } else {
                 $result = ubesvarteOppg($bPK, 2);
-              } 
-              include_once("besvart.php"); 
-        }
+              }
+              
+                  include_once("besvart.php"); 
+              }
+      }
               ?>
           </div>
        </section>

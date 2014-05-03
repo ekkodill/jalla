@@ -53,7 +53,7 @@ while ($row = $result->fetch_assoc()) {
     echo "<input type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
     }
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
-    echo "<input type='hidden' name='tittel' value=".$row['tittelOppgave']."/>";
+    echo "<input type='hidden' name='tittel' value='".$row['tittelOppgave']."'/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";
     echo "<input type='hidden' name='lagrettext' value='".$sanitertinntxt."'/>";
     echo "<input type='hidden' name='innPK' value='".$innlPK."'/>";
