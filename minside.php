@@ -181,7 +181,7 @@ if($user_data['passord'] != $gammeltpw) {
        }
  
           if($user_data['brukertype'] == 3 && count(sjekkAntall("oppgaver 
-            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL"))) { ?>
+            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) { ?>
            <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
            <form class="fasplas"action="minside.php" method="post">
               <select class="dropned" name='minsideoppgli' onchange="this.form.submit();">
@@ -226,7 +226,7 @@ if($user_data['passord'] != $gammeltpw) {
                     $result = ubesvarteOppg($bPK, 3);
                 }
                 if(!count(sjekkAntall("oppgaver 
-            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL"))) {
+            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) {
                     echo "<legend>Ingen registrerte oppgaver</legend>"; 
               } else {
                 include_once("ubesvartliste.php");

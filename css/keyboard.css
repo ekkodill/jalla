@@ -108,7 +108,7 @@ clear: left;
 height:0%;
 width:0%;
 float:right;
-margin-left:27.43%;
+margin-left:26.33%;
 margin-top:-0.15%;
 position:absolute;
 border:none;
@@ -294,7 +294,7 @@ display:none;
     float:left;
 }
 #opgtekst:focus {
-    background: green;
+    background: white;
 }
 .uboliste{
       

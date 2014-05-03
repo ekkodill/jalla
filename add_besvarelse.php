@@ -33,7 +33,8 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
         $_SESSION['percent'] = round($percent);
 
         //Sjekker om man skal levere en tidligere påbegynnt oppgave og oppdaterer med ny info i databasen. Eller oppdater ny lagring av  tidligere påbegynnt oppgave
-        if(!empty($_POST['fullfor']) && $_SESSION['drpdwnlist'] =='pbegoppg' || !empty($_POST['lagreoppg']) && $_SESSION['drpdwnlist'] =='pbegoppg') {
+       // if(!empty($_POST['fullfor']) && $_SESSION['drpdwnlist'] =='pbegoppg' || !empty($_POST['lagreoppg']) && $_SESSION['drpdwnlist'] =='pbegoppg') {
+         if(sjekkAntall("innleveringer WHERE oppgave = ".$oppgavenr)) {
             $innPK      = $_SESSION['innlPK'];
             $gammelTid = $_SESSION['gammelTid'];
             $secs = strtotime($gammelTid)-strtotime("00:00:00"); //Gjør om til sekunder
