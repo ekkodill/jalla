@@ -39,6 +39,7 @@ $respons = "";
 
 ins {
     background-color: #ffc6c6;
+   
 }
 
 del {

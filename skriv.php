@@ -70,6 +70,7 @@ include_once 'design/head.php';
 ?>
 <script type="text/javascript" src='js/tastatur.js'></script>
 <script type="text/javascript"  src='js/stoppeklokke.js'></script>
+<script type="text/javascript"  src='js/compareStrings.js'></script>
 <?php
 print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='window.scrollTo(0,$y); show(); loadStyle();'>";
  include_once 'design/header.php'; 
@@ -93,13 +94,15 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
                     
                         <input type="button" class="visskjul" onclick="setStyle('container');" value="Trykk"/> for å skjule\vise tastaturet
                     <br>
-                        <input name="fullfor" class="innleverop" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
+                        <input name="fullfor" id="test1" class="innleverop" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
                     <br>
-                        <input name="lagreoppg"class="lagropg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
+                        <input name="lagreoppg" id="test2" class="lagropg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden"/>
+                        <input name="jsfeil" id="jsfeil" type="hidden"/>
                     <br>
                     <br>
                         <?php 
+
                         //Statusmeldinger om oppgaven blir lagret/levert eller det oppstår feil.
                         if(isset($_GET['lagret'])) {
                             echo "Lagret oppgaven";
@@ -115,6 +118,7 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
             <!--Høyres side med elementer som viser oppgavetittel og oppgaveteksten-->
                 <div class="oppgavetittel"><?php echo $otittel; ?></div>
                 <div class="fasit"><?php echo $otekst; ?></div>
+                <input id="fasittekst" type="text" hidden value="<?php echo $otekst; ?>" />
             </div>
             <!--Midtseksjon med textarea for å utføre oppgaven-->
                 <div class="opgtextramme">

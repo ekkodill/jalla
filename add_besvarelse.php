@@ -1,6 +1,6 @@
 <?php 
-//Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.04.2014
-//Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
+//Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 04.05.2014
+//Denne siden er kontrollert av Mikael Kolstad siste gang 05.05.2014 
 
 include_once 'includes/init.php';
 $db = getDB();
@@ -19,7 +19,8 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
         $tid        =  substr($_POST['tid'],0,-4); //fjerner millisekunder
         $tidBrukt   = date_create_from_format('H:i:s', $tid); //gjør det om til en datetime format objekt
         $mySqlTime  = date('H:i:s', $tidBrukt->getTimestamp()); //gjør datetime objektet om til mysql time format
-        $_SESSION['antfeil']  = (strlen($_SESSION['oppgtxt']) - similar_text($_SESSION['inntxt'], $_SESSION['oppgtxt'])); //sammenligner original tekst med innlever og regner ut antall feil
+        $_SESSION['antfeil']  =  $_POST['jsfeil']; //Får antall feil fra JS compareString 
+        //(strlen($_SESSION['oppgtxt']) - similar_text($_SESSION['inntxt'], $_SESSION['oppgtxt'])); //sammenligner original tekst med innlever og regner ut antall feil <- Brukt tidligere
         $antfeil    = $_SESSION['antfeil'];
         $ferdig     = 0; 
         $melding = "lagret";
@@ -33,9 +34,8 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
         $_SESSION['percent'] = round($percent);
 
         //Sjekker om man skal levere en tidligere påbegynnt oppgave og oppdaterer med ny info i databasen. Eller oppdater ny lagring av  tidligere påbegynnt oppgave
-       // if(!empty($_POST['fullfor']) && $_SESSION['drpdwnlist'] =='pbegoppg' || !empty($_POST['lagreoppg']) && $_SESSION['drpdwnlist'] =='pbegoppg') {
-         if(sjekkAntall("innleveringer WHERE oppgave = ".$oppgavenr)) {
-            $innPK      = $_SESSION['innlPK'];
+         if(sjekkAntall("innleveringer WHERE oppgave = ".$oppgavenr." AND bruker = ".$bruker)) {
+            $innPK     = $_SESSION['innlPK'];
             $gammelTid = $_SESSION['gammelTid'];
             $secs = strtotime($gammelTid)-strtotime("00:00:00"); //Gjør om til sekunder
             $result = date("H:i:s",strtotime($mySqlTime)+$secs); //Legger på sekundene til den nye tiden
