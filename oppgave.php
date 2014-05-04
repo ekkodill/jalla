@@ -110,7 +110,7 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		<div id="page">
 		    <section>
 		    <!--Elementer for å lage nye oppgaver-->
-				<center><legend><h4>Lag ny oppgave</h4></legend></center>
+				<center><br><legend><h4>Lag ny oppgave</h4></legend></center>
 				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
 					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" value=<?php if(!empty($oppgtittel)) { echo $oppgtittel; }?>><br><br>
 					<h5><label>Vanskelighetsgrad:</label> 

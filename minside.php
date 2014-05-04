@@ -8,23 +8,6 @@ $bPK = $user_data['brukerPK'];
 
 
 
-function get_data_field_from_tsv($id_to_look_for, $filename){
-   $id_field_im_interested_in_position = '0'; //if it's the first field in the line
-   $row = 1;
-   if (($handle = fopen($filename, "r")) !== FALSE) {
-      while (($data = fgetcsv($handle, 0, "\t")) !== FALSE) {
-         $row++;
-         if (trim($data[$id_field_im_interested_in_position])==$id_to_look_for){
-            fclose($handle);
-            return $data;
-         }
-      }
-      fclose($handle);
-      return false;
-   }
-}
-
-
 //Oppdaterer applikasjonseposten i txt filen.
 if(isset($_POST['updatemail'])) {
   if(!empty($_POST['updatemail'])) {
@@ -137,34 +120,6 @@ if($user_data['passord'] != $gammeltpw) {
     include 'design/head.php'; ?>
     <body onunload="unloadP('oppgave')" onload="loadP('oppgave')">
         <?php include 'design/header.php'; ?>
-      <script type="text/javascript">
-          /*  function jaaa() {
-              var a = document.querySelectorAll('.bfred');
-                  for(var i = 0; i<a.length; i++) {
-                      a[i].style.display="none";  
-                  }
-              }*/
-              function removeRO(id,save){
-                var f = document.forms['profil'];
-                for(var i=0,fLen=f.length;i<fLen;i++){
-                f.elements[i].readOnly = true;
-                }
-                var a = document.querySelectorAll('.bfred');
-                for(var i = 0; i<a.length; i++) {
-                  if(a[i].id != save) {
-                    a[i].style.display="none";
-                  } else {
-                      a[i].style.display="inline-block";
-                    }
-                }
-                 document.getElementById(id).removeAttribute("readonly");          
-                 document.getElementById(id).focus();
-                 return false;
-              }
-              function updateClick() {
-                document.getElementById('updt').click();
-              }
-          </script>
           <!--Elemeneter for å oppdatere brukerens profil!-->
         <div id="page">
           <section>
@@ -176,33 +131,23 @@ if($user_data['passord'] != $gammeltpw) {
                   <label>E-post:</label><input type="text" name="upepost" class="minsinputepo" id="epost" value="<?php echo $user_data['ePost'] ?>"/><br><br />
                   <input type='submit' class="buttonStyle" id="updt" name="updateinfo" value="Oppdater"/><br />
                 </form>
-                <?php 
-  
-            //Utskrift for statusmeldinger når brukeren oppdaterer informasjonen sin
-            if(isset($_GET['oppdatert'])) {
-              echo "Oppdatert";
-            } elseif(isset($_GET['error'])) {
-              echo "Det oppstod en feil ved lagring";
-            } elseif(isset($_GET['tomerror'])) {
-              echo "Det oppstod en feil, et eller flere felt kan ikke være tomme";
-            } elseif(isset($_GET['eposterror'])) {
-              echo "Eposten er allerede i bruk";
-            }
-
-
-                 //  var_dump($mytxt->rows);
-
-                   
-
+                <?php  //Utskrift for statusmeldinger når brukeren oppdaterer informasjonen sin
+                        if(isset($_GET['oppdatert'])) {
+                          echo "Oppdatert";
+                        } elseif(isset($_GET['error'])) {
+                          echo "Det oppstod en feil ved lagring";
+                        } elseif(isset($_GET['tomerror'])) {
+                          echo "Det oppstod en feil, et eller flere felt kan ikke være tomme";
+                        } elseif(isset($_GET['eposterror'])) {
+                          echo "Eposten er allerede i bruk";
+                        }                
                  ?>
               </div>
-            </div>
+          </div>
 
 
  <!--Elementer for utsending av epost til brukere av nettsiden. Aktiv på admins og veilederes "min side" !-->
-<?php 
-            if($user_data['brukertype'] != 3) {
-?>
+<?php  if($user_data['brukertype'] != 3) { ?>
         <form class="fasplas" action="" method="POST">
            <h3 title="Dette er eposten som brukes av applikasjonen for utsending av nye passord osv.">Oppdater applikasjonsmail</h3>
            <input type='text' name="nymail" value="<?php echo $touchmail; ?>" />
@@ -232,7 +177,7 @@ if($user_data['passord'] != $gammeltpw) {
             echo "En feil oppstod, epost ble ikke sendt";
           }
        }
-
+          //Sjekker at brukertypen er deltaker og om deltakeren har ubesvarte oppgaver
           if($user_data['brukertype'] == 3 && count(sjekkAntall("oppgaver 
             LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) { ?>
            <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
@@ -243,7 +188,6 @@ if($user_data['passord'] != $gammeltpw) {
               </select></center><br>
             </form>
     <?php } ?>
-
 
              <!--Felter for å bytte passord på brukerens profil !-->
             <div id="minside">
@@ -263,12 +207,6 @@ if($user_data['passord'] != $gammeltpw) {
                         echo output_errors($errors);
                     } ?>
                 </form>
-                <?php 
-                /*
-               $data = get_data_field_from_tsv(1, 'userinfo.csv');
-                        print_r($data); 
-*/
-                        ?>
             </div>
              <div class="ubesform2">
               <?php 
@@ -285,7 +223,8 @@ if($user_data['passord'] != $gammeltpw) {
                     $result = ubesvarteOppg($bPK, 3);
                 }
                 if(!count(sjekkAntall("oppgaver 
-            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) {
+                                      LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) 
+                                      WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) {
                     echo "<legend>Ingen registrerte oppgaver</legend>"; 
               } else {
                 include_once("ubesvartliste.php");
