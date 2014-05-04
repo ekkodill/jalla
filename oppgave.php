@@ -16,7 +16,7 @@ if(!empty($_POST['publish'])) {
 }
 
 
-
+$veileder   = $user_data['brukerPK'];
 //Registrerer nye opgpaver til databasen
 if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 		$errors[] = "Du kan ikke sende mail om publisering når du skal lagre";
@@ -36,13 +36,14 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		 	} else { $vansklighetsgrad = trim($_POST['vansklighetsgrad']); }
 		}
 	}	
+
 		if(isset( $_SESSION['oldopgPK'])) {
 			$pubPK =  $_SESSION['oldopgPK'];
 			$oppgsjekk = hentOppgave($pubPK); //Sjekker om oppgaven finnes i databasen fra før
 		} else {
 			$pubPK = "";
 		}
-		$veileder   = $user_data['brukerPK'];
+		
 		$erPublisert = 1;
 		$melding = "publisert";
 		if(isset($_POST['lagre'])) {

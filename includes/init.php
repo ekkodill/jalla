@@ -11,7 +11,7 @@ require 'includes/MyTXT.php';
 //Får tak i brukerdata fra sessionen som kan brukes til de som er innlogget.
 if(logged_in() === true) {
 	$session_user_id = $_SESSION['brukerPK'];
-	$user_data = user_data($session_user_id, 'brukerPK',  'ePost', 'etternavn', 'fornavn', 'passord', 'brukertype');
+	$user_data = user_data($session_user_id, 'brukerPK','brukertype', 'ePost', 'etternavn', 'fornavn', 'passord');
 	
 }
 

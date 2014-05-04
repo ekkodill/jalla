@@ -109,8 +109,8 @@ function endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost){
 //Legger nye brukere inn i databasen
 function addUser($ePost, $etternavn, $fornavn, $passord, $brukertype) {
 	$db = getDB();
-	$insert = $db->prepare("INSERT INTO brukere (ePost, etternavn, fornavn, passord, brukertype) VALUES (?,?,?,?,?)");
-	$insert->bind_param('ssssi', $ePost, $etternavn, $fornavn, $passord, $brukertype);
+	$insert = $db->prepare("INSERT INTO brukere (brukertype,ePost, etternavn, fornavn, passord) VALUES (?,?,?,?,?)");
+	$insert->bind_param('ssssi',$brukertype, $ePost, $etternavn, $fornavn, $passord);
 	if($insert->execute()) {
 		return true;
 	} else { 
