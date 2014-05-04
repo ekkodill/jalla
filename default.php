@@ -15,6 +15,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 <?php include 'design/header.php';  ?>
     <div id="page">
         <section>
+        <br><br>
           <div class="midtfelt">
             <h2>Velkommen til Touch</h2> 
             <img class="bilde"src="img/keyboard.jpg" height="250" alt="Bli kjappere på tastene." >

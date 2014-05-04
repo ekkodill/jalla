@@ -1,6 +1,7 @@
 <!--Denne siden er utviklet av Kurt A. Aamodt, Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 30.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.03.2014  !-->
     <div class='bliste'>
+    <br>
         <table class='tablesorter' id="tableform">
             <thead>
                 <tr>

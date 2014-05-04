@@ -47,7 +47,7 @@ if(!empty($_POST['lagrerespons'])) {
   	$sanitized = nl2br(htmlspecialchars($besvarelse, ENT_QUOTES));
   	$bruker = finnBruker($row['bruker']); //Henter etternavn til brukeren
   	$oppgavetittel = hentOppgt($row['oppgave']);
-  	
+  	$brukerPK = $row['bruker'];
     echo "<form action='besvartliste.php' method='POST'>";
     echo "<tr>";
     echo "<td id='bruker".$PK."'      	 	 name='bruker'    		>"	. $bruker.	 			 "</td>";
@@ -58,18 +58,32 @@ if(!empty($_POST['lagrerespons'])) {
     echo "<input type='hidden' name='oppgPK' value=$PK />";
 
 
+//Henter informasjon fra brukerinfo fila med informasjon om brukeren har endret etter registrering.
+$mytxt = new MyTXT("userinfo.txt");
+$endretinfo = "";
+foreach ($mytxt->rows as $row) {
+	if ($row['brukerPK'] == $brukerPK) {
+		$endretinfo = $row['endret']." ".$row['dato'];
+
+	}
+}
+$mytxt->close();
+
     //Viser besvarelsen i en dialogboks med inputfelt for responen
    	echo "<td><a href='#openModal".$PK."'><img src='img/respons.png' alt='Vis besvarelsen' title='Vis besvarelsen'></a>"; 
    	echo "<div id='openModal".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
 				<h2>$oppgavetittel</h2>
-				$sanitized
+				$endretinfo
+				<br>
+				<br>
+				$sanitized		
 				<br>
 				<br>
 				<textarea id='responstext' placeholder='Skriv respons' name='respons'></textarea>
 				<br>";
-	echo	"<input id='responsid".$PK."' type='submit' name='lagrerespons'>
+	echo	"<input id='responsid".$PK."' type='submit' name='lagrerespons' value='Lagre respons'>
 			</div>
 		</div>";
     echo "</td></tr></form>";

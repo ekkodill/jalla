@@ -7,6 +7,36 @@ $db = getDB();
 $bPK = $user_data['brukerPK'];
 
 
+
+function get_data_field_from_tsv($id_to_look_for, $filename){
+   $id_field_im_interested_in_position = '0'; //if it's the first field in the line
+   $row = 1;
+   if (($handle = fopen($filename, "r")) !== FALSE) {
+      while (($data = fgetcsv($handle, 0, "\t")) !== FALSE) {
+         $row++;
+         if (trim($data[$id_field_im_interested_in_position])==$id_to_look_for){
+            fclose($handle);
+            return $data;
+         }
+      }
+      fclose($handle);
+      return false;
+   }
+}
+
+
+//Oppdaterer applikasjonseposten i txt filen.
+if(isset($_POST['updatemail'])) {
+  if(!empty($_POST['updatemail'])) {
+    $data_to_write = $_POST['nymail'];
+    $file_path = "appepost.txt";
+    $file_handle = fopen($file_path, 'w') or die();
+    fwrite($file_handle, $data_to_write);
+    fclose($file_handle);
+    $touchmail = $_POST['nymail'];
+  }
+}
+
 //Setter riktig tittel i forhold til hvilken liste brukeren viser med besvarelser
 if(empty($_POST['besvarform'])) {
   $listeBeskrivelse = "Besvarte oppgaver med respons";  
@@ -16,7 +46,7 @@ if(empty($_POST['besvarform'])) {
 
 //Sender mail fra admin\veileders minside
 if(isset($_POST['sendmail'])) {
-  if(!empty($_POST['frommail']) && !empty($_POST['eposttil']) && !empty($_POST['mailarea']) && !empty($_POST['mailtittel']))
+  if(!empty($_POST['frommail']) && !empty($_POST['eposttil']) && !empty($_POST['mailarea']) && !empty($_POST['mailtittel'])) {
             $tittel = $_POST['mailtittel'];
             $fra = $_POST['frommail'];
             $til = $_POST['eposttil'];
@@ -26,11 +56,11 @@ if(isset($_POST['sendmail'])) {
             } else {
           header("location: minside.php?mailerror");
          }
-         } 
+  }
+} 
 
 
 //Oppdaterer brukerens informasjon på minside
-
 if(!empty($_POST['updateinfo'])) {
   if(isset($_POST['upfnavn'],$_POST['upenavn'], $_POST['upepost'])) {
     if($user_data['ePost'] == $_POST['upepost'] ||  $user_data['ePost'] != $_POST['upepost'] && user_exists($_POST['upepost']) == false) {
@@ -40,25 +70,40 @@ if(!empty($_POST['updateinfo'])) {
   $epost = sanitize(trim($_POST['upepost']));
 
 
-/****************Kode for eventuelt bruk senere i forbindelse med å la veiledere se brukerendringer*******************
-  if($fnavn =!  $user_data['fornavn'] || $enavn !=  $user_data['etternavn'] || $epost !=  $user_data['ePost'] ) {
-    if($fnavn =!  $user_data['fornavn'] || $enavn !=  $user_data['etternavn']) {
-      $oldnavn = $user_data['fornavn']." bytta navn til: ". $user_data['fornavn']. " ".$user_data['etternavn'];
+if($user_data['fornavn'] != $fnavn || $user_data['etternavn'] != $enavn || $user_data['ePost'] != $epost ) {
+    if($user_data['fornavn'] != $fnavn && $user_data['ePost'] != $epost || $user_data['etternavn'] != $enavn && $user_data['ePost'] != $epost) {
+      $oldnavnogepost = $user_data['fornavn']." ".$user_data['etternavn']." bytta navn til ".$fnavn." ".$enavn. " og bytta epost til ".$epost;
+    } else { $oldnavnogepost = ""; }
+     if($user_data['fornavn'] != $fnavn && $user_data['ePost'] == $epost || $user_data['etternavn'] != $enavn && $user_data['ePost'] == $epost) {
+      $oldnavn = $user_data['fornavn']." ".$user_data['etternavn']." bytta navn til ".$fnavn." ".$enavn;
+    } else { $oldnavn = ""; }
+    if($user_data['ePost'] != $epost && $user_data['fornavn'] == $fnavn && $user_data['etternavn'] == $enavn) {
+      $oldepost = $user_data['fornavn']." ".$user_data['etternavn']." bytta epost til ".$epost;
+    } else { $oldepost = ""; }
+
+$nyinfo = $oldnavnogepost." ". $oldnavn." ".$oldepost;
+$dato = date("Y-m-d H:i:s");
+
+
+//Sjekker i txtfila om brukeren har endra info før, og sletter eventuelt den gamle informasjonen, før den nye legges til.
+$mytxt = new MyTXT("userinfo.txt");
+$i=-1;
+$index = "";
+  foreach ($mytxt->rows as $row) {
+    $i++;
+    if ($row['brukerPK'] == $bPK) {
+     $index = $i;
+       $mytxt->remove_row($index);
     }
-    if($epost !=  $user_data['ePost']) {
-      $oldepost =  $user_data['fornavn']." bytta epost til: ". $user_data['ePost'];
-    }
-     $_SESSION['endretbinfo'] = "";
-     if(!empty($oldnavn)) {
-      $_SESSION['endretbinfo'] = $oldnavn;
-     }
-     if(!empty($oldepost)) {
-      $_SESSION['endretbinfo'] = $oldepost;
-     }
-     if(!empty($oldnavn) && !empty($oldepost)) {
-      $_SESSION['endretbinfo'] = $oldnavn." og ".$oldepost;
-     }
-  }*/
+  }
+
+  //Legger til informasjon om den nye endringen for brukeren i txtfilen
+  $mytxt->add_row(array($bPK, $nyinfo, $dato));
+  $mytxt->save("userinfo.txt");
+  $mytxt->close();
+}
+
+
       if(!empty($fnavn) && !empty($enavn) && !empty($epost)) {      
           if(endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost)) {
                 header('Location: minside.php?oppdatert');
@@ -143,6 +188,12 @@ if($user_data['passord'] != $gammeltpw) {
             } elseif(isset($_GET['eposterror'])) {
               echo "Eposten er allerede i bruk";
             }
+
+
+                 //  var_dump($mytxt->rows);
+
+                   
+
                  ?>
               </div>
             </div>
@@ -153,6 +204,9 @@ if($user_data['passord'] != $gammeltpw) {
             if($user_data['brukertype'] != 3) {
 ?>
         <form class="fasplas" action="" method="POST">
+           <h3 title="Dette er eposten som brukes av applikasjonen for utsending av nye passord osv.">Oppdater applikasjonsmail</h3>
+           <input type='text' name="nymail" value="<?php echo $touchmail; ?>" />
+           <input type='submit' class="buttonStyle"  name="updatemail" value="Oppdater"/><br/><br/>
            <h3>Send epost</h3>
            <label>Velg mottakere:</label>
              <select name="eposttil" class="dropned" action="minside.php" method="POST">
@@ -167,7 +221,6 @@ if($user_data['passord'] != $gammeltpw) {
             <input type="mail"  name="frommail" value="<?php echo $touchmail; ?>"/><br/><br/>
             <label>Tittel:</label>
             <input type="text"  name="mailtittel" /><br/><br/>
-            <?php //<input type='submit' class="buttonStyle"  name="updatemail" value="Oppdater"/><br/><br/> ?>
             <label>Melding:</label>
             <textarea name="mailarea"></textarea>
             <input type="submit" class="buttonStyle" value="Send epost" name="sendmail"/>
@@ -179,7 +232,7 @@ if($user_data['passord'] != $gammeltpw) {
             echo "En feil oppstod, epost ble ikke sendt";
           }
        }
- 
+
           if($user_data['brukertype'] == 3 && count(sjekkAntall("oppgaver 
             LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) { ?>
            <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
@@ -210,6 +263,12 @@ if($user_data['passord'] != $gammeltpw) {
                         echo output_errors($errors);
                     } ?>
                 </form>
+                <?php 
+                /*
+               $data = get_data_field_from_tsv(1, 'userinfo.csv');
+                        print_r($data); 
+*/
+                        ?>
             </div>
              <div class="ubesform2">
               <?php 
