@@ -2,9 +2,12 @@
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 03.03.2014  !-->
 
 <?php 
-//Brukes til å forhindre brukere som ikke er innlogget i å få adgang til sider som skal være utilgjengelige.
-
 include_once 'includes/init.php'; ?>
+
+ <!--************************************************************************************************-->
+ <!--Denne siden er for å stoppe brukere som ikke er innlogget i å få tilgang til sider de ikke skal-->
+ <!--************************************************************************************************-->
+
 <!doctype html>
 <html>
     <?php 

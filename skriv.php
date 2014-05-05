@@ -1,5 +1,5 @@
-<!--Denne siden er utviklet av Kurt A. Aamodt (PHP og JS) og Erik Bjørnflaten (HTML)., siste gang endret 19.04.2014
-Denne siden er kontrollert av Mikael kolstad siste gang 28.04.2014 !-->
+<!--Denne siden er utviklet av Kurt A. Aamodt (PHP og JS) og Erik Bjørnflaten (HTML)., siste gang endret 04.05.2014
+Denne siden er kontrollert av Mikael kolstad siste gang 04.05.2014 !-->
 <?php
 include_once 'includes/init.php';
 protected_page();
@@ -61,7 +61,14 @@ $lagrettext = "";
 if(!empty($_COOKIE["y"])) {
 $y = $_COOKIE["y"];
 } else { $y = 0; }
+
+
 ?>
+
+<!--*******************************************************************-->
+<!--**********Denne siden er for å utføre oppgaver*********************-->
+<!--*******************************************************************-->
+
 <!doctype html>
 <html>
 <?php
@@ -78,7 +85,7 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
     <div id="page">
     <section> 
         <div class="bfleft">
-        <!--Venstre elementer på venstre side som viser tid brukt, antall feil og feilprosent når man lagrer\leverer oppgaven-->
+        <!--Elementer på venstre side som viser tid brukt, antall feil og feilprosent når man lagrer\leverer oppgaven-->
             <div class="valgmuligheter">             
                     <input type="button" class="stopkn" value="stop" onclick="stop();">
                     <input type="button" class="resetkn" value="reset" onclick="reset();">
@@ -94,9 +101,9 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
                     
                         <input type="button" class="visskjul" onclick="setStyle('container');" value="Trykk"/> for å skjule\vise tastaturet
                     <br>
-                        <input name="fullfor" id="test1" class="innleverop" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
+                        <input name="fullfor" id="innlevering" class="innleverop" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
                     <br>
-                        <input name="lagreoppg" id="test2" class="lagropg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
+                        <input name="lagreoppg" id="lagring" class="lagropg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden"/>
                         <input name="jsfeil" id="jsfeil" type="hidden"/>
                     <br>
@@ -141,6 +148,7 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
         <table class="ubesform">         
             <tbody>
                 <?php 
+                //Inkludrer riktig liste med ubesvarte\påbegynte oppgaver for riktig bruker
                 $bPK = $user_data['brukerPK'];
                 if(!empty($_SESSION['drpdwnlist'])) {
                     if($_SESSION['drpdwnlist'] == 'ubesvoppg') {

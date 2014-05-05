@@ -5,7 +5,9 @@
 include_once 'includes/init.php';
 $db = getDB(); 
 
-
+/******************************************************************************************************************/
+/*******Denne siden brukes til å lage lister med besvarte oppgaver uten respons for veiledere på oppgave.php******/
+/******************************************************************************************************************/
 
 //Registrerer ny respons til databasen
 if(!empty($_POST['lagrerespons'])) {

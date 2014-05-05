@@ -7,8 +7,3 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
         <?php   if(logged_in() === false) {include 'includes/loginbox.php';} ?>
         <?php   if(logged_in() === true) {include 'design/nav.php';} ?>  
 </header>
-
-
-<!--Til Dr.E. Viser antall ubesvarte oppgaver for den innloggde brukeren
- <li><a href='brukerforside.php'>Du har ".ubesvarteOppg($user_data['brukerPK'])->num_rows."ubesvarte oppgaver</a></li>
- !-->

@@ -1,11 +1,15 @@
-<!--Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 30.03.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.03.2014  !-->
+<!--Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 30.04.2014
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.04.2014  !-->
 <?php 
 include_once 'includes/init.php';
 protected_page();
 $db = getDB(); //Tilkobling til databasen.
 
 ?>
+
+<!--********************************************************************************-->
+<!--**********Denne siden er for å legge til \ vise brukerliste*********************-->
+<!--********************************************************************************-->
 
 <!DOCTYPE html>
 <html lang="nb-no">
@@ -16,6 +20,7 @@ $db = getDB(); //Tilkobling til databasen.
 	<body onload='fjernType(<?php echo $user_data['brukertype']; ?>, "nytype");loadP("visbrukere");' onunload='unloadP("visbrukere")'>
 <?php include('design/header.php');	?>
 <script type="text/javascript">
+//Kodet hentet fra internett, url: http://www.thomashardy.me.uk/using-html5-localstorage-on-a-form
 //Fyller feltene med data fra localStorage om det er noe der når siden lastes
 $(document).ready(function () {
 function init() {
@@ -66,7 +71,12 @@ $(document).ready(function(){
 		       	//Inkluderer elementene for admins\veiledere å legge til brukere
 		       	if($user_data['brukertype'] != 3) {
 					 	include('add_brukere.php');
-					}	      
+					}
+				if(isset($_GET['updateusererror'])) {
+					echo "Det oppstod en feil ved oppdatering av brukeren";
+				} elseif(isset($_GET['posterror']))  {
+					echo "Det oppstod en feil ved lagring av brukeren, prøv på nytt";
+				}
 					if(!count(sjekkAntall('brukere'))) {
 						echo "<center><legend>Ingen registrerte brukere</legend></center>"; 
 						} else { 

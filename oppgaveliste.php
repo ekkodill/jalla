@@ -15,7 +15,9 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 	    </thead>
     <tbody>
     <?php
-
+/*******************************************************************************************************/
+/********Denne siden lager en liste over oppgaver, vises på oppgave.php for veildere\admins****************/
+/*******************************************************************************************************/
     
     $result = oppgListe("liste"); //Henter liste fra databasen gruppert på vanskelighetsgrad og sortert på dato
     while ($row = $result->fetch_assoc()) {
@@ -28,9 +30,6 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
     $vanskelighetsgrad = "ikke valgt";
     $publisert = $row['erPublisert'];
-   /* if(!empty($row['erPublisert'])) {
-      
-    }*/
     $vedlegg = htmlspecialchars($row['linkVedlegg']);
     $tittel = htmlspecialchars($row['tittelOppgave']);
 
@@ -63,6 +62,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
         <p>Vedlegg: <a href='vedlegg/".$vedlegg."'>".$vedlegg."</a> </p>
 			</div>
 		</div>";
+    //Skjuler knapper for deltakere, som er ment for admins\veiledere
   if($user_data['brukertype'] !=3) {
   echo "<input type='image'  src='img/pdf.jpg' alt='Last opp vedlegg' title='Last opp vedlegg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
 	echo "<input id='file-input".$PK."' type='file' name='file' onchange='lagre($PK)' hidden/>"; //Filvalgsmeny
@@ -74,23 +74,9 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     echo "<input type='hidden' name='oppgTittle' value=$tittel />";
     echo "<input type='hidden' name='oppgText' value='".$sanitized."' />";
     echo "<input type='hidden' name='vanskelighetsgrad' value='".$row['vanskelighetsgrad']."' />";
-    //Viser besvarelsen i en dialogboks med inputfelt for responen
-   /* echo "<a href='#editModal".$PK."'><img src='img/publish.png' title='Publiser oppgave' alt='Publiser oppgave'></a>"; 
-    echo "<div id='editModal".$PK."' class='modalDialog'>
-      <div>
-        <a href='#close' title='Close' class='close'>X</a>
-        <h2>$tittel</h2>
-        <br>
-        <textarea id='editoppg' name='respons'>$sanitized</textarea>
-        <br>
-        <input type='button' value='Lagre' name='editsave'/>
-        <input type='button' value='Publiser' name='editpublish'/>
-        <input type='checkbox' name='editcheck'>Send mail om denne publiseringen
-        <input id='editoppg".$PK."' type='submit' hidden name='saveedit'>
-      </div>
-    </div>"; */
   }
   
+  //Viser en knapp for deltakere for å utføre oppgaven
 } elseif($user_data['brukertype'] == 3) {
   echo "<input type='hidden' name='tittel' value=$tittel/>";
   echo "<input type='hidden' name='oppgtxt' value=$sanitized/>";

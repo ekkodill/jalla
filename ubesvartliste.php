@@ -2,9 +2,9 @@
 //Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.04.2014
 //Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
 
-/****************************************************************************************/
-/**************Denne filen viser liste med ubesvarte/uferdige oppgaver*******************/
-/****************************************************************************************/
+/**********************************************************************************************************************************************/
+/**************Denne filen viser liste med ubesvarte/uferdige oppgaver, både på skriv.php og minside.php for deltakere*******************/
+/**********************************************************************************************************************************************/
 
 while ($row = $result->fetch_assoc()) {
     $PK = $row['oppgavePK'];

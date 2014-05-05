@@ -1,7 +1,6 @@
+<!--Denne siden er utviklet av Kurt A. Aamodt (PHP) og Erik Bjørnflaten (HTML), Mikael Kolstad (JS), siste gang endret 19.04.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 04.05.2014 !-->
 <?php
-//Denne siden er utviklet av Kurt A. Aamodt (PHP) og Erik Bjørnflaten (HTML), siste gang endret 19.04.2014
-//Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
-
 include 'includes/init.php';
 protected_page();
 $db = getDB();
@@ -21,53 +20,53 @@ $veileder   = $user_data['brukerPK'];
 if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 		$errors[] = "Du kan ikke sende mail om publisering når du skal lagre";
 	} else {
-if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
+	if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 
-	if(empty($_POST['tittel'])) {
- 		 $errors[] = "Du må skrive inn tittel";
- 	} else {
- 		$tittel 	= sanitize(trim($_POST['tittel']));
-	 	if(empty($_POST['oppg'])) {
-	 		$errors[] = "Du må skrive inn oppgavetekst";
+		if(empty($_POST['tittel'])) {
+	 		 $errors[] = "Du må skrive inn tittel";
 	 	} else {
-	 		$oppg 		= trim($_POST['oppg']);
-		 	if (empty($_POST['vansklighetsgrad'])) {
-		 		$errors[] = "Du må velge vansklighetsgrad";
-		 	} else { $vansklighetsgrad = trim($_POST['vansklighetsgrad']); }
-		}
-	}	
+	 		$tittel 	= sanitize(trim($_POST['tittel']));
+		 	if(empty($_POST['oppg'])) {
+		 		$errors[] = "Du må skrive inn oppgavetekst";
+		 	} else {
+		 		$oppg 		= trim($_POST['oppg']);
+			 	if (empty($_POST['vansklighetsgrad'])) {
+			 		$errors[] = "Du må velge vansklighetsgrad";
+			 	} else { $vansklighetsgrad = trim($_POST['vansklighetsgrad']); }
+			}
+		}	
 
-		if(isset( $_SESSION['oldopgPK'])) {
-			$pubPK =  $_SESSION['oldopgPK'];
-			$oppgsjekk = hentOppgave($pubPK); //Sjekker om oppgaven finnes i databasen fra før
-		} else {
-			$pubPK = "";
-		}
-		
-		$erPublisert = 1;
-		$melding = "publisert";
-		if(isset($_POST['lagre'])) {
-				$erPublisert = 0;
-				$melding = "lagret";
-		}
-		
-			if(!empty($oppgsjekk)) {
-				if(updateOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad, $pubPK)){ //Oppdaterer databasen med ny informasjon
-					header("Location: oppgave.php?".$melding);
-				}
+			if(isset( $_SESSION['oldopgPK'])) {
+				$pubPK =  $_SESSION['oldopgPK'];
+				$oppgsjekk = hentOppgave($pubPK); //Sjekker om oppgaven finnes i databasen fra før
 			} else {
-					if(addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad)) { //Lagrer oppgaven i databasen
-						if(isset($_POST['mailpub'])) {
-							publishMail($tittel); //Sender mail til alle deltakere
-						}
-						
-					Header('Location: oppgave.php?'.$melding);
-					die();
-				
-				} else { $errors[] = "En feil oppstod: kunne ikke lagre oppgaven i databasen";} 
-		}  
-		}
+				$pubPK = "";
+			}
+			
+			$erPublisert = 1;
+			$melding = "publisert";
+			if(isset($_POST['lagre'])) {
+					$erPublisert = 0;
+					$melding = "lagret";
+			}
+			
+				if(!empty($oppgsjekk)) {
+					if(updateOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad, $pubPK)){ //Oppdaterer databasen med ny informasjon
+						header("Location: oppgave.php?".$melding);
+					}
+				} else {
+						if(addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad)) { //Lagrer oppgaven i databasen
+							if(isset($_POST['mailpub'])) {
+								publishMail($tittel); //Sender mail til alle deltakere
+							}
+								Header('Location: oppgave.php?'.$melding);
+								die();
+						} else { 
+							$errors[] = "En feil oppstod: kunne ikke lagre oppgaven i databasen";
+						} 
+				}  
 	}
+}
 
 
 
@@ -98,6 +97,9 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 
  ?>
 
+ <!--*******************************************************************************************************************************************-->
+<!--**********Denne siden er for veiledere\admins til å lager oppgaver \ vise oppgavelister og lister med besvarelser uten respons******-->
+<!--*******************************************************************************************************************************************-->
 
 <!DOCTYPE html>
 <html lang="nb-no">
@@ -166,45 +168,43 @@ if(!empty($_POST['publiser']) || !empty($_POST['lagre']) ) {
 		} else { include('oppgaveliste.php'); }
 } ?>		  
 
+			<script type="text/javascript">
+				//Fyller feltene med data fra localStorage om det er noe der når siden lastes
+				//Koden er hentet fra internett, url: http://www.thomashardy.me.uk/using-html5-localstorage-on-a-form
+			$(document).ready(function () {
+			    function init() {
+			        if (localStorage["tittel"]) {
+			            $('#oppgtitt').val(localStorage["tittel"]);
+			        }
+			        if (localStorage["oppg"]) {
+			            $('#oppgtext').val(localStorage["oppg"]);
+			        }
+			   }
+			init();
+			});
 
 
-
-<script type="text/javascript">
-	//Fyller feltene med data fra localStorage om det er noe der når siden lastes
-$(document).ready(function () {
-    function init() {
-        if (localStorage["tittel"]) {
-            $('#oppgtitt').val(localStorage["tittel"]);
-        }
-        if (localStorage["oppg"]) {
-            $('#oppgtext').val(localStorage["oppg"]);
-        }
-   }
-init();
-});
+			//Setter riktig valg på radioknappen i forhold til hva som er i localstorage
+			$('input[type=radio]').each(function() {
+			  		var key = $(this).attr('name');
+			  		var val = localStorage[key];
+			 	 if ( $(this).attr('name') == key && $(this).attr('value') == val ) {
+			    		$(this).attr('checked', 'checked');
+			  	}	
+				});
 
 
-//Setter riktig valg på radioknappen i forhold til hva som er i localstorage
-$('input[type=radio]').each(function() {
-  		var key = $(this).attr('name');
-  		var val = localStorage[key];
- 	 if ( $(this).attr('name') == key && $(this).attr('value') == val ) {
-    		$(this).attr('checked', 'checked');
-  	}	
-	});
+			//Lagrer feltenes innhold til localstorage
+			$('.stored').change(function () {
+			    localStorage[$(this).attr('name')] = $(this).val();
+			});
 
+				//Resetter feltene når formen blir sendt uten problemer
+					$('#nyoppgfrm').submit(function() {
+						localStorage.clear();
+					});
 
-//Lagrer feltenes innhold til localstorage
-$('.stored').change(function () {
-    localStorage[$(this).attr('name')] = $(this).val();
-});
-
-	//Resetter feltene når formen blir sendt uten problemer
-		$('#nyoppgfrm').submit(function() {
-			localStorage.clear();
-		});
-
-</script>
+			</script>
 	    	<?php include('design/footer.php'); ?>
 		</section>
 		</div>

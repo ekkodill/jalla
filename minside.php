@@ -1,11 +1,10 @@
-<!--Denne siden er utviklet av Mikael og Erik., siste gang endret 30.03.2014
-Denne siden er kontrollert av Kurt A. Amodt siste gang 30.03.2014 !-->
+<!--Denne siden er utviklet av Mikael Kolstad (JS for bytting av passord), Erik Bjørnflaten (html\css) og Kurt A. Aamodt (php)., siste gang endret 04.05.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 04.05.2014 !-->
 <?php include_once 'includes/init.php';
 protected_page();
 $db = getDB();
 
 $bPK = $user_data['brukerPK'];
-
 
 
 //Oppdaterer applikasjonseposten i txt filen.
@@ -53,38 +52,39 @@ if(!empty($_POST['updateinfo'])) {
   $epost = sanitize(trim($_POST['upepost']));
 
 
-if($user_data['fornavn'] != $fnavn || $user_data['etternavn'] != $enavn || $user_data['ePost'] != $epost ) {
-    if($user_data['fornavn'] != $fnavn && $user_data['ePost'] != $epost || $user_data['etternavn'] != $enavn && $user_data['ePost'] != $epost) {
-      $oldnavnogepost = $user_data['fornavn']." ".$user_data['etternavn']." bytta navn til ".$fnavn." ".$enavn. " og bytta epost til ".$epost;
-    } else { $oldnavnogepost = ""; }
-     if($user_data['fornavn'] != $fnavn && $user_data['ePost'] == $epost || $user_data['etternavn'] != $enavn && $user_data['ePost'] == $epost) {
-      $oldnavn = $user_data['fornavn']." ".$user_data['etternavn']." bytta navn til ".$fnavn." ".$enavn;
-    } else { $oldnavn = ""; }
-    if($user_data['ePost'] != $epost && $user_data['fornavn'] == $fnavn && $user_data['etternavn'] == $enavn) {
-      $oldepost = $user_data['fornavn']." ".$user_data['etternavn']." bytta epost til ".$epost;
-    } else { $oldepost = ""; }
+      //Sjekker om fornavn, etternavn eller epost i inputfeltet er forskjellig fra det brukeren har etter innlogging, dersom det er forskjellig settes en variabel for oppdateringen
+      if($user_data['fornavn'] != $fnavn || $user_data['etternavn'] != $enavn || $user_data['ePost'] != $epost ) {
+          if($user_data['fornavn'] != $fnavn && $user_data['ePost'] != $epost || $user_data['etternavn'] != $enavn && $user_data['ePost'] != $epost) {
+            $oldnavnogepost = $user_data['fornavn']." ".$user_data['etternavn']." bytta navn til ".$fnavn." ".$enavn. " og bytta epost til ".$epost;
+          } else { $oldnavnogepost = ""; }
+           if($user_data['fornavn'] != $fnavn && $user_data['ePost'] == $epost || $user_data['etternavn'] != $enavn && $user_data['ePost'] == $epost) {
+            $oldnavn = $user_data['fornavn']." ".$user_data['etternavn']." bytta navn til ".$fnavn." ".$enavn;
+          } else { $oldnavn = ""; }
+          if($user_data['ePost'] != $epost && $user_data['fornavn'] == $fnavn && $user_data['etternavn'] == $enavn) {
+            $oldepost = $user_data['fornavn']." ".$user_data['etternavn']." bytta epost til ".$epost;
+          } else { $oldepost = ""; }
 
-$nyinfo = $oldnavnogepost." ". $oldnavn." ".$oldepost;
-$dato = date("Y-m-d H:i:s");
+      $nyinfo = $oldnavnogepost." ". $oldnavn." ".$oldepost;
+      $dato = date("Y-m-d H:i:s");
 
 
-//Sjekker i txtfila om brukeren har endra info før, og sletter eventuelt den gamle informasjonen, før den nye legges til.
-$mytxt = new MyTXT("userinfo.txt");
-$i=-1;
-$index = "";
-  foreach ($mytxt->rows as $row) {
-    $i++;
-    if ($row['brukerPK'] == $bPK) {
-     $index = $i;
-       $mytxt->remove_row($index);
-    }
-  }
+      //Sjekker i txtfila om brukeren har endra info før, og sletter eventuelt den gamle informasjonen, før den nye legges til.
+      $mytxt = new MyTXT("userinfo.txt");
+      $i=-1;
+      $index = "";
+        foreach ($mytxt->rows as $row) {
+          $i++;
+          if ($row['brukerPK'] == $bPK) {
+           $index = $i;
+             $mytxt->remove_row($index);
+          }
+        }
 
-  //Legger til informasjon om den nye endringen for brukeren i txtfilen
-  $mytxt->add_row(array($bPK, $nyinfo, $dato));
-  $mytxt->save("userinfo.txt");
-  $mytxt->close();
-}
+        //Legger til informasjon om den nye endringen for brukeren i txtfilen
+        $mytxt->add_row(array($bPK, $nyinfo, $dato));
+        $mytxt->save("userinfo.txt");
+        $mytxt->close();
+      }
 
 
       if(!empty($fnavn) && !empty($enavn) && !empty($epost)) {      
@@ -171,6 +171,7 @@ if($user_data['passord'] != $gammeltpw) {
             <input type="submit" class="buttonStyle" value="Send epost" name="sendmail"/>
           </form>
           <?php 
+          //Meldinger for mailsendingen var vellykket eller ikke
           if(isset($_GET['mailsendt'])) {
             echo "Eposten ble sendt";
           } elseif(isset($_GET['mailerror'])) {
@@ -210,9 +211,9 @@ if($user_data['passord'] != $gammeltpw) {
             </div>
              <div class="ubesform2">
               <?php 
+        //Viser elementene som kun er til deltakere på min side
         if($user_data['brukertype'] == 3) {
-              //Setter paramterene for riktig liste som skal vises basert på valget i nedtrekksmenyen, og viser oppgavelisten
-              
+           //Setter paramterene for riktig liste som skal vises basert på valget i nedtrekksmenyen, og viser oppgavelisten             
             if(!empty($_POST['minsideoppgli'])) {
                 if($_POST['minsideoppgli'] == 'ubesvoppg') {
                   $result = ubesvarteOppg($bPK, 3);

@@ -51,6 +51,7 @@ function errorRespons(pk) {
 
 
 //Søking for tabellene på oppgave.php
+//Kode hentet fra internett, url: http://stackoverflow.com/questions/12433304/live-search-through-table-rows
 $( document ).ready(function() {
 	$("#search").keyup(function() {
 	    var value = this.value.toLowerCase().trim();
@@ -68,6 +69,7 @@ $( document ).ready(function() {
 
 
 //Funksjon som returnerer X og Y scrollposisjonen i det aktuelle html dokumentet
+//Kode hentet fra internett, url: http://blog.crondesign.com/2009/09/scrollfix-remember-scroll-position-when.html
 function getScrollXY() {
     var x = 0, y = 0;
     if( typeof( window.pageYOffset ) == 'number' ) {

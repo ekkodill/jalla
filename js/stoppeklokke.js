@@ -1,21 +1,6 @@
-//  Simple example of using private variables
-//
-//  To start the stopwatch:
-//    obj.start();
-//
-//  To get the duration in milliseconds without pausing / resuming:
-//    var x = obj.time();
-//
-//  To pause the stopwatch:
-//    var x = obj.stop(); // Result is duration in milliseconds
-//
-//  To resume a paused stopwatch
-//    var x = obj.start();  // Result is duration in milliseconds
-//
-//  To reset a paused stopwatch
-//    obj.stop();
-//
-
+// Denne siden er utviklet av Mikael Kolstad, siste gang endret 29.04.2014
+// Denne siden er kontrollert av Kurt A. Aamodt, siste gang 29.04.2014
+//Koden er hentet fra internett, url: https://gist.github.com/electricg/4372563
     
   function transfer() {
     var tid = document.getElementById('time').innerHTML;

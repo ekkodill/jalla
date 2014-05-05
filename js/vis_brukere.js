@@ -1,5 +1,5 @@
-// Denne siden er utviklet av Erik Bjørnflaten og Kurt A. Aamodt, sist gang endret 30.03.2014
-// Denne siden er kontrollert av Kurt A. Aamodt,siste gang  30.03.2014
+// Denne siden er utviklet av Erik Bjørnflaten og Kurt A. Aamodt, sist gang endret 15.04.2014
+// Denne siden er kontrollert av Mikael Kolstad,siste gang  04.05.2014
 
   
 
@@ -81,10 +81,6 @@ function slette(fornavn, etternavn, id, denne, type) {
               }
               }
 
-      //document.getElementById("ePost"+id).removeAttribute("Readonly");
-      //document.getElementById("etternavn"+id).removeAttribute("Readonly");
-      //document.getElementById("fornavn"+id).removeAttribute("Readonly");
-      //document.getElementById("typer"+id).removeAttribute("disabled");
       document.getElementById("ePost"+id).focus();
       return false;
   }

@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Kurt A. Amodt og Dag-Roger Eriksen,. siste gang endret 02.03.2014
-Denne siden er kontrollert av Dag-Roger Eriksen siste gang 26.03.2014  !-->
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.04.2014  !-->
 
  <nav>
  	<?php if(logged_in() === true) { echo "<div class='loggetInnSom'><a href='minside.php'>".$user_data['fornavn'] ." ". $user_data['etternavn']."</a></div>"; } ?><br /> 

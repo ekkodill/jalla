@@ -1,7 +1,10 @@
-<!--Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 03.03.2014
+<!--Denne siden er utviklet av Erik Bjørnflaten (html\css) og Kurt A. Aamodt (php), siste gang endret 03.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
 
 <?php
+/******************************************************************************/
+/*********Denne siden brukes til å legge til brukere på vis_brukere.php*******/
+/******************************************************************************/
 
 if(!empty($_POST['adduser'])) {
 	//Sjekker at det er data i alle feltene 
@@ -34,7 +37,7 @@ if(!empty($_POST['adduser'])) {
 						$errors[] = "Epost ble sendt til brukeren";
 					} else { $errors[] = "Det oppstod en feil ved utsending av epost, sjekk mailserveren"; }
 				?>
-				<script>$('#nybruker').submit(function());</script>
+				<script>$('#nybruker').submit(function()); //Kjører funksjon fra vis_brukere.php som sletter localstorage for inputfeltene når formen ble submitta vellykket </script>
 				<?php
 				} else { $errors[]  = "Det oppstod en feil og brukeren kunne ikke opprettes"; }
 			} else { $errors[]  = "Alle boksene må fylles ut"; }

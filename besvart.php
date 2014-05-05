@@ -1,6 +1,6 @@
 <!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
-<div class=besvart><table>
+<div class="besvart"><table>
 	     <thead>
 		    <tr>
 		        <th class='tabbes'>Tittel</th>
@@ -14,18 +14,10 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	    </thead>
     <tbody>
     <?php
-   
-    /*$result = $db->query("
-        SELECT innleveringer.*, oppgaver.* FROM innleveringer
-        JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $brukerPK");
-*/
-/*
-$result = $db->query("
-SELECT innleveringer.*, oppgaver.*, respons.* FROM innleveringer
-        JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK
-        LEFT JOIN respons ON innleveringer.innleveringPK = respons.innlevering WHERE innleveringer.bruker = $brukerPK
-GROUP BY innleveringer.innleveringPK");*/
- 
+    /****************************************************************************************************************/
+    /*******Denne siden brukes til å lage lister med besvarte oppgaver for deltakere som vises på minside.php*******/
+    /******************************************************************************************************************/
+
 
 while ($row = $result->fetch_assoc()) {
     $PK = $row['innleveringPK'];
@@ -71,7 +63,8 @@ while ($row = $result->fetch_assoc()) {
     echo "<input type='hidden' name='datorespons' value='".$datorespons."'/>";
     echo "<input type='hidden' name='respons' value='".$respons."'/>";
     
-   	echo "<td><a href='#openResultat".$PK."'><img src='img/open.png' alt='Vis innleveringen' title='Vis innleveringen'></a>"; //Viser oppgaven
+    //Viser oppgaven i en dialogboks med all informasjon om besvarelsen 
+   	echo "<td><a href='#openResultat".$PK."'><img src='img/open.png' alt='Vis innleveringen' title='Vis innleveringen'></a>"; 
    	echo "<div id='openResultat".$PK."' class='modalDialog'>
 			<div>
 				<a href='#close' title='Close' class='close'>X</a>
@@ -95,6 +88,7 @@ while ($row = $result->fetch_assoc()) {
 		</div>";
         echo "<input type='image' class='print' src='img/respons.png' id='print".$PK."' title='Print' onclick=this.form.action='print.php';/>";
 
+    //Dersom besvarelsen ikke er ferdig \ innlevert vises en knapp for å fortsette
     if($ferdig == 'Nei') {
         echo "<input type='image' src='img/edit.jpg' alt='Fortsett oppgave' title ='Fortsett oppgave' name='besvarelse' id='s".$PK."' />";
     }

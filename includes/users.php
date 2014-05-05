@@ -1,6 +1,6 @@
 <?php
-//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 20.04.2014
-//Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
+//Denne siden er utviklet av Kurt A. Aamodt., siste gang endret 30.04.2014
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 04.05.2014
 
 //Henter fullstendig oppgaveliste for admin\veiledere og kun ubesvarte oppgaver for deltakere
 function oppgListe($liste) {
