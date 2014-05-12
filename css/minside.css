@@ -4,30 +4,10 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
 */
 
 
-.minsinputfor {
+.minsinputfor, .minsinputepo, .minsinputett {
 background-color:#FFFFFF;
-margin-left:4%;
-padding-left:1%;
-border:thin 1px black;
-}
-
-.minsinputett {
-background-color:#FFFFFF;
-margin-left:0.5%;
-padding-left:1%;
-margin-right:0.5%;
-width:auto;
-border:thin 1px black;
-}
-
-.minsinputepo {
-background-color:#FFFFFF;
-margin-left:8.5%;
-width:100%;
-margin-right:0.5%;
-width:auto;
-padding-left:1%;
-border:thin 1px black;
+margin-left:25%;
+float:left;
 }
 
 
@@ -61,7 +41,8 @@ font-size : 0.8em;
 
 
 .buttonStyle {
-margin-top:0.5%;
+margin-top:5%;
+margin-left:1%;
 height:30px;
 width:100px;
 color:#fff;
@@ -137,12 +118,11 @@ margin-left:5%;
 }
 
 .fasplas{
-width:10%;
-height:2%;
+width:70%;
+height:35%;
+background:#eeeeee;
 padding: 0.5% 3.2% 0.8% 1%;
-position:absolute;
-
-margin-left:25.3%;
+margin-left:12%;
 margin-top:1.7%;
 float:left;
 }
@@ -166,3 +146,25 @@ float:left;
 	padding:1% 0 1% 1%;
 	border-radius:2%;
 }
+
+/* ------------------- Nye ting til minside 2 -----------------------------*/
+
+.profilinformasjon{
+    margin-top:6%;
+    margin-left:27%;
+	width:30%;
+	height:38%;
+	float:left;
+}
+
+.proinf{
+	width:40%;
+	height:auto;
+	margin-left:1%;
+	float:left;
+}
+.proinffo{
+	margin-top:-10%;
+}
+
+
