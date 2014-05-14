@@ -13,7 +13,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
 	position:relative;
 	padding:7px;
 	/*----Runde hjørner----*/
-	border: 1px solid #999;	
+	border:0px solid #999;	
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -23,8 +23,8 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
 
 /*---- Justeringa avtittelen "Registrering" ----*/
 .regtitbredde{
-	width:18%;
-	height:60%;
+width:18%;
+height:60%;
 margin-left:auto;
 margin-right:auto;
 
@@ -33,8 +33,8 @@ margin-right:auto;
 /*---- Registreringsfeltene ----*/
 .fornavn, .etternavn, .epostad{
 width: auto;
-	height: auto;
-	font-size: 0.9em;
+height: auto;
+font-size: 0.9em;
 }
 
 

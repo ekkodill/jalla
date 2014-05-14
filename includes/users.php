@@ -163,9 +163,10 @@ function publishMail($tittel) {
 	while($epostRow = $query->fetch_assoc()) {
 	//Sender mail
 	mail($epostRow['ePost'],$tittel,$melding,"From: $fra\n");
-	
 	}
 }
+
+
 
 //Sender mail kompliert fra minside av administrator\veiledere til spesifiserte brukere
 function mailUsers($tittel, $melding, $fra, $til) {
@@ -182,13 +183,13 @@ echo $tittel." ".$melding." ".$fra." ".$til;
 			$type = 1;
 		}	
 			$query = "SELECT ePost FROM brukere WHERE brukertype = $type";
-			echo $query;
+			echo $til;
 	}
 	$result = $db->query($query);
 	$melding = wordwrap($melding, 70);
 	while($epostRow = $result->fetch_assoc()) {
 	//Sender mail
-	mail($epostRow['ePost'],$tittel,$melding,"From: $fra\n");
+	if(mail($epostRow['ePost'],$tittel,$melding,"From: $fra\n")) { return true; } else { return false; }
 	}
 }
 

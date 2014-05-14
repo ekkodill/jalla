@@ -3,8 +3,31 @@ Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang en
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
 */
 
+
+
+
 header, section, footer, aside, article, figure {
 display: block;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+ color:#99CCFF;
+}
+
+input, textarea, select {
+    background:#efefef;
+    border:1px solid #dedede;
+    color:#3a3a3a;
+    font-size:0.9em;
+    color:#3a3a3a;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    padding: 5px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border:1px solid #97d6eb;
 }
 
 

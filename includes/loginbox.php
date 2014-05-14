@@ -33,7 +33,7 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 			<input type="password" id="passord" tabindex="2" name="passord" title="Fyll ut passord" autocomplete="off"><br>
 			<input type="submit" id="loinknappen" tabindex="3" value="Logg inn" title="Logg inn" >
 			<input type="button" id="glpwknapp" tabindex="4"  value="Glemt passord" title="Glemt passord" onclick="show()">
-			<span><a href="registrer.php">Registrer bruker</a></span>
+			<span><a id="reglink" href="registrer.php">Registrer bruker</a></span>
 		</fieldset>
 	</form>
 	<?php?>	

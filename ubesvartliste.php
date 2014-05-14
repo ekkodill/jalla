@@ -50,7 +50,7 @@ while ($row = $result->fetch_assoc()) {
       </div>
     </div>";
     if(empty($row['ferdig'])) {
-    echo "<input type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
+    echo "<input style='background: none; border:none;' type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
     }
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value='".$row['tittelOppgave']."'/>";

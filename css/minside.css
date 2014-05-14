@@ -1,9 +1,3 @@
-/*
-Denne siden er utviklet av Erik Bjørnflaten og Mikael kolstad, siste gang endret 02.03.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014 
-*/
-
-
 .minsinputfor, .minsinputepo, .minsinputett {
 background-color:#FFFFFF;
 margin-left:25%;
@@ -130,31 +124,32 @@ float:left;
 
 
 .ubesform2{
-	margin-top:6%;
-	margin-left:3%;
-	width:30%;
-	height:38%;
-	float:left;
-	overflow:auto;
+margin-top:6%;
+margin-left:3%;
+width:30%;
+height:38%;
+float:left;
+overflow:auto;
 }
 .dropned{
-	background-color:#5B5B5B;
-	color:#fff;
-	font-size:1em;
-	border:none;
+background-color:#5B5B5B;
+color:#fff;
+font-size:1em;
+border:none;
 
-	padding:1% 0 1% 1%;
-	border-radius:2%;
+padding:1% 0 1% 1%;
+border-radius:2%;
 }
 
 /* ------------------- Nye ting til minside 2 -----------------------------*/
 
 .profilinformasjon{
-    margin-top:6%;
-    margin-left:27%;
+	margin-top:6%;
+	margin-left:27%;
 	width:30%;
 	height:38%;
 	float:left;
+	vertical-align: middle;
 }
 
 .proinf{
@@ -166,5 +161,4 @@ float:left;
 .proinffo{
 	margin-top:-10%;
 }
-
 

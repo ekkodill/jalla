@@ -122,8 +122,8 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 					<input class="stored" type="radio" value="1" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 1) { echo 'checked'; }}?>>Lett</h5>
 					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" style="height:20%; width:60%"><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
 					
-					<input type="submit" id="publiserKnapp" name="publiser" value="Publiser" onclick="return regNyoppg();" >
-					<input type="submit" id="lagreKnapp" name="lagre" value="Lagre" onclick="return regNyoppg();">
+					<input type="submit" class="buttonStyle" name="publiser" value="Publiser" onclick="return regNyoppg();" >
+					<input type="submit" class="buttonStyle" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
 		    	</form>
 

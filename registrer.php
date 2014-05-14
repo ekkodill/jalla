@@ -55,7 +55,7 @@ if(!empty($_POST)) {
 						E-post*<br /> <input class="epostad" type="text" name="ePost" /><br />
 						<input type="text" hidden  placeholder="La dette feltet være blankt" name="bothoneypot" alt="La dette feltet være blankt"/>
                          <p>*Må fylles ut</p>
-						<input type="submit" value="Registrer" name="register">
+						<input type="submit" class="buttonStyle" value="Registrer" name="register">
 						<span class="feilmelding">
 					<?php
 							if (empty($errors) === false) {

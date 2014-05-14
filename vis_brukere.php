@@ -17,12 +17,13 @@ $db = getDB(); //Tilkobling til databasen.
 	$pgName = 'Vis brukere';
 	include('design/head.php');
 	include('design/footer.php'); ?>
-	<body onload='fjernType(<?php echo $user_data['brukertype']; ?>, "nytype");loadP("visbrukere");' onunload='unloadP("visbrukere")'>
+	<body onload='loadP("visbrukere");' onunload='unloadP("visbrukere")'>
 <?php include('design/header.php');	?>
 <script type="text/javascript">
 //Kodet hentet fra internett, url: http://www.thomashardy.me.uk/using-html5-localstorage-on-a-form
 //Fyller feltene med data fra localStorage om det er noe der når siden lastes
 $(document).ready(function () {
+
 function init() {
     if (localStorage["ePost"]) {
         $('#ePost').val(localStorage["ePost"]);
@@ -63,6 +64,11 @@ $(document).ready(function(){
 
 });
 
+//Fjerner brukertyper fra nedtrekksmenyen slik at den innloggede bare kan gi rettigheter ut fra hvilken brukertype han selv er
+$(document).ready(function () {
+		fjernType(<?php echo $user_data['brukertype']; ?>, "nytype");
+});
+
 </script>
 			<div id="page">
 			   <section>
@@ -90,5 +96,9 @@ $(document).ready(function(){
 						include 'form.php'; }?>
 				</section>	
        		</div>
+       		<script type="text/javascript">
+  $(document).ready(function() {
+	});
+       		</script>
 		</body>
 </html>

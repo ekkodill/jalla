@@ -129,46 +129,28 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 	margin-right:5%;
 }
 
-
-#publiserKnapp {
-	width:80px;
-	height:35px;
-	background:#99CCFF;
+/*Knapper
+.knapper {
+    width:80px;
+    height:35px;
+    background:#99CCFF;
     color:#fff;
     font-size: 1em;
     margin-left: 0px;
     margin-top: 10px;
-
-    /*----Runde hjørner----*/
+*/
+    /*----Runde hjørner----
     background-color:#5B5B5B;
-	border:1px solid #000;
-	-webkit-border-radius: 5%;
-	-moz-border-radius: 5%;
-	border-radius: 5%;
-	outline: 0;
+    border:1px solid #000;
+    -webkit-border-radius: 5%;
+    -moz-border-radius: 5%;
+    border-radius: 5%;
+    outline: 0;
 }
 
-#publiserKnapp:hover {
-	background:#09C;
+.knapper:hover {
+    background:#09C;
 }
-#lagreKnapp {
-	width:80px;
-	height:35px;
-	background:#99CCFF;
-    color:#fff;
-    font-size: 1em;
-    margin-left: 0px;
-    margin-top: 10px;
+*/
 
-    /*----Runde hjørner----*/
-    background-color:#5B5B5B;
-	border:1px solid #000;
-	-webkit-border-radius: 5%;
-	-moz-border-radius: 5%;
-	border-radius: 5%;
-	outline: 0;
-}
 
-#lagreKnapp:hover {
-	background:#09C;
-}

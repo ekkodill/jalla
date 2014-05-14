@@ -49,11 +49,12 @@ form span {
 #loinknappen, #glpwknapp, #sendnytt {
 	width:80px;
 	height:35px;
-	background:#99CCFF;
+	background:white;
     color:#000;
     font-size: 1em;
     margin-left: 0px;
     margin-top: 10px;
+
 
     /*----Runde hjørner----*/
     border: 1px solid #999;	
@@ -72,5 +73,19 @@ form span {
 }
 
 #loinknappen:hover, #glpwknapp:hover,  #sendnytt:hover {
-	background:#09C;
+	background:#99CCFF;
+}
+
+/*Registreringslink*/
+#reglink:link {
+color: white;
+}
+#reglink:visited {
+color: white;
+}
+#reglink:hover {
+color: #99CCFF;
+}
+#reglink:active {
+color: #00FF00;
 }
