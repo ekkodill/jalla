@@ -63,7 +63,7 @@ if(empty($_POST['besvarform'])) {
     </script>
         <div id="page">     
         <section>    
-        <br><br>
+        <br>
 		<input type='button' id='hideshowbesvart' value='Liste over besvarte oppgaver'><input type='button' id='hideshowoppg' value='Oppgaveliste'>
 		<div id="besvartoppgliste" >
           <?php 
