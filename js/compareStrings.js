@@ -23,7 +23,8 @@ function compareNames(){
 
     var changeCount = 0;
         changeCount = levDist(oldName, newName);
-   document.getElementById("jsfeil").value = changeCount;
+   alert(changeCount);
+   //document.getElementById("jsfeil").value = changeCount;
 }
 
 function levDist(s, t) {

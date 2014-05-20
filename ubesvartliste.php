@@ -17,8 +17,8 @@ while ($row = $result->fetch_assoc()) {
     $vedlegg = $row['linkVedlegg'];
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
     $oppgtekst = hentOppgave($PK);
-    $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
-  if(!empty($row['tekstInnlevering']) && $_SESSION['drpdwnlist'] =='pbegoppg') {
+    $sanitized = htmlspecialchars(trim($oppgtekst), ENT_QUOTES);
+  if(!empty($row['tekstInnlevering']) /*&& $_SESSION['drpdwnlist'] =='pbegoppg'*/) {
   $gammelTid = $row['tidBrukt'];
   $innlPK = $row['innleveringPK'];
   $lagrettext = $row['tekstInnlevering'];

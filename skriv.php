@@ -25,7 +25,7 @@ if(isset($_SESSION['tid']) && isset($_SESSION['antfeil']) && isset($_SESSION['pe
 if (!empty($_POST)) {
     if(!empty($_POST['tittel']) && !empty($_POST['oppgtxt']) && !empty($_POST['oppgPK'])) {
     $otittel = $_POST['tittel'];
-    $otekst = $_POST['oppgtxt'];
+    $otekst = strip_tags($_POST['oppgtxt']);
     $_SESSION['otittel'] = $otittel;
     $_SESSION['oppgtxt'] = $otekst;
     $_SESSION['oppgPK'] = $_POST['oppgPK'];
@@ -42,7 +42,7 @@ if (!empty($_POST)) {
 } else {
 $otittel = "";
 $otekst = "";
-$lagrettext = "";
+//$lagrettext = "";
 }
 
 

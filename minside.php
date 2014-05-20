@@ -23,7 +23,7 @@ if(empty($_POST['besvarform'])) {
 
 <!DOCTYPE html>
 <html>
-    <?php include('design/footer.php');
+    <?php 
     $pgName = 'Min side';
     include 'design/head.php'; ?>
     <body onunload="unloadP('minside')" onload="loadP('minside')" id="sidenmin">
@@ -154,6 +154,7 @@ if(empty($_POST['besvarform'])) {
 
 
         </script>
+        <?php include('design/footer.php'); ?>
     </body>
 </html>
 
