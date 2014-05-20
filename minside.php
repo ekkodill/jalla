@@ -63,9 +63,9 @@ if(empty($_POST['besvarform'])) {
     </script>
         <div id="page">     
         <section>    
-        <br><br>
+        <br>
 		<input type='button' id='hideshowbesvart' value='Liste over besvarte oppgaver'><input type='button' id='hideshowoppg' value='Oppgaveliste'>
-		<br><br><br>
+		<br>
 				<div id="besvartoppgliste" >
           <?php 
               if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {

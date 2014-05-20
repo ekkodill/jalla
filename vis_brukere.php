@@ -73,7 +73,7 @@ $(document).ready(function () {
 </script>
 			<div id="page">
 			   <section>
-			   <br>
+			   
 		       	<?php
 		       	//Inkluderer elementene for admins\veiledere å legge til brukere
 		       	if($user_data['brukertype'] != 3) {
