@@ -46,18 +46,20 @@ if (empty($brukernavn) === true || empty($passord) === true) {
     include 'design/head.php'; ?>
   	<body>
   	<?php include 'design/header.php'; ?>
-  	<?php include('design/footer.php'); ?>
+
 		<div id="page">  
-		    	<section>
-					<div class="midtfelt">
-						<?php
-							if (empty($errors) === false) {
-							?><h2>Vi prøvde og logge deg inn men...</h2><?php
-							echo output_errors($errors);
-							}?>
-					</div>		
-				</section>
+		  <section>
+				<div class="midtfelt">
+					<?php
+						if (empty($errors) === false) {
+						?><h2>Vi prøvde og logge deg inn men...</h2><?php
+						echo output_errors($errors);
+						}?>
+				</div>
+				<br class="clear" />		
+			</section>
 		</div>
+		<?php include('design/footer.php'); ?>
 	</body>
 </html>
 

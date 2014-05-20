@@ -127,10 +127,9 @@ th {
             	</table>
             </div>
             <a href="minside.php">Gå tilbake</a>
+            <br class="clear" />
         </section>
-    </div>
-    
-    
+    </div>   
     <script type="text/javascript">
     //Script for å finne forskjellene i teksten og sette styling på de\rette opp
     //Kode hentet fra internett, url: https://github.com/arnab/jQuery.PrettyTextDiff

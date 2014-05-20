@@ -17,7 +17,7 @@ $db = getDB(); //Tilkobling til databasen.
 	$pgName = 'Vis brukere';
 	include('design/head.php');
  ?>
-	<body onload='loadP("visbrukere");' onunload='unloadP("visbrukere")'>
+	<body onload='loadP("visbrukere");' onunload='unloadP("visbrukere")' id="medlemmer">
 <?php include('design/header.php');	?>
 
 <script type="text/javascript">
@@ -73,7 +73,6 @@ $(document).ready(function () {
 </script>
 			<div id="page">
 			   <section>
-			   <br>
 		       	<?php
 		       	//Inkluderer elementene for admins\veiledere å legge til brukere
 		       	if($user_data['brukertype'] != 3) {
@@ -97,6 +96,7 @@ $(document).ready(function () {
 						<?php 
 						//inkluderer liste over brukere
 						include 'form.php'; }?>
+						<br class="clear" />
 				</section>	
        		</div>
        		<?php 	include('design/footer.php'); ?>

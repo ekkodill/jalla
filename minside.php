@@ -26,7 +26,7 @@ if(empty($_POST['besvarform'])) {
     <?php include('design/footer.php');
     $pgName = 'Min side';
     include 'design/head.php'; ?>
-    <body onunload="unloadP('minside')" onload="loadP('minside')">
+    <body onunload="unloadP('minside')" onload="loadP('minside')" id="sidenmin">
     <?php include 'design/header.php'; ?>
     <script type="text/javascript">
 
@@ -65,8 +65,7 @@ if(empty($_POST['besvarform'])) {
         <section>    
         <br><br>
 		<input type='button' id='hideshowbesvart' value='Liste over besvarte oppgaver'><input type='button' id='hideshowoppg' value='Oppgaveliste'>
-		<br><br><br>
-				<div id="besvartoppgliste" >
+		<div id="besvartoppgliste" >
           <?php 
               if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
                 echo "<legend>Ingen registrerte besvarelser</legend>"; 
@@ -128,6 +127,7 @@ if(empty($_POST['besvarform'])) {
 			              
 			    ?>
 				</div>
+				<br class="clear" />
 			</section>
         </div>
          <script type="text/javascript">

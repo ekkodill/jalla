@@ -109,12 +109,13 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 		include('design/head.php');
 
 		?>
-	<body onunload="unloadP('oppgave')" onload="loadP('oppgave')"> 
+	<body onunload="unloadP('oppgave')" onload="loadP('oppgave')" id="oppgave"> 
 		<?php include('design/header.php');	?>
 		<div id="page">
 		    <section>
 		    <!--Elementer for å lage nye oppgaver-->
-				<center><br><legend><h4>Lag ny oppgave</h4></legend></center>
+		    <div class="oppgform">
+				<legend><h4>Lag ny oppgave</h4></legend>
 				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
 					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" value=<?php if(!empty($oppgtittel)) { echo $oppgtittel; }?>><br><br>
 					<h5><label>Vanskelighetsgrad:</label> 
@@ -126,8 +127,9 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 					<input type="submit" class="buttonStyle" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" class="buttonStyle" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
+					</div>
 		    	</form>
-
+		    	
 				<?php
 				//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
 				if(isset($_GET['lagretrespons'])) {
@@ -206,9 +208,10 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 					});
 
 			</script>
-	    	<?php include('design/footer.php'); ?>
-		</section>
+	    		<br class="clear" />
+	    	</section>
 		</div>
+		<?php include('design/footer.php'); ?>
 	</body>
 </html>
 

@@ -24,6 +24,7 @@ include 'design/head.php'; ?>
 					</br>
 					<p><a href="logout.php"><b>Trykk her</b></a> for å gå tilbake til startsiden.</p>
 	         	</div>
+	         	<br class="clear" />
 	        </section> 
 		<?php include 'design/footer.php' ?>
 	</div>

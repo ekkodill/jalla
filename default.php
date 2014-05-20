@@ -26,6 +26,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
             <p>Registreringen vil bli åpnet igjen om ikke så alt for lenge så titt innom i ny og ne.</p>
             <h3>Bli kjappere på tastene idag!</h3>
           </div> 
+          <br class="clear" />
         </section>
     </div>
     <?php include('design/footer.php'); ?>

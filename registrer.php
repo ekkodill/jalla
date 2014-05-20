@@ -48,7 +48,7 @@ if(!empty($_POST)) {
 		<?php include('design/header.php');	?>
 			<div id="page">	
 		        <section>  
-		       	<legend class="regtitbredde"><center><h4>Registrering</h4></center>
+		       	<legend class="regtitbredde"><h4>Registrering</h4>
 					<form class="registrering" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data"><br />
 					Fornavn*<br /> <input class="fornavn" type="text" name="fornavn" /><br />
 						Etternavn*<br /> <input class="etternavn" type="text" name="etternavn" /><br />
@@ -65,6 +65,7 @@ if(!empty($_POST)) {
 						</span>
 					</form>
 					</legend>
+					<br class="clear" />
 				</section>
 	    		<?php include('design/footer.php'); ?>
        		</div>

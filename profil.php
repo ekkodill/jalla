@@ -94,10 +94,10 @@ if(!empty($_POST['updateinfo'])) {
 <?php 
     $pgName = 'Min profil';
     include 'design/head.php'; ?>
-    <body onunload="unloadP('profil')" onload="loadP('profil')">
+    <body onunload="unloadP('profil')" onload="loadP('profil')" id="profil">
         <?php include 'design/header.php'; ?>
           <!--Elemeneter for å oppdatere brukerens profil!-->
-        <div id="page">
+        <div id="mainContent">
           <section>
             <div class="profilinformasjon">
             <h3 class="proinffo">Profil informasjon</h3><br>
@@ -119,6 +119,7 @@ if(!empty($_POST['updateinfo'])) {
                         echo output_errors($errors);
                     } ?>
             </div>
+            <br class="clear" />
           </section>
         </div>
         <?php include('design/footer.php');  ?>

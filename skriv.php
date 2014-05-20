@@ -78,8 +78,9 @@ include_once 'design/head.php';
 <script type="text/javascript" src='js/tastatur.js'></script>
 <script type="text/javascript"  src='js/stoppeklokke.js'></script>
 <script type="text/javascript"  src='js/compareStrings.js'></script>
+
 <?php
-print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='window.scrollTo(0,$y); show(); loadStyle();'>";
+print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='window.scrollTo(0,$y); show(); loadStyle();'>";
  include_once 'design/header.php'; 
 ?>
     <div id="page">
@@ -235,6 +236,7 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
                         <li class="ctrlr"id="rctrl">ctrl</li>
                     </ul>
                 </div>
+                <br class="clear" />
             </section>
         <?php include_once('design/footer.php'); ?>
         </div>
