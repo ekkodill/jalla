@@ -3,8 +3,10 @@ Denne siden er kontrollert av Mikael kolstad siste gang 30.03.2014  !-->
 
 
 <!--Denne siden viser liste med brukere, og brukes av vis_brukere.php  !-->
-
-    <div class='bliste'>
+<?php
+//Setter riktig id på div'en for å style tabellen forskjellig for deltakere og admin\veileder
+ if($user_data['brukertype'] == 3) { $classtype = "deltakercss"; } else { $classtype = "tarea"; }  ?> 
+    <div class='bliste' <?php if($user_data['brukertype'] == 3) { echo "id=$classtype"; } ?>>
     <br>
         <table class='tablesorter' id="tableform">
             <thead>
@@ -62,7 +64,7 @@ Denne siden er kontrollert av Mikael kolstad siste gang 30.03.2014  !-->
     echo "<td>" . "<input class='tarea' readonly='readonly' type='text' id='fornavn".$PK."'    name='fornavn'    value=" . $row['fornavn']."></td>";
     echo "<input type='hidden' name='brukerPK' value=$PK></td>";
     echo "<td>
-    <select class='tarea' name='btype' id='typer".$PK."' disabled>
+    <select class='".$classtype."' name='btype' id='typer".$PK."' disabled>
     <option value='administrator'". (($row['brukertype'] == '1') ? "selected=selected'":""). ">Administrator</option>
     <option value='veileder' ". (($row['brukertype'] == '2') ? "selected=selected'":""). ">Veileder</option>
     <option value='deltaker' ". (($row['brukertype'] == '3') ? "selected=selected'":""). ">Deltaker</option>

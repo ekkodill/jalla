@@ -71,6 +71,35 @@ td, th, table {
 
 }
 
+/*Setter stil på medlemslisten for deltakere*/
+
+/*Fjerner nedtrekksmenypilen i FF og chrome*/
+.deltakercss {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	text-indent: 1px;
+    text-overflow: '';
+    background: transparent;
+	border: none;
+}
+
+
+#deltakercss input, #deltakercss table, #deltakercss td {
+	outline: 0;
+	background: transparent;
+	border: none;
+}
+
+/*Lager border rundt raden for hvert medlem*/
+#deltakercss tr {
+	outline: thin solid black;
+}
+
+/*Fjerner nedtrekksmenypilen i IE*/
+.deltakercss::-ms-expand {
+    display: none;
+}
+/*******************************************/
 
 		
 .tablesorter {
