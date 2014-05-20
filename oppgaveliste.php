@@ -51,16 +51,15 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     echo "<td id='vanskelighetsgrad".$PK."'  name='vanskelighetsgrad'   >"   . $vanskelighetsgrad. 										 "</td>";
    	echo "<input type='hidden' name='oppgPK' value=$PK />";
 
-   	echo "<td><a href='#openModal".$PK."'><img src='img/open.png' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
-   	echo "<div id='openModal".$PK."' class='modalDialog'>
-			<div>
-				<a href='#close' title='Close' class='close'>X</a>
-				<h2>".$vedlegg."</h2>
-				$sanitized
+   	echo "<td><a href='#modalOppgli".$PK."'><img src='img/open.png' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
+   	echo "<a href='#x' class='overlay' id='modalOppgli".$PK."'></a> 
+    <div class='popup'>
+      <h2>".$vedlegg."</h2>
+        $sanitized
         <br>
         <br>
         <p>Vedlegg: <a href='vedlegg/".$vedlegg."'>".$vedlegg."</a> </p>
-			</div>
+			<a class='close' href='#close'></a>
 		</div>";
     //Skjuler knapper for deltakere, som er ment for admins\veiledere
   if($user_data['brukertype'] !=3) {

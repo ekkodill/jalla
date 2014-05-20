@@ -65,9 +65,8 @@ while ($row = $result->fetch_assoc()) {
     
     //Viser oppgaven i en dialogboks med all informasjon om besvarelsen 
    	echo "<td><a href='#openResultat".$PK."'><img src='img/open.png' alt='Vis innleveringen' title='Vis innleveringen'></a>"; 
-   	echo "<div id='openResultat".$PK."' class='modalDialog'>
-			<div>
-				<a href='#close' title='Close' class='close'>X</a>
+   	echo "<a href='#x' class='overlay' id='openResultat".$PK."'></a> 
+            <div class='popup'>
                 <h4>Utf&oslashrt den: ".$datoLevert."</h4>
                 <h4>Vanskelighetsgrad: ".$vanskelighetsgrad."</h4> 
                 <h4>Antall feil: ".$antFeil."</h4>
@@ -84,7 +83,7 @@ while ($row = $result->fetch_assoc()) {
         <hr size='1' noshade>
         <br>
         <p>Vedlegg: <a href='vedlegg/".$row['linkVedlegg']."'>".$row['linkVedlegg']."</a> </p>
-			</div>
+		<a class='close' href='#close'></a>
 		</div>";
         echo "<input type='image' class='print' src='img/respons.png' id='print".$PK."' title='Print' onclick=this.form.action='print.php';/>";
 

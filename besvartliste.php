@@ -72,11 +72,11 @@ foreach ($mytxt->rows as $row) {
 $mytxt->close();
 
     //Viser besvarelsen i en dialogboks med inputfelt for responen
-   	echo "<td><a href='#openModal".$PK."'><img src='img/respons.png' alt='Vis besvarelsen' title='Vis besvarelsen'></a>"; 
-   	echo "<div id='openModal".$PK."' class='modalDialog'>
-			<div>
-				<a href='#close' title='Close' class='close'>X</a>
+   	echo "<td><a href='#besvoppg".$PK."'><img src='img/respons.png' alt='Vis besvarelsen' title='Vis besvarelsen'></a>"; 
+   	echo "<a href='#x' class='overlay' id='besvoppg".$PK."'></a> 
+			<div class='popup'>
 				<h2>$oppgavetittel</h2>
+				<div>
 				$endretinfo
 				<br>
 				<br>
@@ -86,7 +86,7 @@ $mytxt->close();
 				<textarea id='responstext' placeholder='Skriv respons' name='respons'></textarea>
 				<br>";
 	echo	"<input id='responsid".$PK."' type='submit' name='lagrerespons' value='Lagre respons'>
-			</div>
+			</div><a class='close' href='#close'></a>
 		</div>";
     echo "</td></tr></form>";
 	} echo  "<tbody></table></div>";

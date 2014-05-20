@@ -36,10 +36,6 @@ input[type="image"] {
     border: none;
 }
 
-html {
-  height: 100%;
-}
-
 
 
 body {
@@ -84,6 +80,25 @@ a:hover, a:active{
 color:#09C;
 }
 
+/*
+#page {
+margin-top: 4.3%;
+margin-left:13.5%;
+margin-right:auto;
+width:79%;
+height:100%;
+background-color:#fff;
+}
+*/
+#page {
+
+
+margin-left:13.5%;
+margin-right:auto;
+
+
+}
+
 
 
 .innloggboksfixed{
@@ -103,15 +118,12 @@ border: 3px solid #000;
 
 /*----Hovedboks----*/
 section {
-width:79%;
-min-height:100%;
-margin-top:0%;
-margin-left:13.5%;
+width:auto;
+height:auto;
+margin-top:5%;
+margin-left:auto;
 margin-right:auto;
-padding-top: 100px;
-padding-left: 3%;
-padding-bottom: 0px;
-padding-right: 3%;
+padding: 0 3% 0 3%;
 background-color:#fff;
 border-left: 2px solid #000;
 border-right:2px solid #000;

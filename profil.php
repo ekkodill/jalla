@@ -91,7 +91,7 @@ if(!empty($_POST['updateinfo'])) {
  -->   
 <!doctype html>
 <html>
-<?php include('design/footer.php'); 
+<?php 
     $pgName = 'Min profil';
     include 'design/head.php'; ?>
     <body onunload="unloadP('profil')" onload="loadP('profil')">
@@ -121,6 +121,7 @@ if(!empty($_POST['updateinfo'])) {
             </div>
           </section>
         </div>
+        <?php include('design/footer.php');  ?>
     </body>
 </html>
 

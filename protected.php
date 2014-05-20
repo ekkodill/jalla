@@ -1,8 +1,6 @@
+<?php include_once 'includes/init.php'; ?>
 <!--Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 03.03.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 03.03.2014  !-->
-
-<?php 
-include_once 'includes/init.php'; ?>
 
  <!--************************************************************************************************-->
  <!--Denne siden er for å stoppe brukere som ikke er innlogget i å få tilgang til sider de ikke skal-->
@@ -10,7 +8,6 @@ include_once 'includes/init.php'; ?>
 
 <!doctype html>
 <html>
-<?php include('design/footer.php'); ?>
     <?php 
 	$pgName = 'Forbudt område';
     include 'design/head.php'; ?>
@@ -22,5 +19,6 @@ include_once 'includes/init.php'; ?>
     <p><a href="registrer.php">Registrer her</a>, eller logg inn.</p>
   </section>
 </div>
+<?php include('design/footer.php'); ?>
 </body>
 </html>

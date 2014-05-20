@@ -16,14 +16,15 @@ $db = getDB(); //Tilkobling til databasen.
 <?php
 	$pgName = 'Vis brukere';
 	include('design/head.php');
-	include('design/footer.php'); ?>
+ ?>
 	<body onload='loadP("visbrukere");' onunload='unloadP("visbrukere")'>
 <?php include('design/header.php');	?>
+
 <script type="text/javascript">
+
 //Kodet hentet fra internett, url: http://www.thomashardy.me.uk/using-html5-localstorage-on-a-form
 //Fyller feltene med data fra localStorage om det er noe der når siden lastes
 $(document).ready(function () {
-
 function init() {
     if (localStorage["ePost"]) {
         $('#ePost').val(localStorage["ePost"]);
@@ -83,22 +84,21 @@ $(document).ready(function () {
 				} elseif(isset($_GET['posterror']))  {
 					echo "Det oppstod en feil ved lagring av brukeren, prøv på nytt";
 				}
+				if(isset($_GET['deleted'])) {
+								echo "<span>//Brukeren ble slettet!</span>";
+							} elseif(isset($_GET['deleteerr'])) {
+									echo "<span>//Det oppstod en feil ved sletting av denne brukeren</span>";
+								}
 					if(!count(sjekkAntall('brukere'))) {
 						echo "<center><legend>Ingen registrerte brukere</legend></center>"; 
 						} else { 
-							if(!empty($_SESSION['delerr'])) {
-								echo "<span>//".$_SESSION['delerr']."</span>";
-								$_SESSION['delerr'] = "";
-							}
+
 							?>
 						<?php 
 						//inkluderer liste over brukere
 						include 'form.php'; }?>
 				</section>	
        		</div>
-       		<script type="text/javascript">
-  $(document).ready(function() {
-	});
-       		</script>
+       		<?php 	include('design/footer.php'); ?>
 		</body>
 </html>

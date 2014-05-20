@@ -1,12 +1,13 @@
-<!--Denne siden er utviklet av Kurt A. Aamodt (PHP) og Erik Bjørnflaten (HTML), Mikael Kolstad (JS), siste gang endret 19.04.2014
-Denne siden er kontrollert av Dag-Roger Eriksen siste gang 04.05.2014 !-->
 <?php
+//Denne siden er utviklet av Kurt A. Aamodt (PHP) og Erik Bjørnflaten (HTML), Mikael Kolstad (JS), siste gang endret 19.04.2014.
+//Denne siden er kontrollert av Dag-Roger Eriksen siste gang 04.05.2014.
+
 include 'includes/init.php';
 protected_page();
 $db = getDB();
 
 
-//Setter verdier fra en valgt ikke publisert oppgave til variabler som blir bruk i behandlingen av oppgaven
+//Setter verdier fra en valgt ikke publisert oppgave til variabler som blir brukt i behandlingen av oppgaven
 if(!empty($_POST['publish'])) {
     $_SESSION['oldopgPK'] = $_POST['oppgPK'];
     $oppgtittel = $_POST['oppgTittle'];

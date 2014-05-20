@@ -38,16 +38,16 @@ while ($row = $result->fetch_assoc()) {
       echo $row['tittelOppgave']." laget av ".$veileder ." | ".$vanskelighetsgrad;
     }
     echo "</td>";
-    echo "<td><a href='#openModal".$PK."'><img src='img/open.png' class='visoppgave' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
-        echo "<div id='openModal".$PK."' class='modalDialog'>
-      <div>
-        <a href='#close' title='Close' class='close'>X</a>
-        <h2>".$tittel."</h2>
-        $sanitized
+    echo "<td><a href='#ubesoppg".$PK."'><img src='img/open.png' class='visoppgave' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
+        echo "<a href='#x' class='overlay' id='ubesoppg".$PK."'></a>
+        <div class='popup'>
+          <h2>".$tittel."</h2>
+          <div>
+            $sanitized
             <br>
             <br>
             <p>Vedlegg: <a href='vedlegg/".$vedlegg."'>".$vedlegg."</a></p>
-      </div>
+      </div><a class='close' href='#close'></a>
     </div>";
     if(empty($row['ferdig'])) {
     echo "<input style='background: none; border:none;' type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";

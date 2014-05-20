@@ -137,18 +137,19 @@ color:#fff;
 font-size:1em;
 border:none;
 
+padding:1% 0 1% 1%;
 border-radius:2%;
 }
 
 /* ------------------- Nye ting til minside 2 -----------------------------*/
 
 .profilinformasjon{
-	
+	margin-top:6%;
 	margin-left:27%;
 	width:30%;
 	height:38%;
+	float:left;
 	vertical-align: middle;
-	float:top;
 }
 
 .proinf{
@@ -158,6 +159,6 @@ border-radius:2%;
 	float:left;
 }
 .proinffo{
-	margin-top:0%;
+	margin-top:-10%;
 }
 

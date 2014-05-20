@@ -11,11 +11,9 @@ $db = getDB(); //Tilkobling til databasen.
  	$id = sanitize($_POST['slett']);
     $result = $db->query("DELETE FROM brukere WHERE brukerPK = '$id' LIMIT 1");      
    if($result) {
-   		$_SESSION['delerr'] = "Brukeren ble slettet!";
-  		header('Location: vis_brukere.php');  
+  		header('Location: vis_brukere.php?deleted');  
    } else {
- 		$_SESSION['delerr'] = "Det oppstod en feil ved sletting av denne brukeren";
-   		redirect('vis_brukere.php');
+   		redirect('vis_brukere.php?deleteerr');
  	}	
 
  } 

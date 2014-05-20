@@ -93,9 +93,9 @@ if(empty($_POST['besvarform'])) {
 			            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) { ?>
 			           <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
 			           <form action="minside.php" method="post">
-			              <select class="dropned" name='minsideoppgli' onchange="this.form.submit();visoppg();">
-			                  <option class="dropned" name="ubesvoppg" value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
-			                  <option class="dropned"  name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
+			              <select  name='minsideoppgli' onchange="this.form.submit();visoppg();">
+			                  <option name="ubesvoppg" value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
+			                  <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
 			              </select></center><br>
 			            </form>
 			    <?php } 
@@ -110,16 +110,22 @@ if(empty($_POST['besvarform'])) {
 			            } else {
 			                    $result = ubesvarteOppg($bPK, 3);
 			                }
-			   echo  " <div style='height: 100%; overflow: auto;'><table class='ubesform'>         
-			            <tbody>";
-			                   if(!count(sjekkAntall("oppgaver 
-			                                      LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) 
-			                                      WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) {
-			                    echo "<legend>Ingen registrerte oppgaver</legend>"; 
-			              } else {
-			                include_once("ubesvartliste.php");
+
+			              if(!count(sjekkAntall("oppgaver 
+			                                 LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) 
+			                                 WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) {
+			              	echo "<legend>Ingen registrerte oppgaver</legend>";
+			                    
 			              }
-			              echo "</tbody></table><div>";
+			              if($_POST['minsideoppgli'] == 'pbegoppg'  && !count(sjekkAntall("innleveringer WHERE innleveringer.bruker = $bPK AND innleveringer.ferdig = 0"))) {
+			              	echo "<legend>Ingen påbegynte oppgaver</legend>";
+			             } 
+			             else {
+			               	echo  " <div style='height: 100%; overflow: auto;'><table class='ubesform'><tbody>";
+			                include_once("ubesvartliste.php");
+			                echo "</tbody></table><div>";
+			              }
+			              
 			    ?>
 				</div>
 			</section>

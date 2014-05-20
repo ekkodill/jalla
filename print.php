@@ -33,8 +33,10 @@ $respons = "";
 <!--*******************************************************************-->
 <!doctype html>
 <html>
+<?php
+    $pgName = 'Besvarelse utskrift';
+    ?>
 <?php  include 'design/head.php'; ?>
-<link href="css/print.css" media="print" rel="stylesheet" type="text/css">
 <style type="text/css">
 
 /*Setter farge på karakterer i teksta som ikke er med i orginalen*/
@@ -50,31 +52,42 @@ del {
 
 }
 
-div, table, h3, input, label {
-    margin: 10px;
+table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border-color:#5B5B5B ;
+}
+
+th {
+    background: #5B5B5B;
+    color: white;
+    text-align: left;
+    border-color:#5B5B5B ;
 }
 
 
 </style>
+<link href="css/print.css" media="print" rel="stylesheet" type="text/css">
 <body>
 <?php include 'design/header.php';  ?>
-<?php
-    $pgName = 'Besvarelse utskrift';
-    ?>
-    <div id="page">
+    <div class="test">
         <section>
         <!--Table som viser data om besvarelsen-->
-            <table>
+        <h3 class="proinffo">Utskriftsvennelig resultat</h3><br>
+            <table class="printtable">
             	<thead>
             		<th>Tid brukt</th>
             		<th>Antall feil</th>
             		<th>Dato levert</th>
+                    <th>Respons dato</th>
             	</thead>
             		<tbody>
             			<tr>
             				<td><?php echo $tidBrukt ?></td>
             				<td><?php echo $antFeil ?></td>
             				<td><?php echo $datoLevert ?></td>
+                            <td><?php echo $datorespons ?></td>
             			</tr>	
             		</tbody>
             </table>
@@ -84,11 +97,10 @@ div, table, h3, input, label {
 
                  ?>
             <!--Table som viser data om besvarelsen-->
-            <table>
-            	<thead>
-            		<th>Respons dato: <?php echo " ".$datorespons ?></th>
-            	</thead>
+            <table class="printtable">
+            	
             		<tbody>
+                    <th>Respons</th>
             			<tr>
             				<td><?php echo $respons ?></td>
             			</tr>	
@@ -99,7 +111,7 @@ div, table, h3, input, label {
                  ?>
             <div id="wrapper">
             <!--Table som viser tittel, original oppgavetekst og besvarelsen markert med feil-->
-            	<table>
+            	<table class="printtable">
             	   <thead>
                         <th>Tittel:</th>
                         <th><?php echo $otittel; ?></th>
@@ -117,7 +129,7 @@ div, table, h3, input, label {
             <a href="minside.php">Gå tilbake</a>
         </section>
     </div>
-    <?php include('design/footer.php'); ?>
+    
     
     <script type="text/javascript">
     //Script for å finne forskjellene i teksten og sette styling på de\rette opp
@@ -128,5 +140,6 @@ div, table, h3, input, label {
         });
     });
     </script>
+  <?php include('design/footer.php'); ?>
   </body>
 </html>

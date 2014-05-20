@@ -238,6 +238,5 @@ print "<body onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='wind
             </section>
         <?php include_once('design/footer.php'); ?>
         </div>
-
     </body>
 </html>

@@ -2,9 +2,9 @@
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 <a href="default.php">
 <header>
-<div class="sitetitle"><img src="img/logotm.png"></div>
+<div class="sitetitle"><img src="img/logotm.png"> </div>
         <a href="default.php"></a>
         <?php   if(logged_in() === false) {include 'includes/loginbox.php';} ?>
-        <?php   if(logged_in() === true) {include 'design/nav.php';} ?>  
+        <?php   if(logged_in() === true) {include 'design/nav.php';} ?>     
 </header>
 </a>

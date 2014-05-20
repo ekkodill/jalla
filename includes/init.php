@@ -8,6 +8,8 @@ error_reporting(0);
 require 'includes/connect.php';
 require 'includes/users.php';
 require 'includes/MyTXT.php';
+
+
 //Får tak i brukerdata fra sessionen som kan brukes til de som er innlogget.
 if(logged_in() === true) {
 	$session_user_id = $_SESSION['brukerPK'];
