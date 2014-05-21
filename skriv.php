@@ -85,8 +85,8 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
 ?>
     <div id="page">
     <section> 
-        <div class="bfleft">
         <!--Elementer på venstre side som viser tid brukt, antall feil og feilprosent når man lagrer\leverer oppgaven-->
+        <div class="bfleft">
             <div class="valgmuligheter">             
                     <input type="button" class="stopkn" value="stop" onclick="stop();">
                     <input type="button" class="resetkn" value="reset" onclick="reset();">
@@ -120,53 +120,52 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                                 echo "Det oppstod en feil. Kunne ikke lagre.";
                             }
                              ?>           
-            </div>
-        </div>
-            <div class="bfright">
+            </div> <!--Slutt på div valgmuligheter-->
+        </div> <!--Slutt på div venstre side med tid brukt, antall feil og feilprosent når man lagrer\leverer oppgaven-->
+
             <!--Høyres side med elementer som viser oppgavetittel og oppgaveteksten-->
+            <div class="bfright">
                 <div class="oppgavetittel"><?php echo $otittel; ?></div>
                 <div class="fasit"><?php echo $otekst; ?></div>
                 <input id="fasittekst" type="text" hidden value="<?php echo $otekst; ?>" />
-            </div>
+            </div> <!--Slutt på div høyre side med oppgavetittel og oppggavetekst-->
+
             <!--Midtseksjon med textarea for å utføre oppgaven-->
                 <div class="opgtextramme">
                         <textarea name='inntext' id='opgtekst' onfocus='start();' onblur='stop();'><?php echo $lagrettext  ?></textarea>
                     </form>
-                </div>
-            <div class="uboliste2">
+                </div> <!--Slutt på div midtseksjon-->
+
             <!--Venstre side med elementer for oppgavelisten, søkeboks og nedtrekksmeny for valg av liste-->
+            <div class="uboliste2">
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
                 <form action="skriv.php" id="velgli" method="post">
                     <select id='sel' name='oppgliste' class="dropned" onchange="this.form.submit();">
                         <option name="ubesvoppg"     value='ubesvoppg' <?php if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}?>>Ubesvarte oppgaver</option>
                         <option name="pbegoppg" value='pbegoppg' <?php if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}?>>Påbegynte oppgaver</option>
                     </select> <input type="text" id="search" placeholder="  Søk"></input>
-
-                </center>
                 </form>
-               
                 <div style="height: 100%; overflow: auto;">
-        <table class="ubesform">         
-            <tbody>
-                <?php 
-                //Inkludrer riktig liste med ubesvarte\påbegynte oppgaver for riktig bruker
-                $bPK = $user_data['brukerPK'];
-                if(!empty($_SESSION['drpdwnlist'])) {
-                    if($_SESSION['drpdwnlist'] == 'ubesvoppg') {
-                      $result = ubesvarteOppg($bPK, 3);
-                    } elseif( $_SESSION['drpdwnlist'] =='pbegoppg') {
-                      $result = ubesvarteOppg($bPK, 0);
-                    } 
-                }else {
-                        $result = ubesvarteOppg($bPK, 3);
-                    }
+                    <table class="ubesform">         
+                        <tbody>
+                            <?php 
+                            //Inkludrer riktig liste med ubesvarte\påbegynte oppgaver for riktig bruker
+                            $bPK = $user_data['brukerPK'];
+                            if(!empty($_SESSION['drpdwnlist'])) {
+                                if($_SESSION['drpdwnlist'] == 'ubesvoppg') {
+                                  $result = ubesvarteOppg($bPK, 3);
+                                } elseif( $_SESSION['drpdwnlist'] =='pbegoppg') {
+                                  $result = ubesvarteOppg($bPK, 0);
+                                } 
+                            }else {
+                                    $result = ubesvarteOppg($bPK, 3);
+                            }
+                        include_once 'ubesvartliste.php'; ?> 
+                        <tbody>
+                    </table>
+                </div> <!--Slutt på div oppgaveliste-->
+            </div> <!--Slutt på div liste, nedtrekksmeny og søkeboks-->
 
-                include_once 'ubesvartliste.php'; ?> 
-            <tbody>
-           
-        </table>
-         </div>
-            </div>
         <!--Tastaturet-->
             <div id="container">
                     <ul id="keyboard">
@@ -235,10 +234,10 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                         <li class="altgr"id="gralt">alt gr</li>
                         <li class="ctrlr"id="rctrl">ctrl</li>
                     </ul>
-                </div>
+                </div> <!--Slutt på div container for tastatur-->
                 <br class="clear" />
             </section>
-        <?php include_once('design/footer.php'); ?>
         </div>
+        <?php include_once('design/footer.php'); ?>
     </body>
 </html>

@@ -3,21 +3,11 @@ Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang en
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014 
 */
 
-/*----Sideboks----*/				
-.aside {
-	width:auto;	
-	float:left;
-    padding-left: 4%;
-	padding-bottom: 20px ;
-	background-color:#EEEEEE;	
-	margin-top: 25px;
-}
 	
 /*----Innlogging----*/
 #loginform {
 	width:20%;
-	height:100% auto;
-
+	height:100%;
 }
 
 fieldset {
@@ -34,13 +24,11 @@ form span {
 	margin-top:10px;	
 }
 
-.test {
-    list-style-type: none;
-}
+
 
 /*----Input felt----*/
 #brukernavn, #passord, #e-post {
-	width: auto;
+	width: 100%;
 	height: auto;
 	font-size: 0.9em;
 }

@@ -98,27 +98,41 @@ if(!empty($_POST['updateinfo'])) {
         <?php include 'design/header.php'; ?>
         <style type="text/css">
 .profilinformasjon{
-  
-  margin-left:27%;
+  height:auto;  
+  margin-left: 27% ;
+  margin-right: auto ;
   width:30%;
-  height:38%;
-  vertical-align: middle;
-  float:top;
+  margin-top:2%;
 }
 
 .proinf{
   width:40%;
-  height:auto;
+  margin-right:1%;
   margin-left:1%;
-  float:left;
+  display:inline-block;
+  text-align: right;
+  
 }
-.proinffo{
-  margin-top:5%;
+
+.proinffo {
+text-align: center;
+}
+
+#updt {
+  margin-top:2%;
+margin-left: 43% ;
+}
+
+#errors legend {
+ margin-left: 27%;
+  border: 1px solid red;
+  color: red;
+  padding: 4px;
 }
 
         </style>
           <!--Elemeneter for å oppdatere brukerens profil!-->
-        <div id="mainContent">
+        <div id="page">
           <section>
             <div class="profilinformasjon">
             <h3 class="proinffo">Profil informasjon</h3><br>
@@ -128,18 +142,20 @@ if(!empty($_POST['updateinfo'])) {
                   <label class="proinf">E-post:</label><input type="text" name="upepost" class="minsideinput" value="<?php echo $user_data['ePost'] ?>"/><br><br><br>
                   <label class="proinf">Nåværende passord:</label><input type="password" name="oldpassword" class="minsideinput"  placeholder="Gammelt passord"/><br><br>
                   <label class="proinf">Nytt passord:</label><input type="password" name="password" class="minsideinput" placeholder="8 tegn eller flere"/><br><br>
-                  <label class="proinf">Bekreft passordet:</label><input type="password" name="passwordcheck" class="minsideinput" placeholder="Bekreft nytt passord" /><br><br><br>             
+                  <label class="proinf">Bekreft passordet:</label><input type="password" name="passwordcheck" class="minsideinput" placeholder="Bekreft nytt passord" />             
                   <input type='submit' class="buttonStyle" id="updt" name="updateinfo" value="Oppdater"/><br />
                 </form>
-                    <?php 
+              <?php 
                     //Skriver ut statusmeldiner i forbindelse med profiloppdatering
                     if(isset($_GET['oppdatert'])) {
                       echo "Oppdatert";
                     }
                     if (empty($errors) === false) {
+                        echo "<div id='errors'><legend>";
                         echo output_errors($errors);
+                        echo "</legend></div>";
                     } ?>
-            </div>
+            </div> <!--Slutt på div for profilinformasjon-->
             <br class="clear" />
           </section>
         </div>
