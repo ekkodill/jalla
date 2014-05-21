@@ -137,7 +137,7 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
             <!--Venstre side med elementer for oppgavelisten, søkeboks og nedtrekksmeny for valg av liste-->
                 <center><legend class="ubotitt"><h4>Ubesvarte oppgaver</h4></legend></center>
                 <form action="skriv.php" id="velgli" method="post">
-                    <select id='sel' name='oppgliste' onchange="this.form.submit();">
+                    <select id='sel' name='oppgliste' class="dropned" onchange="this.form.submit();">
                         <option name="ubesvoppg"     value='ubesvoppg' <?php if($_SESSION['drpdwnlist'] == 'ubesvoppg') {echo "selected";}?>>Ubesvarte oppgaver</option>
                         <option name="pbegoppg" value='pbegoppg' <?php if($_SESSION['drpdwnlist'] == 'pbegoppg') {echo "selected";}?>>Påbegynte oppgaver</option>
                     </select> <input type="text" id="search" placeholder="  Søk"></input>
@@ -170,8 +170,8 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
         <!--Tastaturet-->
             <div id="container">
                     <ul id="keyboard">
-                        <li class="capsen lastitem"><br><img src="img/capsoff.png" width="12.5" height="12.5" alt="capslock er av"></li>
-                        <li hidden class="caps"id="capslock"><img src="img/capson.png" width="12.5" height="12.5" alt="capslock er på"></li>
+                        <img src="img/capsoff.png"  alt="capslock er av" id="capslockoff" class="caps">
+                        <img  hidden src="img/capson.png" width="12.5" height="12.5" alt="capslock er på" id="capslock" class="caps">
                         <br>
                         <li class="tegn"id="220"><span class="off">|</span><span class="on">§</span></li>
                         <li class="tegn"id="49"><span class="off">1</span><span class="on">!</span></li>

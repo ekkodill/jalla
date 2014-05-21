@@ -155,7 +155,7 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 				<!--Nedtrekksmeny for å velge lite som skal vises-->
 			<center><legend><h4  id="endrelitit"><?php echo $tekst ?></h4></legend><br>
 				<form action="oppgave.php" id="endreli" method="POST">
-		    		<select name='oppgaver' onchange="this.form.submit();">
+		    		<select name='oppgaver' class="dropned" onchange="this.form.submit();">
 			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
 			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
 			        </select>

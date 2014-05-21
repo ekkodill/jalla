@@ -85,14 +85,15 @@ if(empty($_POST['besvarform'])) {
               ?>
 
 				</div>
-				<div id='oppgaveliste'  style="display:none;">	
+				<div id='oppgaveliste'  style="display:none;">
+				<h3>Oppgaveliste med ubesvarte oppgaver</h3>	
 			 	<?php 
 		          	  //Sjekker at brukertypen er deltaker og om deltakeren har ubesvarte oppgaver
 			          if(count(sjekkAntall("oppgaver 
 			            LEFT JOIN innleveringer ON (oppgaver.oppgavePK =innleveringer.oppgave AND innleveringer.bruker = $bPK) WHERE innleveringer.oppgave IS NULL OR innleveringer.ferdig = 0"))) { ?>
 			           <!--Nedtrekksmeny for å bytte mellom de forskjellige oppgavelistene på brukerens profil !-->
 			           <form action="minside.php" method="post">
-			              <select  name='minsideoppgli' onchange="this.form.submit();visoppg();">
+			              <select class="dropned" name='minsideoppgli' onchange="this.form.submit();visoppg();">
 			                  <option name="ubesvoppg" value='ubesvoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'ubesvoppg') {echo "selected";}}?>>Ubesvarte oppgaver</option>
 			                  <option name="pbegoppg" value='pbegoppg' <?php if(isset($_POST['minsideoppgli'])) { if($_POST['minsideoppgli'] == 'pbegoppg') {echo "selected";}}?>>Påbegynte oppgaver</option>
 			              </select></center><br>
@@ -120,7 +121,7 @@ if(empty($_POST['besvarform'])) {
 			              	echo "<legend>Ingen påbegynte oppgaver</legend>";
 			             } 
 			             else {
-			               	echo  " <div style='height: 100%; overflow: auto;'><table class='ubesform'><tbody>";
+			               	echo  " <div style='height: 100%; overflow: auto;'><table ><tbody>";
 			                include_once("ubesvartliste.php");
 			                echo "</tbody></table><div>";
 			              }

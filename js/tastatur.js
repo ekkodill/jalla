@@ -28,9 +28,11 @@ var capslock = "0";
 
 function capsOn() {
         document.getElementById("capslock").hidden=false;
+        document.getElementById("capslockoff").hidden=true;
     }
 
 function capsOff() {
+        document.getElementById("capslockoff").hidden=false;
         document.getElementById("capslock").hidden=true;
     }
 
@@ -67,7 +69,6 @@ switch (key_code) {
                 capslock = "1";
                 capsOn();
                 document.getElementById("20").style.background = "#1688fa";
-                document.getElementById("capslock").style.background="white";
             }
             else {
                 capslock = "0"

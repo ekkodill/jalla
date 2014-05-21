@@ -96,6 +96,27 @@ if(!empty($_POST['updateinfo'])) {
     include 'design/head.php'; ?>
     <body onunload="unloadP('profil')" onload="loadP('profil')" id="profil">
         <?php include 'design/header.php'; ?>
+        <style type="text/css">
+.profilinformasjon{
+  
+  margin-left:27%;
+  width:30%;
+  height:38%;
+  vertical-align: middle;
+  float:top;
+}
+
+.proinf{
+  width:40%;
+  height:auto;
+  margin-left:1%;
+  float:left;
+}
+.proinffo{
+  margin-top:5%;
+}
+
+        </style>
           <!--Elemeneter for å oppdatere brukerens profil!-->
         <div id="mainContent">
           <section>

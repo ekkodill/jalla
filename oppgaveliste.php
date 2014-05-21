@@ -63,7 +63,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
 		</div>";
     //Skjuler knapper for deltakere, som er ment for admins\veiledere
   if($user_data['brukertype'] !=3) {
-  echo "<input type='image'  src='img/pdf.jpg' alt='Last opp vedlegg' title='Last opp vedlegg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
+  echo "<input type='image'  src='img/uploadpdf.png' alt='Last opp vedlegg' title='Last opp vedlegg' id='f".$PK."'  name='ufil' onclick='doClick($PK); return false;' />"; //bildeknapp som åpner filvalgsmeny
 	echo "<input id='file-input".$PK."' type='file' name='file' onchange='lagre($PK)' hidden/>"; //Filvalgsmeny
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
   if($publisert == 0) {

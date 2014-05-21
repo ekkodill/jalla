@@ -7,10 +7,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
 
 
 
-.ubesform{
-	width:98%;
-	font-size:0.7em;
-}
+
 
 #sorterbtn {
 	height:30px;
@@ -138,20 +135,18 @@ td, th, table {
 	float:left;
 }
 	
-button{
-	padding:0px 2px;
-}
 	
 .leggtilbruker {
 	clear:left;
-	margin-top:5%;
+	margin-top:2%;
 	margin-left:10%;
 	height:190px;
 	width:80%;
 	margin-bottom:3%;
 
 }
-	
+
+/*Legg til ny bruker knapp på add_brukere.php*/	
 #leggtilny{
 	width:150px;
 	height:35px;
@@ -164,15 +159,13 @@ button{
 
 
     /*----Runde hjørner----*/
-   
 	-webkit-border-radius: 5%;
 	-moz-border-radius: 5%;
 	border-radius: 5%;
-	outline: 0;
 }
 
-.leggtilny:hover {
-	background:#09C;
+#leggtilny:hover {
+ color:#99CCFF;
 }
 	
 .redsle{
