@@ -292,6 +292,14 @@ function protected_page() {
 	}
 }
 
+//Stopper brukere som ikke er av brukertypen 1 eller 2
+function accessrestriction($usertype) {
+	if($usertype != 1 && $usertype != 2) {
+		header('location: default.php');
+		exit();
+	}
+}
+
 
 //Henter brukertype fra database basert på brukerPK
 function get_brukerType($brukerPK) {

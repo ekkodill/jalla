@@ -3,6 +3,8 @@
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014
 
 include_once 'includes/init.php';
+ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
+protected_page();
 $db = getDB(); 
 
 /******************************************************************************************************************/

@@ -88,17 +88,9 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
         <!--Elementer på venstre side som viser tid brukt, antall feil og feilprosent når man lagrer\leverer oppgaven-->
         <div class="bfleft">
             <div class="valgmuligheter">             
-                    <input type="button" class="stopkn" value="stop" onclick="stop();">
-                    <input type="button" class="resetkn" value="reset" onclick="reset();">
-                    <p>
-                    <?php 
-                        echo "Tid brukt: ".$otid;
-                        echo "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%";
-                     ?>
-                     </p>
                     <form action="add_besvarelse.php" method="POST">
-                      <h5>Tid brukt</h5>
-                      <div><span name="tid" id="time"></span></div>
+                      <h5 style="margin-top:5%;">Tid brukt<div><span name="tid" id="time"></span></div></h5>
+                      
                     
                         <input type="button" class="visskjul" onclick="setStyle('container');" value="Trykk"/> for å skjule\vise tastaturet
                     <br>
@@ -113,11 +105,13 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
 
                         //Statusmeldinger om oppgaven blir lagret/levert eller det oppstår feil.
                         if(isset($_GET['lagret'])) {
-                            echo "Lagret oppgaven";
+                            echo "<fieldset class='msg'><legend>Oppgaven ble lagret</legend>Tid brukt: ".$otid.
+                                    "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%</fieldset>";
                             } elseif(isset($_GET['innlevert'])) {
-                                echo "Oppgaven ble levert.";
+                                echo "<fieldset class='msg'><legend>Oppgaven ble levert</legend>Tid brukt: ".$otid.
+                                        "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%</fieldset>";
                             } elseif(isset($_GET['error'])) {
-                                echo "Det oppstod en feil. Kunne ikke lagre.";
+                                echo "<p class='feil'>Det oppstod en feil. Kunne ikke lagre.</p>";
                             }
                              ?>           
             </div> <!--Slutt på div valgmuligheter-->
@@ -160,8 +154,14 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                             }else {
                                     $result = ubesvarteOppg($bPK, 3);
                             }
-                        include_once 'ubesvartliste.php'; ?> 
+                           if ($result->num_rows == 0) {
+                               echo "Ingen oppgaver";
+                           } else {                         
+                                include_once 'ubesvartliste.php'; 
+                            }
+                            ?> 
                         <tbody>
+                           
                     </table>
                 </div> <!--Slutt på div oppgaveliste-->
             </div> <!--Slutt på div liste, nedtrekksmeny og søkeboks-->

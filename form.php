@@ -4,6 +4,8 @@ Denne siden er kontrollert av Mikael kolstad siste gang 30.03.2014  !-->
 
 <!--Denne siden viser liste med brukere, og brukes av vis_brukere.php  !-->
 <?php
+ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
+protected_page();
 //Setter riktig id på div'en for å style tabellen forskjellig for deltakere og admin\veileder
  if($user_data['brukertype'] == 3) { $classtype = "deltakercss"; } else { $classtype = "tarea"; }  ?> 
     <div class='bliste' <?php if($user_data['brukertype'] == 3) { echo "id=$classtype"; } ?>>

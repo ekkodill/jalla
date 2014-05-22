@@ -2,9 +2,11 @@
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 04.05.2014  !-->
 
 <?php
+ini_set('display_errors', 'Off');
+error_reporting(0);
 //Denne filen brukes for å initiere diverse. Session, samling av filer som brukes ofte etc.
 session_start();
-error_reporting(0);
+
 require 'includes/connect.php';
 require 'includes/users.php';
 require 'includes/MyTXT.php';

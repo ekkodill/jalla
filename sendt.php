@@ -14,10 +14,8 @@ $pgName = 'Nytt passord';
 include 'design/head.php'; ?>
 <body onLoad="loadPage()">
 <?php include 'design/header.php' ?> 
-	<div id="page">
-		  
 			<section>
-	        	<div class="midtfeltpw"> 
+	        	<div class="midtfelt"> 
 					<h2>Nytt passord</h2> 
 					<p>Nytt passord er sendt til følgene e-post adresse: <b><?php echo $_SESSION['recover'];?></b> </p> 
 					<p>Husk å sjekke søppelpost mappen. Hvis du ikke har fått en e-post i løpet av 5 minutter, si fra til oss.</p>
@@ -27,6 +25,5 @@ include 'design/head.php'; ?>
 	         	<br class="clear" />
 	        </section> 
 		<?php include 'design/footer.php' ?>
-	</div>
 </body>
 </html>

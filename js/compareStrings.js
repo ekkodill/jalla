@@ -1,9 +1,11 @@
 // Denne Siden er laget av Kurt A. Aamodt. Koden er hentet fra internett url: http://stackoverflow.com/questions/18050932/detect-differences-between-two-strings-with-javascript, siste gang endret 04.05.2014
 // Denne siden er kontrollert av Mikael Kolstad, siste gang 04.05.2014 
 
+
+
 $(function(){   
 $('#innlevering').click(function() {
-    compareNames();
+    compareText();
 });
 
 });
@@ -11,20 +13,19 @@ $('#innlevering').click(function() {
 $(function(){   
 
 $('#lagring').click(function() {
-    compareNames();
+    compareText();
 });
 
 });
 
-function compareNames(){
-	
-	var oldName = $('#fasittekst').val();
-	var newName = $('#opgtekst').val();
+//Endret navn på funksjon og variabele for å gi mening
+function compareText(){
+	var oldText = $('#fasittekst').val();
+	var newText = $('#opgtekst').val();
 
     var changeCount = 0;
-        changeCount = levDist(oldName, newName);
-   alert(changeCount);
-   //document.getElementById("jsfeil").value = changeCount;
+        changeCount = levDist(oldText, newText);
+   document.getElementById("jsfeil").value = changeCount;
 }
 
 function levDist(s, t) {

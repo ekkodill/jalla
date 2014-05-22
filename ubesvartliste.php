@@ -2,6 +2,9 @@
 //Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.04.2014
 //Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
 
+ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
+protected_page();
+
 /**********************************************************************************************************************************************/
 /**************Denne filen viser liste med ubesvarte/uferdige oppgaver, både på skriv.php og minside.php for deltakere*******************/
 /**********************************************************************************************************************************************/

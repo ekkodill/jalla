@@ -4,6 +4,7 @@
 
 include 'includes/init.php';
 protected_page();
+accessrestriction($user_data['brukertype']);
 $db = getDB();
 
 
@@ -131,6 +132,7 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 		    	</form>
 		    	
 				<?php
+
 				//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
 				if(isset($_GET['lagretrespons'])) {
 					echo "Responsen ble lagret";

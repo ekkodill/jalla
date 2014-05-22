@@ -1,6 +1,7 @@
 // Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 20.04.2014
 // Denne siden er kontrollert av Mikael Kolstad, siste gang 26.04.2014
 
+//Funksjon som klikker på skjult knapp i oppgaveliste.php for å endre form action og publisere oppgaven
 function publiser(pk) {
 	document.getElementById("p"+pk).click();
 }
@@ -50,7 +51,7 @@ function errorRespons(pk) {
 
 
 
-//Søking for tabellene på oppgave.php
+//Søking for tabellene på oppgave.php og skriv.php
 //Kode hentet fra internett, url: http://stackoverflow.com/questions/12433304/live-search-through-table-rows
 $( document ).ready(function() {
 	$("#search").keyup(function() {

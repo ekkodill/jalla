@@ -321,7 +321,11 @@ margin-right: 0%;
 }
 
 
-
+/*Fieldset for melding om lagret\innlevert på skriv.php*/
+.msg {
+    border: 1px solid #00a855;
+    color: #00a855;
+}
 
 
 

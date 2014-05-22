@@ -1,4 +1,6 @@
 <?php 
+ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
+protected_page();
 //Denne siden er utviklet av Mikael Kolstad, siste gang endret 14.05.2014
 //Denne siden er kontrollert av Kurt A. Aamodt siste gang 31.05.2014 
 
@@ -30,11 +32,11 @@ if(isset($_POST['sendmail'])) {
            $_SESSION['msg'] = "Eposten ble sendt";
           		header('Location:'.$url.'#message');
          } else { 
-         	$_SESSION['msg'] = "En feil oppstod, meldingen ble ikke sendt. Sjekk epostserveren eller mottakerlisten.";
-         	header("Location:".$url."#message");  }
+         	  $_SESSION['msg'] = "En feil oppstod, meldingen ble ikke sendt. Sjekk epostserveren eller mottakerlisten.";
+         	  header("Location:".$url."#message");  }
          } else { 
-			$_SESSION['msg'] = "En feil oppstod, meldingen ble ikke send. Ingen felt kan være tomme.";
-         	header("Location:".$url."#message"); }
+			     $_SESSION['msg'] = "En feil oppstod, meldingen ble ikke sendt. Ingen felt kan være tomme.";
+         	  header("Location:".$url."#message"); }
   }  
 
 

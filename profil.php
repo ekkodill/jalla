@@ -97,6 +97,7 @@ if(!empty($_POST['updateinfo'])) {
     <body onunload="unloadP('profil')" onload="loadP('profil')" id="profil">
         <?php include 'design/header.php'; ?>
         <style type="text/css">
+/*For div med profilinformasjon*/
 .profilinformasjon{
   height:auto;  
   margin-left: 27% ;
@@ -105,29 +106,36 @@ if(!empty($_POST['updateinfo'])) {
   margin-top:2%;
 }
 
+/*Labels*/
 .proinf{
   width:40%;
   margin-right:1%;
   margin-left:1%;
   display:inline-block;
   text-align: right;
-  
 }
 
+/*Header h3*/
 .proinffo {
 text-align: center;
 }
 
+/*Oppdater knapp*/
 #updt {
-  margin-top:2%;
+margin-top:5%;
 margin-left: 43% ;
 }
 
-#errors legend {
- margin-left: 27%;
+legend {
   border: 1px solid red;
   color: red;
   padding: 4px;
+}
+
+/*Oppdatert melding*/
+#mld {
+ margin-left: 43%;
+ color:green;
 }
 
         </style>
@@ -145,16 +153,18 @@ margin-left: 43% ;
                   <label class="proinf">Bekreft passordet:</label><input type="password" name="passwordcheck" class="minsideinput" placeholder="Bekreft nytt passord" />             
                   <input type='submit' class="buttonStyle" id="updt" name="updateinfo" value="Oppdater"/><br />
                 </form>
+                <div id='mld'>
               <?php 
                     //Skriver ut statusmeldiner i forbindelse med profiloppdatering
                     if(isset($_GET['oppdatert'])) {
                       echo "Oppdatert";
                     }
                     if (empty($errors) === false) {
-                        echo "<div id='errors'><legend>";
+                        echo "<legend>";
                         echo output_errors($errors);
-                        echo "</legend></div>";
+                        echo "</legend>";
                     } ?>
+              </div>
             </div> <!--Slutt på div for profilinformasjon-->
             <br class="clear" />
           </section>

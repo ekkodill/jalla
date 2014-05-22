@@ -10,6 +10,7 @@ if(empty($_POST) === false) {
 
 //Sjekker at brukernavn og passord feltet inneholder noe og sjekker at informasjonen er gyldig.
 if (empty($brukernavn) === true || empty($passord) === true) {
+		unset($errors);
 		$errors[] = 'Du må skrive inn brukernavn og passord.';
 	} else if (user_exists($brukernavn) === false) {
 		$errors[] = "Feil brukernavn eller passord";
@@ -45,9 +46,7 @@ if (empty($brukernavn) === true || empty($passord) === true) {
     $pgName = 'Innlogging';
     include 'design/head.php'; ?>
   	<body>
-  	<?php include 'design/header.php'; ?>
-
-		<div id="page">  
+  	<?php include 'design/header.php'; ?> 
 		  <section>
 				<div class="midtfelt">
 					<?php
@@ -58,7 +57,6 @@ if (empty($brukernavn) === true || empty($passord) === true) {
 				</div>
 				<br class="clear" />		
 			</section>
-		</div>
 		<?php include('design/footer.php'); ?>
 	</body>
 </html>

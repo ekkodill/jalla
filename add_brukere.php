@@ -1,7 +1,8 @@
 <!--Denne siden er utviklet av Erik Bjørnflaten (html\css) og Kurt A. Aamodt (php), siste gang endret 03.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
-
 <?php
+ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors
+protected_page();
 /******************************************************************************/
 /*********Denne siden brukes til å legge til brukere på vis_brukere.php*******/
 /******************************************************************************/

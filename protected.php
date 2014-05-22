@@ -16,7 +16,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 03.03.2014  !-->
 <div id="page">
   <section style="height:100%;">
   	  <h3 style="margin-top:200px;">Beklager, du må være innlogget for å se denne siden.</h3> 
-    <p><a href="registrer.php">Registrer her</a>, eller logg inn.</p>
+    <p>Registrer deg med å trykke på "Registrer" knappen i menyen til venstre, eller logg inn.</p>
   </section>
 </div>
 <?php include('design/footer.php'); ?>

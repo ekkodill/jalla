@@ -1,7 +1,5 @@
-<!--
-Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 14.05.2014
-Denne siden er kontrollert av Mikael Kolstad siste gang 31.05.2014 
- -->   
+<!--Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 14.05.2014
+Denne siden er kontrollert av Mikael Kolstad siste gang 31.05.2014-->   
 <?php include_once 'includes/init.php';
 protected_page();
 $db = getDB();
@@ -63,28 +61,26 @@ if(empty($_POST['besvarform'])) {
     </script>
         <div id="page">     
         <section>    
-        <br>
 		<input type='button' id='hideshowbesvart' value='Liste over besvarte oppgaver'><input type='button' id='hideshowoppg' value='Oppgaveliste'>
-		<div id="besvartoppgliste" >
-          <?php 
-              if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
-                echo "<legend>Ingen registrerte besvarelser</legend>"; 
-              } else {  ?>
-          <h3><?php echo $listeBeskrivelse ?></h3>
-          <form method="POST" action="">
-            <input type="checkbox" name="besvarform" onchange="this.form.submit();" <?php if(isset($_POST['besvarform'])) echo "checked='checked'"; ?>>Vis besvarelser uten respons
-          </form>
-            <?php if(isset($_POST['besvarform'])) {
-                $result = ubesvarteOppg($bPK, 1);
-              } else {
-                $result = ubesvarteOppg($bPK, 2);
-              }
-              
-                  include_once("besvart.php"); 
-              }
-              ?>
-
-				</div>
+			<div style="height:100%" id="besvartoppgliste" >
+	          <?php 
+	              if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
+	                echo "<legend>Ingen registrerte besvarelser</legend>"; 
+	              } else {  ?>
+	          <h3><?php echo $listeBeskrivelse ?></h3>
+	          <form method="POST" action="">
+	            <input type="checkbox" name="besvarform" onchange="this.form.submit();" <?php if(isset($_POST['besvarform'])) echo "checked='checked'"; ?>>Vis besvarelser uten respons
+	          </form>
+	            <?php if(isset($_POST['besvarform'])) {
+	                $result = ubesvarteOppg($bPK, 1);
+	              } else {
+	                $result = ubesvarteOppg($bPK, 2);
+	              }
+	              
+	                  include_once("besvart.php"); 
+	              }
+	              ?>
+			</div><!--Slutt på div for besvartoppggliste -->   
 				<div id='oppgaveliste'  style="display:none;">
 				<h3>Oppgaveliste med ubesvarte oppgaver</h3>	
 			 	<?php 
@@ -124,16 +120,15 @@ if(empty($_POST['besvarform'])) {
 			               	echo  " <div style='height: 100%; overflow: auto;'><table ><tbody>";
 			                include_once("ubesvartliste.php");
 			                echo "</tbody></table><div>";
-			              }
-			              
-			    ?>
-				</div>
+			              } ?>
+					</div><!--Slutt på div for oppgaveliste -->  
 				<br class="clear" />
 			</section>
         </div>
-         <script type="text/javascript">
-		var button = document.getElementById('hideshowoppg'); // Assumes element with id='button'
-		var button2 = document.getElementById('hideshowbesvart'); // Assumes element with id='button'
+ <script type="text/javascript">
+	var button = document.getElementById('hideshowoppg'); //Knapp for å skjule oppgaveliste\vise besvartliste 
+	var button2 = document.getElementById('hideshowbesvart'); //Knapp for å skjule besvartliste\vise oppgaveliste
+
 
 	//Brukes for å skjule besvartlisten og viser oppgavelisten, også når man bytter liste fra nedtrekksmenyen for oppgaver
 	function visoppg() {
@@ -154,7 +149,7 @@ if(empty($_POST['besvarform'])) {
 
 
 
-        </script>
+</script>
         <?php include('design/footer.php'); ?>
     </body>
 </html>
