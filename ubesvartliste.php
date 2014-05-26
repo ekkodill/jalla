@@ -15,11 +15,12 @@ while ($row = $result->fetch_assoc()) {
     $gammelTid="";
     $sanitertinntxt="";
     $tittel = $row['tittelOppgave'];
+    $oppgtekst = $row['tekstOppgave'];
     $vPK = $row['veileder'];
     $veileder = finnBruker($vPK);
     $vedlegg = $row['linkVedlegg'];
     $vanskelighetsgrad = $row['vanskelighetsgrad'];
-    $oppgtekst = hentOppgave($PK);
+    //$oppgtekst = hentOppgave($PK);
     $sanitized = htmlspecialchars(trim($oppgtekst), ENT_QUOTES);
   if(!empty($row['tekstInnlevering']) /*&& $_SESSION['drpdwnlist'] =='pbegoppg'*/) {
   $gammelTid = $row['tidBrukt'];

@@ -9,6 +9,7 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 /*Liste på ny_oppgave med oppgaver*/
 .oppliste {
+	
 	overflow:auto;
 	height:50%;
 	width:100%;

@@ -19,9 +19,7 @@ if(!empty($_POST['lagrerespons'])) {
 				
 		if(!empty($innleveringerPK) && !empty($respons))  {
 				$insert = $db->prepare("INSERT INTO respons (innlevering, veileder, respons, responsDato) VALUES (?,?,?,now())");
-				print_r($insert);
 				$insert->bind_param('iis', $innleveringerPK, $veileder, $respons);
-		
 				if($insert->execute()) {
 					header('Location: oppgave.php?lagretrespons');
 					die();
@@ -44,13 +42,13 @@ if(!empty($_POST['lagrerespons'])) {
     <tbody>
     <?php
 
-    $result = oppgListe("besvart"); //Henter liste med besvarelser uten responser
+    $result = oppgListe("besvart"); //Henter liste med besvarelser uten respons
     while ($row = $result->fetch_assoc()) {
     $PK = $row['innleveringPK'];
     $besvarelse = $row['tekstInnlevering'];
   	$sanitized = nl2br(htmlspecialchars($besvarelse, ENT_QUOTES));
   	$bruker = finnBruker($row['bruker']); //Henter etternavn til brukeren
-  	$oppgavetittel = hentOppgt($row['oppgave']);
+  	$oppgavetittel = hentOppgt($row['oppgave']); //Henter oppgavetittel
   	$brukerPK = $row['bruker'];
     echo "<form action='besvartliste.php' method='POST'>";
     echo "<tr>";
@@ -68,7 +66,6 @@ $endretinfo = "";
 foreach ($mytxt->rows as $row) {
 	if ($row['brukerPK'] == $brukerPK) {
 		$endretinfo = $row['endret']." ".$row['dato'];
-
 	}
 }
 $mytxt->close();

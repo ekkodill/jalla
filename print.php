@@ -72,7 +72,6 @@ th {
 <link href="css/print.css" media="print" rel="stylesheet" type="text/css">
 <body>
 <?php include 'design/header.php';  ?>
-    <div class="test">
         <section>
         <!--Table som viser data om besvarelsen-->
         <h3 class="proinffo">Utskriftsvennelig resultat</h3><br>
@@ -129,8 +128,7 @@ th {
             </div>
             <a href="minside.php">Gå tilbake</a>
             <br class="clear" />
-        </section>
-    </div>   
+        </section> 
     <script type="text/javascript">
     //Script for å finne forskjellene i teksten og sette styling på de\rette opp
     //Kode hentet fra internett, url: https://github.com/arnab/jQuery.PrettyTextDiff

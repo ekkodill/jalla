@@ -2,7 +2,7 @@
 //Denne siden er utviklet av Kurt A. Aamodt., siste gang endret 30.04.2014
 //Denne siden er kontrollert av Erik Bjørnflaten siste gang 04.05.2014
 
-//Henter fullstendig oppgaveliste for admin\veiledere og kun ubesvarte oppgaver for deltakere
+//Henter fullstendig oppgaveliste for admin\veiledere eller liste med besvarelser uten respons
 function oppgListe($liste) {
 	$db = getDB();
 	if($liste == "besvart") {
@@ -78,6 +78,8 @@ function ubesvarteOppg($bPK, $ferdig) {
 	return $result;
 }
 
+
+
 //Funksjon for glemt passord, oppretter et nytt og sender det på mail
 function glemtPW($epost) {
 		$gen_pw = generate_password(); //Generer passord med 8 karakterer
@@ -110,7 +112,7 @@ function endreBrukerInfo($brukerPK, $fnavn, $enavn, $epost){
 function addUser($ePost, $etternavn, $fornavn, $passord, $brukertype) {
 	$db = getDB();
 	$insert = $db->prepare("INSERT INTO brukere (brukertype,ePost, etternavn, fornavn, passord) VALUES (?,?,?,?,?)");
-	$insert->bind_param('ssssi',$brukertype, $ePost, $etternavn, $fornavn, $passord);
+	$insert->bind_param('sssss',$brukertype, $ePost, $etternavn, $fornavn, $passord);
 	if($insert->execute()) {
 		return true;
 	} else { 

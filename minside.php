@@ -64,24 +64,41 @@ if(empty($_POST['besvarform'])) {
 		<input type='button' id='hideshowbesvart' value='Liste over besvarte oppgaver'><input type='button' id='hideshowoppg' value='Oppgaveliste'>
 			<div style="height:100%" id="besvartoppgliste" >
 	          <?php 
-	              if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
+	            if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
 	                echo "<legend>Ingen registrerte besvarelser</legend>"; 
-	              } else {  ?>
+	            } else { 
+	              
+	                ?>
 	          <h3><?php echo $listeBeskrivelse ?></h3>
 	          <form method="POST" action="">
 	            <input type="checkbox" name="besvarform" onchange="this.form.submit();" <?php if(isset($_POST['besvarform'])) echo "checked='checked'"; ?>>Vis besvarelser uten respons
 	          </form>
-	            <?php if(isset($_POST['besvarform'])) {
-	                $result = ubesvarteOppg($bPK, 1);
-	              } else {
-	                $result = ubesvarteOppg($bPK, 2);
-	              }
+	            <?php 
+		            //Viser tabellliste med besvarelser med eller uten respons dersom det er noen, ellers skrives beskjed om at det ikke finnes
+		            if(isset($_POST['besvarform'])) {
+						if(!count(sjekkAntall("innleveringer
+	        								JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = 1
+	        								LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NULL"))) {
+		              						echo "<legend>Ingen registrerte besvarelser uten respons</legend>"; 
+		              			} else {
+		                  			$result = ubesvarteOppg($bPK, 1);
+		                  			include_once("besvart.php");  
+		              			}   
+		    		} else {
+		              		if(!count(sjekkAntall("innleveringer
+	        								JOIN oppgaver ON innleveringer.oppgave = oppgaver.oppgavePK AND innleveringer.bruker = $bPK AND innleveringer.ferdig = 1
+	        								LEFT JOIN respons ON (innleveringer.innleveringPK = respons.innlevering) WHERE respons.innlevering is NOT NULL"))) {
+		              						echo "<legend>Ingen registrerte besvarelser med respons</legend>"; 
+		              			} else {
+		                  			$result = ubesvarteOppg($bPK, 2);
+		                  			include_once("besvart.php");  
+		              			}
+		              }  
+	            } 
 	              
-	                  include_once("besvart.php"); 
-	              }
 	              ?>
 			</div><!--Slutt på div for besvartoppggliste -->   
-				<div id='oppgaveliste'  style="display:none;">
+				<div id='oppgaveliste'  style="display:none;height:100%">
 				<h3>Oppgaveliste med ubesvarte oppgaver</h3>	
 			 	<?php 
 		          	  //Sjekker at brukertypen er deltaker og om deltakeren har ubesvarte oppgaver

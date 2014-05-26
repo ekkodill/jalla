@@ -2,8 +2,6 @@
 // Denne siden er kontrollert av Mikael Kolstad,siste gang  04.05.2014
 
   
-
-  
 // Sjekker om e-postfeltet er fylt inn, og at brukerype er riktig
 //noe som er påkrevd for å registrere. Dersom ikke gir den feilmelding og setter fokus på dette feltet.
 function regNy() {
@@ -15,9 +13,11 @@ function regNy() {
   for (i = 0; i <  l; i++) {
     boksnavn = boks[i];
     if(document.getElementById(boksnavn).value === "") {
+      document.getElementById(boksnavn).focus();
       alert(boksnavn + " må fylles ut");
       return false;
     } else if(btype == "Velg brukertype...") {
+            liste.focus();
             alert("Du må velge en brukertype.");
             return false;
       }     
@@ -85,14 +85,25 @@ function slette(fornavn, etternavn, id, denne, type) {
       return false;
   }
    
-//Setter inputboksene til readonly når man lagrer
+//Setter inputboksene til readonly når man lagrer eller fokuserer felt som er tomme
 function onSave(btn) {
       var id=btn.id.substr(1);
+      if(document.getElementById("ePost"+id).value == "") {
+        document.getElementById("ePost"+id).focus();
+      }
+      if(document.getElementById("etternavn"+id).value == "") {
+        document.getElementById("etternavn"+id).focus();
+      }
+      if(document.getElementById("fornavn"+id).value == "") {
+        document.getElementById("fornavn"+id).focus();
+      } 
+      if(document.getElementById("ePost"+id).value != "" && document.getElementById("etternavn"+id).value != "" && document.getElementById("fornavn"+id).value != "") {
       document.getElementById("ePost"+id).setAttribute("Readonly" , "readonly");
-      document.getElementById("etternavn"+id).setAttribute("Readonly" , "readonly")
+      document.getElementById("etternavn"+id).setAttribute("Readonly" , "readonly");
       document.getElementById("fornavn"+id).setAttribute("Readonly" , "readonly");
-      document.getElementById("typer"+id).setAttribute("disabled" , true);
-      return false;
+      return btn.form.action="update.php";
+    }
+         return false;
 }
 
 

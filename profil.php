@@ -126,16 +126,11 @@ margin-top:5%;
 margin-left: 43% ;
 }
 
-legend {
-  border: 1px solid red;
-  color: red;
-  padding: 4px;
-}
+
 
 /*Oppdatert melding*/
 #mld {
  margin-left: 43%;
- color:green;
 }
 
         </style>
@@ -157,12 +152,12 @@ legend {
               <?php 
                     //Skriver ut statusmeldiner i forbindelse med profiloppdatering
                     if(isset($_GET['oppdatert'])) {
-                      echo "Oppdatert";
+                      echo "<p class='okmsgcolor'>Oppdatert</p>";
                     }
                     if (empty($errors) === false) {
-                        echo "<legend>";
+                        echo "<span class='errormsgcolor'>";
                         echo output_errors($errors);
-                        echo "</legend>";
+                        echo "</span>";
                     } ?>
               </div>
             </div> <!--Slutt på div for profilinformasjon-->

@@ -3,16 +3,16 @@ protected_page();
 ?>
 <!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
 Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
-<div class="besvart"><table>
+<div class="oppliste"><table style="border-collapse: collapse;">
 	     <thead>
 		    <tr>
-		        <th class='tabbes'>Tittel</th>
-		        <th class='tabbes'>Dato levert</th>
-		        <th class='tabbes'>Tid brukt</th>
-            <th class='tabbes'>Antall feil</th>
-            <th class='tabbes'>Vedlegg</th>
-            <th class='tabbes'>Ferdig</th>
-            <th class='tabbes'>Valg</th>
+		        <th style="width:5%;" class='tab2'>Tittel</th>
+		        <th style="width:5%;" class='tab2'>Dato levert</th>
+		        <th style="width:5%;" class='tab2'>Tid brukt</th>
+            <th style="width:5%;" class='tab2'>Antall feil</th>
+            <th style="width:5%;" class='tab2'>Vedlegg</th>
+            <th style="width:5%;" class='tab2'>Ferdig</th>
+            <th style="width:5%;" class='tab2'>Valg</th>
 	    	</tr>
 	    </thead>
     <tbody>

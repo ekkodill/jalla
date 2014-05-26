@@ -33,13 +33,10 @@ if(!empty($_POST['adduser'])) {
 				$errors[]  = "Eposten er ikke gyldig"; 		
 			} else if(!empty($fornavn) && !empty($etternavn) && !empty($ePost) && !empty($brukertype)) {
 				if (addUser($ePost, $etternavn, $fornavn, $passord, $brukertype)) {
-					$errors[] = "Brukeren ble opprettet";
+					header("location: vis_brukere.php?registrert");
 					if(sendMail($ePost, $gen_pw)) {
 						$errors[] = "Epost ble sendt til brukeren";
 					} else { $errors[] = "Det oppstod en feil ved utsending av epost, sjekk mailserveren"; }
-				?>
-				<script>$('#nybruker').submit(function()); //Kjører funksjon fra vis_brukere.php som sletter localstorage for inputfeltene når formen ble submitta vellykket </script>
-				<?php
 				} else { $errors[]  = "Det oppstod en feil og brukeren kunne ikke opprettes"; }
 			} else { $errors[]  = "Alle boksene må fylles ut"; }
 		} else { $errors[]  = "Eposten er registrert fra før"; }
@@ -74,11 +71,11 @@ if(!empty($_POST['adduser'])) {
 				</tr>
 			</table>
 				<h7 class="paakrev">*Må fylles inn.</h7><br>
-			<center><input name="adduser" id="leggtilny" type="submit" value="Legg til ny bruker" ></center>
+			<center><input name="adduser" id="leggtilny" type="submit" value="Legg til ny bruker" onclick="return regNy()" ></center>
 				<span>
 					<?php
 							if (empty($errors) === false) {
-							echo output_errors($errors);
+							echo "<span class='errormsgcolor'>".output_errors($errors)."</span>";
 							}
 					?>
 				 </span>

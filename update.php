@@ -12,32 +12,30 @@ $db = getDB();
 
   if(isset($_POST['lagreupdate'])) {
   //Gjør om brukertypen fra nedtrekksmenyen til riktig tall.
-    if($_POST['btype'] == "administrator") { 
-      $type = 1; 
-    } 
-      else if($_POST['btype'] == "veileder" ) { 
-      $type = 2; 
+    if($_POST['btype'] == "administrator") {
+      $type = 1;
     }
-      else if($_POST['btype'] == "deltaker") { 
-      $type = 3; 
+      else if($_POST['btype'] == "veileder" ) {
+      $type = 2;
+    }
+      else if($_POST['btype'] == "deltaker") {
+      $type = 3;
     }
     $epost = $_POST['ePost'];
     $etternavn = $_POST['etternavn'];
     $fornavn = $_POST['fornavn'];
     $brukerPK = $_POST['brukerPK'];
+    if(!empty($epost) || !empty($etternavn) || !empty($fornavn)) {
+      $stmt = $db->prepare("UPDATE brukere SET ePost=?, etternavn=?, fornavn=?, brukertype=? WHERE brukerPK=? LIMIT 1");
+      $stmt->bind_param('sssis', $epost, $etternavn, $fornavn, $type, $brukerPK);
     
-    $stmt = $db->prepare("UPDATE brukere SET ePost=?, etternavn=?, fornavn=?, brukertype=? WHERE brukerPK=? LIMIT 1");
-    $stmt->bind_param('sssis', $epost, $etternavn, $fornavn, $type, $brukerPK);
-  
-
       if($stmt->execute()) {
-        header('Location: vis_brukere.php');  
-      } else  { 
+        header('Location: vis_brukere.php?oppdatert');
+      } else {
         header('Location: vis_brukere.php?updateusererror');
-      }       
-  } else { 
-      header('Location: vis_brukere.php?posterror');
+      }    
+    } else { 
+      header('Location: vis_brukere.php?errortomtfelt'); 
     }
-
+  }
   ?>
-

@@ -3,7 +3,6 @@
 Denne siden er utviklet av Erik Bjørnflaten siste gang endret 13.04.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014 
 */
-
 #container {
     float:left;
     width: 38%;
@@ -228,9 +227,10 @@ margin-right: 0%;
 
 }
 
+
 /*For plassering av elementer på høyre side på skriv.php*/
 .bfright{
-    margin-top:3%;
+    margin-top:4%;
     width:25%;
     height:60% auto;
     float:right;
@@ -243,11 +243,11 @@ margin-right: 0%;
 /*For tabell \ liste med ubesvarte oppgaver på skriv.php*/
 .uboliste2 {
     width:20%;
-    height:30%;
+    height:40%;
     position:absolute;
     margin-top:25%;
     margin-left:-1.7%;
-
+    padding-bottom:1%;
 }
 
 .ubesform{
@@ -259,25 +259,26 @@ margin-right: 0%;
 
 
 
+
 /*For knappene på skriv.php*/
 .valgmuligheter{
     height:60%;
     width:100%;
 }
 
-.visskjul, .lagropg, .innleverop, .stopkn, .resetkn{
+.buttonStyle2 {
+    margin-top:2%;
+    height:30px;
+    width:80px;
     color:#fff;
     background-color:#5B5B5B;
-    height:5%;
-    margin-top:2%;
-    margin-right:1%;
-    width:25%;
     border:1px solid #000;
-/*----Runde hjørner----*/
     -webkit-border-radius: 5%;
     -moz-border-radius: 5%;
     border-radius: 5%;
+    outline: 0;
 }
+
 
 /*For oppgavetittel på skriv.php*/
 .oppgavetittel{

@@ -1,4 +1,4 @@
 brukerPK:|:endret:|:dato
 init:|:init:|:init
 792:|: ekko dakko bytta navn til ekko ekko :|:2014-05-05 18:45:27
-13:|: Chris aamodt bytta navn til  aamodt :|:2014-05-21 22:22:13
+13:|: Chris aamodt bytta navn til Chris  :|:2014-05-26 12:10:05

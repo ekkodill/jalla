@@ -31,6 +31,7 @@ td, th, table {
 
 		
 .tab1 {
+	padding: 1%;
 	width:25%;
 	height:25px;
 	margin-top:2%;
@@ -40,7 +41,7 @@ td, th, table {
 }
 
 .tab2 {
-	width:20%;
+	padding: 1%;
 	font-size:1em;
 	background:#5B5B5B;
     color:#fff;
@@ -50,6 +51,8 @@ td, th, table {
 	margin-left:25px;
 }
 
+
+/*Styler inputfeltene i tabellen*/
 .tarea {
 	width:98%;
 	margin-top:2%;
@@ -58,14 +61,14 @@ td, th, table {
     color:#000;
 }
 
+
 .bliste {
 	overflow:auto;
-	height:50%;
+	height:60%;
 	width:100%;
 	margin-top: 0%;
 	margin-bottom:10%;
 	background-color:#fff;
-
 }
 
 /*Setter stil på medlemslisten for deltakere*/
@@ -186,6 +189,4 @@ table#myTable {
     border-collapse: collapse;
 }
 
-th {
-	padding: .5em .5em;
-}
+

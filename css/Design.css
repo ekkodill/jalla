@@ -191,7 +191,7 @@ font-size:1em;
 .buttonStyle {
 margin-top:2%;
 height:30px;
-width:100px;
+width:95px;
 color:#fff;
 background-color:#5B5B5B;
 border:1px solid #000;
@@ -276,7 +276,7 @@ h1.header {
 /*----Meny----*/
 nav { 
     width:9%;
-    height:25.5%;
+    height:auto;
     position:fixed;
     z-index:100;
     padding:1% 2% 1% 1%;
@@ -357,4 +357,10 @@ form span {
     vertical-align: middle;
 }
 
+.errormsgcolor {
+    color: red;
+}
 
+.okmsgcolor {
+    color: green;
+}

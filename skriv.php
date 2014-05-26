@@ -83,20 +83,17 @@ include_once 'design/head.php';
 print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='window.scrollTo(0,$y); show(); loadStyle();'>";
  include_once 'design/header.php'; 
 ?>
-    <div id="page">
     <section> 
         <!--Elementer på venstre side som viser tid brukt, antall feil og feilprosent når man lagrer\leverer oppgaven-->
-        <div class="bfleft">
+        <div class="bfleft">          
             <div class="valgmuligheter">             
                     <form action="add_besvarelse.php" method="POST">
                       <h5 style="margin-top:5%;">Tid brukt<div><span name="tid" id="time"></span></div></h5>
-                      
-                    
-                        <input type="button" class="visskjul" onclick="setStyle('container');" value="Trykk"/> for å skjule\vise tastaturet
+                        <input type="button" class="buttonStyle2" onclick="setStyle('container');" value="Trykk"/> for å skjule\vise tastaturet
                     <br>
-                        <input name="fullfor" id="innlevering" class="innleverop" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
+                        <input name="fullfor" id="innlevering" class="buttonStyle2" type="submit" onclick="transfer();stop();" value="Innlever"/> for endelig innlevering
                     <br>
-                        <input name="lagreoppg" id="lagring" class="lagropg" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
+                        <input name="lagreoppg" id="lagring" class="buttonStyle2" type="submit" onclick="transfer();stop();" value="Lagre"/> for å fortsette senere
                         <input name="tid" id="stid" type="hidden"/>
                         <input name="jsfeil" id="jsfeil" type="hidden"/>
                     <br>
@@ -161,10 +158,10 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                             }
                             ?> 
                         <tbody>
-                           
                     </table>
                 </div> <!--Slutt på div oppgaveliste-->
             </div> <!--Slutt på div liste, nedtrekksmeny og søkeboks-->
+
 
         <!--Tastaturet-->
             <div id="container">
@@ -237,7 +234,6 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                 </div> <!--Slutt på div container for tastatur-->
                 <br class="clear" />
             </section>
-        </div>
         <?php include_once('design/footer.php'); ?>
     </body>
 </html>

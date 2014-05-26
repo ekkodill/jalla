@@ -135,16 +135,16 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 
 				//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
 				if(isset($_GET['lagretrespons'])) {
-					echo "Responsen ble lagret";
+					echo "<p class='okmsgcolor'>Responsen ble lagret</p>";
 				} elseif(isset($_GET['nosaveerror'])) {
-					echo "Kunne ikke lagre respons";
+					echo "<p class='errormsgcolor'>Kunne ikke lagre respons</p>";
 				} elseif(isset($_GET['tomerror'])) {
-					echo "Kan ikke lagre tom respons";
+					echo "<p class='errormsgcolor'>Kan ikke lagre tom respons</p>";
 				}
 				if(isset($_GET['publisert']) === true) {
-					echo "<p>Oppgaven ble publisert</p>"; 
+					echo "<p class='okmsgcolor'>Oppgaven ble publisert</p>"; 
 				} elseif(isset($_GET['lagret']) === true) {
-					echo "<p>Oppgaven ble lagret</p>"; 
+					echo "<p class='okmsgcolor'>Oppgaven ble lagret</p>"; 
 				}
 				//Skriver ut errors som oppstår når man gjør feil ved oppretting av nye oppgaver
 				if (empty($errors) === false) {

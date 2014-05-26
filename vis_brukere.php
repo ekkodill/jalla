@@ -45,11 +45,7 @@ $('.tarea').keyup(function () {
 init();
 
 
-//Resetter feltene når formen blir sendt uten problemer
-$('#nybruker').submit(function() {
-	localStorage.clear();
-});
-	
+
 //Lagrer feltenes innhold til localstorage
 $('.tarea').keyup(function () {
     localStorage[$(this).attr('id')] = $(this).val();
@@ -71,22 +67,37 @@ $(document).ready(function () {
 });
 
 </script>
-			<div id="page">
 			   <section>
 		       	<?php
 		       	//Inkluderer elementene for admins\veiledere å legge til brukere
 		       	if($user_data['brukertype'] != 3) {
 					 	include('add_brukere.php');
 					}
+
+				 if(isset($_GET['registrert'])) { 
+				 ?>
+				 <script type="text/javascript">
+				 //Tømmer localstorage og inputfeltene i formen for å legge til nye brukere når en bruker blir registrert
+				 	$(document).ready(function(){
+				 		localStorage.clear();
+				 		var form = document.getElementById("nybruker");
+						form.reset();
+						});
+				 </script>
+				 <?php
+				 	echo "<p class='okmsgcolor'>Ny bruker ble opprettet</p>";  
+				 }
 				if(isset($_GET['updateusererror'])) {
-					echo "Det oppstod en feil ved oppdatering av brukeren";
-				} elseif(isset($_GET['posterror']))  {
-					echo "Det oppstod en feil ved lagring av brukeren, prøv på nytt";
+					echo "<p class='errormsgcolor'>Det oppstod en feil ved oppdatering av brukeren</p>";
+				} elseif(isset($_GET['oppdatert']))  {
+					echo "<p class='okmsgcolor'>Brukerinformasjon ble oppdatert</p>";
+				} elseif(isset($_GET['errortomtfelt'])) {
+					echo "<p class='errormsgcolor'>Ingen felt kan være tomme</p>";
 				}
 				if(isset($_GET['deleted'])) {
-								echo "<span>//Brukeren ble slettet!</span>";
+								echo "<span class='okmsgcolor'>//Brukeren ble slettet!</span>";
 							} elseif(isset($_GET['deleteerr'])) {
-									echo "<span>//Det oppstod en feil ved sletting av denne brukeren</span>";
+									echo "<span class='errormsgcolor'>//Det oppstod en feil ved sletting av denne brukeren</span>";
 								}
 					if(!count(sjekkAntall('brukere'))) {
 						echo "<center><legend>Ingen registrerte brukere</legend></center>"; 
@@ -98,7 +109,6 @@ $(document).ready(function () {
 						include 'form.php'; }?>
 						<br class="clear" />
 				</section>	
-       		</div>
        		<?php 	include('design/footer.php'); ?>
 		</body>
 </html>

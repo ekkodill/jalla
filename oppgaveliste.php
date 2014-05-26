@@ -28,8 +28,8 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014  !-->
     $antallOppg = antallUtfort("mrespons", $PK); //henter antall av denne oppgaven som har responser
     $vPK = $row['veileder'];
   	$veileder = finnBruker($vPK);
-    $oppgtekst = hentOppgave($PK);
-    $sanitized = nl2br(htmlspecialchars($oppgtekst, ENT_QUOTES));
+    $oppgtekst = $row['tekstOppgave'];
+    $sanitized = nl2br(trim(htmlspecialchars($oppgtekst, ENT_QUOTES)));
     $vanskelighetsgrad = "ikke valgt";
     $publisert = $row['erPublisert'];
     $vedlegg = htmlspecialchars($row['linkVedlegg']);

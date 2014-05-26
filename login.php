@@ -52,7 +52,7 @@ if (empty($brukernavn) === true || empty($passord) === true) {
 					<?php
 						if (empty($errors) === false) {
 						?><h2>Vi prøvde og logge deg inn men...</h2><?php
-						echo output_errors($errors);
+						echo "<span class='errormsgcolor'>".output_errors($errors)."</span>";
 						}?>
 				</div>
 				<br class="clear" />		
