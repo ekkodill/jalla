@@ -1,34 +1,66 @@
 <!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 03.03.2014
 Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
-<?php include 'includes/init.php';
-
-
-
-?>
+<?php include 'includes/init.php'; ?>
 
 <!doctype html>
 <html>
-<body onunload="unloadP('skriv');" onload="loadP('skriv');">
-<?php
-    $pgName = 'Hovedside';
-    include 'design/head.php'; ?>
-<?php include 'design/header.php';  ?>
-    <div id="page">
+<?php   
+$pgName = 'Hovedside';
+include 'design/head.php';
+ ?>
+ <style type="text/css">
+
+/*Sjekkmerke og styling for systemkravene*/
+ li { 
+    background:url(img/check.png) no-repeat 0 50%; 
+    padding-left: 2%;
+    list-style-position:inside;
+    list-style-type: none;
+
+ }
+ ul {
+    margin-top:5px;
+    padding:0px;
+ }
+/***************************/
+
+/*Plassering av bildet*/
+ .bilde {
+    padding-right: 15%;
+ }
+ </style>
+<body onunload="unloadP('hovedside');" onload="loadP('hovedside');">
+<?php  include 'design/header.php';  ?>
         <section>
-        <br><br>
           <div class="midtfelt">
             <h2>Velkommen til Touch</h2> 
-            <img class="bilde"src="img/keyboard.jpg" height="250" alt="Bli kjappere på tastene." >
-            <p>I denne applikasjonen skal vi trene deg opp i øke hastigheten når du skriver på tastaturet.</p>
-            <p>Det vil i nær fremtid bli lagt ut prøvetekster, der vi tar tiden på deg fra start til slutt.</p>
-            <p> Tidene vil bli lagret og du kan se fremgangen din på "Min side" når du får tilgang til den.</p>
-            <p>Grunnen stor etterspørsel har vi nå valgt å fjerne valget om å registrere seg. Man må nå bli lagt inn av en administrator eller veileder.</p>
-            <p>Registreringen vil bli åpnet igjen om ikke så alt for lenge så titt innom i ny og ne.</p>
+            <div class="bilde"><img class="bilde"src="img/keyboard.jpg" height="250"  alt="Bli kjappere på tastene." ></div>
+            <p>I denne applikasjonen skal vi trene deg opp i øke hastigheten når du skriver på tastaturet.<br>
+            Registrer deg i dag å få nye oppgaver og øve deg på, med respons fra egne veiledere.</p>
+            <p> Den optimale måten å lære seg touchmetoden.</p>
             <h3>Bli kjappere på tastene idag!</h3>
+            <br>
+
+            <h5><i><b>Systemkrav:</b></i></h5>
+            <p>For optimal brukeropplevelse kreves følgende utstyr og programvare:</p>
+            Nettlesere:
+            <ul>
+                <li>Firefox</li>
+                <li>Chrome</li>
+                <li>IE</li>
+            </ul>
+            Script:
+            <ul>
+                <li>Javascript</li>
+            </ul>
+            Skjermoppløsning:
+           <ul>
+               <li>1920x1080</li>
+           </ul>
+           <br>
           </div> 
-          <br class="clear" />
+          
         </section>
-    </div>
     <?php include('design/footer.php'); ?>
   </body>
 </html>

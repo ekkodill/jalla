@@ -6,13 +6,13 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 <div class="oppliste"><table style="border-collapse: collapse;">
 	     <thead>
 		    <tr>
-		        <th style="width:5%;" class='tab2'>Tittel</th>
-		        <th style="width:5%;" class='tab2'>Dato levert</th>
-		        <th style="width:5%;" class='tab2'>Tid brukt</th>
-            <th style="width:5%;" class='tab2'>Antall feil</th>
-            <th style="width:5%;" class='tab2'>Vedlegg</th>
-            <th style="width:5%;" class='tab2'>Ferdig</th>
-            <th style="width:5%;" class='tab2'>Valg</th>
+		        <th  class='tab2'>Tittel</th>
+		        <th  class='tab2'>Dato levert</th>
+		        <th  class='tab2'>Tid brukt</th>
+            <th  class='tab2'>Antall feil</th>
+            <th  class='tab2'>Vedlegg</th>
+            <th  class='tab2'>Ferdig</th>
+            <th  class='tab2'>Valg</th>
 	    	</tr>
 	    </thead>
     <tbody>

@@ -1,0 +1,101 @@
+/*----
+//Denne siden er utviklet av Erik Bjørnflaten og Mikael kolstad, siste gang endret 02.03.2014
+//Denne siden er kontrollert av Erik siste gang 03.03.2014 
+----*/
+
+#page {
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+	margin-bottom:10px;
+	width:90%;
+	background-color:#FFF;
+	border-width:medium;
+	
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	border: 2px solid #99CCFF;
+	
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+#minside {
+	float:left;
+margin-left : auto;
+margin-right : auto;
+margin-top : 10px;
+margin-bottom : 10px;
+width : 50%;
+height:550px;
+background-color : #FFF;
+
+}
+
+form#byttpw {
+	float:left;
+width : 30%;
+margin : auto;
+position : relative;
+border-radius : 10px;
+padding : 7px;
+border : #999 solid 1px;
+box-shadow : 0 0 8px rgba(0, 0, 0, 0.3);
+font-size : 0.8em;
+font-weight : normal;
+font-family : Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+#pwknapp {
+
+height:30px;
+width:100px;
+}
+
+#pwknapp:hover {
+background : #09C;
+color : #000;
+}
+
+.loggetInnSom{
+		margin-top:0px;
+        color : #fff;
+		float:right;
+		margin-right:100px;
+		font-size:1.0em;
+			}
+
+.moveup{
+	margin-top:-3px;
+	    margin-right:30px;
+        float:right;
+		color:#fff;
+		font-size:1.5em;	
+		font-weight:normal;
+        font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+	}
+		
+		
+/*----Brukermeny knapper----*/
+.bmenyhead{
+	width:300px;
+	height:60px;
+	margin-top:-5px;
+	margin-right:10px;
+	float:right;
+	}
+.bmenyknapp{
+	width:100px;
+	height:30px;
+	margin-right:10px;
+	border: 1px solid #fff;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		}
+		

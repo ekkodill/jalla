@@ -22,6 +22,15 @@ function loadStyle() {
    }
 }
 
+//Infoboks for data om besvarelse
+function visInfo() { 
+    var infoboks = document.getElementById("infoboks");
+    $(infoboks).css("z-index", "1"); //Flyter boksen med statusmelingen på samme nivå som skjermen.
+    $("#opgtekst").css("background-image", ""); //Fjerner bakgrunnsbildet i skjermen
+    infoboks.style.display = 'block'; //Viser statusmelding for oppgaven
+}
+
+
 //Variabel for capslock on\off. 0 = off
 var capslock = "0";
 
@@ -42,7 +51,6 @@ function capsOff() {
 document.onkeydown = function(event) {
     var key_code =  (event.which);
     var element = document.getElementById(key_code);
-
 
 //Switch som endrer fargen på "spesial-tastene" når knappen for tastaturet blir trykt ned
 switch (key_code) {
@@ -82,7 +90,7 @@ switch (key_code) {
                     document.getElementById("lshift").style.backgroundColor = "#1688fa";
                     capsOn();
             }
-            else { 
+            else if(event.location == 2) { 
                     document.getElementById("rshift").style.backgroundColor = "#1688fa";
                     capsOn();
             }
@@ -146,9 +154,10 @@ var element = document.getElementById(event.which);
                     document.getElementById("dot").style.backgroundColor = "white";
         break;
         case 16:
-                    document.getElementById("rshift").style.backgroundColor = "white";
-                    document.getElementById("lshift").style.backgroundColor = "white";
-                    capsOff();
+            document.getElementById("rshift").style.backgroundColor = "white";
+            document.getElementById("lshift").style.backgroundColor = "white";
+            capsOff();
+
         break;
         case 17:
                     document.getElementById("rctrl").style.backgroundColor = "white";
@@ -171,17 +180,23 @@ var element = document.getElementById(event.which);
     //Keypress for å finne æ ø å i firefox som returner 0 med keydown eventen.
     document.onkeypress = function vis_press(evt) {
         switch (evt.which) {
+        //Æ
         case 230:
         case 198:
              document.getElementById("222").style.backgroundColor = "#99CCFF";
           break;
+        //Ø
         case 248:
         case 216:
             document.getElementById("192").style.backgroundColor = "#99CCFF";
           break;
+        //Å
         case 229:
         case 197:
            document.getElementById("221").style.backgroundColor = "#99CCFF";
           break;
+        case 45:
+            document.getElementById("189").style.backgroundColor = "#99CCFF";
+        break;
         }
     }

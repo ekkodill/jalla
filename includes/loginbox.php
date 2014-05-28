@@ -1,5 +1,5 @@
-<!--Denne siden er utviklet av Dag-Roger Eriksen og Kurt A. Amodt, siste gang endret 27.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
+<!--Denne siden er utviklet av Dag-Roger Eriksen(html\css), Mikael Kolstad(JS) og Kurt A. Amodt(php), siste gang endret 27.05.2014
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014  !-->
 <?php 
 
 //Sjekker at eposten finnes i systemet og sender brukeren videre til en informasjonsside om det stemmer.
@@ -47,7 +47,7 @@ if(isset($_POST['register'])) {
 ?>
 <script type="text/javascript">
 
-
+//Setter localstorage og skjuler \ viser element for glemt passord
 function showGp() {
 	localStorage.form1style = 'block';
 	localStorage.form2style = 'none';
@@ -55,7 +55,9 @@ function showGp() {
 	document.getElementById("loginform").style.display="none";
 	document.getElementById("registrer").style.display="none";
 	document.getElementById("glemtpassord").style.display="block";
+	document.getElementById("glemtpw").focus();
 }
+//Setter localstorage og skjuler glemt passord \ viser login elemementer
 function skjul() {
 	localStorage.form2style = 'block';
 	localStorage.form1style = 'none';
@@ -64,6 +66,8 @@ function skjul() {
     document.getElementById("glemtpassord").style.display=localStorage.form1style;
     document.getElementById("loginform").style.display=localStorage.form2style;
 }
+
+//Setter localstorage og skjuler \ viser element for registrering
 function showReg() {
 	localStorage.form3style = 'block';
 	localStorage.form2style = 'none';
@@ -71,8 +75,10 @@ function showReg() {
 	document.getElementById("registrer").style.display="block";
 	document.getElementById("glemtpassord").style.display="none";
 	document.getElementById("loginform").style.display="none";
+	document.getElementById("fornavn").focus();
 }
 
+//Setter localstorage og skjuler \ viser element for login
 function showLogin() {
 	localStorage.form2style = 'block';
 	localStorage.form1style = 'none';
@@ -80,7 +86,10 @@ function showLogin() {
 	document.getElementById("registrer").style.display="none";
 	document.getElementById("glemtpassord").style.display="none";
 	document.getElementById("loginform").style.display="block";
+	document.getElementById("brukernavn").focus();
 }
+
+//Laster localstorage verdier når siden er lastes
 $(document).ready(function() { 
 		document.getElementById("registrer").style.display= localStorage.form3style;
     	document.getElementById("glemtpassord").style.display=localStorage.form1style;
@@ -89,7 +98,7 @@ $(document).ready(function() {
 </script>
 
 
-
+<!--Element for innlogging -->
 <div class="innloggboksfixed" >
 	<form method="post" action="login.php" id="loginform">
 		<fieldset>
@@ -104,22 +113,24 @@ $(document).ready(function() {
 		</fieldset>
 	</form>
 	<?php?>	
+	<!--Element for glemt passord -->
 	<form method="post" action="default.php" id="glemtpassord" style="display:none;">
 		<fieldset>
 			<h2>Glemt passord</h2>
 			<span>E-post:</span><br>
-			<input type="text" class="boxinputs" name="nyttpw" tabindex="5" title="Fyll ut e-post adresse" autocomplete="off"><br>
+			<input type="text" class="boxinputs" id="glemtpw" name="nyttpw" tabindex="5" title="Fyll ut e-post adresse"  autocomplete="off"><br>
 			<input type="submit" name="sendnypw" class="test" tabindex="6" value="Send passord" title="Send nytt passord">
 			<input type="button" class="test" tabindex="7"  value="Skjul" title="skjul glemt passordd" onclick="skjul()">
 			<br>
 
 		</fieldset>
 	</form>
+	<!--Element for registrering -->
 		<form id="registrer" method="post" action="" style="display:none;">
 		<fieldset>
 			<h2>Registrering</h2>
 			<span>Fornavn*:</span><br>
-			<input type="text" class="boxinputs" id="fornavn" tabindex="1" name="fornavn" title="Skriv inn fornavn" autofocus autocomplete="on"><br>
+			<input type="text" class="boxinputs" id="fornavn" tabindex="1" name="fornavn" title="Skriv inn fornavn" autocomplete="on"><br>
 			<span>Etternavn*:</span><br>
 			<input type="text" class="boxinputs" id="etternavn" tabindex="2" name="etternavn" title="Fyll inn etternavn" autocomplete="on"><br>
 			<span>E-post*:</span><br>
@@ -131,14 +142,10 @@ $(document).ready(function() {
 			<input type="button" class="test" tabindex="6"  value="Glemt passord" title="Glemt passord" onclick="showGp()">
 		</fieldset>
 	</form>
-				<?php
+			<?php //Statusmeldinger
 				if (isset($_POST['register']) && empty($errors) === false || isset($_POST['sendnypw']) && empty($errors) === false) {
 				?><?php echo output_errors($errors);?>
 			<?php } ?>        
 </div> 
-<script type="text/javascript">
-
-</script> 
-
 
 

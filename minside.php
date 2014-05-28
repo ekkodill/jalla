@@ -58,11 +58,10 @@ if(empty($_POST['besvarform'])) {
  	});
 
 
-    </script>
-        <div id="page">     
+    </script>    
         <section>    
 		<input type='button' id='hideshowbesvart' value='Liste over besvarte oppgaver'><input type='button' id='hideshowoppg' value='Oppgaveliste'>
-			<div style="height:100%" id="besvartoppgliste" >
+			<div  id="besvartoppgliste" >
 	          <?php 
 	            if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
 	                echo "<legend>Ingen registrerte besvarelser</legend>"; 
@@ -141,7 +140,6 @@ if(empty($_POST['besvarform'])) {
 					</div><!--Slutt på div for oppgaveliste -->  
 				<br class="clear" />
 			</section>
-        </div>
  <script type="text/javascript">
 	var button = document.getElementById('hideshowoppg'); //Knapp for å skjule oppgaveliste\vise besvartliste 
 	var button2 = document.getElementById('hideshowbesvart'); //Knapp for å skjule besvartliste\vise oppgaveliste

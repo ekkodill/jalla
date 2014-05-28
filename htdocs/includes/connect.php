@@ -1,0 +1,16 @@
+<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 02.03.2014
+Denne siden er kontrollert av kurt siste gang 02.03.2014  !-->
+
+<?php
+//Funksjon som returnerer en databasetilkobling
+function getDB() {
+		$db = new mysqli("158.36.31.5", "touch_db", "touch_pw", "touch2014", "3306");
+
+			if (mysqli_connect_errno()) {
+		    die("Kan ikke koble til databasen: %s\n" . mysqli_connect_error());
+		}	return $db;
+}
+
+
+
+?>
