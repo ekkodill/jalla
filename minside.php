@@ -24,6 +24,13 @@ if(empty($_POST['besvarform'])) {
     <?php 
     $pgName = 'Min side';
     include 'design/head.php'; ?>
+    <style type="text/css">
+.msoppli {
+	overflow: auto;
+	height:75%;
+	padding-bottom: 80px ;
+}
+    </style>
     <body onunload="unloadP('minside')" onload="loadP('minside')" id="sidenmin">
     <?php include 'design/header.php'; ?>
     <script type="text/javascript">
@@ -133,7 +140,7 @@ if(empty($_POST['besvarform'])) {
 			              	echo "<legend>Ingen påbegynte oppgaver</legend>";
 			             } 
 			             else {
-			               	echo  " <div style='height: 100%; overflow: auto;'><table ><tbody>";
+			               	echo  " <div class='msoppli'><table ><tbody>";
 			                include_once("ubesvartliste.php");
 			                echo "</tbody></table><div>";
 			              } ?>
@@ -161,9 +168,6 @@ if(empty($_POST['besvarform'])) {
 			  document.getElementById('oppgaveliste').style.display = 'none';    
 			   document.getElementById('besvartoppgliste').style.display = 'block';
 		};
-
-
-
 </script>
         <?php include('design/footer.php'); ?>
     </body>

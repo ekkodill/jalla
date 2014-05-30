@@ -11,22 +11,24 @@ include 'design/head.php';
  <style type="text/css">
 
 /*Sjekkmerke og styling for systemkravene*/
- li { 
-    background:url(img/check.png) no-repeat 0 50%; 
-    padding-left: 2%;
+.midtfelt li { 
+    background: white url(img/check.png) no-repeat 0 100%; 
+    padding-left: 30px;
     list-style-position:inside;
     list-style-type: none;
-
  }
- ul {
+.midtfelt ul {
     margin-top:5px;
-    padding:0px;
+    padding:0;
  }
+
+
+
 /***************************/
 
 /*Plassering av bildet*/
  .bilde {
-    padding-right: 15%;
+    padding-right: 10%;
  }
  </style>
 <body onunload="unloadP('hovedside');" onload="loadP('hovedside');">

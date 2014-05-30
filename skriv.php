@@ -42,7 +42,6 @@ if (!empty($_POST)) {
 } else {
 $otittel = "";
 $otekst = "";
-//$lagrettext = "";
 }
 
 
@@ -78,17 +77,32 @@ include_once 'design/head.php';
 <script type="text/javascript" src='js/tastatur.js'></script>
 <script type="text/javascript"  src='js/stoppeklokke.js'></script>
 <script type="text/javascript"  src='js/compareStrings.js'></script>
+
 <?php
-print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='window.scrollTo(0,$y); show(); loadStyle();'>";
- include_once 'design/header.php'; 
+echo "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" onLoad='window.scrollTo(0,$y); show(); loadStyle();'>";
+include_once 'design/header.php';
+
+//Fjerner bildet dersom man har valgt en påbegynt oppgave
+if(!empty($lagrettext)) {
+    echo "<script type='text/javascript'>
+    $( document ).ready(function() {
+        $('#opgtekst').css('background-image', 'none');
+    });
+</script>";
+}
 ?>
 <br class="clear" />
-            <div class="kontrollmeny" style="background:green;" id="kontrollmeny">
-                <!--Elementer på venstre side som viser tid brukt, antall feil og feilprosent når man lagrer\leverer oppgaven-->
+            <div class="kontrollmeny" id="kontrollmeny">
+                <!--Kontroll meny på venstre side for å lagre\levere eller skjule tasatur-->
                 <div class="bfleft">          
                     <div class="valgmuligheter">             
                             <form action="add_besvarelse.php" method="POST">
-                              <h5 style="margin-top:5%;">Tid brukt<div><span name="tid" id="time"></span></div></h5>
+                                <h5 id="tidbrukt">Tid brukt
+                                <?php
+                                if(empty($otekst)) { 
+                                    echo "<input type='button' id='resetknapp' value='reset' onclick='nullstill();'/>";
+                                } ?></h5>
+                                <div id="tidsur"><span name="tid" id="time"></span></div>
                                 <input type="button" class="buttonStyle2" onclick="setStyle('container');" value="Skjul\vis tastatur" title="Trykk for å skjule eller vise tastaturet" /><br>
                                 <input name="fullfor" id="innlevering" class="buttonStyle2" type="submit" onclick="transfer();stop();" value="Lever oppgave" title="Trykk for endelig innlevering av besvarelse" /><br>         
                                 <input name="lagreoppg" id="lagring" class="buttonStyle2" type="submit" onclick="transfer();stop();" value="Lagre\fortsett senere" title="Trykk for å lagre besvarelsen, og fortsett senere" /><br>
@@ -107,24 +121,36 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
 
             <!--Midtseksjon med textarea for å utføre oppgaven-->
                 <div class="opgtextramme">
-                        <textarea name='inntext' id='opgtekst' style="background-image: url('img/skrivesteps.png');" onfocus="start();this.style.backgroundImage='';" onblur="stop();this.style.backgroundImage='url(img/skrivesteps.png)';"><?php echo $lagrettext  ?></textarea>
+                        <textarea name='inntext' id='opgtekst' onfocus="start();" onblur="stop();"><?php echo $lagrettext  ?></textarea>
                     </form> <!--Slutt på form for å legge til besvarelse-->
                     <div class="info" id="infoboks"><!--Div for statusmeldinger som kommer på "skjermen"-->
                         <?php 
                                 //Statusmeldinger om oppgaven blir lagret/levert eller det oppstår feil.
                                 if(isset($_GET['lagret'])) {
-                                    echo "<p class='okmsgcolor'>Oppgaven ble lagret</p><p>Tid brukt: ".$otid.
-                                            "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%</p>";
-                                           echo "<script type='text/javascript'>visInfo();</script>";
+                                    echo "<div class='txt'><p>Oppgaven ble lagret<br>Tid brukt: ".$otid.
+                                                "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%</p></div>";
+                                    echo "<script type='text/javascript'>
+                                           $( document ).ready(function() {
+                                                visInfo();
+                                            });
+                                        </script>";
                                 } elseif(isset($_GET['innlevert'])) {
-                                        echo "<p class='okmsgcolor'>Oppgaven ble levert<br><p>Tid brukt: ".$otid.
-                                                "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%</p>";
-                                                echo "<script type='text/javascript'>visInfo();</script>";
+                                   echo "<div class='txt'><p>Oppgaven ble levert<br>Tid brukt: ".$otid.
+                                                "<br>Antall feil: ".$ofeil. "<br> Prosent rett: ".$oprosent."%</p></div>";
+                                    echo "<script type='text/javascript'>
+                                           $( document ).ready(function() {
+                                                visInfo();
+                                            });
+                                        </script>";
                                     } elseif(isset($_GET['error'])) {
-                                        echo "<p class='errormsgcolor'>System error:</p><p>Det oppstod en feil. Kunne ikke lagre.</p>";
-                                        echo "<script type='text/javascript'>visInfo();</script>";
+                                        echo "<div class='txt'><span class='errormsgcolor'>System error:<br>Det oppstod en feil. Kunne ikke lagre.</span></div>";
+                                        echo "<script type='text/javascript'>
+                                           $( document ).ready(function() {
+                                                visInfo();
+                                            });
+                                            </script>";
                                     }
-                        ?> 
+                        ?>
                     </div><!--Slutt på div for statusmeldinger-->
                 </div> <!--Slutt på div midtseksjon-->
 
@@ -139,7 +165,7 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                 </form>
 
                 <div class="ubesform">
-                    <table >         
+                    <table>         
                         <tbody>
                             <?php 
                             //Inkludrer riktig liste med ubesvarte\påbegynte oppgaver for riktig bruker
@@ -161,8 +187,8 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                             ?> 
                         <tbody>
                     </table>
-            </div> <!--Slutt på div oppgaveliste-->
-        </div> <!--Slutt på div liste, nedtrekksmeny og søkeboks-->
+                </div> <!--Slutt på div oppgaveliste-->
+            </div> <!--Slutt på div liste, nedtrekksmeny og søkeboks-->
 
         <!--Tastaturet-->
             <div id="container">
@@ -234,8 +260,8 @@ print "<body id='skriv' onScroll=\"document.cookie='y=' + window.pageYOffset\" o
                     </ul>
                 </div> <!--Slutt på div container for tastatur-->
                 <br class="clear" />
+
             </section>
         <?php include_once('design/footer.php'); ?>
-
     </body>
 </html>

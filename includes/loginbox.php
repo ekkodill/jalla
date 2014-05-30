@@ -5,6 +5,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014  !-->
 //Sjekker at eposten finnes i systemet og sender brukeren videre til en informasjonsside om det stemmer.
 if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 	unset($errors);
+	
 	if (user_exists($_POST['nyttpw']) === false) {
 		$_SESSION['style'] = 'block';
 		$errors[] = 'Fant ikke følgene e-postadresse: '. $_POST['nyttpw'];
@@ -14,9 +15,8 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 		$epost = sanitize($_POST['nyttpw']);
 		glemtPW($epost);
 	}
-}
-
-
+} 
+/*
 //Sjekker at ikke noen felt er tomme 
 if(isset($_POST['register'])) {
 	unset($errors);
@@ -37,13 +37,14 @@ if(isset($_POST['register'])) {
 				if (addUser($ePost, $etternavn, $fornavn, $passord, $brukertype)) {
 					sendMail($ePost, $gen_pw);
 					$errors[] = "Brukeren ble opprettet.";
+					header("location:default.php");
 				} else { $errors[]  = "Det oppstod en feil og brukeren kunne ikke opprettes"; }
 			} else { $errors[]  = "Alle boksene må fylles ut"; }
 		} else { $errors[]  = "Eposten er registrert fra før"; }
 	} else { $errors[]  = "Alle boksene må fylles ut"; }
 } else { $errors[] = "Det oppstod en feil, prøv på nytt"; }
 }
-
+*/
 ?>
 <script type="text/javascript">
 
@@ -65,6 +66,7 @@ function skjul() {
 	document.getElementById("registrer").style.display= localStorage.form3style;
     document.getElementById("glemtpassord").style.display=localStorage.form1style;
     document.getElementById("loginform").style.display=localStorage.form2style;
+    document.getElementById("brukernavn").focus();
 }
 
 //Setter localstorage og skjuler \ viser element for registrering
@@ -107,9 +109,9 @@ $(document).ready(function() {
 			<input type="text" class="boxinputs" id="brukernavn" tabindex="1" name="brukernavn" title="Fyll ut brukernavn" autofocus autocomplete="off"><br>
 			<span>Passord:</span><br>
 			<input type="password" class="boxinputs"  tabindex="2" name="passord" title="Fyll ut passord" autocomplete="off"><br>
-			<input type="submit" class="test"  tabindex="3" value="Logg inn" title="Logg inn" ><br>
-			<input type="button" class="test"  tabindex="4"  value="Glemt passord" title="Glemt passord" onclick="showGp()">
-			<input type="button" class="test" id="reg" tabindex="5"  value="Registrer" title="registrer" onclick="showReg()">
+			<input type="submit" class="loginboxknapper"  tabindex="3" value="Logg inn" title="Logg inn" ><br>
+			<input type="button" class="loginboxknapper"  tabindex="4"  value="Glemt passord" title="Glemt passord" onclick="showGp()">
+			<input type="button" class="loginboxknapper" id="reg" tabindex="5"  value="Registrer" title="registrer" onclick="showReg()">
 		</fieldset>
 	</form>
 	<?php?>	
@@ -119,14 +121,14 @@ $(document).ready(function() {
 			<h2>Glemt passord</h2>
 			<span>E-post:</span><br>
 			<input type="text" class="boxinputs" id="glemtpw" name="nyttpw" tabindex="5" title="Fyll ut e-post adresse"  autocomplete="off"><br>
-			<input type="submit" name="sendnypw" class="test" tabindex="6" value="Send passord" title="Send nytt passord">
-			<input type="button" class="test" tabindex="7"  value="Skjul" title="skjul glemt passordd" onclick="skjul()">
+			<input type="submit" name="sendnypw" class="loginboxknapper" tabindex="6" value="Send passord" title="Send nytt passord">
+			<input type="button" class="loginboxknapper" tabindex="7"  value="Skjul" title="skjul glemt passordd" onclick="skjul()">
 			<br>
 
 		</fieldset>
 	</form>
 	<!--Element for registrering -->
-		<form id="registrer" method="post" action="" style="display:none;">
+		<form id="registrer" method="post" action="registrer.php" style="display:none;">
 		<fieldset>
 			<h2>Registrering</h2>
 			<span>Fornavn*:</span><br>
@@ -137,13 +139,13 @@ $(document).ready(function() {
 			<input type="text" class="boxinputs" id="epostad" tabindex="3" name="ePost" title="Fyll inn epost" autocomplete="on"><br>
 			<input type="text" hidden  placeholder="La dette feltet være blankt" name="bothoneypot" alt="La dette feltet være blankt"/>
 			<p>*Må fylles ut</p>
-			<input type="submit" class="test" name="register" tabindex="4" value="Registrer" title="registrer"><br>
-			<input type="button" class="test"tabindex="5" value="Logg inn" title="Logg inn" onclick="showLogin()" >
-			<input type="button" class="test" tabindex="6"  value="Glemt passord" title="Glemt passord" onclick="showGp()">
+			<input type="submit" class="loginboxknapper" name="register" tabindex="4" value="Registrer" title="registrer"><br>
+			<input type="button" class="loginboxknapper"tabindex="5" value="Logg inn" title="Logg inn" onclick="showLogin()" >
+			<input type="button" class="loginboxknapper" tabindex="6"  value="Glemt passord" title="Glemt passord" onclick="showGp()">
 		</fieldset>
 	</form>
-			<?php //Statusmeldinger
-				if (isset($_POST['register']) && empty($errors) === false || isset($_POST['sendnypw']) && empty($errors) === false) {
+			<?php //Statusmeldinger for glemt epost
+				if (isset($_POST['sendnypw']) && empty($errors) === false) {
 				?><?php echo output_errors($errors);?>
 			<?php } ?>        
 </div> 

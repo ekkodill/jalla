@@ -84,7 +84,7 @@ td, th, table {
 }
 
 
-#deltakercss input, #deltakercss table, #deltakercss td {
+#deltakercss input, #deltakercss table {
 	outline: 0;
 	background: transparent;
 	border: none;

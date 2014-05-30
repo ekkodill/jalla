@@ -58,15 +58,32 @@ table {
     margin-bottom: 10px;
     border-collapse: collapse;
     border-color:#5B5B5B ;
+
 }
 
+td {
+    padding:0;
+    margin: 0;
+    vertical-align: text-top;
+}
 th {
+    min-width:90px;
     background: #5B5B5B;
     color: white;
     text-align: left;
+    vertical-align: left;
     border-color:#5B5B5B ;
 }
 
+/*Lager mellomrom mellom oppgavetekst og besvarelsen*/
+tr.spaceing > td {
+    padding-bottom:4%;
+    display: hidden;
+    border-left:0;
+    border-right:0;
+    border-top:0;
+    border-bottom:1;
+}
 
 </style>
 <link href="css/print.css" media="print" rel="stylesheet" type="text/css">
@@ -74,7 +91,7 @@ th {
 <?php include 'design/header.php';  ?>
         <section>
         <!--Table som viser data om besvarelsen-->
-        <h3 class="proinffo">Utskriftsvennelig resultat</h3><br>
+        <h3 class="proinffo">Resultatside med sammenligning</h3><br>
             <table class="printtable">
             	<thead>
             		<th>Tid brukt</th>
@@ -91,41 +108,54 @@ th {
             			</tr>	
             		</tbody>
             </table>
+            <div class="printcss">
                 <?php if($respons == "Ingen respons enda") {
                 	echo "Ingen respons registrert på denne innleveringen";
                 } else {
 
                  ?>
-            <!--Table som viser data om besvarelsen-->
-            <table class="printtable">
-            	
-            		<tbody>
-                    <th>Respons</th>
-            			<tr>
-            				<td><?php echo $respons ?></td>
-            			</tr>	
-            		</tbody>
-            </table>
-                <?php 
-                }
-                 ?>
-            <div id="wrapper">
-            <!--Table som viser tittel, original oppgavetekst og besvarelsen markert med feil-->
-            	<table class="printtable">
-            	   <thead>
-                        <th>Tittel:</th>
-                        <th><?php echo $otittel; ?></th>
-                    </thead>
-            		<tbody>
-            			<tr><td>Original tekst</td><td><?php echo $otekst; ?></td></tr>
-                        <tr>
-                            <td class="original" hidden><?php echo $otekst; ?></td>
-                            <td class="changed" hidden><?php echo $innlevertTekst; ?></td>
-                            <td>Innlevert tekst</td><td class="diff"></td>
-                        </tr>
-                    </tbody>
-            	</table>
+                <!--Table som viser respons-->
+                <table class="printtable">
+                		<tbody>
+                        <th>Respons</th>
+                			<tr>
+                				<td><?php echo $respons ?></td>
+                			</tr>	
+                		</tbody>
+                </table>
+                    <?php 
+                    }
+                     ?>
             </div>
+            <div class="printcss">
+                <div id="wrapper">
+                <!--Table som viser tittel, original oppgavetekst og besvarelsen markert med feil-->
+                	<table class="printtable">
+                	   <thead>
+                            <th class="printfont">Tittel:</th>
+                            <th ><?php echo $otittel; ?></th>
+                        </thead>
+                		<tbody>
+                			<tr><td class="printfont"><b>Original tekst:</b></td><td><?php echo $otekst; ?></td></tr>
+                            <tr class="spaceing"><td></td><td></td></tr>
+                            <tr>
+                                <td class="original" hidden><?php echo $otekst; ?></td>
+                                <td class="changed" hidden><?php echo $innlevertTekst; ?></td>
+                                <td class="printfont"><b>Innlevert tekst:</b></td><td class="diff"></td>
+                            </tr>
+                        </tbody>
+                	</table>
+                </div>
+            </div>
+            <div class="printcss">
+            <?php 
+            //Viser forklaring for fargekodene dersom det er feil i besvarelsen
+            if($antFeil != 0) { ?>
+                <p><span class="printfont"><b>Fargekoder:</b></span><br>
+                <span style="background:#c6ffc6">Grønn er karakterer som var glemt, og satt inn av maskinen da de skulle vært med.</span><br>
+                <span style="background:#ffc6c6"><u>Rød og understrek er karakterer som ikke skulle vært med.</u></span></p>
+            <?php } ?>
+            </div><br>
             <a href="minside.php">Gå tilbake</a>
             <br class="clear" />
         </section> 

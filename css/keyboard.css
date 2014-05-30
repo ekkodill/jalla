@@ -1,8 +1,9 @@
-
 /*
-Denne siden er utviklet av Erik Bjørnflaten siste gang endret 13.04.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014 
+Denne siden er utviklet av Erik Bjørnflaten siste gang endret 29.05.2014
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 31.05.2014 
 */
+
+
 #container {
     float:right;
     width: 550px;
@@ -44,7 +45,6 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
     text-align: center;
     background: #fff;
 
-
     /*Runde kanter og skygge*/
     -webkit-border-radius: 10%;
     -moz-border-radius: 10%;
@@ -56,6 +56,7 @@ Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
     -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 1);
 }
+
 /*---- taster med flere tegn ----*/ 
 .on {
     font: 80% Verdana, Sans-Serif;
@@ -180,14 +181,13 @@ border-left:1px solid #999;
     border-bottom:1px solid #999;
     border-left:1px solid #999;
     margin-left:0.1%;
-    margin-top:0.1%;
+    margin-top:0.2%;
 }   
 
 #keyboard .white {
     text-align:top;
     width:5%;
-    margin-top:0.1%;
-    z-index: 1;
+    margin-top:0.2%;
     position:relative;
     right:3%;
     height:600%;
@@ -204,8 +204,8 @@ border-left:1px solid #999;
 }
 
 #keyboard .under{
-        padding-right:5%;
-    }
+    padding-right:5%;
+}
 
 /*---- lastitem er for noen av tastene i enden av rekken ----*/ 
 .lastitem {
@@ -213,8 +213,6 @@ margin-right: 0%;
 }
 
 
-
-/* ---- Innholdet på brukerforsiden ---- */
 
 
 /*For plassering av elementer på venstre side på skriv.php*/
@@ -240,23 +238,24 @@ margin-right: 0%;
 
 /*For tabell \ liste med ubesvarte oppgaver på skriv.php*/
 .uboliste2 {
-    height:100%;
+    height:72%;
     width:20%;
     margin-left:-2%;
     margin-top:-1%;
-    height: 20%;
     position: absolute;
 }
 
 .ubesform{
-    height: 100%;
+    height:83%;
     width:100%;
     font-size:0.9em;
-    padding-top:0.5%;
     overflow: auto;
 }
 
-
+/*Gir nok plass til ikoner i oppgavelisten*/
+.ubesform td {
+    min-width: 60px;
+}
 
 
 
@@ -308,11 +307,13 @@ margin-right: 0%;
     float:left;
     position: relative;
     z-index: 0;
-    
+    background: url('../img/steps.png') no-repeat;
+    background-color: white;
+    background-position: absolute;
+    background-size: 100%;
 }
 
 #opgtekst:focus {
-    background: white;
     background-image: none;
 }
 
@@ -326,41 +327,58 @@ margin-right: 0%;
     float:right;
     border:1px solid #000;
     background-color:#5B5B5B;
-
 }
 
 
-/*Fieldset for melding om lagret\innlevert på skriv.php*/
-.msg {
-    border: 1px solid #00a855;
-    color: #00a855;
-}
 
-/*Meldingsboks med informasjon om utført\lagret oppgave*/
+/*Meldingsboks med informasjon om error\utført\lagret oppgave*/
 .info {
-    width: 96%;
-    height: 92%;
-    margin-left:2%;
-    margin-top:2%;
-    padding: 5px ;
-    margin-top:2%;
-    margin-bottom:6%;
-    float:left;
-    position: fixed;
-    z-index: -1;
+  z-index: -1;
+  width: 100%; 
+  height: 100%; 
+  position: relative;
+  top:0;
+  left:0;
 }
+
+/*Midtstiller statusmelding i skjermen*/
+.txt {
+  position: absolute; 
+  width: 100%; 
+  height: 100%; 
+  display: table;
+}
+
+.txt p, .txt span {
+  font-size:1.5em;
+  display: table-cell; 
+  vertical-align: middle; 
+  text-align: center;
+}
+/************************/
+
+/*Setter farge på teksta for levert og lagret statusmelding*/
+.txt p {
+  color:green;
+}
+
+
+
+
 
 /*Meny for knapper som lagre, innlever og skjul\vis tastatur*/
 .kontrollmeny {
+    min-width: 120px;
     width:9%;
     height:auto;
     position: fixed;
-    z-index:100;
+    z-index:0;
     padding:1% 1% 1% 1%;
     margin-left:0.6%;
     margin-top:250px; 
     border-radius:5%;
     border: 3px solid #000;
+    background: #fff;
 }
 
 .menyskrift {
@@ -369,4 +387,96 @@ margin-right: 0%;
     margin-bottom:5px;
     margin-right:0px;
     padding-right:0px;
+}
+
+#resetknapp {
+    margin-left: 5%;
+    color:#fff;
+    background-color:#5B5B5B;
+    border:1px solid #000;
+    -webkit-border-radius: 15%;
+    -moz-border-radius: 15%;
+    border-radius: 15%;
+    outline: 0;
+}
+#resetknapp:hover {
+     color:#99CCFF;
+}
+
+#tidsur {
+    margin-bottom:5%;
+}
+
+#tidbrukt {
+    margin:0;
+    padding:0;
+}
+
+/*Spesial styling til tastaturet for vindu\skjerm med max 1366 pixler i bredden*/
+@media screen and (max-width: 1366px) {
+#container {
+    width: 450px;
+    margin-right: 4%;
+    height: 24.5%;
+    padding-bottom:-20%;
+    }
+#keyboard li {
+    width: 4.5%;
+    height: 600%;
+    line-height: 280%;
+}
+
+#keyboard .return {
+    width:6.5%;
+    height:1380%;
+    margin-top: -6.2%;
+    margin-right: 1%;
+}
+
+
+#keyboard .ctrlr {
+    width: 7.6%;
+    font-size:65%;
+    margin-left:7%;
+    }
+}  
+
+
+/*Spesial styling til tastaturet for vindu\skjerm mellom 1400 og 1900 pixler i bredden*/
+@media screen and (min-width: 1400px) and (max-width: 1900px) {
+#container {
+    width: 550px;
+    margin-right: 5%;
+    margin-left: auto;
+    height: 27.5%;
+    }
+
+#keyboard {
+    float:both;
+    margin-left:-3%;
+    margin-top:2%;
+    list-style: none;
+    width:100%;
+    height:2%;
+}
+
+#keyboard li {
+    width: 4.5%;
+    height: 600%;
+    line-height: 280%;
+}
+
+#keyboard .return {
+    width:6.5%;
+    height:1380%;
+    margin-top: -6.2%;
+    margin-right: 1%;
+}
+
+
+#keyboard .ctrlr {
+    width: 7.6%;
+    font-size:65%;
+    margin-left:7%;
+    }
 }

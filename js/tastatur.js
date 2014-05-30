@@ -1,6 +1,15 @@
 ﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 27.04.2014
 // Denne siden er kontrollert av Mikael Kolstad, siste gang 29.04.2014
 
+
+//Infoboks for data om besvarelse
+function visInfo() {
+    $("#opgtekst").css("background-image", "none");
+    $("#infoboks").css("z-index", "1"); //Flyter boksen med statusmelingen på samme nivå som skjermen.
+    $("#infoboks").css("display", "block");
+}
+
+
 //Setter stilen til tastaturet i localstorage
 function setStyle(id) {
     var keyboard = document.getElementById(id).style.display;
@@ -22,13 +31,7 @@ function loadStyle() {
    }
 }
 
-//Infoboks for data om besvarelse
-function visInfo() { 
-    var infoboks = document.getElementById("infoboks");
-    $(infoboks).css("z-index", "1"); //Flyter boksen med statusmelingen på samme nivå som skjermen.
-    $("#opgtekst").css("background-image", ""); //Fjerner bakgrunnsbildet i skjermen
-    infoboks.style.display = 'block'; //Viser statusmelding for oppgaven
-}
+
 
 
 //Variabel for capslock on\off. 0 = off

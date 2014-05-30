@@ -7,7 +7,7 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
 	<script type="text/javascript" src="js/vis_brukere.js"></script> 
 	<link href="css/Design.css" 	rel="stylesheet" type="text/css">
 	<link href="css/vis_brukere.css"rel="stylesheet" type="text/css">
-	<link href='css/keyboard.css'	rel='stylesheet' type='text/css' />  
+	<link href='css/keyboard.css'	rel='stylesheet' type='text/css'/>  
 	<link href="css/ny_oppgave.css" 	rel="stylesheet" type="text/css">
 	<link href="css/modal.css" 	rel="stylesheet" type="text/css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>

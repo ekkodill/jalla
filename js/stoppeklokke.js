@@ -83,7 +83,7 @@ function stop() {
   clearInterval(clocktimer);
 }
 
-function reset() {
+function nullstill() {
   stop();
   x.reset();
   update();

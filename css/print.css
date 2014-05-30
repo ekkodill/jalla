@@ -1,8 +1,24 @@
 /*
-Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 27.04.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014 
+Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 15.05.2014
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.05.2014 
 */
+span, p {
+	font-size:0.9em;
+}
 
+* {  
+    margin: 0;  
+    padding: 0 auto;  
+}
+
+.printfont {
+	font-weight:bold;
+	font-family: "Arial Black", Arial, sans-serif;
+}
+
+.printcss {
+	margin-top:40px;
+}
 
 header, nav, footer, aside, article, figure {
 display: none;
@@ -12,10 +28,11 @@ body, html {
   height: 100%; 
   width: 793px;
 }
+
 body {
 	display: table; 
-	 -webkit-print-color-adjust: exact;
-	 background: white;
+	-webkit-print-color-adjust: exact;
+	background: white;
 }
 
 
@@ -36,9 +53,11 @@ font-size:0.9em;
 }
 
 table {
+	padding: 0;
+	margin: 0;
 	padding-left: 0;
 	margin-left: 0px;
-	width: 700px;
+	width: 700px;	
 }
 
 
@@ -48,6 +67,7 @@ td, th, table {
 	background: white;
 	border-collapse:collapse;
   	text-align:left;
+  	vertical-align: left;
 }
 
 
@@ -55,6 +75,9 @@ td, th, table {
 th {
 	color:black;
 	padding: .5em .5em;
+	min-width:120px;
+	font-weight:bold;
+	font-family: "Arial Black", Arial, sans-serif;
 }
 
 a {
