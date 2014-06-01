@@ -1,6 +1,6 @@
 <?php
 //Denne siden er laget av Kurt A. Amodt., siste gang endret 30.04.2014
-//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 04.05.2014
 //Koden er hentet fra internett, url: http://techmalt.com/?p=333
 
 class MyTXT {

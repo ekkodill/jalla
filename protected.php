@@ -1,6 +1,6 @@
 <?php include_once 'includes/init.php'; ?>
 <!--Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 03.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 03.03.2014  !-->
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014  !-->
 
  <!--************************************************************************************************-->
  <!--Denne siden er for å stoppe brukere som ikke er innlogget i å få tilgang til sider de ikke skal-->

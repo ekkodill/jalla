@@ -1,5 +1,5 @@
-<!--Denne siden er utviklet av Kurt A. Aamodt (PHP og JS) og Erik Bjørnflaten (HTML)., siste gang endret 04.05.2014
-Denne siden er kontrollert av Mikael kolstad siste gang 04.05.2014 !-->
+<!--Denne siden er utviklet av Kurt A. Aamodt (PHP og JS) og Erik Bjørnflaten (HTML)., siste gang endret 10.05.2014
+Denne siden er kontrollert av Mikael kolstad siste gang 31.05.2014 !-->
 <?php
 include_once 'includes/init.php';
 protected_page();

@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av  Erik Bjørnflaten (html\css) og Kurt A. Aamodt (php)., siste gang endret 14.05.2014
-Denne siden er kontrollert av Dag-Roger Eriksen siste gang 14.05.2014 !-->
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 29.05.2014 !-->
 <?php include_once 'includes/init.php';
 protected_page();
 $db = getDB();
@@ -19,7 +19,6 @@ if(!empty($_POST['updateinfo'])) {
     } else if($_POST['password'] === $_POST['passwordcheck']) {
                 $epost = $user_data['ePost'];
                 endrePW($nyttpassord, $epost);
-                
                 } else {
                       $errors[] = 'De nye passordene er ikke like';
                     }
@@ -28,13 +27,13 @@ if(!empty($_POST['updateinfo'])) {
           } 
   }
 
-
+  //Sjekker at feltene er satt og at epost ikke finnes fra før
   if(isset($_POST['upfnavn'],$_POST['upenavn'], $_POST['upepost'])) {
     if($user_data['ePost'] == $_POST['upepost'] ||  $user_data['ePost'] != $_POST['upepost'] && user_exists($_POST['upepost']) == false) {
-  $brukerPK = $user_data['brukerPK'];
-  $fnavn = sanitize(trim($_POST['upfnavn']));
-  $enavn = sanitize(trim($_POST['upenavn']));
-  $epost = sanitize(trim($_POST['upepost']));
+    $brukerPK = $user_data['brukerPK'];
+    $fnavn = sanitize(trim($_POST['upfnavn']));
+    $enavn = sanitize(trim($_POST['upenavn']));
+    $epost = sanitize(trim($_POST['upepost']));
 
 
       //Sjekker om fornavn, etternavn eller epost i inputfeltet er forskjellig fra det brukeren har etter innlogging, dersom det er forskjellig settes en variabel for oppdateringen

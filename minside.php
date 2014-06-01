@@ -25,6 +25,7 @@ if(empty($_POST['besvarform'])) {
     $pgName = 'Min side';
     include 'design/head.php'; ?>
     <style type="text/css">
+/*Justeringer for ubesvart oppgliste*/    
 .msoppli {
 	overflow: auto;
 	height:75%;
@@ -66,9 +67,11 @@ if(empty($_POST['besvarform'])) {
 
 
     </script>    
-        <section>    
+        <section>  
+        <!--Knapper for å velge hvilken liste man vil se-->     
 		<input type='button' id='hideshowbesvart' value='Liste over besvarte oppgaver'><input type='button' id='hideshowoppg' value='Oppgaveliste'>
-			<div  id="besvartoppgliste" >
+			<!--Div med liste for besvarte oppgaver -->  
+			<div  id="besvartoppgliste" > 
 	          <?php 
 	            if(!count(sjekkAntall("innleveringer WHERE ferdig = 1 AND bruker =".$bPK))) {
 	                echo "<legend>Ingen registrerte besvarelser</legend>"; 
@@ -103,8 +106,9 @@ if(empty($_POST['besvarform'])) {
 	            } 
 	              
 	              ?>
-			</div><!--Slutt på div for besvartoppggliste -->   
-				<div id='oppgaveliste'  style="display:none;height:100%">
+			</div><!--Slutt på div for besvartoppggliste -->
+				<!--Div for liste med ubesvarte oppgaver -->   
+				<div id='oppgaveliste'  style="display:none;height:100%">   
 				<h3>Oppgaveliste med ubesvarte oppgaver</h3>	
 			 	<?php 
 		          	  //Sjekker at brukertypen er deltaker og om deltakeren har ubesvarte oppgaver

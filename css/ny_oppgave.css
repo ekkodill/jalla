@@ -1,10 +1,7 @@
 /*
 Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 17.03.2014
-Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 29.05.2014 
 */
-
-
-/* CSS Document */
 
 
 /*Liste på ny_oppgave med oppgaver*/
@@ -19,28 +16,16 @@ Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014
 
 
 
-#nyOppgave{
-	float:left;
-	width:22%;
-	height:100%;
-	margin-left:1%;
-	margin-right:2%;
-	margin-top:1%;
-}
-
+/*Inputfelt for oppgavetittel*/
 #oppgtitt{
 	width:40%;
 	margin-top:1%;
 	margin-right:30%;
 }
 
+/*Textarea for ny oppgave*/
 #oppgtext{
-    width:98%;
-    height:30%; 
+    width:60%;
+    height:20%; 
 	margin-right:1%;
-}
-
-#publiser{
-	float:left;
-	margin-left:1%;
 }

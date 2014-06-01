@@ -1,6 +1,6 @@
 <?php 
 //Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 19.04.2014
-//Denne siden er kontrollert av Mikael Kolstad siste gang 28.04.2014 
+//Denne siden er kontrollert av Mikael Kolstad siste gang 31.05.2014 
 
 ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
 protected_page();
@@ -42,7 +42,8 @@ while ($row = $result->fetch_assoc()) {
       echo $row['tittelOppgave']." laget av ".$veileder ." | ".$vanskelighetsgrad;
     }
     echo "</td>";
-    echo "<td><a href='#ubesoppg".$PK."'><img src='img/open.png' class='visoppgave' alt='Vis oppgaven' title='Vis oppgaven'></a>"; //Viser oppgaven
+    //Modalvindu viser oppgaven
+    echo "<td><a href='#ubesoppg".$PK."'><img src='img/open.png' class='visoppgave' alt='Vis oppgaven' title='Vis oppgaven'></a>"; 
         echo "<a href='#x' class='overlay' id='ubesoppg".$PK."'></a>
         <div class='popup'>
           <h2>".$tittel."</h2>
@@ -56,6 +57,7 @@ while ($row = $result->fetch_assoc()) {
     if(empty($row['ferdig'])) {
     echo "<input style='background: none; border:none;' type='image' class='velgopg' src='img/edit.jpg' id='s".$PK."' title='Velg oppgave' />";
     }
+    //Sender med data som skal brukes på skriv.php
     echo "<input type='hidden' name='oppgPK' value='".$PK."'/>";
     echo "<input type='hidden' name='tittel' value='".$row['tittelOppgave']."'/>";
     echo "<input type='hidden' name='oppgtxt' value='".$sanitized."'/>";

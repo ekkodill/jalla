@@ -1,4 +1,6 @@
 <?php 
+//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 10.05.2014
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014  !-->
 require_once('includes/init.php');
 
 //Sjekker at ikke noen felt er tomme 

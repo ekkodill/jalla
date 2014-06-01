@@ -1,22 +1,7 @@
 /*
 Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen siste gang endret 30.03.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014 
+Denne siden er kontrollert av Mikael Kolstad siste gang 31.05.2014 
 */
-
-/* CSS Document */
-
-
-
-
-
-#sorterbtn {
-	height:30px;
-	width:104px;
-	margin-left:auto;
-	margin-right:auto;
-	background-color:black;
-	color:white;
-}
 
 table {
 	width:95%;
@@ -29,7 +14,7 @@ td, th, table {
 
 }
 
-		
+/*Styling for headings i tabeller*/		
 .tab1 {
 	padding: 1%;
 	width:25%;
@@ -46,6 +31,7 @@ td, th, table {
 	background:#5B5B5B;
     color:#fff;
 }
+/*************************/
 
 .paakrev{
 	margin-left:25px;
@@ -129,7 +115,7 @@ td, th, table {
 	margin-left:2px;
 	margin-right:2px;
 	border: inset 1px solid #333;
-	}
+}
 		
 .lknapp{
 	display:none;
@@ -146,7 +132,6 @@ td, th, table {
 	height:190px;
 	width:80%;
 	margin-bottom:3%;
-
 }
 
 /*Legg til ny bruker knapp på add_brukere.php*/	
@@ -177,12 +162,12 @@ td, th, table {
 	text-align:center;
 }
 	
-	tbody#liste:before {
-	    line-height:1em;
-	    content:"-";
-	    color:white; /* to hide text */
-	    display:block;
-	}
+tbody#liste:before {
+	line-height:1em;
+	content:"-";
+	color:white; /* to hide text */
+	display:block;
+}
 
 table#myTable {
     /* collapsed, because the bottom shadow on thead tr is hidden otherwise */

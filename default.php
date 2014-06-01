@@ -1,5 +1,5 @@
-<!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 03.03.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 03.03.2014  !-->
+<!--Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 01.05.2014
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.05.2014  !-->
 <?php include 'includes/init.php'; ?>
 
 <!doctype html>
@@ -21,10 +21,8 @@ include 'design/head.php';
     margin-top:5px;
     padding:0;
  }
-
-
-
 /***************************/
+
 
 /*Plassering av bildet*/
  .bilde {
@@ -37,15 +35,14 @@ include 'design/head.php';
           <div class="midtfelt">
             <h2>Velkommen til Touch</h2> 
             <div class="bilde"><img class="bilde"src="img/keyboard.jpg" height="250"  alt="Bli kjappere på tastene." ></div>
-            <p>I denne applikasjonen skal vi trene deg opp, til å øke hastigheten når du skriver på tastaturet.<br>
+            <p>I denne applikasjonen skal vi trene deg opp til å øke hastigheten når du skriver på tastaturet.<br>
             Registrer deg i dag å få nye oppgaver og øve deg på, med respons fra egne veiledere.</p>
             <p> Den optimale måten å lære seg touchmetoden.</p>
             <h3>Bli kjappere på tastene idag!</h3>
             <br>
-
             <h5><i><b>Systemkrav:</b></i></h5>
             <p>For optimal brukeropplevelse kreves følgende utstyr og programvare:</p>
-            Nettlesere:
+            Oppdaterte nettlesere:
             <ul>
                 <li>Firefox</li>
                 <li>Chrome</li>
@@ -61,7 +58,6 @@ include 'design/head.php';
            </ul>
            <br>
           </div> 
-          
         </section>
     <?php include('design/footer.php'); ?>
   </body>

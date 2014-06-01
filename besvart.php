@@ -1,18 +1,22 @@
-<?php ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
+<?php
+//Denne siden er utviklet av Kurt A. Amodt, siste gang endret 25.04.2014
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014
+
+ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
 protected_page();
+
 ?>
-<!--Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
+<!--Tabell med besvarte oppgaver !-->
 <div class="oppliste"><table style="border-collapse: collapse;">
 	     <thead>
 		    <tr>
 		        <th  class='tab2'>Tittel</th>
 		        <th  class='tab2'>Dato levert</th>
 		        <th  class='tab2'>Tid brukt</th>
-            <th  class='tab2'>Antall feil</th>
-            <th  class='tab2'>Vedlegg</th>
-            <th  class='tab2'>Ferdig</th>
-            <th  class='tab2'>Valg</th>
+                <th  class='tab2'>Antall feil</th>
+                <th  class='tab2'>Vedlegg</th>
+                <th  class='tab2'>Ferdig</th>
+                <th  class='tab2'>Valg</th>
 	    	</tr>
 	    </thead>
     <tbody>
@@ -56,6 +60,7 @@ while ($row = $result->fetch_assoc()) {
     echo "<td id='antFeil".$PK."'            name='antFeil'    >"  . $row['antallFeil'].                    "</td>";
     echo "<td id='link".$PK."'    			 name='link'       ><a href='vedlegg/".$row['linkVedlegg']."'>".$row['linkVedlegg']."</a></td>";
     echo "<td id='ferdig".$PK."'             name='ferdig'      >"  . $ferdig.                    "</td>";
+    //Skjulte input felt for å sende med verdier som skal vises på resultatsiden
    	echo "<input type='hidden' name='oppgPK' value=$oppgavePK />";
     echo "<input type='hidden' name='tittel' value='".$row['tittelOppgave']."'/>";
     echo "<input type='hidden' name='oppgtxt' value='".$oppgaveTekst."'/>";

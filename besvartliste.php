@@ -1,15 +1,15 @@
 <?php 
 //Denne siden er utviklet av Kurt A. Amodt., siste gang endret 30.03.2014
-//Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014
 
 include_once 'includes/init.php';
 ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
 protected_page();
 $db = getDB(); 
 
-/******************************************************************************************************************/
-/*******Denne siden brukes til å lage lister med besvarte oppgaver uten respons for veiledere på oppgave.php******/
-/******************************************************************************************************************/
+/**************************************************************************************************************************************************/
+/*******Denne siden brukes til å lage lister med besvarte oppgaver uten respons for veiledere på oppgave.php og lagrer responser til databasen******/
+/****************************************************************************************************************************************************/
 
 //Registrerer ny respons til databasen
 if(!empty($_POST['lagrerespons'])) {
@@ -28,7 +28,7 @@ if(!empty($_POST['lagrerespons'])) {
 }
  
     ?>
-<div class=bliste><table>
+<div class="bliste"><table>
 	     <thead>
 		    <tr>
 		    	<th class='tab2'>Bruker</th>

@@ -1,6 +1,7 @@
+
 <?php
-//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 03.05.2014
-//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014
+//Denne siden er utviklet av Kurt A. Amodt., siste gang endret 03.05.2014 
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014!
 
 ini_set('display_errors', 'Off');
 error_reporting(0);

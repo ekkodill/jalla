@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 30.04.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.04.2014  !-->
+Denne siden er kontrollert av Kurt A. Aamodt siste gang 29.05.2014  !-->
 <?php 
 include_once 'includes/init.php';
 protected_page();

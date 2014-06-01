@@ -1,8 +1,10 @@
 <!--Denne siden er utviklet av Erik Bjørnflaten (html\css) og Mikael Kolstad (JS) Kurt A. Aamodt (php), siste gang endret 29.04.2014
-Denne siden er kontrollert av Dag-Roger Eriksen siste gang 04.05.2014  !-->
-<?php include 'includes/init.php'; 
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 29.05.2014  !-->
+<?php 
+include 'includes/init.php'; 
 ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
 protected_page();
+
 //Får data fra besvart listen til brukeren og setter verdiene i variabler
 if (!empty($_POST)) {
     if(!empty($_POST['tittel']) && !empty($_POST['oppgtxt']) && !empty($_POST['lagrettext'])) {
@@ -53,6 +55,7 @@ del {
 
 }
 
+/*Justeringer for tabellene*/
 table {
     margin-top: 10px;
     margin-bottom: 10px;

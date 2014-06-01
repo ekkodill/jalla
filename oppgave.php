@@ -1,6 +1,6 @@
 <?php
 //Denne siden er utviklet av Kurt A. Aamodt (PHP) og Erik Bjørnflaten (HTML), Mikael Kolstad (JS), siste gang endret 19.04.2014.
-//Denne siden er kontrollert av Dag-Roger Eriksen siste gang 04.05.2014.
+//Denne siden er kontrollert av Dag-Roger Eriksen siste gang 29.05.2014.
 
 include 'includes/init.php';
 protected_page();
@@ -37,7 +37,7 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 			 	} else { $vansklighetsgrad = trim($_POST['vansklighetsgrad']); }
 			}
 		}	
-
+			//Dersom det er med en oppgPK
 			if(isset( $_SESSION['oldopgPK'])) {
 				$pubPK =  $_SESSION['oldopgPK'];
 				$oppgsjekk = hentOppgave($pubPK); //Sjekker om oppgaven finnes i databasen fra før
@@ -45,13 +45,14 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 				$pubPK = "";
 			}
 			
-			$erPublisert = 1;
+			$erPublisert = 1; 
 			$melding = "publisert";
+			//Sjekker om den skal lagres
 			if(isset($_POST['lagre'])) {
 					$erPublisert = 0;
 					$melding = "lagret";
 			}
-			
+				
 				if(!empty($oppgsjekk)) {
 					if(updateOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad, $pubPK)){ //Oppdaterer databasen med ny informasjon
 						header("Location: oppgave.php?".$melding);
@@ -123,7 +124,7 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 					<input class="stored" type="radio" value="3" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 3) { echo 'checked'; }}?>>Vanskelig
 					<input class="stored" type="radio" value="2" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 2) { echo 'checked'; }}?>>Medium
 					<input class="stored" type="radio" value="1" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 1) { echo 'checked'; }}?>>Lett</h5>
-					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" style="height:20%; width:60%"><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
+					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" ><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
 					<input type="submit" class="buttonStyle" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" class="buttonStyle" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen

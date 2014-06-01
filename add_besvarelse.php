@@ -1,6 +1,6 @@
 <?php 
 //Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 04.05.2014
-//Denne siden er kontrollert av Mikael Kolstad siste gang 05.05.2014 
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014 
 
 include_once 'includes/init.php';
 protected_page();
@@ -21,7 +21,6 @@ if(!empty($_POST['lagreoppg']) || !empty($_POST['fullfor'])) {
         $tidBrukt   = date_create_from_format('H:i:s', $tid); //gjør det om til en datetime format objekt
         $mySqlTime  = date('H:i:s', $tidBrukt->getTimestamp()); //gjør datetime objektet om til mysql time format
         $_SESSION['antfeil']  =  $_POST['jsfeil']; //Får antall feil fra JS compareString 
-        //(strlen($_SESSION['oppgtxt']) - similar_text($_SESSION['inntxt'], $_SESSION['oppgtxt'])); //sammenligner original tekst med innlever og regner ut antall feil <- Brukt tidligere
         $antfeil    = $_SESSION['antfeil'];
         $ferdig     = 0; 
         $melding = "lagret";

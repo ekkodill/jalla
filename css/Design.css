@@ -1,9 +1,10 @@
 /*
 Denne siden er utviklet av Erik Bjørnflaten og Dag-Roger Eriksen, siste gang endret 30.04.2014
-Denne siden er kontrollert av Kurt A. Aamodt siste gang 01.05.2014
+Denne siden er kontrollert av Mikael Kolstad siste gang 31.05.2014
 */
 
 
+/*Generell styling for elementer*/
 table {
     border-collapse:collapse;
 }
@@ -89,7 +90,7 @@ color:#09C;
 }
 
 
-
+/*Innloggingsboks*/
 .innloggboksfixed{
 width:9%;
 min-width: 120px;
@@ -230,11 +231,12 @@ max-width: auto;
 /************************/
 
 
+/*Knapper på innloggingsmenyen*/
 .loginboxknapper {
-        margin-top: 5%;
-        margin-bottom: 5%;
-        background: white;
-        color:#5B5B5B;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background: white;
+    color:#5B5B5B;
 }
 
 
@@ -295,58 +297,27 @@ nav {
 }
 
 
-    nav ul {
-        width:100%;
-        list-style-type:none;
-        overflow:hidden;
-        float:left;
-
-
-    }
-    
-    nav li {
-    
-    }   
-    
-    nav a:link, nav a:visited{
-        display:block;
-        width:auto;
-        color:#fff;
-        text-align:left;
-        text-decoration:none;
-        font-size:1em;  
-        font-weight:normal;
-
-    }
-
-    nav a:hover, nav a:active{
-        background-color:#09C;
-    
-    }
-
-    .knappHoyre{
-        margin-top:1%;
-    }
-
-
-/*----Innlogging----*/
-#loginform {
-    width:20%;
-    height:100%;
+nav ul {
+    width:100%;
+    list-style-type:none;
+    overflow:hidden;
+    float:left;
 }
 
-fieldset {
-    border:0;
+ 
+
+nav a:link, nav a:visited{
+    display:block;
+    width:auto;
+    color:#fff;
+    text-align:left;
+    text-decoration:none;
+    font-size:1em;  
+    font-weight:normal;
 }
 
-form h2 {
-    margin:0px;
-    margin-bottom:10px;
-}
-
-form span {
-    display:inline-block;
-    margin-top:10px;    
+nav a:hover, nav a:active{
+    background-color:#09C;
 }
 
 

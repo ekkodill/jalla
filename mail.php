@@ -1,8 +1,10 @@
 <?php 
+//Denne siden er utviklet av Mikael Kolstad, siste gang endret 14.05.2014
+//Denne siden er kontrollert av Kurt A. Aamodt siste gang 30.05.2014 
+
 ini_set('display_errors', 'Off'); error_reporting(0); //Slår av alle php-errors 
 protected_page();
-//Denne siden er utviklet av Mikael Kolstad, siste gang endret 14.05.2014
-//Denne siden er kontrollert av Kurt A. Aamodt siste gang 31.05.2014 
+
 
 /***********************************************************************************************************************************************************************/
 /**************Denne filen viser modalvindu for å sende epost. For Administratorer og veiledere. Denne filen er inkludert i nav.php da den er en del av menyen**********/

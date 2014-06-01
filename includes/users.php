@@ -1,6 +1,6 @@
 <?php
-//Denne siden er utviklet av Kurt A. Aamodt., siste gang endret 15.05.2014
-//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014
+//Denne siden er utviklet av Kurt A. Aamodt., siste gang endret 30.04.2014
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 04.05.2014
 
 //Henter fullstendig oppgaveliste for admin\veiledere eller liste med besvarelser uten respons
 function oppgListe($liste) {

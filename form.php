@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 30.03.2014
-Denne siden er kontrollert av Mikael kolstad siste gang 30.03.2014 !-->
+Denne siden er kontrollert av Mikael kolstad siste gang 31.05.2014 !-->
 
 
 <!--Denne siden viser liste med brukere, og brukes av vis_brukere.php !-->
