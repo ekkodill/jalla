@@ -1,5 +1,5 @@
 // Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 20.04.2014
-// Denne siden er kontrollert av Mikael Kolstad, siste gang 26.04.2014
+// Denne siden er kontrollert av Mikael Kolstad, siste gang 31.05.2014
 
 //Funksjon som klikker på skjult knapp i oppgaveliste.php for å endre form action og publisere oppgaven
 function publiser(pk) {

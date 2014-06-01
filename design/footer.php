@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Dag-Roger Eriksen., siste gang endret 27.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014  !-->
 
 
 <footer>

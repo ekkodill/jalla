@@ -1,5 +1,5 @@
 // Denne siden er utviklet av Erik Bjørnflaten og Kurt A. Aamodt, sist gang endret 15.04.2014
-// Denne siden er kontrollert av Mikael Kolstad,siste gang  04.05.2014
+// Denne siden er kontrollert av Mikael Kolstad,siste gang  31.05.2014
 
   
 // Sjekker om e-postfeltet er fylt inn, og at brukerype er riktig

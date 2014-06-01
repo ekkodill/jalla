@@ -37,7 +37,7 @@ include 'design/head.php';
           <div class="midtfelt">
             <h2>Velkommen til Touch</h2> 
             <div class="bilde"><img class="bilde"src="img/keyboard.jpg" height="250"  alt="Bli kjappere på tastene." ></div>
-            <p>I denne applikasjonen skal vi trene deg opp i øke hastigheten når du skriver på tastaturet.<br>
+            <p>I denne applikasjonen skal vi trene deg opp, til å øke hastigheten når du skriver på tastaturet.<br>
             Registrer deg i dag å få nye oppgaver og øve deg på, med respons fra egne veiledere.</p>
             <p> Den optimale måten å lære seg touchmetoden.</p>
             <h3>Bli kjappere på tastene idag!</h3>

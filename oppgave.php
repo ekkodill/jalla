@@ -117,19 +117,18 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 		    <!--Elementer for å lage nye oppgaver-->
 		    <div class="oppgform">
 				<legend><h4>Lag ny oppgave</h4></legend>
-				<form action="oppgave.php" id="nyoppgfrm"  method="post" >
-					<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" value=<?php if(!empty($oppgtittel)) { echo $oppgtittel; }?>><br><br>
-					<h5><label>Vanskelighetsgrad:</label> 
+					<form action="oppgave.php" id="nyoppgfrm" method="post" >
+				<input class="stored" name="tittel" type="text" id="oppgtitt" placeholder="Skriv inn tittelen" value=<?php if(!empty($oppgtittel)) { echo $oppgtittel; }?>><br><br>
+				<h5><label>Vanskelighetsgrad:</label>
 					<input class="stored" type="radio" value="3" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 3) { echo 'checked'; }}?>>Vanskelig
 					<input class="stored" type="radio" value="2" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 2) { echo 'checked'; }}?>>Medium
 					<input class="stored" type="radio" value="1" name="vansklighetsgrad" <?php if(!empty($oppgvansklighetsgrad)) { if($oppgvansklighetsgrad == 1) { echo 'checked'; }}?>>Lett</h5>
 					<textarea class="stored" name="oppg" id="oppgtext" placeholder="Skriv inn oppgaven" style="height:20%; width:60%"><?php if(!empty($oppgtext)) { echo $oppgtext; }?></textarea><br>
-					
 					<input type="submit" class="buttonStyle" name="publiser" value="Publiser" onclick="return regNyoppg();" >
 					<input type="submit" class="buttonStyle" name="lagre" value="Lagre" onclick="return regNyoppg();">
 					<input type="checkbox" name="mailpub">Send mail om denne publiseringen
-					</div>
-		    	</form>
+				</div>
+				</form>
 		    	
 				<?php
 

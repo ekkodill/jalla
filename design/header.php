@@ -1,5 +1,5 @@
 <!--Denne siden er utviklet av Kurt A. Amodt og Dag-Roger Eriksen., siste gang endret 02.03.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 30.03.2014  !-->
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014  !-->
 
 <header>
 <div class="sitetitle"><a href="default.php"><img src="img/logotm.png" ></a></div>

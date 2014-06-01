@@ -1,0 +1,46 @@
+/*
+Denne siden er utviklet av Erik Bjørnflaten, siste gang endret 17.03.2014
+Denne siden er kontrollert av Dag-Roger Eriksen siste gang 28.03.2014 
+*/
+
+
+/* CSS Document */
+
+
+/*Liste på ny_oppgave med oppgaver*/
+.oppliste {
+	overflow:auto;
+	height:50%;
+	width:100%;
+	margin-top: 0%;
+	margin-bottom:10%;
+	background-color:#fff;
+}
+
+
+
+#nyOppgave{
+	float:left;
+	width:22%;
+	height:100%;
+	margin-left:1%;
+	margin-right:2%;
+	margin-top:1%;
+}
+
+#oppgtitt{
+	width:40%;
+	margin-top:1%;
+	margin-right:30%;
+}
+
+#oppgtext{
+    width:98%;
+    height:30%; 
+	margin-right:1%;
+}
+
+#publiser{
+	float:left;
+	margin-left:1%;
+}

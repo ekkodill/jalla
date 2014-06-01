@@ -1,5 +1,6 @@
-// Denne Siden er laget av Kurt A. Aamodt. Koden er hentet fra internett url: http://stackoverflow.com/questions/18050932/detect-differences-between-two-strings-with-javascript, siste gang endret 04.05.2014
-// Denne siden er kontrollert av Mikael Kolstad, siste gang 04.05.2014 
+// Denne Siden er laget av Kurt A. Aamodt, siste gang endret 04.05.2014
+// Denne siden er kontrollert av Mikael Kolstad, siste gang 31.05.2014 
+//Koden er hentet fra internett url: http://stackoverflow.com/questions/18050932/detect-differences-between-two-strings-with-javascript
 
 
 

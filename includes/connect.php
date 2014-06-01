@@ -1,6 +1,6 @@
 ﻿<?php
 //Denne siden er utviklet av Kurt A. Amodt., siste gang endret 02.03.2014
-//Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.03.2014 
+//Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014 
 
 //Funksjon som returnerer en databasetilkobling
 function getDB() {

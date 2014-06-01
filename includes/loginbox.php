@@ -16,40 +16,16 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 		glemtPW($epost);
 	}
 } 
-/*
-//Sjekker at ikke noen felt er tomme 
-if(isset($_POST['register'])) {
-	unset($errors);
-	if(empty($_POST['bothoneypot'])) {
-	if(isset($_POST['ePost'], $_POST['fornavn'], $_POST['etternavn'])) {
-		$ePost 		= trim($_POST['ePost']);
-		$etternavn 	= trim($_POST['etternavn']);
-		$fornavn 	= trim($_POST['fornavn']);
-	   	$brukertype = 3; 
-	   	
-	    if(user_exists($ePost) == false) { 	
-			$gen_pw = generate_password(); //Generer passord med 8 karakterer
-			$passord = passord($gen_pw); //Salter og krypterer passordet
-			$mailcheck = spamcheck($ePost); //Sjekker at eposten er en gyldig adresse
-			if ($mailcheck === false) {
-				$errors[]  = "Eposten er ikke gyldig"; 		
-			} else if(!empty($fornavn) && !empty($etternavn) && !empty($ePost) && !empty($brukertype)) {
-				if (addUser($ePost, $etternavn, $fornavn, $passord, $brukertype)) {
-					sendMail($ePost, $gen_pw);
-					$errors[] = "Brukeren ble opprettet.";
-					header("location:default.php");
-				} else { $errors[]  = "Det oppstod en feil og brukeren kunne ikke opprettes"; }
-			} else { $errors[]  = "Alle boksene må fylles ut"; }
-		} else { $errors[]  = "Eposten er registrert fra før"; }
-	} else { $errors[]  = "Alle boksene må fylles ut"; }
-} else { $errors[] = "Det oppstod en feil, prøv på nytt"; }
-}
-*/
+
 ?>
 <script type="text/javascript">
 
 //Setter localstorage og skjuler \ viser element for glemt passord
 function showGp() {
+	//Setter eposten fra innloggingsboksen brukernavn til epost feltet for glemt passord
+	if(document.getElementById("brukernavn").value != "") {
+		document.getElementById("glemtpw").value = document.getElementById("brukernavn").value;
+	}
 	localStorage.form1style = 'block';
 	localStorage.form2style = 'none';
 	localStorage.form3style = 'none';
@@ -120,8 +96,8 @@ $(document).ready(function() {
 		<fieldset>
 			<h2>Glemt passord</h2>
 			<span>E-post:</span><br>
-			<input type="text" class="boxinputs" id="glemtpw" name="nyttpw" tabindex="5" title="Fyll ut e-post adresse"  autocomplete="off"><br>
-			<input type="submit" name="sendnypw" class="loginboxknapper" tabindex="6" value="Send passord" title="Send nytt passord">
+			<input type="text" class="boxinputs" id="glemtpw" name="nyttpw" tabindex="1" title="Fyll ut e-post adresse"  autocomplete="off"><br>
+			<input type="submit" name="sendnypw" class="loginboxknapper" tabindex="2" value="Send passord" title="Send nytt passord">
 			<input type="button" class="loginboxknapper" tabindex="7"  value="Skjul" title="skjul glemt passordd" onclick="skjul()">
 			<br>
 

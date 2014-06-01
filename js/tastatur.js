@@ -1,5 +1,5 @@
-﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 27.04.2014
-// Denne siden er kontrollert av Mikael Kolstad, siste gang 29.04.2014
+﻿// Denne siden er utviklet av Kurt A. Aamodt, siste gang endret 25.05.2014
+// Denne siden er kontrollert av Mikael Kolstad, siste gang 31.05.2014
 
 
 //Infoboks for data om besvarelse

@@ -1,13 +1,11 @@
 <!--Denne siden er utviklet av Kurt A. Amodt(php) og Dag-Roger Eriksen(html\css),. siste gang endret 23.05.2014
-Denne siden er kontrollert av Erik Bjørnflaten siste gang 26.04.2014  !-->
-
+Denne siden er kontrollert av Erik Bjørnflaten siste gang 29.05.2014  !-->
 <?php 
 include_once 'mail.php'; //Inkluderer modal vinduene for epost sending
  ?>
 
  <nav>
  	<?php if(logged_in() === true) { echo "<div class='loggetInnSom'><a href='profil.php'>".$user_data['fornavn'] ." ". $user_data['etternavn']."</a></div>"; 
-		
  	}
  	//Viser epost innstillinger og epost ikon i menyen for veiledere og administrator
  	if($user_data['brukertype'] != 3) {
