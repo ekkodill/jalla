@@ -13,7 +13,7 @@ if (isset($_POST['nyttpw']) === true && empty($_POST['nyttpw']) === false) {
 	else {
 		$_SESSION['recover'] = $_POST['nyttpw'];
 		$epost = sanitize($_POST['nyttpw']);
-		glemtPW($epost);
+		glemtPW($epost,$touchmail);
 	}
 } 
 

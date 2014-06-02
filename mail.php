@@ -13,7 +13,7 @@ protected_page();
 //Oppdaterer applikasjonseposten i txt filen.
 if(isset($_POST['updatemail'])) {
   if(!empty($_POST['updatemail'])) {
-    $data_to_write = $_POST['nymail'];
+    $data_to_write = trim($_POST['nymail']);
     $file_path = "appepost.txt";
     $file_handle = fopen($file_path, 'w') or die();
     fwrite($file_handle, $data_to_write);
@@ -25,10 +25,10 @@ if(isset($_POST['updatemail'])) {
 //Sender mail fra admin\veileder
 if(isset($_POST['sendmail'])) {
   if(!empty($_POST['frommail']) && !empty($_POST['eposttil']) && !empty($_POST['mailarea']) && !empty($_POST['mailtittel'])) {
-            $tittel = $_POST['mailtittel'];
-            $fra = $_POST['frommail'];
-            $til = $_POST['eposttil'];
-            $melding = $_POST['mailarea'];
+            $tittel = trim($_POST['mailtittel']);
+            $fra = trim($_POST['frommail']);
+            $til = trim($_POST['eposttil']);
+            $melding = trim($_POST['mailarea']);
             $url = $_POST['url'];
             if(mailUsers($tittel, $melding, $fra, $til)) {
            $_SESSION['msg'] = "Eposten ble sendt";

@@ -73,7 +73,7 @@ protected_page(); ?>
 	echo "<input id='file-input".$PK."' type='file' name='file' onchange='lagre($PK)' hidden/>"; //Filvalgsmeny
 	echo "<input type='submit' hidden name='upload' id='s".$PK."' onclick=this.form.action='upload.php'; />"; //Lagrer vedlegget endringer
   if($publisert == 0) {
-    //Publiseringsknapp
+    //Publiseringsknapp som sender med data fra valgt oppgave til oppgave.php
     echo "<input type='image' src='img/publish.png' name='poblish'  title='Publiser oppgave' alt='Publiser oppgave' onclick='publiser($PK); return false;' />";
     echo "<input type='submit' hidden  name='publish' id='p".$PK."' value=".$PK."  onclick=this.form.action='oppgave.php'; />";
     echo "<input type='hidden' name='oppgTittle' value=$tittel />";

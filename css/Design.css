@@ -47,6 +47,10 @@ body#sidenmin a#nav-minside
 color: #97d6eb;
 }
 
+fieldset {
+    border: 0;
+}
+
 body {
 width:100%;
 background-color:#EEEEEE;

@@ -21,7 +21,7 @@ if(logged_in() === true) {
 }
 
 
-//Error samling for diverse. Brukes foreløpig til å gi beskjed om feilmeldinger for innloggingsforsøk.
+//Error samling for diverse. Brukes for feilmeldinger i applikasjonen.
 $errors = array(); 
 
 

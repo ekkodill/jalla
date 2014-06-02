@@ -11,7 +11,7 @@ include_once 'mail.php'; //Inkluderer modal vinduene for epost sending
  	if($user_data['brukertype'] != 3) {
  		echo "<a style='float:left;margin-right:20px;' href='#settings'><img src='img/settings.png' alt='Epost innstillinger' title='Epost innstillinger'></a>
  		<a style='width: 32px;float:left;' href='#sendmail'><img src='img/mail.png' alt='Send epost' title='Send epost'></a><br>";
- 		echo "<br><a href='oppgave.php' id='nav-oppgave'>Ny oppgave</a>"; 	 
+ 		echo "<br><a href='oppgave.php' id='nav-oppgave'>Oppgaver</a>"; 	 
  		}
  	if($user_data['brukertype'] != 2 && $user_data['brukertype'] != 1) {
  		echo "<a href='minside.php' id='nav-minside'>Min side</a>"; //Viser "minside" for deltakere i menyen

@@ -21,7 +21,7 @@ if(isset($_POST['register'])) {
 				$errors[]  = "Eposten er ikke gyldig"; 		
 			} else if(!empty($fornavn) && !empty($etternavn) && !empty($ePost) && !empty($brukertype)) {
 				if (addUser($ePost, $etternavn, $fornavn, $passord, $brukertype)) {
-					sendMail($ePost, $gen_pw);
+					sendMail($ePost, $gen_pw, $touchmail, "Bruker opprettet");
 					header("location: registrer.php?registrert");
 				} else { $errors[]  = "Det oppstod en feil og brukeren kunne ikke opprettes"; }
 			} else { $errors[]  = "Alle boksene må fylles ut"; }

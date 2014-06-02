@@ -85,7 +85,7 @@ $(document).ready(function () {
 						});
 				 </script>
 				 <?php
-				 	echo "<p class='okmsgcolor'>Ny bruker ble opprettet</p>";  
+				 	echo "<p class='okmsgcolor'>Ny bruker ble opprettet: $touchdill</p>";  
 				 }
 				if(isset($_GET['updateusererror'])) {
 					echo "<p class='errormsgcolor'>Det oppstod en feil ved oppdatering av brukeren</p>";

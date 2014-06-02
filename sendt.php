@@ -17,7 +17,7 @@ include 'design/head.php'; ?>
 			<section>
 	        	<div class="midtfelt"> 
 					<h2>Nytt passord</h2> 
-					<p>Nytt passord er sendt til følgene e-post adresse: <b><?php echo $_SESSION['recover'];?></b> </p> 
+					<p>Nytt passord er sendt til følgene e-post adresse: <b><?php echo $_SESSION['recover'];?></b></p> 
 					<p>Husk å sjekke søppelpost mappen. Hvis du ikke har fått en e-post i løpet av 5 minutter, si fra til oss.</p>
 					</br>
 					<p><a href="logout.php"><b>Trykk her</b></a> for å gå tilbake til startsiden.</p>

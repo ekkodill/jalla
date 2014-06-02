@@ -5,8 +5,8 @@ Denne siden er kontrollert av Erik Bjørnflaten siste gang 31.05.2014  !-->
 include 'includes/init.php';
 //Sjekker at login er submitta
 if(empty($_POST) === false) {
-	$brukernavn = $_POST['brukernavn'];
-	$passord 	= $_POST['passord'];
+	$brukernavn = trim($_POST['brukernavn']);
+	$passord 	= trim($_POST['passord']);
 
 //Sjekker at brukernavn og passord feltet inneholder noe og sjekker at informasjonen er gyldig.
 if (empty($brukernavn) === true || empty($passord) === true) {

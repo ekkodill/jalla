@@ -33,9 +33,9 @@ if(!empty($_POST['adduser'])) {
 				$errors[]  = "Eposten er ikke gyldig"; 		
 			} else if(!empty($fornavn) && !empty($etternavn) && !empty($ePost) && !empty($brukertype)) {
 				if (addUser($ePost, $etternavn, $fornavn, $passord, $brukertype)) {
-					header("location: vis_brukere.php?registrert");
-					if(sendMail($ePost, $gen_pw)) {
+					if(sendMail($ePost, $gen_pw, $touchmail, "Bruker opprettet")) {
 						$errors[] = "Epost ble sendt til brukeren";
+						header("location: vis_brukere.php?registrert");
 					} else { $errors[] = "Det oppstod en feil ved utsending av epost, sjekk mailserveren"; }
 				} else { $errors[]  = "Det oppstod en feil og brukeren kunne ikke opprettes"; }
 			} else { $errors[]  = "Alle boksene må fylles ut"; }

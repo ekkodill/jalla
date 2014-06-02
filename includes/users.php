@@ -81,12 +81,12 @@ function ubesvarteOppg($bPK, $ferdig) {
 
 
 //Funksjon for glemt passord, oppretter et nytt og sender det på mail
-function glemtPW($epost) {
+function glemtPW($epost, $from) {
 		$gen_pw = generate_password(); //Generer passord med 8 karakterer
 		$passord = passord($gen_pw); //Salter og hasher passordet
 		$mailcheck = spamcheck($epost); //Sjekker at eposten er en gyldig adresse
 		endrePW($passord, $epost); //Endrer passordet i databasen
-		sendMail($epost, $gen_pw); //Sender det nye passordet på mail
+		sendMail($epost, $gen_pw, $from, "Nytt passord"); //Sender det nye passordet på mail
 		redirect("sendt.php");
 }
 
@@ -133,12 +133,13 @@ function addOppg($veileder, $tittel, $oppg, $erPublisert, $vansklighetsgrad) {
 }
 
 //Sender epost til brukere med nytt passord
-function sendMail($epost, $passord) {
+function sendMail($epost, $passord, $from, $title) {
 		   $til = $epost;
-		   $fra = "tocuhdill@gmail.com";
-		   $tittel = "Bruker opprettet";
+		   $fra = $from;
+		   $tittel = $title;
 		   $melding = "Velkommen til touchdill!\nHer er innloggingsinformasjonen din. \nBrukernavn: ".$epost." \nPassord: ".$passord." 
-		   \nDette er et tilfeldig generert passord, men det oppfordres til at du bytter dette.";
+		   \nDette er et tilfeldig generert passord, men det oppfordres til at du bytter dette.
+		   \n\nMvh Touchmetoden";
 		   //PHP-regel sier at en linje i beskjeden ikke skal overstige 70 karakterer, så den må "wrappes".
 		   $melding = wordwrap($melding, 70);
 		   //Sender mail
@@ -151,11 +152,11 @@ function sendMail($epost, $passord) {
 
 
 //Sender epost til brukere med melding om at det er publisert en ny oppgave
-function publishMail($tittel) {
+function publishMail($tittel, $from) {
 	$db = getDB();
+	$fra = $from;
 	$query = $db->query("
 	SELECT ePost FROM brukere WHERE brukertype = 3");
-	$fra = "tocuhdill@gmail.com";
 	$tittel = "Ny oppgave publisert: ".$tittel;
 	$melding = "Hei!\nDet er nå publisert en ny oppgave.
 		   \nDu finner den i listen over ubesvarte oppgaver på siden din eller direkte på skrivesenteret.

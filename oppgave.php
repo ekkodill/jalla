@@ -133,14 +133,7 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 		    	
 				<?php
 
-				//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
-				if(isset($_GET['lagretrespons'])) {
-					echo "<p class='okmsgcolor'>Responsen ble lagret</p>";
-				} elseif(isset($_GET['nosaveerror'])) {
-					echo "<p class='errormsgcolor'>Kunne ikke lagre respons</p>";
-				} elseif(isset($_GET['tomerror'])) {
-					echo "<p class='errormsgcolor'>Kan ikke lagre tom respons</p>";
-				}
+
 				if(isset($_GET['publisert']) === true) {
 					echo "<p class='okmsgcolor'>Oppgaven ble publisert</p>"; 
 				} elseif(isset($_GET['lagret']) === true) {
@@ -161,9 +154,20 @@ if(isset($_POST['lagre']) && isset($_POST['mailpub'])) {
 			            <option name="gittoppg"     value='gittoppg'   <?php if($_SESSION['oppgave_select']=='gittoppg') {echo 'selected'; } ?>>Alle oppgaver</option>
 			            <option name="besvartoppg" value='besvartoppg' <?php if($_SESSION['oppgave_select'] =='besvartoppg') {echo 'selected'; } ?>>Besvarte oppgaver</option>
 			        </select>
-			    </form>	
+			    </form>
 			 </center>
-<?php 	//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen (ren oppgaveliste eller besvarelser)
+<?php 
+			//Skriver ut statusmeldinger for nye oppgaver som blir opprettet eller responser som blir lagret
+				if(isset($_GET['lagretrespons'])) {
+					echo "<p class='okmsgcolor'>Responsen ble lagret</p>";
+				} elseif(isset($_GET['nosaveerror'])) {
+					echo "<p class='errormsgcolor'>Kunne ikke lagre respons</p>";
+				} elseif(isset($_GET['tomerror'])) {
+					echo "<p class='errormsgcolor'>Kan ikke lagre tom respons</p>";
+				}
+
+
+		//Inkluderer riktig liste i forhold til valget på nedtrekksmenyen (ren oppgaveliste eller besvarelser)
 		if(isset($_SESSION['oppgave_select'])) {
 			if($_SESSION['oppgave_select'] == 'gittoppg') {
 				include('oppgaveliste.php');

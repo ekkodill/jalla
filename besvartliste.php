@@ -84,7 +84,7 @@ $mytxt->close();
 				<br>
 				<textarea id='responstext' placeholder='Skriv respons' name='respons'></textarea>
 				<br>";
-	echo	"<input id='responsid".$PK."' type='submit' name='lagrerespons' value='Lagre respons'>
+	echo	"<input id='responsid".$PK."' type='submit' class='buttonStyle' name='lagrerespons' value='Lagre respons'>
 			</div><a class='close' href='#close'></a>
 		</div>";
     echo "</td></tr></form>";
